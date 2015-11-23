@@ -1,0 +1,134 @@
+
+<div>
+    <h2><span translate="adapApp.score.detail.title">Score</span> {{score.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.value">Value</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.value}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.text">Text</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.text}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.rulename">Rulename</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.rulename}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.ruleversion">Ruleversion</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.ruleversion}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.details">Details</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.details}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + score.status}}">{{score.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{score.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:score.objrecordtype.id})">{{score.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:score.objclassification.id})">{{score.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:score.objcategory.id})">{{score.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:score.objtype.id})">{{score.objtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.score.asset">asset</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="asset.detail({id:score.asset.id})">{{score.asset.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

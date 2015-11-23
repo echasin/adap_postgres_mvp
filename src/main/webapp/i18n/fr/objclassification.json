@@ -1,0 +1,31 @@
+{
+    "adapApp": {
+        "objclassification" : {
+            "home": {
+                "title": "Objclassifications",
+                "createLabel": "Créer un nouveau Objclassification",
+                "createOrEditLabel": "Créer ou éditer un Objclassification"
+            },
+            "created": "Un nouveau Objclassification a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Objclassification avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Objclassification avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Objclassification {{ id }} ?"
+            },
+            "detail": {
+                "title": "Objclassification"
+            },
+            "name": "Name",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objcategory": "Objcategory",
+            "asset": "Asset",
+            "location": "Location",
+            "score": "Score"
+        }
+    }
+}
+

@@ -1,0 +1,8 @@
+id,name,objclassification_id,status,lastmodifiedby,lastmodifieddate,domain
+0,All,1,Active,system,2015-07-26 11:50:16,DEMO
+1,TEST,1,Active,system,2015-07-26 11:50:16,TEST
+101,Commercial,101,Active,system,2015-07-05 22:05:45,DEMO
+102,General Aviation,101,Active,system,2015-07-05 22:05:45,DEMO
+2001,Location,2001,Active,system,2015-07-05 22:05:45,DEMO
+2002,Location,2002,Active,system,2015-07-05 22:05:45,DEMO
+3001,Rule Value,3001,Active,system,2015-07-05 22:05:45,DEMO

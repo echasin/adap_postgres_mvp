@@ -1,0 +1,34 @@
+{
+    "adapApp": {
+        "asset" : {
+            "home": {
+                "title": "Assets",
+                "createLabel": "Créer un nouveau Asset",
+                "createOrEditLabel": "Créer ou éditer un Asset"
+            },
+            "created": "Un nouveau Asset a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Asset avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Asset avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Asset {{ id }} ?"
+            },
+            "detail": {
+                "title": "Asset"
+            },
+            "name": "Name",
+            "description": "Description",
+            "details": "Details",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "location": "Location",
+            "score": "Score"
+        }
+    }
+}
+

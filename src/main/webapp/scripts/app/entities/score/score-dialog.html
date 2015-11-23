@@ -1,0 +1,136 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myScoreLabel" translate="adapApp.score.home.createOrEditLabel">Create or edit a Score</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="score.id" readonly />
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.value" for="field_value">Value</label>
+            <input type="number" class="form-control" name="value" id="field_value"
+                    ng-model="score.value"
+                     />
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.text" for="field_text">Text</label>
+            <input type="text" class="form-control" name="text" id="field_text"
+                    ng-model="score.text"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.text.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.text.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.rulename" for="field_rulename">Rulename</label>
+            <input type="text" class="form-control" name="rulename" id="field_rulename"
+                    ng-model="score.rulename"
+                    ng-maxlength="100" />
+            <div ng-show="editForm.rulename.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rulename.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.ruleversion" for="field_ruleversion">Ruleversion</label>
+            <input type="text" class="form-control" name="ruleversion" id="field_ruleversion"
+                    ng-model="score.ruleversion"
+                    ng-maxlength="25" />
+            <div ng-show="editForm.ruleversion.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ruleversion.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="25">
+                    This field cannot be longer than 25 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.details" for="field_details">Details</label>
+            <input type="text" class="form-control" name="details" id="field_details"
+                    ng-model="score.details"
+                     />
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="score.status" id="field_status" required>
+                <option value="Active" translate="adapApp.Status.Active">Active</option>
+                <option value="Pending" translate="adapApp.Status.Pending">Pending</option>
+                <option value="ToBeDeleted" translate="adapApp.Status.ToBeDeleted">ToBeDeleted</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.lastmodifiedby" for="field_lastmodifiedby">Lastmodifiedby</label>
+            <input type="text" class="form-control" name="lastmodifiedby" id="field_lastmodifiedby"
+                    ng-model="score.lastmodifiedby"
+                     />
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.lastmodifieddate" for="field_lastmodifieddate">Lastmodifieddate</label>
+            <input type="datetime-local" class="form-control" name="lastmodifieddate" id="field_lastmodifieddate"
+                    ng-model="score.lastmodifieddate"
+                     />
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.domain" for="field_domain">Domain</label>
+            <input type="text" class="form-control" name="domain" id="field_domain"
+                    ng-model="score.domain"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="adapApp.score.objrecordtype" for="field_objrecordtype">objrecordtype</label>
+            <select class="form-control" id="field_objrecordtype" name="objrecordtype" ng-model="score.objrecordtype" ng-options="objrecordtype as objrecordtype.name for objrecordtype in objrecordtypes track by objrecordtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.objclassification" for="field_objclassification">objclassification</label>
+            <select class="form-control" id="field_objclassification" name="objclassification" ng-model="score.objclassification" ng-options="objclassification as objclassification.name for objclassification in objclassifications track by objclassification.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.objcategory" for="field_objcategory">objcategory</label>
+            <select class="form-control" id="field_objcategory" name="objcategory" ng-model="score.objcategory" ng-options="objcategory as objcategory.name for objcategory in objcategorys track by objcategory.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.objtype" for="field_objtype">objtype</label>
+            <select class="form-control" id="field_objtype" name="objtype" ng-model="score.objtype" ng-options="objtype as objtype.name for objtype in objtypes track by objtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.score.asset" for="field_asset">asset</label>
+            <select class="form-control" id="field_asset" name="asset" ng-model="score.asset" ng-options="asset as asset.name for asset in assets track by asset.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

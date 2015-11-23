@@ -1,0 +1,25 @@
+id,name,objrecordtype_id,status,lastmodifiedby,lastmodifieddate,domain
+0,All,1,Active,system,2015-07-26 11:50:15,DEMO
+1,TEST,1,Active,system,2015-07-26 11:50:15,TEST
+101,Airport,10,Active,system,2015-07-26 11:50:15,DEMO
+102,Subway/Rail Station,10,Active,system,2015-07-26 11:50:15,DEMO
+201,Network,20,Active,system,2015-07-26 11:50:15,DEMO
+1000,Dimension/Lookup,1000,Active,system,2015-07-26 11:50:15,DEMO
+1010,Physical Address,1010,Active,system,2015-07-26 11:50:15,DEMO
+1011,Mailing Address,1010,Active,system,2015-07-26 11:50:15,DEMO
+1012,Legal Address,1010,Active,system,2015-07-26 11:50:15,DEMO
+2001,Raw Score,2000,Active,system,2015-07-26 11:50:15,DEMO
+2002,Data Quality,2000,Active,system,2015-07-26 11:50:15,DEMO
+3001,Score,3000,Active,system,2015-07-26 11:50:15,DEMO
+4000,Attack Class One,4000,Active,system,2015-07-26 11:50:15,DEMO
+4100,Attacks on the critical infrastructure,4010,Active,system,2015-07-26 11:50:15,DEMO
+4101,Attacks on the internet infrastructure,4010,Active,system,2015-07-26 11:50:15,DEMO
+4102,Persistent attacks on specific resources,4010,Active,system,2015-07-26 11:50:15,DEMO
+4103,Automated attacks against internet sites,4010,Active,system,2015-07-26 11:50:15,DEMO
+4104,Threat involving individual user accounts,4010,Active,system,2015-07-26 11:50:15,DEMO
+4105,New types of attacks or new vulnerabilities,4010,Active,system,2015-07-26 11:50:15,DEMO
+4106,Botnets,4010,Active,system,2015-07-26 11:50:15,DEMO
+4107,Denial of service on individual user accounts,4010,Active,system,2015-07-26 11:50:15,DEMO
+4108,Security-related violations regulations,4010,Active,system,2015-07-26 11:50:15,DEMO
+4109,Compromise of single desktop systems,4010,Active,system,2015-07-26 11:50:15,DEMO
+4110,Copyright violations,4010,Active,system,2015-07-26 11:50:15,DEMO

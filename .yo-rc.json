@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "adap",
+    "packageName": "com.innvo",
+    "packageFolder": "com/innvo",
+    "authenticationType": "oauth2",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "54d8197664ad96b78557d7a49c9c411dd7387e50",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

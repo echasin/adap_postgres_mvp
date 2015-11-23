@@ -1,0 +1,30 @@
+{
+    "adapApp": {
+        "objrecordtype" : {
+            "home": {
+                "title": "Objrecordtypes",
+                "createLabel": "Create a new Objrecordtype",
+                "createOrEditLabel": "Create or edit a Objrecordtype"
+            },
+            "created": "A new Objrecordtype is created with identifier {{ param }}",
+            "updated": "A Objrecordtype is updated with identifier {{ param }}",
+            "deleted": "A Objrecordtype is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Objrecordtype {{ id }}?"
+            },
+            "detail": {
+                "title": "Objrecordtype"
+            },
+            "objecttype": "Objecttype",
+            "name": "Name",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objclassification": "Objclassification",
+            "asset": "Asset",
+            "location": "Location",
+            "score": "Score"
+        }
+    }
+}

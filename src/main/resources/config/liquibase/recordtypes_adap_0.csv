@@ -1,0 +1,14 @@
+id,objecttype,name,status,lastmodifiedby,lastmodifieddate,domain
+0,All,All,Active,system,2015-07-26 11:50:15,DEMO
+1,All,TEST,Active,system,2015-07-26 11:50:15,TEST
+10,Asset,Infrastructure,Active,system,2015-07-26 11:50:15,DEMO
+20,Asset,Information Technology,Active,system,2015-07-26 11:50:15,DEMO
+100,Organization,Corporate Entity,Active,system,2015-07-26 11:50:15,DEMO
+110,Organization,Government Entity,Active,system,2015-07-26 11:50:15,DEMO
+120,Organization,Sovereign Entity,Active,system,2015-07-26 11:50:15,DEMO
+1000,Location,Reference Data,Active,system,2015-07-26 11:50:15,DEMO
+1010,Location,Asset,Active,system,2015-07-26 11:50:15,DEMO
+2000,Score,Asset,Active,system,2015-07-26 11:50:15,DEMO
+3000,Factor,Asset,Active,system,2015-07-26 11:50:15,DEMO
+4000,Attackscenario,Terrorist Attack,Active,system,2015-07-26 11:50:15,DEMO
+4010,Attackscenario,Cyber Attack CERT NIC.LV,Active,system,2015-07-26 11:50:15,DEMO

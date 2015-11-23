@@ -1,0 +1,148 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" dropdown>
+                    <img alt="image" class="img-circle" src="assets/img/profile_small.jpg"/>
+                    <a class="dropdown-toggle" dropdown-toggle href>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">David Williams</strong>
+                            </span>
+                            <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a ui-sref="profile">Profile</a></li>
+                        <li><a ui-sref="contacts">Contacts</a></li>
+                        <li><a ui-sref="inbox">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../login.html">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li ng-class="{
+                        active: $state.includes('account')
+                    }">
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Account' | translate }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{
+                        in: $state.includes('account')}">
+                    <li ui-sref-active="active" <!--ng-switch-when="true"--><a ui-sref="settings"><span class="glyphicon glyphicon-wrench"></span>
+                            &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
+                    <li ui-sref-active="active" <!--ng-switch-when="true"--><a ui-sref="password"><span class="glyphicon glyphicon-lock"></span>
+                            &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
+                    <li ui-sref-active="active" <!--ng-switch-when="true"--><a ui-sref="sessions"><span class="glyphicon glyphicon-cloud"></span>
+                            &#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>
+                    <li ui-sref-active="active" <!--ng-switch-when="true"--><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
+                    <li ui-sref-active="active" <!--ng-switch-when="false"--><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>
+                            &#xA0;<span translate="global.menu.account.login">Authenticate</span></a></li>
+                    <li ui-sref-active="active" <!--ng-switch-when="false"--><a ui-sref="register"><span class="glyphicon glyphicon-plus-sign"></span>
+                            &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
+                </ul>
+            </li>
+            <li ng-class="{
+                        active: $state.includes('admin')
+                    }">
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Admin' | translate }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{
+                        in: $state.includes('admin')}">
+                    <li ui-sref-active="active"><a ui-sref="tracker"><span class="glyphicon glyphicon-eye-open"></span>
+                            &nbsp;<span translate="global.menu.admin.tracker">User tracker</span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="metrics"><span class="glyphicon glyphicon-dashboard"></span>
+                            &#xA0;<span translate="global.menu.admin.metrics">Metrics</span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="health"><span class="glyphicon glyphicon-heart"></span>
+                            &#xA0;<span translate="global.menu.admin.health">Health</span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="configuration"><span class="glyphicon glyphicon-list-alt"></span>
+                            &#xA0;<span translate="global.menu.admin.configuration">Configuration</span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="audits"><span class="glyphicon glyphicon-bell"></span>
+                            &#xA0;<span translate="global.menu.admin.audits">Audits</span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="logs"><span class="glyphicon glyphicon-tasks"></span>
+                            &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
+                    <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs"><span class="glyphicon glyphicon-book"></span>
+                            &#xA0;<span translate="global.menu.admin.apidocs">API</span></a></li>
+                    <li  ui-sref-active="active"><a ui-sref="index"><span class="glyphicon glyphicon-book"></span>
+                            &#xA0;<span>Index</span></a></li>
+                </ul>
+            </li>
+
+            <!-- ASSET -->
+            <li ng-class="{
+                        active: $state.includes('asset')
+                    }">
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Asset' | translate }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{
+                        in: $state.includes('asset')}">
+                    <li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
+                            &#xA0;<span translate="global.menu.asset.main">asset</span></a></li>
+                </ul>
+            </li>
+
+
+            <li ng-class="{active: $state.includes('xxx')}">
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.settings.system configuration" | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.settings.taxonomies" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="obj_recordtype"> {{ 'global.menu.settings.obj_recordtype' | translate }} </a>
+                            </li>   
+                            <li>
+                                <a ui-sref-active="active" ui-sref="obj_classification"> {{ 'global.menu.settings.obj_classification' | translate }} </a>
+                            </li>
+                            <li>
+                                <a ui-sref-active="active" ui-sref="obj_category"> {{ 'global.menu.settings.obj_category' | translate }} </a>
+                            </li>
+                            <li>
+                                <a ui-sref-active="active" ui-sref="obj_type"> {{ 'global.menu.settings.obj_type' | translate }} </a>
+                            </li>
+                            <li ui-sref-active="active" ><a ui-sref="foo"><span class="glyphicon glyphicon-asterisk"></span>
+                                    &#xA0;<span translate="global.menu.entities.foo">foo</span></a>
+                            </li>
+                            <li ui-sref-active="active" ><a ui-sref="score"><span class="glyphicon glyphicon-asterisk"></span>
+                                    &#xA0;<span translate="global.menu.entities.score">score</span></a>
+                            </li>
+                            <li ui-sref-active="active" ><a ui-sref="scorefactor"><span class="glyphicon glyphicon-asterisk"></span>
+                                    &#xA0;<span translate="global.menu.entities.scorefactor">scorefactor</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.settings.metrics" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="metric"> {{ 'global.menu.settings.metric' | translate }} </a>
+                            </li>   
+                            <li>
+                                <a ui-sref-active="active" ui-sref="measure"> {{ 'global.menu.settings.measure' | translate }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.settings.reference" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="location"> {{ 'global.menu.settings.location' | translate }} </a>
+                            </li>  
+                            <li>
+                                <a ui-sref-active="active" ui-sref="scorefactor"> {{"global.menu.settings.scorefactor"| translate }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
+        &#xA0;<span translate="global.menu.entities.asset">asset</span></a></li>

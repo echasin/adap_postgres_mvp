@@ -1,0 +1,31 @@
+{
+    "adapApp": {
+        "objcategory" : {
+            "home": {
+                "title": "Objcategorys",
+                "createLabel": "Créer un nouveau Objcategory",
+                "createOrEditLabel": "Créer ou éditer un Objcategory"
+            },
+            "created": "Un nouveau Objcategory a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Objcategory avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Objcategory avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Objcategory {{ id }} ?"
+            },
+            "detail": {
+                "title": "Objcategory"
+            },
+            "name": "Name",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objclassification": "Objclassification",
+            "objtype": "Objtype",
+            "asset": "Asset",
+            "location": "Location",
+            "score": "Score"
+        }
+    }
+}
+

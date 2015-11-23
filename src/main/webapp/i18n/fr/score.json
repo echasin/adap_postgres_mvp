@@ -1,0 +1,35 @@
+{
+    "adapApp": {
+        "score" : {
+            "home": {
+                "title": "Scores",
+                "createLabel": "Créer un nouveau Score",
+                "createOrEditLabel": "Créer ou éditer un Score"
+            },
+            "created": "Un nouveau Score a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Score avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Score avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Score {{ id }} ?"
+            },
+            "detail": {
+                "title": "Score"
+            },
+            "value": "Value",
+            "text": "Text",
+            "rulename": "Rulename",
+            "ruleversion": "Ruleversion",
+            "details": "Details",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "asset": "Asset"
+        }
+    }
+}
+

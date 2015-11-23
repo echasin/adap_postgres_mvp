@@ -1,0 +1,30 @@
+{
+    "adapApp": {
+        "objtype" : {
+            "home": {
+                "title": "Objtypes",
+                "createLabel": "Créer un nouveau Objtype",
+                "createOrEditLabel": "Créer ou éditer un Objtype"
+            },
+            "created": "Un nouveau Objtype a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Objtype avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Objtype avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Objtype {{ id }} ?"
+            },
+            "detail": {
+                "title": "Objtype"
+            },
+            "name": "Name",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objcategory": "Objcategory",
+            "asset": "Asset",
+            "location": "Location",
+            "score": "Score"
+        }
+    }
+}
+

@@ -1,0 +1,134 @@
+<div>
+    <h2 translate="adapApp.location.home.title">Locations</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="location.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.location.home.createLabel">Create a new Location</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Location</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="adapApp.location.isprimary">Isprimary</th>
+                    <th translate="adapApp.location.address1">Address1</th>
+                    <th translate="adapApp.location.address2">Address2</th>
+                    <th translate="adapApp.location.cityname">Cityname</th>
+                    <th translate="adapApp.location.citynamealias">Citynamealias</th>
+                    <th translate="adapApp.location.countyname">Countyname</th>
+                    <th translate="adapApp.location.countyfips">Countyfips</th>
+                    <th translate="adapApp.location.countyansi">Countyansi</th>
+                    <th translate="adapApp.location.statename">Statename</th>
+                    <th translate="adapApp.location.statecode">Statecode</th>
+                    <th translate="adapApp.location.statefips">Statefips</th>
+                    <th translate="adapApp.location.stateiso">Stateiso</th>
+                    <th translate="adapApp.location.stateansi">Stateansi</th>
+                    <th translate="adapApp.location.zippostcode">Zippostcode</th>
+                    <th translate="adapApp.location.countryname">Countryname</th>
+                    <th translate="adapApp.location.countryiso2">Countryiso2</th>
+                    <th translate="adapApp.location.countryiso3">Countryiso3</th>
+                    <th translate="adapApp.location.latitudedd">Latitudedd</th>
+                    <th translate="adapApp.location.longitudedd">Longitudedd</th>
+                    <th translate="adapApp.location.status">Status</th>
+                    <th translate="adapApp.location.lastmodifiedby">Lastmodifiedby</th>
+                    <th translate="adapApp.location.lastmodifieddate">Lastmodifieddate</th>
+                    <th translate="adapApp.location.domain">Domain</th>
+                    <th translate="adapApp.location.objrecordtype">objrecordtype</th>
+                    <th translate="adapApp.location.objclassification">objclassification</th>
+                    <th translate="adapApp.location.objcategory">objcategory</th>
+                    <th translate="adapApp.location.objtype">objtype</th>
+                    <th translate="adapApp.location.asset">asset</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="location in locations track by location.id">
+                    <td><a ui-sref="location.detail({id:location.id})">{{location.id}}</a></td>
+                    <td>{{location.isprimary}}</td>
+                    <td>{{location.address1}}</td>
+                    <td>{{location.address2}}</td>
+                    <td>{{location.cityname}}</td>
+                    <td>{{location.citynamealias}}</td>
+                    <td>{{location.countyname}}</td>
+                    <td>{{location.countyfips}}</td>
+                    <td>{{location.countyansi}}</td>
+                    <td>{{location.statename}}</td>
+                    <td>{{location.statecode}}</td>
+                    <td>{{location.statefips}}</td>
+                    <td>{{location.stateiso}}</td>
+                    <td>{{location.stateansi}}</td>
+                    <td>{{location.zippostcode}}</td>
+                    <td>{{location.countryname}}</td>
+                    <td>{{location.countryiso2}}</td>
+                    <td>{{location.countryiso3}}</td>
+                    <td>{{location.latitudedd}}</td>
+                    <td>{{location.longitudedd}}</td>
+                    <td translate="{{'adapApp.Status.' + location.status}}">{{location.status}}</td>
+                    <td>{{location.lastmodifiedby}}</td>
+                    <td>{{location.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{location.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:location.objrecordtype.id})">{{location.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:location.objclassification.id})">{{location.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:location.objcategory.id})">{{location.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:location.objtype.id})">{{location.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="asset.detail({id:location.asset.id})">{{location.asset.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="location.detail({id:location.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="location.edit({id:location.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="location.delete({id:location.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
+                <li class="active"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
