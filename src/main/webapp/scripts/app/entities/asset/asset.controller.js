@@ -2,7 +2,7 @@
 angular.module('adapApp')
         .controller('AssetController', function ($scope, $state, $modal, Asset, AssetSearch, ParseLinks)
         {
-
+            console.info('In asset.controller.js');
             $scope.assets = [];
             $scope.page = 0;
             $scope.loadAll = function () {
@@ -17,7 +17,9 @@ angular.module('adapApp')
             };
             $scope.loadAll();
             $scope.search = function () {
-                AssetSearch.query({query: $scope.searchQuery}, function (result) {
+               console.info('In $scope.search');
+                AssetSearch.query({query: $scope.searchQuery}, function (result) {    
+                    console.info('In AssetSearchquery');
                     $scope.assets = result;
                 }, function (response) {
                     if (response.status === 404) {
