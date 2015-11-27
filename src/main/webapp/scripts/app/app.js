@@ -3,7 +3,8 @@
 angular.module('adapApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate', 
                'ui.bootstrap', // for modal dialogs
     'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar',
-    'datatables','datatables.buttons','datatables.columnfilter','datatables.bootstrap','datatables.select'])
+    'datatables','datatables.buttons','datatables.columnfilter','datatables.bootstrap','datatables.select', 'ui.grid','ui.grid.edit',
+    'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.pagination', 'ui.grid.autoResize', 'ui.grid.resizeColumns','ngTouch'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
         // update the window title using params in the following
