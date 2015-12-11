@@ -48,10 +48,10 @@ public class AssetResource {
     private AssetSearchRepository assetSearchRepository;
     
     @Inject
-    LocationRepository locationRepository;
+    private LocationRepository locationRepository;
     
     @Inject
-    ScoreRepository scoreRepository;
+    private ScoreRepository scoreRepository;
 
 
     /**

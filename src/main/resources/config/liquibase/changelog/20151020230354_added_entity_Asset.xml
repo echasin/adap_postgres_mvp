@@ -64,5 +64,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="objtype"/>
 
+        <sql>
+            ALTER SEQUENCE asset_id_seq
+            RESTART 100000
+            INCREMENT 1  
+        </sql>
+        
+        
     </changeSet>
 </databaseChangeLog>

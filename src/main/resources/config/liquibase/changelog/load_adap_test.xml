@@ -20,16 +20,16 @@
     <changeSet id="01" author="jhipster">
                
         
-       <!-- <loadData encoding="UTF-8"
+      <loadData encoding="UTF-8"
                   file="config/liquibase/assets_adap_test_large_dataset.csv"
                   separator=","
                   tableName="asset"/> 
-       -->
+      <!--
         <loadData encoding="UTF-8"
                     file="config/liquibase/assets_adap_test_small_dataset.csv"
                     separator=","
                     tableName="asset"/> 
-           
+     -->      
            
     </changeSet>
 </databaseChangeLog>

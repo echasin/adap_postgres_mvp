@@ -20,7 +20,9 @@ angular.module('adapApp')
 
         $scope.search = function () {
             LocationSearch.query({query: $scope.searchQuery}, function(result) {
+                console.info('In LocationSearch.query');
                 $scope.locations = result;
+                console.info('$scope.locations', $scope.locations);
             }, function(response) {
                 if(response.status === 404) {
                     $scope.loadAll();

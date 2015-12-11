@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12">                        
                         <div class="ibox-content">    
 
                             <div class="row">
@@ -139,7 +139,8 @@
                             </div>
                             <br>
                             <div ng-controller="AssetController">
-
+                                <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
+  
                                 <div ui-grid="gridAssets" ui-grid-selection ui-grid-pagination ui-grid-exporter ui-grid-auto-resize ui-grid-resize-columns
                                      class="myGrid">          
                                 </div>
