@@ -25,7 +25,8 @@ import com.innvo.domain.enumeration.Status;
 public class Asset implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(allocationSize=1, initialValue=100000, sequenceName="asset_id_seq", name="asset_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="asset_id_seq")
     private Long id;
 
     @NotNull
