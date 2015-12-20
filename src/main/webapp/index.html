@@ -21,8 +21,9 @@
        bower install datatables-buttons
        bower install angular-datatables
         -->
+
         <!-- DATATABLES:css -->  
-        <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css"/>
+        <!--<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css"/>
         <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css"/>
         <link rel="stylesheet" href="bower_components/datatables-buttons/css/buttons.dataTables.scss">
         <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.responsive.css">
@@ -61,24 +62,26 @@
             </div>
         </div>
         -->
+        <!--INSPINIA:Navigation Left Menu-->
+        <div ng-include="'assets/views/common/navigation.html'"></div>
 
         <div id="page-wrapper"  class="gray-bg {{$state.current.name}}">
             <!-- INSPINIA:Page wraper -->
             <!-- ng-class with current state name give you the ability to extended customization your view -->
             <!--<div id="page-wrapper" class="gray-bg {{$state.current.name}}">-->
             <!-- INSPINIA:Page wrapper -->
-            <!--INSPINIA:Navigation Left Menu-->
+
+            <!--JHISPTER:Topnavbar-->
+            <!--<div ng-include="'assets/views/common/topnavbar.html'"></div>-->
             <div ng-include="'assets/views/common/topnavbar_adap.html'"></div>
+
             <!-- INSPINIA:Main View -->
             <div class="well" ui-view="content"></div>
+
             <!-- INSPINIA:Footer -->
             <div ng-include="'assets/views/common/footer.html'"></div>
         </div>
         <div ui-view="navbar" ng-cloak=""></div>
-
-
-
-
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
         <script>
@@ -97,11 +100,12 @@
 
         <script src="bower_components/angular/angular.js"></script>
 
+        <!--
         <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
         <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
         <script src="bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
         <script src="bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
-
+    
         <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
         <script src="bower_components/datatables-buttons/js/dataTables.buttons.js"></script>
         <embed  src="bower_components/datatables-buttons/swf/copy_csv_xls_pdf.swf">
@@ -115,6 +119,7 @@
         <script src="bower_components/datatables/media/js/angular-datatables.columnfilter.min.js"></script>
         <script src="bower_components/datatables/media/js/dataTables.CSV.js"></script> 
         <script src="bower_components/datatables/media/js/buttons.print.js"></script>
+        -->
 
         <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
         <!--<script src="/bower_components/angular-animate/angular-animate.js"></script> Causes Sort to display over column -->
@@ -141,8 +146,17 @@
         <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
         <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
         <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+        <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+        <script src="bower_components/ng-idle/angular-idle.min.js"></script>
+        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <!-- endbower -->
         <!-- endbower -->
         <!-- endbuild -->
+
+
+
 
 
         <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
@@ -272,6 +286,15 @@
         <script src="scripts/app/entities/location/location-detail.controller.js"></script>
         <script src="scripts/components/entities/location/location.service.js"></script>
         <script src="scripts/components/entities/location/location.search.service.js"></script>
+
         <!-- endbuild -->
+
+        <!-- INSPINIA: javascript -->
+        <!-- <script src="assets/js/config.js"></script> -->
+        <script src="assets/js/config_inspinia.js"></script> 
+        <script src="assets/js/controllers.js"></script>
+        <script src="assets/js/directives.js"></script>
+        <script src="assets/js/inspinia.js"></script>
+        <script src="assets/js/translations.js"></script>
     </body>
 </html>
