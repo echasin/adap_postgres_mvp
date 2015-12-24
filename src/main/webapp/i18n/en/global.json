@@ -11,8 +11,10 @@
                 "objcategory": "Objcategory",
                 "objtype": "Objtype",
                 "asset": "Asset",
-                "score": "Score",
+                "foo": "Foo",
                 "location": "Location",
+                "score": "Score",
+                "scorefactor": "Score Factor",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -23,6 +25,29 @@
                 "login": "Sign in",
                 "logout": "Sign out",
                 "register": "Register"
+            },
+                "asset": {
+                "main": "Asset"
+            },
+            "systemconfig": {
+                "main": "System Configuration"
+            },
+            "taxonomies": {
+                "main": "Taxonomies",
+                "obj_recordtype": "Objrecordtype",
+                "obj_classification": "Objclassification",
+                "obj_category": "Objcategory",
+                "obj_type": "Objtype"
+            },
+            "metrics": {
+                "main": "Metrics",
+                "metric": "Metric",
+                "measure": "Measure"
+            },
+            "referencedata": {
+                "main": "Reference Data",
+                "location": "Location",
+                "scorefactor": "Score Factor"
             },
             "admin": {
                 "main": "Administration",

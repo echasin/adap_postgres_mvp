@@ -24,6 +24,7 @@
                     IN+
                 </div>
             </li>
+
             <li ng-class="{
                         active: $state.includes('account')
                     }">
@@ -68,8 +69,6 @@
                             &#xA0;<span>Index</span></a></li>
                 </ul>
             </li>
-
-            <!-- ASSET -->
             <li ng-class="{
                         active: $state.includes('asset')
                     }">
@@ -80,69 +79,65 @@
                             &#xA0;<span translate="global.menu.asset.main">asset</span></a></li>
                 </ul>
             </li>
-
-
             <li ng-class="{active: $state.includes('xxx')}">
-                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.settings.system configuration" | translate }}</span><span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.systemconfig.main" | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" >
                     <li>
-                        <a href=""> {{ "global.menu.settings.taxonomies" | translate }}<span class="fa arrow"></span></a>
+                        <a href=""> {{ "global.menu.taxonomies.main" | translate }}<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a ui-sref-active="active" ui-sref="obj_recordtype"> {{ 'global.menu.settings.obj_recordtype' | translate }} </a>
+                                <a ui-sref-active="active" ui-sref="obj_recordtype"> {{ 'global.menu.taxonomies.obj_recordtype' | translate }} </a>
                             </li>   
                             <li>
-                                <a ui-sref-active="active" ui-sref="obj_classification"> {{ 'global.menu.settings.obj_classification' | translate }} </a>
+                                <a ui-sref-active="active" ui-sref="obj_classification"> {{ 'global.menu.taxonomies.obj_classification' | translate }} </a>
                             </li>
                             <li>
-                                <a ui-sref-active="active" ui-sref="obj_category"> {{ 'global.menu.settings.obj_category' | translate }} </a>
+                                <a ui-sref-active="active" ui-sref="obj_category"> {{ 'global.menu.taxonomies.obj_category' | translate }} </a>
                             </li>
                             <li>
-                                <a ui-sref-active="active" ui-sref="obj_type"> {{ 'global.menu.settings.obj_type' | translate }} </a>
+                                <a ui-sref-active="active" ui-sref="obj_type"> {{ 'global.menu.taxonomies.obj_type' | translate }} </a>
                             </li>
-                            <li ui-sref-active="active" ><a ui-sref="foo"><span class="glyphicon glyphicon-asterisk"></span>
-                                    &#xA0;<span translate="global.menu.entities.foo">foo</span></a>
-                            </li>
-                            <li ui-sref-active="active" ><a ui-sref="score"><span class="glyphicon glyphicon-asterisk"></span>
-                                    &#xA0;<span translate="global.menu.entities.score">score</span></a>
-                            </li>
-                            <li ui-sref-active="active" ><a ui-sref="scorefactor"><span class="glyphicon glyphicon-asterisk"></span>
-                                    &#xA0;<span translate="global.menu.entities.scorefactor">scorefactor</span></a>
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.metrics.main" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="metric"> {{ 'global.menu.metrics.metric' | translate }} </a>
+                            </li>   
+                            <li>
+                                <a ui-sref-active="active" ui-sref="measure"> {{ 'global.menu.metrics.measure' | translate }} </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav nav-second-level" >
                     <li>
-                        <a href=""> {{ "global.menu.settings.metrics" | translate }}<span class="fa arrow"></span></a>
+                        <a href=""> {{ "global.menu.referencedata.main" | translate }}<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a ui-sref-active="active" ui-sref="metric"> {{ 'global.menu.settings.metric' | translate }} </a>
-                            </li>   
-                            <li>
-                                <a ui-sref-active="active" ui-sref="measure"> {{ 'global.menu.settings.measure' | translate }} </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav nav-second-level" >
-                    <li>
-                        <a href=""> {{ "global.menu.settings.reference" | translate }}<span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a ui-sref-active="active" ui-sref="location"> {{ 'global.menu.settings.location' | translate }} </a>
+                                <a ui-sref-active="active" ui-sref="location"> {{ 'global.menu.referencedata.location' | translate }} </a>
                             </li>  
-                            <li>
-                                <a ui-sref-active="active" ui-sref="scorefactor"> {{"global.menu.settings.scorefactor"| translate }}</a>
-                            </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-
+            <li ng-class="{active: $state.includes('xxx')}">
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.entities.main" | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{
+                        in: $state.includes('asset')}">
+                    <li ui-sref-active="active" ><a ui-sref="score"><span class="glyphicon glyphicon-asterisk"></span>
+                            &#xA0;<span translate="global.menu.entities.score">score</span></a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
 
-<li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
+<!-- <li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
         &#xA0;<span translate="global.menu.entities.asset">asset</span></a></li>
+
+-->
