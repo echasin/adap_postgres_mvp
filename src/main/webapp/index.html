@@ -64,6 +64,8 @@
         -->
         <!--INSPINIA:Navigation Left Menu-->
         <div ng-include="'assets/views/common/navigation_adap.html'"></div>
+        <!-- <div ng-include="'assets/views/common/navigation.html'"></div> -->
+
 
         <div id="page-wrapper"  class="gray-bg {{$state.current.name}}">
             <!-- INSPINIA:Page wraper -->
@@ -72,8 +74,8 @@
             <!-- INSPINIA:Page wrapper -->
 
             <!--JHISPTER:Topnavbar-->
-            <!--<div ng-include="'assets/views/common/topnavbar.html'"></div>-->
             <div ng-include="'assets/views/common/topnavbar_adap.html'"></div>
+            <!-- <div ng-include="'assets/views/common/topnavbar.html'"></div> -->
 
             <!-- INSPINIA:Main View -->
             <div class="well" ui-view="content"></div>
@@ -92,6 +94,7 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>-->
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -162,6 +165,19 @@
         <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
         <script src="scripts/app/app.js"></script>
         <script src="scripts/app/app.constants.js"></script>
+
+        <!-- INSPINIA: javascript -->
+        <!-- <script src="assets/js/config.js"></script> -->
+        <script src="assets/js/config_adap.js"></script> 
+        <!--<script src="assets/js/controllers.js"></script>-->
+        <script src="assets/js/controllers_adap.js"></script>
+        <!--<script src="assets/js/directives.js"></script> -->
+        <script src="assets/js/directives_adap.js"></script>
+        <!-- <script src="assets/js/inspinia.js"></script> -->
+        <script src="assets/js/inspinia_adap.js"></script>
+        <!--<script src="assets/js/translations.js"></script>-->
+        <script src="assets/js/translations_adap.js"></script>
+
         <script src="scripts/components/auth/auth.service.js"></script>
         <script src="scripts/components/auth/principal.service.js"></script>
         <script src="scripts/components/auth/authority.directive.js"></script>
@@ -289,12 +305,8 @@
 
         <!-- endbuild -->
 
-        <!-- INSPINIA: javascript -->
-        <!-- <script src="assets/js/config.js"></script> -->
-        <script src="assets/js/config_inspinia.js"></script> 
-        <script src="assets/js/controllers.js"></script>
-        <script src="assets/js/directives.js"></script>
-        <script src="assets/js/inspinia.js"></script>
-        <!--<script src="assets/js/translations.js"></script>-->
+
+
+
     </body>
 </html>
