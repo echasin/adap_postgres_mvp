@@ -34,10 +34,10 @@
             },
             "taxonomies": {
                 "main": "Taxonomies",
-                "obj_recordtype": "Objrecordtype",
-                "obj_classification": "Objclassification",
-                "obj_category": "Objcategory",
-                "obj_type": "Objtype"
+                "objrecordtype": "Objrecordtype",
+                "objclassification": "Objclassification",
+                "objcategory": "Objcategory",
+                "objtype": "Objtype"
             },
             "metrics": {
                 "main": "Metrics",
