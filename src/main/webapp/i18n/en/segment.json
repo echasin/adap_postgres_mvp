@@ -1,0 +1,37 @@
+{
+    "adapApp": {
+        "segment" : {
+            "home": {
+                "title": "Segments",
+                "createLabel": "Create a new Segment",
+                "createOrEditLabel": "Create or edit a Segment"
+            },
+            "created": "A new Segment is created with identifier {{ param }}",
+            "updated": "A Segment is updated with identifier {{ param }}",
+            "deleted": "A Segment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Segment {{ id }}?"
+            },
+            "detail": {
+                "title": "Segment"
+            },
+            "name": "Name",
+            "description": "Description",
+            "origineta": "Origineta",
+            "originAta": "OriginAta",
+            "destinationeta": "Destinationeta",
+            "destinationata": "Destinationata",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "assetorigin": "Assetorigin",
+            "assetdestination": "Assetdestination",
+            "route": "Route"
+        }
+    }
+}

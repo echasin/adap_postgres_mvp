@@ -1,0 +1,106 @@
+<div>
+    <h2 translate="adapApp.segment.home.title">Segments</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="segment.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.segment.home.createLabel">Create a new Segment</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Segment</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="adapApp.segment.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="adapApp.segment.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="origineta"><span translate="adapApp.segment.origineta">Origineta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="originAta"><span translate="adapApp.segment.originAta">OriginAta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="destinationeta"><span translate="adapApp.segment.destinationeta">Destinationeta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="destinationata"><span translate="adapApp.segment.destinationata">Destinationata</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="adapApp.segment.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifiedby"><span translate="adapApp.segment.lastmodifiedby">Lastmodifiedby</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifieddate"><span translate="adapApp.segment.lastmodifieddate">Lastmodifieddate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span translate="adapApp.segment.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objrecordtype.name"><span translate="adapApp.segment.objrecordtype">objrecordtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objclassification.name"><span translate="adapApp.segment.objclassification">objclassification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objcategory.name"><span translate="adapApp.segment.objcategory">objcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objtype.name"><span translate="adapApp.segment.objtype">objtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="assetorigin.name"><span translate="adapApp.segment.assetorigin">assetorigin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="assetdestination.name"><span translate="adapApp.segment.assetdestination">assetdestination</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="route.name"><span translate="adapApp.segment.route">route</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="segment in segments track by segment.id">
+                    <td><a ui-sref="segment.detail({id:segment.id})">{{segment.id}}</a></td>
+                    <td>{{segment.name}}</td>
+                    <td>{{segment.description}}</td>
+                    <td>{{segment.origineta | date:'medium'}}</td>
+                    <td>{{segment.originAta | date:'medium'}}</td>
+                    <td>{{segment.destinationeta | date:'medium'}}</td>
+                    <td>{{segment.destinationata | date:'medium'}}</td>
+                    <td translate="{{'adapApp.Status.' + segment.status}}">{{segment.status}}</td>
+                    <td>{{segment.lastmodifiedby}}</td>
+                    <td>{{segment.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{segment.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:segment.objrecordtype.id})">{{segment.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:segment.objclassification.id})">{{segment.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:segment.objcategory.id})">{{segment.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:segment.objtype.id})">{{segment.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="asset.detail({id:segment.assetorigin.id})">{{segment.assetorigin.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="asset.detail({id:segment.assetdestination.id})">{{segment.assetdestination.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="route.detail({id:segment.route.id})">{{segment.route.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="segment.detail({id:segment.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="segment.edit({id:segment.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="segment.delete({id:segment.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

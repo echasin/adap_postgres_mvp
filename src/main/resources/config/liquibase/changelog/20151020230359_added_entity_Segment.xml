@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Segment.
+    -->
+    <changeSet id="20151020230359" author="jhipster">
+        <createTable tableName="segment">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(255)"/>
+            <column name="origineta" type="timestamp"/>
+            <column name="origin_ata" type="timestamp"/>
+            <column name="destinationeta" type="timestamp"/>
+            <column name="destinationata" type="timestamp"/>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lastmodifiedby" type="varchar(255)"/>
+            <column name="lastmodifieddate" type="timestamp"/>
+            <column name="domain" type="varchar(255)"/>
+            <column name="objrecordtype_id" type="bigint"/>
+            <column name="objclassification_id" type="bigint"/>
+            <column name="objcategory_id" type="bigint"/>
+            <column name="objtype_id" type="bigint"/>
+            <column name="assetorigin_id" type="bigint"/>
+            <column name="assetdestination_id" type="bigint"/>
+            <column name="route_id" type="bigint"/>
+        </createTable>
+        <dropDefaultValue tableName="segment" columnName="origineta" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="segment" columnName="origin_ata" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="segment" columnName="destinationeta" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="segment" columnName="destinationata" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="segment" columnName="lastmodifieddate" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="objrecordtype_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_objrecordtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objrecordtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="objclassification_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_objclassification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objclassification"/>
+
+        <addForeignKeyConstraint baseColumnNames="objcategory_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_objcategory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objcategory"/>
+
+        <addForeignKeyConstraint baseColumnNames="objtype_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_objtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="assetorigin_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_assetorigin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asset"/>
+
+        <addForeignKeyConstraint baseColumnNames="assetdestination_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_assetdestination_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asset"/>
+
+        <addForeignKeyConstraint baseColumnNames="route_id"
+                                 baseTableName="segment"
+                                 constraintName="fk_segment_route_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="route"/>
+
+    </changeSet>
+</databaseChangeLog>

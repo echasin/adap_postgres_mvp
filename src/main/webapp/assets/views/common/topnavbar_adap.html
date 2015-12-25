@@ -9,18 +9,11 @@
             </form>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <!--<li>-->
-                <!--<span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>-->
-            <!--</li>-->
-            <li class="dropdown" dropdown>
-                <a class="dropdown-toggle count-info" href dropdown-toggle>
-                    Language
-                </a>
-                <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                    <li><a ng-click="changeLanguage('en')">English</a></li>
-                    <li><a ng-click="changeLanguage('es')">Spanish</a></li>
-                </ul>
+            <li>
+                <span class="m-r-sm text-muted welcome-message">Welcome to the Agile Decision Analytics Platform (ADAP).          </span>
             </li>
+
+                
             <li class="dropdown" dropdown>
                 <a class="dropdown-toggle count-info" href dropdown-toggle>
                     <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
@@ -119,11 +112,49 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a ui-sref="login">
-                    <i class="fa fa-sign-out"></i> Log out
+           
+           <!--
+            <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="" id="account-menu">
+                        <span>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-sm" translate="global.menu.account.main">
+                                Account
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                            &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                            &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span translate="global.menu.account.logout">Sign out</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                            &#xA0;<span translate="global.menu.account.login">Sign in</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                            &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
+                    </ul>
+                </li>
+           -->
+            
+            <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                    <span>
+                        <span class="glyphicon glyphicon-flag"></span>
+                        <span class="hidden-sm" translate="global.menu.language">Language</span>
+                        <b class="caret"></b>
+                    </span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li active-menu="{{language}}" ng-repeat="language in languages">
+                        <a href="" ng-click="changeLanguage(language)" data-toggle="collapse" data-target=".navbar-collapse.in">{{language| findLanguageFromKey}}</a>
+                    </li>
+                </ul>
             </li>
+
+
             <li>
                 <a ng-click="$root.rightSidebar = !$root.rightSidebar">
                     <i class="fa fa-tasks"></i>
