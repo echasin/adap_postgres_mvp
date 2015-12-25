@@ -26,8 +26,23 @@
                 "logout": "Sign out",
                 "register": "Register"
             },
-                "asset": {
+            "admin": {
+                "main": "Administration",
+                "user-management": "User management",
+                "tracker": "User tracker",
+                "metrics": "Metrics",
+                "health": "Health",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Audits",
+                "apidocs": "API",
+                "database": "Database"
+            },
+            "asset": {
                 "main": "Asset"
+            },
+            "identifier": {
+                "main": "Indentifiers"
             },
             "systemconfig": {
                 "main": "System Configuration"
@@ -53,19 +68,7 @@
                 "main": "Routes"
             },
             "segment": {
-                "main": "Segements"
-            },
-            "admin": {
-                "main": "Administration",
-                "user-management": "User management",
-                "tracker": "User tracker",
-                "metrics": "Metrics",
-                "health": "Health",
-                "configuration": "Configuration",
-                "logs": "Logs",
-                "audits": "Audits",
-                "apidocs": "API",
-                "database": "Database"
+                "main": "Segments"
             },
             "language": "Language"
         },

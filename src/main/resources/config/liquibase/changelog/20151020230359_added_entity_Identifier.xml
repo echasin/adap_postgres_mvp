@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Identifier.
+    -->
+    <changeSet id="20151020230359" author="jhipster">
+        <createTable tableName="identifier">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="value" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="effectivedatetime" type="timestamp"/>
+            <column name="enddatetime" type="timestamp"/>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lastmodifiedby" type="varchar(255)"/>
+            <column name="lastmodifieddate" type="timestamp"/>
+            <column name="domain" type="varchar(255)"/>
+            <column name="objrecordtype_id" type="bigint"/>
+            <column name="objclassification_id" type="bigint"/>
+            <column name="objcategory_id" type="bigint"/>
+            <column name="objtype_id" type="bigint"/>
+            <column name="asset_id" type="bigint"/>
+            <!--
+            <column name="vulnerability_id" type="bigint"/>
+            <column name="attackscenario_id" type="bigint"/>
+            -->
+        </createTable>
+        <dropDefaultValue tableName="identifier" columnName="effectivedatetime" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="identifier" columnName="enddatetime" columnDataType="datetime"/>
+
+        <dropDefaultValue tableName="identifier" columnName="lastmodifieddate" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="objrecordtype_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_objrecordtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objrecordtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="objclassification_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_objclassification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objclassification"/>
+
+        <addForeignKeyConstraint baseColumnNames="objcategory_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_objcategory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objcategory"/>
+
+        <addForeignKeyConstraint baseColumnNames="objtype_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_objtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="objtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="asset_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_asset_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asset"/>
+
+        <!--
+                                 <addForeignKeyConstraint baseColumnNames="vulnerability_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_vulnerability_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vulnerability"/>
+
+        <addForeignKeyConstraint baseColumnNames="attackscenario_id"
+                                 baseTableName="identifier"
+                                 constraintName="fk_identifier_attackscenario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attackscenario"/>
+        -->
+    </changeSet>
+</databaseChangeLog>

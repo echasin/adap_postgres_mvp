@@ -129,6 +129,8 @@
                 <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.entities.main" | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{
                         in: $state.includes('asset')}">
+                    <li ui-sref-active="active" ><a ui-sref="identifier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                            &#xA0;<span translate="global.menu.identifier.main">identifier</span></a></li>
                     <li ui-sref-active="active" ><a ui-sref="score"><span class="glyphicon glyphicon-asterisk"></span>
                             &#xA0;<span translate="global.menu.entities.score">score</span></a></li>
                     <li ui-sref-active="active" ><a ui-sref="route" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
