@@ -1,0 +1,10 @@
+{
+    "adapApp": {
+        "Status" : {
+            "null": "",
+            "Active": "Active",
+            "Pending": "Pending",
+            "ToBeDeleted": "ToBeDeleted"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "adapApp": {
+        "route" : {
+            "home": {
+                "title": "Routes",
+                "createLabel": "Create a new Route",
+                "createOrEditLabel": "Create or edit a Route"
+            },
+            "created": "A new Route is created with identifier {{ param }}",
+            "updated": "A Route is updated with identifier {{ param }}",
+            "deleted": "A Route is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Route {{ id }}?"
+            },
+            "detail": {
+                "title": "Route"
+            },
+            "name": "Name",
+            "description": "Description",
+            "details": "Details",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "segment": "Segment"
+        }
+    }
+}

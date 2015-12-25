@@ -423,10 +423,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {
                             files: ['assets/css/plugins/clockpicker/clockpicker.css', 'assets/js/plugins/clockpicker/clockpicker.js']
                         },
-                        {
-                            name: 'ui.switchery',
-                            files: ['assets/css/plugins/switchery/switchery.css','assets/js/plugins/switchery/switchery.js','assets/js/plugins/switchery/ng-switchery.js']
-                        },
+                        //{
+                        //    name: 'ui.switchery',
+                        //    files: ['assets/css/plugins/switchery/switchery.css','assets/js/plugins/switchery/switchery.js','assets/js/plugins/switchery/ng-switchery.js']
+                        //},
                         {
                             name: 'colorpicker.module',
                             files: ['assets/css/plugins/colorpicker/colorpicker.css','assets/js/plugins/colorpicker/bootstrap-colorpicker-module.js']

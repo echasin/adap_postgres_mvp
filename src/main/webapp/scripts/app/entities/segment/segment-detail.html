@@ -1,0 +1,158 @@
+
+<div>
+    <h2><span translate="adapApp.segment.detail.title">Segment</span> {{segment.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.origineta">Origineta</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.origineta | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.originAta">OriginAta</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.originAta | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.destinationeta">Destinationeta</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.destinationeta | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.destinationata">Destinationata</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.destinationata | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + segment.status}}">{{segment.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{segment.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:segment.objrecordtype.id})">{{segment.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:segment.objclassification.id})">{{segment.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:segment.objcategory.id})">{{segment.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:segment.objtype.id})">{{segment.objtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.assetorigin">assetorigin</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="asset.detail({id:segment.assetorigin.id})">{{segment.assetorigin.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.assetdestination">assetdestination</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="asset.detail({id:segment.assetdestination.id})">{{segment.assetdestination.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.segment.route">route</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="route.detail({id:segment.route.id})">{{segment.route.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
