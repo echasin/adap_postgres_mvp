@@ -1,0 +1,883 @@
+id,name,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
+40000,Albany County,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40001,Bradley International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40002,Buffalo Niagara International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40003,Manchester,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40004,T F Green State,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40005,Greater Rochester International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40006,Atlantic City International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40007,Bangor International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40008,Burlington International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40009,Westchester County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40010,Long Island MacArthur,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40011,Portland International Jetport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40012,Stewart,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40013,Syracuse-Hancock International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40014,Nantucket Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40015,Binghamton Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40016,Westover Metropolitan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40017,Elmira-Corning Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40018,Barnstable  Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40019,Niagara Falls International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40020,New Castle Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40021,Ithaca Tompkins Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40022,Martha's Vineyard,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40023,Worcester,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40024,Plattsburg International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40025,Portsmouth International Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40026,Oneida County at Rome (Griffiss),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40027,Trenton Mercer Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40028,Watertown International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40029,Augusta State,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40030,Hancock County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40031,Tweed - New Haven,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40032,Chautauqua County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40033,Lebanon Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40034,Massena International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40035,Ogdensburg International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40036,Northern Maine Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40037,Provincetown  Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40038,Knox County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40039,Rutland State,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40040,Adirondack Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40041,Logan International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40042,Newark International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40043,John F. Kennedy International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40044,LaGuardia,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40045,Birmingham International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40046,Charleston County International/AFB,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40047,Jacksonville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40048,West Palm Beach International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40049,Southwest Florida International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40050,Tampa International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40051,Bush Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40052,Columbia Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40053,Daytona Beach International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40054,Northwest Florida Beaches International Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40055,Key West International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40056,Greenville-Spartanburg,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40057,Huntsville-Madison County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40058,Melbourne International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40059,Bates Field Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40060,Myrtle Beach International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40061,St Petersburg-Clearwater International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40062,Pensacola Gulf Coast Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40063,Savannah International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40064,Orlando Sanford,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40065,Sarasota-Bradenton,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40066,Cyril E. King International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40067,Tallahassee Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40068,Northwest Florida Regional Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40069,Rafael Hernandez,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40070,Columbus Metropolitan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40071,Dothan Houstan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40072,Gainesville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40073,Dannelly Field (Montgomery Regional Airport),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40074,Punta Gorda,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40075,Mercedita,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40076,Northeast Florida Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40077,Henry E. Rohlsen,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40078,Southwest Georgia Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40079,Glynco Jetport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40080,Florence Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40081,Hilton Head Island Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40082,Middle Georgia Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40083,Muscle Shoals,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40084,Valdosta Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40085,Hartsfield Atlanta International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40086,Ft. Lauderdale-Hollywood International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40087,Orlando International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40088,Miami International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40089,Luis Munoz Marin International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40090,Cleveland Hopkins International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40091,Port Columbus International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40092,James M. Cox Dayton International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40093,Indianapolis International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40094,Kansas City International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40095,Chicago Midway,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40096,General Mitchell International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40097,Eppley Airfield,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40098,Outagamie County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40099,Akron-Canton Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40100,The Cedar Rapids,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40101,Des Moines International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40102,Hector International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40103,Bishop International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40104,Joe Foss Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40105,Ft. Wayne Municipal Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40106,Austin Straubel Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40107,Gerald R Ford International Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40108,Wichita Mid-Continent,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40109,Capital City,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40110,Quad City,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40111,Dane County Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40112,Rapid City Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40113,South Bend Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40114,Springfield/Branson National,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40115,Toledo Express,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40116,Kalamazoo Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40117,Branson Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40118,Bismarck Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40119,Mid America Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40120,Bloomington-Normal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40121,University Of Illinois-Willard,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40122,Columbia Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40123,Central Wisconsin Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40124,Duluth International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40125,Evansville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40126,Grand Forks International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40127,Gary Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40128,Joplin Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40129,Rickenbacker International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40130,Lincoln Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40131,La Crosse Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40132,MBS International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40133,Minot International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40134,Greater Peoria,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40135,Greater Rockford,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40136,Rochester International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40137,Abraham Lincoln Capital Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40138,Saint Cloud Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40139,Cherry Capital,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40140,Youngstown-Warren Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40141,Aberdeen Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40142,Alliance Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40143,Waterloo Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40144,Alpena County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40145,Watertown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40146,Scottsbluff County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40147,Bemidji City-County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40148,Brainerd Lakes Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40149,Southeast Iowa Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40150,Chadron Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40151,Cape Girardeau Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40152,Chippewa County International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40153,Houghton County Memorial,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40154,Dubuque Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40155,Dodge City Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40156,Decatur,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40157,Dickinson Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40158,Devils Lake Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40159,Kearney Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40160,Chippewa Valley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40161,Delta County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40162,Fort Dodge Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40163,Forbes Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40164,Great Bend Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40165,Garden City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40166,Central Nebraska Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40167,Chisholm-Hibbing Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40168,Huron Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40169,Hays Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40170,Ford,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40171,Falls International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40172,Kirksville Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40173,Sloulin Field International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40174,Gogebic County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40175,Jamestown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40176,North Platte Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40177,Liberal Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40178,Manistee County Blacker,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40179,McCook Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40180,Mason City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40181,Manhattan Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40182,Muskegon County International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40183,Sawyer International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40184,Williamson County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40185,Pierre Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40186,Pellston Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40187,Rhinelander-Oneida County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40188,Sioux Gateway,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40189,Waynesville Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40190,Thief River Falls Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40191,Quincy Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40192,Detroit Metro Wayne County,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40193,Minneapolis-St. Paul International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40194,Chicago-O'Hare International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40195,Lambert St. Louis International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40196,Albuquerque International Sunport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40197,Austin Bergstrom International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40198,Dallas Love Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40199,El Paso International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40200,Houston Hobby,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40201,Little Rock National,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40202,New Orleans International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40203,Will Rogers World,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40204,San Antonio International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40205,Tulsa International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40206,Amarillo International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40207,Baton Rouge Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40208,Corpus Christi,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40209,Gulfport Bilox Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40210,Rio Grande Valley International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40211,Jackson International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40212,Lubbock International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40213,Midland International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40214,Miller International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40215,Shreveport Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40216,Northwest Arkansas Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40217,Abilene Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40218,Waco Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40219,Brownsville/South Padre International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40220,Easterwood,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40221,Fort Smith Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40222,Gregg County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40223,Killeen-Ft. Hood Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40224,Lafayette Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40225,Laredo International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40226,Mathis Field (San Angelo Regional Airport),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40227,Sheppard AFB/ Wichita Falls Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40228,Texarkana Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40229,Tyler Pounds Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40230,Tunica Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40231,Alexandria International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40232,Southeast Texas Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40233,Four Corners Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40234,Mid Delta Regional Airport  (Greenville Municipal),10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40235,Golden Triangle Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40236,Lea County Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40237,Lawton Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40238,Lake Charles Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40239,Key Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40240,Monroe Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40241,Pine-belt Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40242,Roswell International Air Center,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40243,Santa Fe Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40244,Tupelo Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40245,Victoria Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40246,Dallas/Fort Worth International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40247,Houston Intercontinental,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40248,Ted Stevens Anchorage International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40249,Boise Air Terminal/Gowen Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40250,Colorado Springs Municipal,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40251,Spokane International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40252,Portland International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40253,Salt Lake City International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40254,Billings Logan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40255,Bellingham International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40256,Gallatin Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40257,Mahlon Sweet Field (Eugene),10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40258,Fairbanks International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40259,Jackson Hole,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40260,Juneau International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40261,Rogue Valley International-Medford,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40262,Missoula International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40263,Tri-Cities,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40264,Adak Naval Air Station,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40265,Kodiak State,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40266,King Salmon,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40267,Walla Walla Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40268,Aspen Pitkin County Sardy Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40269,Bethel,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40270,Will Rogers-Wiley Post Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40271,Bert Mooney,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40272,"Merle K. ""Mudhole"" Smith",10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40273,Natrona County International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40274,Dillingham,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40275,Durango-La  Plata County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40276,Pangborn Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40277,Eagle County Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40278,Wendover Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40279,Fort Collins-Loveland Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40280,Grand Junction Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40281,Glacier Park Intl.,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40282,Gustavus,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40283,Great Falls International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40284,Gunnison County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40285,Yampa Valley,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40286,Helena Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40287,Idaho Falls Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40288,Ketchikan International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40289,Lewiston - Nez Perce County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40290,Montrose County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40291,Ogden-Hinckley Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40292,Nome,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40293,Ralph Wien Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40294,Pocatello Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40295,Petersburg,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40296,Pueblo Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40297,Pullman/Moscow Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40298,Provo Municipal Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40299,Roberts Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40300,Deadhorse,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40301,Sitka Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40302,Friedman Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40303,Wrangell,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40304,Yakutat,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40305,Yakima Air Terminal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40306,Alamosa-San Luis Valley/Bergman Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40307,Cedar City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40308,Cortez Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40309,Canyonlands Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40310,Yellowstone Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40311,Cheyenne,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40312,Kenai Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40313,Gillette-Campbell County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40314,Dawson Community,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40315,Glasgow International / Wokal Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40316,Homer,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40317,Havre City-County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40318,Laramie Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40319,L. M. Clayton / Wolf Point,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40320,North Bend Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40321,Riverton Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40322,Rock Springs-Sweetwater County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40323,Sidney-Richland Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40324,St. George Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40325,Sheridan County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40326,Magic Valley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40327,Valdez,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40328,Vernal / Uintah County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40329,Worland Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40330,West Yellowstone,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40331,Denver International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40332,Seattle-Tacoma International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40333,Burbank-Glendale-Pasadena,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40334,Antonio B. Won Pat International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40335,Keahole,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40336,Long Beach Daugherty Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40337,Lihue,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40338,Metropolitan Oakland International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40339,Kahului,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40340,Ontario International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40341,Reno/Tahoe International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40342,San Diego Intl-Lindbergh Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40343,San Jose International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40344,Sacramento International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40345,Orange County John Wayne,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40346,Tucson International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40347,Fresno Air Terminal,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40348,Saipan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40349,Hilo International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40350,Palm Springs Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40351,Santa Barbara Municipal,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40352,Arcata-Eureka,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40353,"Meadows Field, Bakersfield",10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40354,Flagstaff Pulliam,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40355,Grand Canyon National Park Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40356,Laughlin/Bullhead City,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40357,Phoenix-Mesa Gateway,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40358,Mammoth Yosemite,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40359,Monterey Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40360,Pago Pago-American Samoa,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40361,Redding Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40362,San Luis Obispo County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40363,Stockton Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40364,Santa Maria Public,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40365,Sonoma County Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40366,Crescent City,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40367,McClellan-Palomar,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40368,Elko Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40369,Rota International Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40370,Kingman,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40371,Imperial County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40372,Lanai,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40373,Merced Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40374,Molokai,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40375,Yuma International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40376,Page Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40377,Prescott Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40378,Show Low Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40379,Visalia Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40380,Honolulu International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40381,McCarran International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40382,Los Angeles International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40383,Phoenix Sky Harbor International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40384,San Francisco International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40385,Nashville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40386,Memphis International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40387,Norfolk International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40388,Pittsburgh International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40389,Raleigh-Durham International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40390,Richard E Byrd International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40391,Louisville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40392,Lehigh Valley International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40393,Asheville Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40394,Chattanooga Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40395,Yeager,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40396,Piedmont Triad International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40397,Wilmington International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40398,Blue Grass,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40399,Harrisburg International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40400,Newport News/Williamsburg International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40401,Roanoke Regional Woodrum Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40402,McGhee Tyson,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40403,Wilkes Barre/Scranton International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40404,Charlottesville/Albemarle,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40405,Erie International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40406,Coastal Carolina,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40407,Fayetteville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40408,Tri-State,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40409,Kinston Regional Jetport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40410,Arnold Palmer Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40411,Albert J Ellis,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40412,Owensboro Davies County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40413,Tri City Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40414,Altoona-Blair County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40415,Bradford Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40416,Raleigh County Memorial,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40417,Benedun,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40418,Dubois-Jefferson County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40419,Venango Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40420,Hagerstown Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40421,Williamsport Lycoming County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40422,Concord,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40423,Johnstown-Cambria County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40424,Lancaster,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40425,Greenbrier Valley,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40426,Lynchburg Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40427,Morgantown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40428,Barkley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40429,Pitt-Greenville,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40430,Wood County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40431,Reading Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40432,Salisbury / Wicomico County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40433,Shenandoah Valley,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40434,University Park,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40435,Baltimore-Washington International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40436,Charlotte/Douglas International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40437,Cincinnati/Northern Kentucky International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40438,Washington Reagan National,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40439,Washington-Dulles International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40440,Philadelphia International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40441,Albany County,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40442,Bradley International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40443,Buffalo Niagara International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40444,Manchester,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40445,T F Green State,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40446,Greater Rochester International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40447,Atlantic City International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40448,Bangor International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40449,Burlington International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40450,Westchester County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40451,Long Island MacArthur,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40452,Portland International Jetport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40453,Stewart,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40454,Syracuse-Hancock International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40455,Nantucket Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40456,Binghamton Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40457,Westover Metropolitan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40458,Elmira-Corning Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40459,Barnstable  Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40460,Niagara Falls International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40461,New Castle Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40462,Ithaca Tompkins Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40463,Martha's Vineyard,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40464,Worcester,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40465,Plattsburg International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40466,Portsmouth International Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40467,Oneida County at Rome (Griffiss),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40468,Trenton Mercer Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40469,Watertown International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40470,Augusta State,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40471,Hancock County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40472,Tweed - New Haven,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40473,Chautauqua County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40474,Lebanon Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40475,Massena International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40476,Ogdensburg International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40477,Northern Maine Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40478,Provincetown  Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40479,Knox County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40480,Rutland State,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40481,Adirondack Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40482,Logan International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40483,Newark International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40484,John F. Kennedy International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40485,LaGuardia,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40486,Birmingham International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40487,Charleston County International/AFB,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40488,Jacksonville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40489,West Palm Beach International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40490,Southwest Florida International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40491,Tampa International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40492,Bush Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40493,Columbia Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40494,Daytona Beach International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40495,Northwest Florida Beaches International Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40496,Key West International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40497,Greenville-Spartanburg,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40498,Huntsville-Madison County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40499,Melbourne International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40500,Bates Field Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40501,Myrtle Beach International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40502,St Petersburg-Clearwater International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40503,Pensacola Gulf Coast Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40504,Savannah International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40505,Orlando Sanford,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40506,Sarasota-Bradenton,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40507,Cyril E. King International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40508,Tallahassee Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40509,Northwest Florida Regional Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40510,Rafael Hernandez,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40511,Columbus Metropolitan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40512,Dothan Houstan,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40513,Gainesville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40514,Dannelly Field (Montgomery Regional Airport),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40515,Punta Gorda,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40516,Mercedita,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40517,Northeast Florida Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40518,Henry E. Rohlsen,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40519,Southwest Georgia Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40520,Glynco Jetport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40521,Florence Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40522,Hilton Head Island Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40523,Middle Georgia Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40524,Muscle Shoals,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40525,Valdosta Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40526,Hartsfield Atlanta International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40527,Ft. Lauderdale-Hollywood International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40528,Orlando International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40529,Miami International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40530,Luis Munoz Marin International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40531,Cleveland Hopkins International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40532,Port Columbus International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40533,James M. Cox Dayton International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40534,Indianapolis International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40535,Kansas City International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40536,Chicago Midway,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40537,General Mitchell International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40538,Eppley Airfield,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40539,Outagamie County,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40540,Akron-Canton Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40541,The Cedar Rapids,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40542,Des Moines International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40543,Hector International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40544,Bishop International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40545,Joe Foss Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40546,Ft. Wayne Municipal Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40547,Austin Straubel Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40548,Gerald R Ford International Airport,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40549,Wichita Mid-Continent,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40550,Capital City,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40551,Quad City,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40552,Dane County Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40553,Rapid City Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40554,South Bend Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40555,Springfield/Branson National,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40556,Toledo Express,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40557,Kalamazoo Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40558,Branson Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40559,Bismarck Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40560,Mid America Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40561,Bloomington-Normal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40562,University Of Illinois-Willard,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40563,Columbia Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40564,Central Wisconsin Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40565,Duluth International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40566,Evansville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40567,Grand Forks International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40568,Gary Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40569,Joplin Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40570,Rickenbacker International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40571,Lincoln Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40572,La Crosse Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40573,MBS International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40574,Minot International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40575,Greater Peoria,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40576,Greater Rockford,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40577,Rochester International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40578,Abraham Lincoln Capital Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40579,Saint Cloud Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40580,Cherry Capital,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40581,Youngstown-Warren Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40582,Aberdeen Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40583,Alliance Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40584,Waterloo Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40585,Alpena County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40586,Watertown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40587,Scottsbluff County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40588,Bemidji City-County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40589,Brainerd Lakes Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40590,Southeast Iowa Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40591,Chadron Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40592,Cape Girardeau Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40593,Chippewa County International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40594,Houghton County Memorial,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40595,Dubuque Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40596,Dodge City Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40597,Decatur,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40598,Dickinson Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40599,Devils Lake Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40600,Kearney Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40601,Chippewa Valley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40602,Delta County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40603,Fort Dodge Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40604,Forbes Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40605,Great Bend Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40606,Garden City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40607,Central Nebraska Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40608,Chisholm-Hibbing Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40609,Huron Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40610,Hays Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40611,Ford,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40612,Falls International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40613,Kirksville Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40614,Sloulin Field International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40615,Gogebic County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40616,Jamestown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40617,North Platte Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40618,Liberal Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40619,Manistee County Blacker,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40620,McCook Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40621,Mason City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40622,Manhattan Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40623,Muskegon County International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40624,Sawyer International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40625,Williamson County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40626,Pierre Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40627,Pellston Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40628,Rhinelander-Oneida County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40629,Sioux Gateway,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40630,Waynesville Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40631,Thief River Falls Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40632,Quincy Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40633,Detroit Metro Wayne County,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40634,Minneapolis-St. Paul International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40635,Chicago-O'Hare International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40636,Lambert St. Louis International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40637,Albuquerque International Sunport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40638,Austin Bergstrom International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40639,Dallas Love Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40640,El Paso International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40641,Houston Hobby,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40642,Little Rock National,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40643,New Orleans International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40644,Will Rogers World,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40645,San Antonio International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40646,Tulsa International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40647,Amarillo International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40648,Baton Rouge Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40649,Corpus Christi,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40650,Gulfport Bilox Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40651,Rio Grande Valley International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40652,Jackson International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40653,Lubbock International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40654,Midland International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40655,Miller International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40656,Shreveport Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40657,Northwest Arkansas Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40658,Abilene Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40659,Waco Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40660,Brownsville/South Padre International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40661,Easterwood,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40662,Fort Smith Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40663,Gregg County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40664,Killeen-Ft. Hood Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40665,Lafayette Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40666,Laredo International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40667,Mathis Field (San Angelo Regional Airport),10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40668,Sheppard AFB/ Wichita Falls Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40669,Texarkana Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40670,Tyler Pounds Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40671,Tunica Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40672,Alexandria International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40673,Southeast Texas Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40674,Four Corners Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40675,Mid Delta Regional Airport  (Greenville Municipal),10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40676,Golden Triangle Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40677,Lea County Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40678,Lawton Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40679,Lake Charles Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40680,Key Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40681,Monroe Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40682,Pine-belt Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40683,Roswell International Air Center,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40684,Santa Fe Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40685,Tupelo Regional Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40686,Victoria Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40687,Dallas/Fort Worth International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40688,Houston Intercontinental,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40689,Ted Stevens Anchorage International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40690,Boise Air Terminal/Gowen Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40691,Colorado Springs Municipal,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40692,Spokane International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40693,Portland International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40694,Salt Lake City International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40695,Billings Logan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40696,Bellingham International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40697,Gallatin Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40698,Mahlon Sweet Field (Eugene),10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40699,Fairbanks International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40700,Jackson Hole,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40701,Juneau International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40702,Rogue Valley International-Medford,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40703,Missoula International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40704,Tri-Cities,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40705,Adak Naval Air Station,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40706,Kodiak State,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40707,King Salmon,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40708,Walla Walla Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40709,Aspen Pitkin County Sardy Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40710,Bethel,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40711,Will Rogers-Wiley Post Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40712,Bert Mooney,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40713,"Merle K. ""Mudhole"" Smith",10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40714,Natrona County International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40715,Dillingham,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40716,Durango-La  Plata County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40717,Pangborn Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40718,Eagle County Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40719,Wendover Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40720,Fort Collins-Loveland Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40721,Grand Junction Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40722,Glacier Park Intl.,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40723,Gustavus,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40724,Great Falls International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40725,Gunnison County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40726,Yampa Valley,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40727,Helena Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40728,Idaho Falls Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40729,Ketchikan International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40730,Lewiston - Nez Perce County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40731,Montrose County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40732,Ogden-Hinckley Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40733,Nome,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40734,Ralph Wien Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40735,Pocatello Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40736,Petersburg,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40737,Pueblo Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40738,Pullman/Moscow Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40739,Provo Municipal Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40740,Roberts Field,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40741,Deadhorse,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40742,Sitka Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40743,Friedman Memorial,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40744,Wrangell,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40745,Yakutat,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40746,Yakima Air Terminal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40747,Alamosa-San Luis Valley/Bergman Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40748,Cedar City Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40749,Cortez Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40750,Canyonlands Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40751,Yellowstone Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40752,Cheyenne,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40753,Kenai Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40754,Gillette-Campbell County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40755,Dawson Community,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40756,Glasgow International / Wokal Field,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40757,Homer,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40758,Havre City-County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40759,Laramie Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40760,L. M. Clayton / Wolf Point,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40761,North Bend Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40762,Riverton Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40763,Rock Springs-Sweetwater County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40764,Sidney-Richland Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40765,St. George Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40766,Sheridan County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40767,Magic Valley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40768,Valdez,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40769,Vernal / Uintah County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40770,Worland Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40771,West Yellowstone,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40772,Denver International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40773,Seattle-Tacoma International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40774,Burbank-Glendale-Pasadena,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40775,Antonio B. Won Pat International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40776,Keahole,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40777,Long Beach Daugherty Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40778,Lihue,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40779,Metropolitan Oakland International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40780,Kahului,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40781,Ontario International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40782,Reno/Tahoe International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40783,San Diego Intl-Lindbergh Field,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40784,San Jose International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40785,Sacramento International Airport,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40786,Orange County John Wayne,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40787,Tucson International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40788,Fresno Air Terminal,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40789,Saipan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40790,Hilo International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40791,Palm Springs Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40792,Santa Barbara Municipal,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40793,Arcata-Eureka,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40794,"Meadows Field, Bakersfield",10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40795,Flagstaff Pulliam,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40796,Grand Canyon National Park Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40797,Laughlin/Bullhead City,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40798,Phoenix-Mesa Gateway,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40799,Mammoth Yosemite,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40800,Monterey Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40801,Pago Pago-American Samoa,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40802,Redding Municipal,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40803,San Luis Obispo County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40804,Stockton Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40805,Santa Maria Public,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40806,Sonoma County Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40807,Crescent City,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40808,McClellan-Palomar,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40809,Elko Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40810,Rota International Airport,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40811,Kingman,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40812,Imperial County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40813,Lanai,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40814,Merced Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40815,Molokai,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40816,Yuma International,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40817,Page Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40818,Prescott Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40819,Show Low Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40820,Visalia Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40821,Honolulu International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40822,McCarran International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40823,Los Angeles International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40824,Phoenix Sky Harbor International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40825,San Francisco International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40826,Nashville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40827,Memphis International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40828,Norfolk International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40829,Pittsburgh International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40830,Raleigh-Durham International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40831,Richard E Byrd International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40832,Louisville International,10,101,101,101,Active,echasin,2015-12-25 00:00:00,DEMO
+40833,Lehigh Valley International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40834,Asheville Regional,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40835,Chattanooga Metropolitan,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40836,Yeager,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40837,Piedmont Triad International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40838,Wilmington International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40839,Blue Grass,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40840,Harrisburg International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40841,Newport News/Williamsburg International,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40842,Roanoke Regional Woodrum Field,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40843,McGhee Tyson,10,101,101,102,Active,echasin,2015-12-25 00:00:00,DEMO
+40844,Wilkes Barre/Scranton International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40845,Charlottesville/Albemarle,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40846,Erie International,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40847,Coastal Carolina,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40848,Fayetteville Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40849,Tri-State,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40850,Kinston Regional Jetport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40851,Arnold Palmer Regional Airport,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40852,Albert J Ellis,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40853,Owensboro Davies County,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40854,Tri City Regional,10,101,101,103,Active,echasin,2015-12-25 00:00:00,DEMO
+40855,Altoona-Blair County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40856,Bradford Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40857,Raleigh County Memorial,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40858,Benedun,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40859,Dubois-Jefferson County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40860,Venango Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40861,Hagerstown Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40862,Williamsport Lycoming County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40863,Concord,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40864,Johnstown-Cambria County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40865,Lancaster,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40866,Greenbrier Valley,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40867,Lynchburg Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40868,Morgantown Municipal,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40869,Barkley Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40870,Pitt-Greenville,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40871,Wood County,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40872,Reading Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40873,Salisbury / Wicomico County Regional,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40874,Shenandoah Valley,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40875,University Park,10,101,101,104,Active,echasin,2015-12-25 00:00:00,DEMO
+40876,Baltimore-Washington International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40877,Charlotte/Douglas International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40878,Cincinnati/Northern Kentucky International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40879,Washington Reagan National,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40880,Washington-Dulles International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
+40881,Philadelphia International,10,101,101,100,Active,echasin,2015-12-25 00:00:00,DEMO
