@@ -49,6 +49,12 @@
                 "location": "Location",
                 "scorefactor": "Score Factor"
             },
+            "route": {
+                "main": "Routes"
+            },
+            "segment": {
+                "main": "Segements"
+            },
             "admin": {
                 "main": "Administration",
                 "user-management": "User management",

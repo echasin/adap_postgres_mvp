@@ -1,0 +1,88 @@
+<div>
+    <h2 translate="adapApp.route.home.title">Routes</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="route.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Route</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="adapApp.route.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="adapApp.route.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="details"><span translate="adapApp.route.details">Details</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="adapApp.route.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifiedby"><span translate="adapApp.route.lastmodifiedby">Lastmodifiedby</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifieddate"><span translate="adapApp.route.lastmodifieddate">Lastmodifieddate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span translate="adapApp.route.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objrecordtype.name"><span translate="adapApp.route.objrecordtype">objrecordtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objclassification.name"><span translate="adapApp.route.objclassification">objclassification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objcategory.name"><span translate="adapApp.route.objcategory">objcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objtype.name"><span translate="adapApp.route.objtype">objtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="route in routes track by route.id">
+                    <td><a ui-sref="route.detail({id:route.id})">{{route.id}}</a></td>
+                    <td>{{route.name}}</td>
+                    <td>{{route.description}}</td>
+                    <td>{{route.details}}</td>
+                    <td translate="{{'adapApp.Status.' + route.status}}">{{route.status}}</td>
+                    <td>{{route.lastmodifiedby}}</td>
+                    <td>{{route.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{route.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:route.objrecordtype.id})">{{route.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:route.objclassification.id})">{{route.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:route.objcategory.id})">{{route.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:route.objtype.id})">{{route.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="route.detail({id:route.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="route.edit({id:route.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="route.delete({id:route.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

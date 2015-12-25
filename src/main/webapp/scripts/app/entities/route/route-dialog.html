@@ -1,0 +1,118 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myRouteLabel" translate="adapApp.route.home.createOrEditLabel">Create or edit a Route</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="route.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="route.name"
+                    required ng-maxlength="100" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="route.description"
+                    ng-maxlength="255" />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.details" for="field_details">Details</label>
+            <input type="text" class="form-control" name="details" id="field_details"
+                    ng-model="route.details"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="route.status" id="field_status" required>
+                <option value="Active" translate="adapApp.Status.Active">Active</option>
+                <option value="Pending" translate="adapApp.Status.Pending">Pending</option>
+                <option value="ToBeDeleted" translate="adapApp.Status.ToBeDeleted">ToBeDeleted</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.lastmodifiedby" for="field_lastmodifiedby">Lastmodifiedby</label>
+            <input type="text" class="form-control" name="lastmodifiedby" id="field_lastmodifiedby"
+                    ng-model="route.lastmodifiedby"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.lastmodifieddate" for="field_lastmodifieddate">Lastmodifieddate</label>
+            <input id="field_lastmodifieddate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="route.lastmodifieddate" is-open="datePickerForLastmodifieddate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForLastmodifieddateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.route.domain" for="field_domain">Domain</label>
+            <input type="text" class="form-control" name="domain" id="field_domain"
+                    ng-model="route.domain"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="adapApp.route.objrecordtype" for="field_objrecordtype">objrecordtype</label>
+            <select class="form-control" id="field_objrecordtype" name="objrecordtype" ng-model="route.objrecordtype" ng-options="objrecordtype as objrecordtype.name for objrecordtype in objrecordtypes track by objrecordtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.route.objclassification" for="field_objclassification">objclassification</label>
+            <select class="form-control" id="field_objclassification" name="objclassification" ng-model="route.objclassification" ng-options="objclassification as objclassification.name for objclassification in objclassifications track by objclassification.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.route.objcategory" for="field_objcategory">objcategory</label>
+            <select class="form-control" id="field_objcategory" name="objcategory" ng-model="route.objcategory" ng-options="objcategory as objcategory.name for objcategory in objcategorys track by objcategory.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.route.objtype" for="field_objtype">objtype</label>
+            <select class="form-control" id="field_objtype" name="objtype" ng-model="route.objtype" ng-options="objtype as objtype.name for objtype in objtypes track by objtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
