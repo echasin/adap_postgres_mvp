@@ -32,13 +32,16 @@
                   separator=","
                   tableName="objcategory"/> 
         <loadData encoding="UTF-8"
-                 file="config/liquibase/types_adap_0.csv"
-                 separator=","
-                 tableName="objtype"/>    
+                  file="config/liquibase/types_adap_0.csv"
+                  separator=","
+                  tableName="objtype"/>    
         <loadData encoding="UTF-8"
                   file="config/liquibase/assets_adap_0.csv"
                   separator=","
                   tableName="asset"/> 
-           
+        <loadData encoding="UTF-8"
+                       file="config/liquibase/assets_adap_commercial_airports_us.csv"
+                       separator=","
+                       tableName="asset"/> 
     </changeSet>
 </databaseChangeLog>

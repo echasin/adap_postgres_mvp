@@ -1,0 +1,31 @@
+{
+    "adapApp": {
+        "attackscenario" : {
+            "home": {
+                "title": "Attackscenarios",
+                "createLabel": "Create a new Attackscenario",
+                "createOrEditLabel": "Create or edit a Attackscenario"
+            },
+            "created": "A new Attackscenario is created with identifier {{ param }}",
+            "updated": "A Attackscenario is updated with identifier {{ param }}",
+            "deleted": "A Attackscenario is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Attackscenario {{ id }}?"
+            },
+            "detail": {
+                "title": "Attackscenario"
+            },
+            "name": "Name",
+            "description": "Description",
+            "details": "Details",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype"
+        }
+    }
+}

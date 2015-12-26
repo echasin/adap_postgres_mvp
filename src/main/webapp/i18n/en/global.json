@@ -26,8 +26,29 @@
                 "logout": "Sign out",
                 "register": "Register"
             },
-                "asset": {
-                "main": "Asset"
+            "admin": {
+                "main": "Administration",
+                "user-management": "User management",
+                "tracker": "User tracker",
+                "metrics": "Metrics",
+                "health": "Health",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Audits",
+                "apidocs": "API",
+                "database": "Database"
+            },
+            "asset": {
+                "main": "Asset",
+                "ci": "Critical Infrastructure",
+                "it": "Information Technology"
+            },
+              "attackscenario": {
+                "main": "Attack Scenarios",
+                "A1": "A One"
+            },
+            "identifier": {
+                "main": "Indentifiers"
             },
             "systemconfig": {
                 "main": "System Configuration"
@@ -49,23 +70,18 @@
                 "location": "Location",
                 "scorefactor": "Score Factor"
             },
+            "risk": {
+                "main": "Risk Management"
+            },
             "route": {
                 "main": "Routes"
             },
             "segment": {
-                "main": "Segements"
+                "main": "Segments"
             },
-            "admin": {
-                "main": "Administration",
-                "user-management": "User management",
-                "tracker": "User tracker",
-                "metrics": "Metrics",
-                "health": "Health",
-                "configuration": "Configuration",
-                "logs": "Logs",
-                "audits": "Audits",
-                "apidocs": "API",
-                "database": "Database"
+             "vulnerability": {
+                "main": "Vulnerabilities",
+                "v1": "V One"
             },
             "language": "Language"
         },
