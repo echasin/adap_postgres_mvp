@@ -38,9 +38,13 @@ spring:
             cluster-name:
 #           cluster-nodes: localhost:9300
             cluster-nodes: 
+#                path:
+#                logs: target/elasticsearch/log
+#                data: target/elasticsearch/data
+            properties: 
                 path:
-                 logs: target/elasticsearch/log
-                 data: target/elasticsearch/data
+                  logs: elasticdata
+                  data: elasticdata
     mail:
         host: localhost
     messages:

@@ -14,6 +14,9 @@ import java.util.Set;
 import java.util.Objects;
 
 import com.innvo.domain.enumeration.Status;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
  * A Asset.
@@ -25,34 +28,40 @@ import com.innvo.domain.enumeration.Status;
 public class Asset implements Serializable {
 
     @Id
-    @SequenceGenerator(allocationSize=1, initialValue=100000, sequenceName="asset_id_seq", name="asset_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="asset_id_seq")
+    @SequenceGenerator(allocationSize = 1, initialValue = 100000, sequenceName = "asset_id_seq", name = "asset_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "asset_id_seq")
     private Long id;
 
     @NotNull
     @Size(max = 100)
     @Column(name = "name", length = 100, nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String name;
 
     @Size(max = 255)
     @Column(name = "description", length = 255)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String description;
 
     @Column(name = "details")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String details;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 
     @Column(name = "lastmodifiedby")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     @Column(name = "lastmodifieddate", nullable = false)
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne
@@ -68,12 +77,12 @@ public class Asset implements Serializable {
     private Objtype objtype;
 
     @OneToMany(mappedBy = "asset")
-    //@JsonIgnore
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Location> locations = new HashSet<>();
 
     @OneToMany(mappedBy = "asset")
-    //@JsonIgnore
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Score> scores = new HashSet<>();
 
@@ -200,7 +209,9 @@ public class Asset implements Serializable {
 
         Asset asset = (Asset) o;
 
-        if ( ! Objects.equals(id, asset.id)) return false;
+        if (!Objects.equals(id, asset.id)) {
+            return false;
+        }
 
         return true;
     }
@@ -212,15 +223,15 @@ public class Asset implements Serializable {
 
     @Override
     public String toString() {
-        return "Asset{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", description='" + description + "'" +
-            ", details='" + details + "'" +
-            ", status='" + status + "'" +
-            ", lastmodifiedby='" + lastmodifiedby + "'" +
-            ", lastmodifieddate='" + lastmodifieddate + "'" +
-            ", domain='" + domain + "'" +
-            '}';
+        return "Asset{"
+                + "id=" + id
+                + ", name='" + name + "'"
+                + ", description='" + description + "'"
+                + ", details='" + details + "'"
+                + ", status='" + status + "'"
+                + ", lastmodifiedby='" + lastmodifiedby + "'"
+                + ", lastmodifieddate='" + lastmodifieddate + "'"
+                + ", domain='" + domain + "'"
+                + '}';
     }
 }
