@@ -43,5 +43,9 @@
                        file="config/liquibase/assets_adap_commercial_airports_us.csv"
                        separator=","
                        tableName="asset"/> 
+        <loadData encoding="UTF-8"
+                         file="config/liquibase/filters_adap_0.csv"
+                         separator=","
+                         tableName="filter"/>     
     </changeSet>
 </databaseChangeLog>

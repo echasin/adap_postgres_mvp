@@ -1,66 +1,61 @@
 package com.innvo.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import java.time.ZonedDateTime;
-import org.springframework.data.elasticsearch.annotations.Document;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+import com.innvo.domain.util.CustomDateTimeDeserializer;
+import com.innvo.domain.util.CustomDateTimeSerializer;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.innvo.domain.enumeration.Status;
-import com.innvo.domain.util.CustomDateTimeDeserializer;
-import com.innvo.domain.util.CustomDateTimeSerializer;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldIndex;
-import org.springframework.data.elasticsearch.annotations.FieldType;
+import java.time.ZonedDateTime;
 
 /**
- * A Asset.
+ * A Filter.
  */
 @Entity
-@Table(name = "asset")
+@Table(name = "filter")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "asset")
-public class Asset implements Serializable {
+@Document(indexName = "filter")
+public class Filter implements Serializable {
 
     @Id
-    @SequenceGenerator(allocationSize = 1, initialValue = 100000, sequenceName = "asset_id_seq", name = "asset_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "asset_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
     @Size(max = 100)
-    @Column(name = "name", length = 100, nullable = false)
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    @Column(name = "name", length = 100)
     private String name;
 
     @Size(max = 255)
     @Column(name = "description", length = 255)
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String description;
 
-    @Column(name = "details")
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
-    private String details;
+    @Size(max = 4000)
+    @Column(name = "querysql", length = 4000)
+    private String querysql;
 
-    @NotNull
+    @Size(max = 4000)
+    @Column(name = "queryspringdata", length = 4000)
+    private String queryspringdata;
+
+    @Size(max = 4000)
+    @Column(name = "queryelastic", length = 4000)
+    private String queryelastic;
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    @Column(name = "status")
     private Status status;
 
     @Column(name = "lastmodifiedby")
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     //@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
@@ -68,12 +63,10 @@ public class Asset implements Serializable {
     //@JsonDeserialize(using = CustomDateTimeDeserializer.class)
     //@Column(name = "lastmodifieddate")
     //private DateTime lastmodifieddate;
-    
     @Column(name = "lastmodifieddate", nullable = false)
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
-    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne
@@ -88,15 +81,8 @@ public class Asset implements Serializable {
     @ManyToOne
     private Objtype objtype;
 
-    @OneToMany(mappedBy = "asset")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Location> locations = new HashSet<>();
-
-    @OneToMany(mappedBy = "asset")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Score> scores = new HashSet<>();
+    @ManyToOne
+    private Location location;
 
     public Long getId() {
         return id;
@@ -122,12 +108,28 @@ public class Asset implements Serializable {
         this.description = description;
     }
 
-    public String getDetails() {
-        return details;
+    public String getQuerysql() {
+        return querysql;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setQuerysql(String querysql) {
+        this.querysql = querysql;
+    }
+
+    public String getQueryspringdata() {
+        return queryspringdata;
+    }
+
+    public void setQueryspringdata(String queryspringdata) {
+        this.queryspringdata = queryspringdata;
+    }
+
+    public String getQueryelastic() {
+        return queryelastic;
+    }
+
+    public void setQueryelastic(String queryelastic) {
+        this.queryelastic = queryelastic;
     }
 
     public Status getStatus() {
@@ -146,16 +148,23 @@ public class Asset implements Serializable {
         this.lastmodifiedby = lastmodifiedby;
     }
 
-       
-       public ZonedDateTime getLastmodifieddate() {
+    public ZonedDateTime getLastmodifieddate() {
         return lastmodifieddate;
     }
 
     public void setLastmodifieddate(ZonedDateTime lastmodifieddate) {
         this.lastmodifieddate = lastmodifieddate;
     }
-  
-    
+
+/**
+    public DateTime getLastmodifieddate() {
+        return lastmodifieddate;
+    }
+
+    public void setLastmodifieddate(DateTime lastmodifieddate) {
+        this.lastmodifieddate = lastmodifieddate;
+    }
+**/
     public String getDomain() {
         return domain;
     }
@@ -196,20 +205,12 @@ public class Asset implements Serializable {
         this.objtype = objtype;
     }
 
-    public Set<Location> getLocations() {
-        return locations;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocations(Set<Location> locations) {
-        this.locations = locations;
-    }
-
-    public Set<Score> getScores() {
-        return scores;
-    }
-
-    public void setScores(Set<Score> scores) {
-        this.scores = scores;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override
@@ -221,9 +222,9 @@ public class Asset implements Serializable {
             return false;
         }
 
-        Asset asset = (Asset) o;
+        Filter filter = (Filter) o;
 
-        if (!Objects.equals(id, asset.id)) {
+        if (!Objects.equals(id, filter.id)) {
             return false;
         }
 
@@ -237,17 +238,17 @@ public class Asset implements Serializable {
 
     @Override
     public String toString() {
-        return "Asset{"
+        return "Filter{"
                 + "id=" + id
                 + ", name='" + name + "'"
                 + ", description='" + description + "'"
-                + ", details='" + details + "'"
+                + ", querysql='" + querysql + "'"
+                + ", queryspringdata='" + queryspringdata + "'"
+                + ", queryelastic='" + queryelastic + "'"
                 + ", status='" + status + "'"
                 + ", lastmodifiedby='" + lastmodifiedby + "'"
-                + ", lastmodifieddate='" + getLastmodifieddate() + "'"
+                + ", lastmodifieddate='" + lastmodifieddate + "'"
                 + ", domain='" + domain + "'"
                 + '}';
     }
-
-   
 }

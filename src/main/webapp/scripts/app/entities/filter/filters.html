@@ -1,0 +1,137 @@
+<div id="builder"></div>
+<button id="btn-reset">Reset</button>
+<button id="btn-get">Get Json</button>
+<button id="btn-getsql">Get SQL</button>  
+<button id="btn-getes">Get ES</button>  
+<button id="btn-set">Set</button>  
+<div>
+    <h2 translate="adapApp.filter.home.title">Filters</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="filter.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.filter.home.createLabel">Create a new Filter</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Filter</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteFilterConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(filter.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="adapApp.filter.delete.question" translate-values="{id: '{{filter.id}}'}">Are you sure you want to delete this Filter?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="adapApp.filter.name">Name</th>
+                    <th translate="adapApp.filter.description">Description</th>
+                    <th translate="adapApp.filter.querysql">Querysql</th>
+                    <th translate="adapApp.filter.queryspringdata">Queryspringdata</th>
+                    <th translate="adapApp.filter.queryelastic">Queryelastic</th>
+                    <th translate="adapApp.filter.status">Status</th>
+                    <th translate="adapApp.filter.lastmodifiedby">Lastmodifiedby</th>
+                    <th translate="adapApp.filter.lastmodifieddate">Lastmodifieddate</th>
+                    <th translate="adapApp.filter.domain">Domain</th>
+                    <th translate="adapApp.filter.objrecordtype">objrecordtype</th>
+                    <th translate="adapApp.filter.objclassification">objclassification</th>
+                    <th translate="adapApp.filter.objcategory">objcategory</th>
+                    <th translate="adapApp.filter.objtype">objtype</th>
+                    <th translate="adapApp.filter.location">location</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="filter in filters track by filter.id">
+                    <td><a ui-sref="filter.detail({id:filter.id})">{{filter.id}}</a></td>
+                    <td>{{filter.name}}</td>
+                    <td>{{filter.description}}</td>
+                    <td>{{filter.querysql}}</td>
+                    <td>{{filter.queryspringdata}}</td>
+                    <td>{{filter.queryelastic}}</td>
+                    <td translate="{{'adapApp.Status.' + filter.status}}">{{filter.status}}</td>
+                    <td>{{filter.lastmodifiedby}}</td>
+                    <td>{{filter.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{filter.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:filter.objrecordtype.id})">{{filter.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:filter.objclassification.id})">{{filter.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:filter.objcategory.id})">{{filter.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:filter.objtype.id})">{{filter.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="location.detail({id:filter.location.id})">{{filter.location.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="filter.detail({id:filter.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="filter.edit({id:filter.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(filter.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
+                <li class="active"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

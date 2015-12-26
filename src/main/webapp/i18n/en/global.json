@@ -47,6 +47,9 @@
                 "main": "Attack Scenarios",
                 "A1": "A One"
             },
+              "filter": {
+                "main": "Filters"
+            },
             "identifier": {
                 "main": "Indentifiers"
             },
