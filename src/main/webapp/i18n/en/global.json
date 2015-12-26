@@ -39,7 +39,13 @@
                 "database": "Database"
             },
             "asset": {
-                "main": "Asset"
+                "main": "Asset",
+                "ci": "Critical Infrastructure",
+                "it": "Information Technology"
+            },
+              "attackscenario": {
+                "main": "Attack Scenarios",
+                "A1": "A One"
             },
             "identifier": {
                 "main": "Indentifiers"
@@ -64,11 +70,18 @@
                 "location": "Location",
                 "scorefactor": "Score Factor"
             },
+            "risk": {
+                "main": "Risk Management"
+            },
             "route": {
                 "main": "Routes"
             },
             "segment": {
                 "main": "Segments"
+            },
+             "vulnerability": {
+                "main": "Vulnerabilities",
+                "v1": "V One"
             },
             "language": "Language"
         },

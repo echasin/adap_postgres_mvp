@@ -69,6 +69,7 @@
                             &#xA0;<span>Index</span></a></li>
                 </ul>
             </li>
+
             <li ng-class="{
                         active: $state.includes('asset')
                     }">
@@ -76,9 +77,36 @@
                 <ul class="nav nav-second-level collapse" ng-class="{
                         in: $state.includes('asset')}">
                     <li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
-                            &#xA0;<span translate="global.menu.asset.main">asset</span></a></li>
+                            &#xA0;<span translate="global.menu.asset.ci">asset</span></a></li>
+                    <li ui-sref-active="active" ><a ui-sref="asset"><span class="glyphicon glyphicon-asterisk"></span>
+                            &#xA0;<span translate="global.menu.asset.it">asset</span></a></li>
                 </ul>
             </li>
+
+            <li ng-class="{active: $state.includes('xxx')}">
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.risk.main" | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.attackscenario.main" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="attackscenario"> {{ 'global.menu.attackscenario.A1' | translate }} </a>
+                            </li>   
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level" >
+                    <li>
+                        <a href=""> {{ "global.menu.vulnerability.main" | translate }}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a ui-sref-active="active" ui-sref="vulnerability"> {{ 'global.menu.vulnerability.v1' | translate }} </a>
+                            </li>   
+                        </ul>
+                    </li>'
+                </ul>
+            </li>
+
             <li ng-class="{active: $state.includes('xxx')}">
                 <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ "global.menu.systemconfig.main" | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" >
