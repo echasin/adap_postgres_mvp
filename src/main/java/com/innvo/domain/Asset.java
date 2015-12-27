@@ -1,8 +1,6 @@
 package com.innvo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
@@ -16,10 +14,6 @@ import java.util.Set;
 import java.util.Objects;
 
 import com.innvo.domain.enumeration.Status;
-import com.innvo.domain.util.CustomDateTimeDeserializer;
-import com.innvo.domain.util.CustomDateTimeSerializer;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -53,7 +47,6 @@ public class Asset implements Serializable {
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String details;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)

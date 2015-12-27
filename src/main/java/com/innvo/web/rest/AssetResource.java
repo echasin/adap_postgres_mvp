@@ -7,6 +7,7 @@ import com.innvo.domain.Filter;
 import com.innvo.domain.Location;
 import com.innvo.domain.Score;
 import com.innvo.domain.User;
+import com.innvo.domain.enumeration.Status;
 import com.innvo.repository.AssetRepository;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.LocationRepository;
@@ -24,6 +25,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.FacetedPage;
 import org.springframework.data.elasticsearch.core.query.IndexQuery;
 import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 
@@ -44,14 +46,21 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.servlet.http.HttpServletRequest;
+
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.FilterBuilder;
+import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 import org.elasticsearch.index.query.WrapperQueryBuilder;
-import org.joda.time.DateTime;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 /**
  * REST controller for managing Asset.
  */
@@ -94,12 +103,12 @@ public class AssetResource {
         if (asset.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new asset cannot already have an ID").body(null);
         }
-        DateTime lastmodifieddate = new DateTime();
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
         asset.setDomain(user.getDomain());
-        //asset.setStatus("Active");
+        asset.setStatus(Status.Active);
         asset.setLastmodifiedby(principal.getName());
-        //asset.setLastmodifieddate(lastmodifieddate);
+        asset.setLastmodifieddate(lastmodifieddate);
         Asset result = assetRepository.save(asset);
         assetSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/assets/" + result.getId()))
@@ -119,12 +128,12 @@ public class AssetResource {
         if (asset.getId() == null) {
             return createAsset(asset, principal);
         }
-        DateTime lastmodifieddate = new DateTime();
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
         asset.setDomain(user.getDomain());
-        //asset.setStatus("Active");
+        asset.setStatus(Status.Active);
         asset.setLastmodifiedby(principal.getName());
-        //asset.setLastmodifieddate(lastmodifieddate);
+        asset.setLastmodifieddate(lastmodifieddate);
         Asset result = assetRepository.save(asset);
         assetSearchRepository.save(asset);
         return ResponseEntity.ok()
@@ -224,10 +233,17 @@ public class AssetResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Asset> searchAssets(@PathVariable String query) {
-        return StreamSupport
-                .stream(assetSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-                .collect(Collectors.toList());
+    public List<Asset> searchAssets(@PathVariable String query,Pageable  pageable) {
+    	
+    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	QueryBuilder queryBuilder = queryStringQuery(query); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+    			.must(queryBuilder)
+                .must(filterByDomain);
+
+      	List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));
+		return result;
+
     }
     
        
@@ -259,10 +275,11 @@ public class AssetResource {
     public List<Asset> elastic(HttpServletRequest request,@PathVariable long id) {
     	Filter filter=filterRepository.findOne(id);
     	String query=filter.getQueryelastic();
-    	BoolQueryBuilder bool = new BoolQueryBuilder();
-        bool.must(new WrapperQueryBuilder(query));
 
-    		List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));
+    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+        .must(new WrapperQueryBuilder(query));
+        List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));
     		return result;
     }
 

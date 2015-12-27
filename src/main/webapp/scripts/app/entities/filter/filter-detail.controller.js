@@ -71,30 +71,14 @@ angular.module('adapApp')
                 operators: ['equal', 'not_equal', 'in', 'between','less','less_or_equal','greater','greater_or_equal']
             }  ]
           });
-        var rules_basic = {
-        		  condition: 'AND',
-        		  rules: [{
-        		    id: 'price',
-        		    operator: 'less',
-        		    value: 10.25
-        		  }, {
-        		    condition: 'OR',
-        		    rules: [{
-        		      id: 'category',
-        		      operator: 'equal',
-        		      value: 2
-        		    }, {
-        		      id: 'category',
-        		      operator: 'equal',
-        		      value: 1
-        		    }]
-        		  }]
-        		};
-        
-        
+
+                
         //set querybuilder values
-        var parsed = entity.queryspringdata;
-        $('#builder').queryBuilder('setRules', JSON.parse(parsed));
+        if(entity.queryspringdata) {
+        	  var parsed =JSON.parse(entity.queryspringdata );
+              $('#builder').queryBuilder('setRules', parsed);
+        }
+     
 
         $('#btn-reset').on('click', function() {
          	  $('#builder').queryBuilder('reset');
