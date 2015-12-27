@@ -1,5 +1,248 @@
-<div class="row  border-bottom white-bg dashboard-header">
-        <div ng-controller="AssetController">
-            <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
+<div>
+    <h2 translate="adapApp.asset.home.title">Assets</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="asset.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.asset.home.createLabel">Create a new Asset</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Asset</span>
+                    </button>
+                </form>
+            </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="deleteAssetConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(asset.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="adapApp.asset.delete.question" translate-values="{id: '{{asset.id}}'}">Are you sure you want to delete this Asset?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="buildermodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="builder"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-container">
+                    <tabset>
+                        <tab heading="First Tab">
+                            <div class="panel-body">
+                                <div class="col-sm-3">
+                                    <ul class="list-group clear-list m-t">
+                                        <li class="list-group-item fist-item"> 
+                                            <div class="form-group">
+                                                <div class="input-group m-b">
+                                                    <div class="input-group-btn">                                       
+                                                        <button aria-expanded="false" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a ng-click="executefilter()">Execute Filter</a></li>
+                                                            <li><a ng-click="editfilter()">Edit Filter</a></li>
+                                                            <li><a href="#">New Filter</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#">Separated link</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <select class="form-control input" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong> Recent Activity</strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right">
+                                                01/01/2015 08:22 pm
+                                            </span>
+                                            <span class="label label-primary">1</span> Asset One
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right">
+                                                01/01/2015 11:06 pm
+                                            </span>
+                                            <span class="label label-default">2</span> Organization Three
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right">
+                                                01/01/2015 12:00 am
+                                            </span>
+                                            <span class="label label-primary">3</span> Contact Five
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">  
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Chart Area sm-6 <small>With config options.</small></h5>
+                                            <div class="ibox-tools">
+                                                <div id="container" style="min-width: 300px; height: 300px; max-width: 600px; margin: 0 auto"></div> 
+                                                <!-- 
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a> 
+                                                -->
+                                                <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    <li><a href="#">Config option 1</a>
+                                                    </li>
+                                                    <li><a href="#">Config option 2</a>
+                                                    </li>
+                                                </ul>
+                                                <!--
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                -->
+                                            </div>
+                                        </div>
+                                        <!-- <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div style="padding: 0px; position: relative;" class="flot-chart-content" id="flot-bar-chart"><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 13px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 140px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 266px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 393px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 519px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 646px; text-align: center;">6</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 174px; left: 5px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 139px; left: 0px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 105px; left: 0px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 0px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 36px; left: 0px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">50</div></div></div><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-overlay"></canvas></div>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="ibox float-e-margins">
+
+                                        <div class="ibox-title">
+                                            <h5>Chart Area sm-3 <small>With custom colors.</small></h5>
+                                            <div class="ibox-tools">
+                                                <!-- 
+                                                <a class="collapse-link">
+                                                  <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                -->
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    <li><a href="#">Config option 1</a>
+                                                    </li>
+                                                    <li><a href="#">Config option 2</a>
+                                                    </li>
+                                                </ul>
+                                                <!--
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                -->
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div style="padding: 0px; position: relative;" class="flot-chart-content" id="flot-bar-chart"><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 13px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 140px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 266px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 393px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 519px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 646px; text-align: center;">6</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 174px; left: 5px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 139px; left: 0px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 105px; left: 0px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 0px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 36px; left: 0px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">50</div></div></div><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-overlay"></canvas></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
+                                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div> 
+                                </div>
+                            </div>
+                        </tab>
+                        <!-- </tab> -->
+                        <tab heading="Map View">
+                            <div class="panel-body">
+                                <strong>Map View</strong>
+
+                                <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
+                                    the stalks, and grow familiar with the countless indescribable forms of the insects
+                                    and flies, then I feel the presence of the Almighty, who formed us in his own image, and
+                                    the breath </p>
+
+                                <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss
+                                    of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
+                                    sense of mere tranquil existence, that I neglect my talents. I should be incapable of
+                                    drawing a single stroke at the present moment; and yet.</p>
+                            </div>
+                        </tab>
+                        <tab heading="Dashboard 1">
+                            <div class="panel-body">
+                                <strong>Dashboard 1</strong>
+
+                                <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
+                                    the stalks, and grow familiar with the countless indescribable forms of the insects
+                                    and flies, then I feel the presence of the Almighty, who formed us in his own image, and
+                                    the breath </p>
+
+                                <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss
+                                    of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
+                                    sense of mere tranquil existence, that I neglect my talents. I should be incapable of
+                                    drawing a single stroke at the present moment; and yet.</p>
+                            </div>
+                        </tab>
+                        <tab heading="Dashboard 2">
+                            <div class="panel-body">
+                                <strong>Dashboard 2</strong>
+
+                                <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
+                                    the stalks, and grow familiar with the countless indescribable forms of the insects
+                                    and flies, then I feel the presence of the Almighty, who formed us in his own image, and
+                                    the breath </p>
+
+                                <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss
+                                    of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
+                                    sense of mere tranquil existence, that I neglect my talents. I should be incapable of
+                                    drawing a single stroke at the present moment; and yet.</p>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>  
 </div>
+<button type="button" ng-click="index()">index</button>
