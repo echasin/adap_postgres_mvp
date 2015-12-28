@@ -27,16 +27,12 @@ angular.module('adapApp')
             });
         };
 
-        $scope.confirmDelete = function (row) {
-        	  var index = $scope.gridOptions.data.indexOf(row.entity);
-       	     console.log(row)
-             console.log(row.entity)
-        	 console.log(row.entity.id)
-              $scope.gridOptions.data.splice(index, 1);
-        	Asset.delete({id: row.entity.id},
+        $scope.confirmDelete = function (id) {
+	
+        	Asset.delete({id: id},
                 function () {
-            	  
-                    $('#deleteAssetConfirmation').modal('hide');
+        		$scope.gridOptions.data.splice(id,1);
+            $('#deleteAssetConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
@@ -167,8 +163,8 @@ angular.module('adapApp')
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
                                	          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-//                                        ' <button type="submit" ui-sref="asset.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
-                                          ' <button type="submit" ng-click="grid.appScope.confirmDelete(row)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
+                                          ' <button type="submit" ui-sref="asset.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],
        	  onRegisterApi: function(gridApi) {
