@@ -22,8 +22,10 @@ spring:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
         url: jdbc:postgresql://localhost:5432/adap
         name: adap
-        username: postgres
-        password: adapadmin
+       #username:postgres
+       #password:adapadmin        
+        username: root
+        password: root
     jpa:
         database-platform: com.innvo.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -38,9 +40,13 @@ spring:
             cluster-name:
 #           cluster-nodes: localhost:9300
             cluster-nodes: 
+#                path:
+#                logs: target/elasticsearch/log
+#                data: target/elasticsearch/data
+            properties: 
                 path:
-                 logs: target/elasticsearch/log
-                 data: target/elasticsearch/data
+                  logs: elasticdata
+                  data: elasticdata
     mail:
         host: localhost
     messages:

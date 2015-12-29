@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Email;
 import javax.validation.constraints.*;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 /**
  * A DTO representing a user, with his authorities.
  */
@@ -31,6 +32,9 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName;
 
+    @Size(max = 25)
+    private String domain;
+
     @Email
     @Size(min = 5, max = 100)
     private String email;
@@ -46,19 +50,20 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), null, user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
-            user.getAuthorities().stream().map(Authority::getName)
+        this(user.getLogin(), null, user.getFirstName(), user.getLastName(), user.getDomain(),
+                user.getEmail(), user.getActivated(), user.getLangKey(),
+                user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
-    public UserDTO(String login, String password, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+    public UserDTO(String login, String password, String firstName, String lastName, String domain,
+            String email, boolean activated, String langKey, Set<String> authorities) {
 
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.domain = domain;
         this.email = email;
         this.activated = activated;
         this.langKey = langKey;
@@ -80,6 +85,20 @@ public class UserDTO {
     public String getLastName() {
         return lastName;
     }
+    
+        /**
+     * @return the domain
+     */
+    public String getDomain() {
+        return domain;
+}
+
+    /**
+     * @param domain the domain to set
+     */
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
     public String getEmail() {
         return email;
@@ -99,15 +118,15 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
-            "login='" + login + '\'' +
-            ", password='" + password + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", authorities=" + authorities +
-            "}";
+        return "UserDTO{"
+                + "login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", firstName='" + firstName + '\''
+                + ", lastName='" + lastName + '\''
+                + ", email='" + email + '\''
+                + ", activated=" + activated
+                + ", langKey='" + langKey + '\''
+                + ", authorities=" + authorities
+                + "}";
     }
 }

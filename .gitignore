@@ -7,7 +7,7 @@
 # data/elasticsearch
 ######################
 /data/elasticsearch/**
-
+/elasticdata/**
 ######################
 # zip files in root
 ######################

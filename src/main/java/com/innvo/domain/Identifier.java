@@ -13,6 +13,9 @@ import java.util.Set;
 import java.util.Objects;
 
 import com.innvo.domain.enumeration.Status;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
  * A Identifier.
@@ -33,6 +36,7 @@ public class Identifier implements Serializable {
     @NotNull
     @Size(max = 50)
     @Column(name = "value", length = 50, nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String value;
 
     @Column(name = "effectivedatetime")
@@ -44,15 +48,18 @@ public class Identifier implements Serializable {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 
     @Column(name = "lastmodifiedby")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     @Column(name = "lastmodifieddate")
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne

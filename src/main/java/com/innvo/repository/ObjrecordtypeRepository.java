@@ -10,5 +10,5 @@ import java.util.List;
  * Spring Data JPA repository for the Objrecordtype entity.
  */
 public interface ObjrecordtypeRepository extends JpaRepository<Objrecordtype,Long> {
-
+	List<Objrecordtype> findByDomain(String domain);
 }

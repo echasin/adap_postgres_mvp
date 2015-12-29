@@ -1,19 +1,34 @@
 package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.collect.Lists;
 import com.innvo.domain.Asset;
+import com.innvo.domain.Filter;
 import com.innvo.domain.Location;
 import com.innvo.domain.Score;
+import com.innvo.domain.User;
+import com.innvo.domain.enumeration.Status;
 import com.innvo.repository.AssetRepository;
+import com.innvo.repository.FilterRepository;
 import com.innvo.repository.LocationRepository;
 import com.innvo.repository.ScoreRepository;
+import com.innvo.repository.UserRepository;
 import com.innvo.repository.search.AssetSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.FacetedPage;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
+import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,14 +39,28 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+import javax.servlet.http.HttpServletRequest;
+
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.FilterBuilder;
+import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
+import org.elasticsearch.index.query.WrapperQueryBuilder;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 /**
  * REST controller for managing Asset.
  */
@@ -46,109 +75,148 @@ public class AssetResource {
 
     @Inject
     private AssetSearchRepository assetSearchRepository;
-    
+
+    @Inject
+    FilterRepository filterRepository;
+
+    @Inject
+    ElasticsearchTemplate elasticsearchTemplate;
+
+    @Inject
+    UserRepository userRepository;
+
     @Inject
     private LocationRepository locationRepository;
-    
+
     @Inject
     private ScoreRepository scoreRepository;
 
-
     /**
-     * POST  /assets -> Create a new asset.
+     * POST /assets -> Create a new asset.
      */
     @RequestMapping(value = "/assets",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Asset> createAsset(@Valid @RequestBody Asset asset) throws URISyntaxException {
+    public ResponseEntity<Asset> createAsset(@Valid @RequestBody Asset asset, Principal principal) throws URISyntaxException {
         log.debug("REST request to save Asset : {}", asset);
         if (asset.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new asset cannot already have an ID").body(null);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        asset.setDomain(user.getDomain());
+        asset.setStatus(Status.Active);
+        asset.setLastmodifiedby(principal.getName());
+        asset.setLastmodifieddate(lastmodifieddate);
         Asset result = assetRepository.save(asset);
         assetSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/assets/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("asset", result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert("asset", result.getId().toString()))
+                .body(result);
     }
 
     /**
-     * PUT  /assets -> Updates an existing asset.
+     * PUT /assets -> Updates an existing asset.
      */
     @RequestMapping(value = "/assets",
-        method = RequestMethod.PUT,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Asset> updateAsset(@Valid @RequestBody Asset asset) throws URISyntaxException {
+    public ResponseEntity<Asset> updateAsset(@Valid @RequestBody Asset asset, Principal principal) throws URISyntaxException {
         log.debug("REST request to update Asset : {}", asset);
         if (asset.getId() == null) {
-            return createAsset(asset);
+            return createAsset(asset, principal);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        asset.setDomain(user.getDomain());
+        asset.setStatus(Status.Active);
+        asset.setLastmodifiedby(principal.getName());
+        asset.setLastmodifieddate(lastmodifieddate);
         Asset result = assetRepository.save(asset);
         assetSearchRepository.save(asset);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("asset", asset.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert("asset", asset.getId().toString()))
+                .body(result);
     }
 
     /**
-     * GET  /assets -> get all the assets.
+     * GET /assets -> get all the assets.
      */
-    @RequestMapping(value = "/assets",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/assets/{paginationOptions.pageNumber}/{paginationOptions.pageSize}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Asset>> getAllAssets(Pageable pageable)
-        throws URISyntaxException {
-        Page<Asset> page = assetRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/assets");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    public ResponseEntity<List<Asset>> getAllAssets(HttpServletRequest request, Principal principal, @PathVariable("paginationOptions.pageNumber") String pageNumber,
+            @PathVariable("paginationOptions.pageSize") String pageSize
+    )
+            throws URISyntaxException {
+        int thepage = Integer.parseInt(pageNumber);
+        int thepagesize = Integer.parseInt(pageSize);
+        User user = userRepository.findByLogin(principal.getName());
+        PageRequest pageRequest = new PageRequest(thepage, thepagesize, Sort.Direction.ASC, "id");
+        Page<Asset> data = assetRepository.findByDomain(user.getDomain(), pageRequest);
+        return new ResponseEntity<>(data.getContent(), HttpStatus.OK);
     }
 
     /**
-     * GET  /assets/:id -> get the "id" asset.
+     * GET /assets/count -> Get Records Size
+     */
+    @RequestMapping(value = "/recordsLength",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public long getlength(Principal principal)
+            throws URISyntaxException {
+        User user = userRepository.findByLogin(principal.getName());
+        long length = assetRepository.countByDomain(user.getDomain());
+        return length;
+    }
+
+    /**
+     * GET /assets/:id -> get the "id" asset.
      */
     @RequestMapping(value = "/assets/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Asset> getAsset(@PathVariable Long id) {
         log.debug("REST request to get Asset : {}", id);
         return Optional.ofNullable(assetRepository.findOne(id))
-            .map(asset -> new ResponseEntity<>(
-                asset,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(asset -> new ResponseEntity<>(
+                                asset,
+                                HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**
-     * GET  /assets_h/:id -> get the "id" asset.
+     * GET /assets_h/:id -> get the "id" asset.
      */
     @RequestMapping(value = "/assets_h/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Asset> getAsset_h(@PathVariable Long id) {
         log.debug("REST request to get Asset : {}", id);
-        Asset object=assetRepository.findOne(id);
-        Set<Location> locations=locationRepository.findByAssetId(id);
-        Set<Score> scores=scoreRepository.findByAssetId(id);
+        Asset object = assetRepository.findOne(id);
+        Set<Location> locations = locationRepository.findByAssetId(id);
+        Set<Score> scores = scoreRepository.findByAssetId(id);
         object.setLocations(locations);
         object.setScores(scores);
         return Optional.ofNullable(object)
-            .map(asset -> new ResponseEntity<>(
-                asset,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(asset -> new ResponseEntity<>(
+                                asset,
+                                HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+
     /**
-     * DELETE  /assets/:id -> delete the "id" asset.
+     * DELETE /assets/:id -> delete the "id" asset.
      */
     @RequestMapping(value = "/assets/{id}",
-        method = RequestMethod.DELETE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteAsset(@PathVariable Long id) {
         log.debug("REST request to delete Asset : {}", id);
@@ -158,16 +226,74 @@ public class AssetResource {
     }
 
     /**
-     * SEARCH  /_search/assets/:query -> search for the asset corresponding
-     * to the query.
+     * SEARCH /_search/assets/:query -> search for the asset corresponding to
+     * the query.
      */
     @RequestMapping(value = "/_search/assets/{query}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Asset> searchAssets(@PathVariable String query) {
-        return StreamSupport
-            .stream(assetSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+    public List<Asset> searchAssets(@PathVariable String query,Pageable  pageable) {
+    	
+    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	QueryBuilder queryBuilder = queryStringQuery(query); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+    			.must(queryBuilder)
+                .must(filterByDomain);
+
+      	List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));
+		return result;
+
     }
+    
+       
+    /**
+     * GET -> index objects.
+     */
+    @RequestMapping(value = "indexasset",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public void add() {
+        List<Asset> assets = assetRepository.findAll();
+        log.debug("In IndexResource.java");
+
+        for (Asset asset:assets) {
+            String id = asset.getId().toString();
+            IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(asset).build();
+            elasticsearchTemplate.index(indexQuery);
+        }
+    }
+    
+    /**
+     * GET ->Execute filter asset.
+     */
+    @RequestMapping(value = "executefilter/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Asset> elastic(HttpServletRequest request,@PathVariable long id) {
+    	Filter filter=filterRepository.findOne(id);
+    	String query=filter.getQueryelastic();
+
+    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+        .must(new WrapperQueryBuilder(query));
+        List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));
+    		return result;
+    }
+
+    /**
+     * GET -> Edit filter asset.
+     */
+    @RequestMapping(value = "editfilter/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public Filter editFilter(@PathVariable long id) {
+ 
+    	Filter filter=filterRepository.findOne(id); 		
+    		return filter;
+    }
+    
 }
