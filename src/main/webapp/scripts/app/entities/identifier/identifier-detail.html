@@ -1,0 +1,134 @@
+
+<div>
+    <h2><span translate="adapApp.identifier.detail.title">Identifier</span> {{identifier.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.value">Value</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.value}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.effectivedatetime">Effectivedatetime</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.effectivedatetime | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.enddatetime">Enddatetime</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.enddatetime | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + identifier.status}}">{{identifier.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{identifier.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:identifier.objrecordtype.id})">{{identifier.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:identifier.objclassification.id})">{{identifier.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:identifier.objcategory.id})">{{identifier.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:identifier.objtype.id})">{{identifier.objtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.asset">asset</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="asset.detail({id:identifier.asset.id})">{{identifier.asset.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.vulnerability">vulnerability</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="vulnerability.detail({id:identifier.vulnerability.id})">{{identifier.vulnerability.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.identifier.attackscenario">attackscenario</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="attackscenario.detail({id:identifier.attackscenario.id})">{{identifier.attackscenario.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

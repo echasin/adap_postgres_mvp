@@ -1,0 +1,34 @@
+{
+    "adapApp": {
+        "filter" : {
+            "home": {
+                "title": "Filters",
+                "createLabel": "Create a new Filter",
+                "createOrEditLabel": "Create or edit a Filter"
+            },
+            "created": "A new Filter is created with identifier {{ param }}",
+            "updated": "A Filter is updated with identifier {{ param }}",
+            "deleted": "A Filter is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Filter {{ id }}?"
+            },
+            "detail": {
+                "title": "Filter"
+            },
+            "name": "Name",
+            "description": "Description",
+            "querysql": "Querysql",
+            "queryspringdata": "Queryspringdata",
+            "queryelastic": "Queryelastic",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "location": "Location"
+        }
+    }
+}

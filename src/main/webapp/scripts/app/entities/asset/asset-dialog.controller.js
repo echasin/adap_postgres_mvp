@@ -1,38 +1,73 @@
 'use strict';
 
 angular.module('adapApp').controller('AssetDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Asset', 'Objrecordtype', 'Objclassification', 'Objcategory', 'Objtype', 'Location', 'Score',
-        function($scope, $stateParams, $modalInstance, entity, Asset, Objrecordtype, Objclassification, Objcategory, Objtype, Location, Score) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Asset', 'Objrecordtype', 'Objclassification', 'Objcategory', 'Objtype', 'Location', 'Score', 'Vulnerability', 'Identifier',
+        function($scope, $stateParams, $modalInstance, entity, Asset, Objrecordtype, Objclassification, Objcategory, Objtype, Location, Score, Vulnerability, Identifier) {
 
         $scope.asset = entity;
-        $scope.objrecordtypes = Objrecordtype.query();
-        $scope.objclassifications = Objclassification.query();
-        $scope.objcategorys = Objcategory.query();
-        $scope.objtypes = Objtype.query();
+        $scope.objrecordtypes = Objrecordtype.getrecordtypes();
+        $scope.objclassifications;
+        $scope.objcategorys;
+        $scope.objtypes;
         $scope.locations = Location.query();
         $scope.scores = Score.query();
+        $scope.vulnerabilitys = Vulnerability.query();
+        $scope.identifiers = Identifier.query();
+        
+        $scope.getclassifications = function (id) {
+            Objclassification.getclassifications({id: id}, function (result) {
+               $scope.objclassifications = result;
+               $scope.objcategorys="";
+               $scope.objtypes="";
+           });
+        };
+        
+        $scope.getcategories = function (id) {
+        	Objcategory.getcategories({id: id}, function (result) {
+               $scope.objcategorys = result;
+               $scope.objtypes="";
+           });
+        };
+        
+        $scope.gettypes = function (id) {
+        	Objtype.gettypes({id: id}, function (result) {
+               $scope.objtypes = result;
+           });
+        };
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         $scope.load = function(id) {
             Asset.get({id : id}, function(result) {
                 $scope.asset = result;
             });
         };
 
-        var onSaveSuccess = function (result) {
+        var onSaveFinished = function (result) {
             $scope.$emit('adapApp:assetUpdate', result);
             $modalInstance.close(result);
-            $scope.isSaving = false;
-        };
-
-        var onSaveError = function (result) {
-            $scope.isSaving = false;
         };
 
         $scope.save = function () {
-            $scope.isSaving = true;
             if ($scope.asset.id != null) {
-                Asset.update($scope.asset, onSaveSuccess, onSaveError);
+                Asset.update($scope.asset, onSaveFinished);
             } else {
-                Asset.save($scope.asset, onSaveSuccess, onSaveError);
+                Asset.save($scope.asset, onSaveFinished);
             }
         };
 
