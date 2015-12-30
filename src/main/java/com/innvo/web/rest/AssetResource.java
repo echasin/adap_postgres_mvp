@@ -233,9 +233,9 @@ public class AssetResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Asset> searchAssets(@PathVariable String query,Pageable  pageable) {
-    	
-    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+       public List<Asset> searchAssets(@PathVariable String query,Pageable  pageable, Principal principal) {
+    	User user = userRepository.findByLogin(principal.getName());
+    	QueryBuilder filterByDomain = termQuery("domain", user.getDomain()); 
     	QueryBuilder queryBuilder = queryStringQuery(query); 
     	BoolQueryBuilder bool = new BoolQueryBuilder()
     			.must(queryBuilder)
