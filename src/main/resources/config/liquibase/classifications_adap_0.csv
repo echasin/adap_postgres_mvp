@@ -23,3 +23,6 @@ id,name,objrecordtype_id,status,lastmodifiedby,lastmodifieddate,domain
 4108,Security-related violations regulations,4010,Active,system,2015-07-26 11:50:15,DEMO
 4109,Compromise of single desktop systems,4010,Active,system,2015-07-26 11:50:15,DEMO
 4110,Copyright violations,4010,Active,system,2015-07-26 11:50:15,DEMO
+5000,Flight,5200,Active,system,2015-07-26 11:50:15,DEMO
+5100,Trip (Passenger),5200,Active,system,2015-07-26 11:50:15,DEMO
+5200,Route (Asset),5200,Active,system,2015-07-26 11:50:15,DEMO

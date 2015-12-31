@@ -12,3 +12,4 @@ id,objecttype,name,status,lastmodifiedby,lastmodifieddate,domain
 3000,Factor,Asset,Active,system,2015-07-26 11:50:15,DEMO
 4000,Attackscenario,Terrorist Attack,Active,system,2015-07-26 11:50:15,DEMO
 4010,Attackscenario,Cyber Attack CERT NIC.LV,Active,system,2015-07-26 11:50:15,DEMO
+5200,Route,Transportation Routes,Active,system,2015-07-26 11:50:15,DEMO

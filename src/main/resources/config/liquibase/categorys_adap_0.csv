@@ -6,3 +6,4 @@ id,name,objclassification_id,status,lastmodifiedby,lastmodifieddate,domain
 2001,Location,2001,Active,system,2015-07-05 22:05:45,DEMO
 2002,Location,2002,Active,system,2015-07-05 22:05:45,DEMO
 3001,Rule Value,3001,Active,system,2015-07-05 22:05:45,DEMO
+5200,Commerical Aviation,5200,Active,system,2015-07-05 22:05:45,DEMO
