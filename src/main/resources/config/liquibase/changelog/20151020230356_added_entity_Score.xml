@@ -70,6 +70,12 @@
                                  constraintName="fk_score_asset_id"
                                  referencedColumnNames="id"
                                  referencedTableName="asset"/>
+        
+         <sql>
+            ALTER SEQUENCE score_id_seq
+            RESTART 100000
+            INCREMENT 1  
+        </sql>
 
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,16 @@
+﻿<columns units="px">
+  <column name="id" type="Text" />
+  <column name="asset_id" type="Text" />
+  <column name="objrecordtype_id" type="Text" />
+  <column name="objclassification_id" type="Text" />
+  <column name="objcategory_id" type="Text" />
+  <column name="objtype_id" type="Text" />
+  <column name="isprimary" type="Text" format="t,f" nulltext="-" alignment="Center" />
+  <column name="statecode" type="Text" />
+  <column name="Latitudedd" type="Text" />
+  <column name="longitudedd" type="Text" />
+  <column name="status" type="Text" />
+  <column name="domain" type="Text" />
+  <column name="lastmodifiedby" type="Text" />
+  <column name="lastmodifieddate" type="Text" />
+</columns>

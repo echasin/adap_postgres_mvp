@@ -6,8 +6,8 @@ id,objecttype,name,status,lastmodifiedby,lastmodifieddate,domain
 100,Organization,Corporate Entity,Active,system,2015-07-26 11:50:15,DEMO
 110,Organization,Government Entity,Active,system,2015-07-26 11:50:15,DEMO
 120,Organization,Sovereign Entity,Active,system,2015-07-26 11:50:15,DEMO
-1000,Location,Reference Data,Active,system,2015-07-26 11:50:15,DEMO
-1010,Location,Asset,Active,system,2015-07-26 11:50:15,DEMO
+1000,Location,Location Reference Data,Active,system,2015-07-26 11:50:15,DEMO
+1010,Location,Asset Location Data,Active,system,2015-07-26 11:50:15,DEMO
 2000,Score,Asset,Active,system,2015-07-26 11:50:15,DEMO
 3000,Factor,Asset,Active,system,2015-07-26 11:50:15,DEMO
 4000,Attackscenario,Terrorist Attack,Active,system,2015-07-26 11:50:15,DEMO

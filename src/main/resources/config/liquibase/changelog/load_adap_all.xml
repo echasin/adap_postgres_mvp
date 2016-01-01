@@ -51,6 +51,10 @@
                          file="config/liquibase/routes_adap_0.csv"
                          separator=","
                          tableName="route"/>
+         <loadData encoding="UTF-8"
+                         file="config/liquibase/locations_adap_0.csv"
+                         separator=","
+                         tableName="location"/>
          
     </changeSet>
 </databaseChangeLog>

@@ -5,4 +5,4 @@ id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,name,status,d
 12,10,101,null,null,Test Airport Three,Active,DEMO,echasin,2015-01-01,Description goes here
 201,10,101,null,null,Hartsfield–Jackson Atlanta International Airport,Active,DEMO,echasin,2015-01-01,Description goes here
 5201,10,101,101,101,Origin Airport (Development Statecode=MA),Active,DEMO,echasin,2015-01-01,Description goes here
-5200,10,101,101,101,Destination Airport (Development Statecode=DC),Active,DEMO,echasin,2015-01-01,Description goes here
+5202,10,101,101,101,Destination Airport (Development Statecode=DC),Active,DEMO,echasin,2015-01-01,Description goes here
