@@ -10,9 +10,9 @@
     <include file="classpath:config/liquibase/changelog/20151020230352_added_entity_Objcategory.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230353_added_entity_Objtype.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230354_added_entity_Asset.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151020230359_added_entity_Route.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230356_added_entity_Score.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230355_added_entity_Location.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151020230359_added_entity_Route.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230359_added_entity_Segment.xml" relativeToChangelogFile="false"/> 
     <include file="classpath:config/liquibase/changelog/20151020230354_added_entity_Attackscenario.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151020230355_added_entity_Vulnerability.xml" relativeToChangelogFile="false"/>

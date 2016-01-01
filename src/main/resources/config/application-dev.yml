@@ -24,8 +24,8 @@ spring:
         name: adap
        #username:postgres
        #password:adapadmin        
-        username: root
-        password: root
+        username: postgres
+        password: adapadmin
     jpa:
         database-platform: com.innvo.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

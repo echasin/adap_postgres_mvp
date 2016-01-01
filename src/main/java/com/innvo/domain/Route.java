@@ -74,6 +74,12 @@ public class Route implements Serializable {
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Segment> segments = new HashSet<>();
+    
+    @OneToMany(mappedBy = "route")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Score> scores = new HashSet<>();
+
 
     public Long getId() {
         return id;
@@ -208,5 +214,19 @@ public class Route implements Serializable {
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
+    }
+
+    /**
+     * @return the scores
+     */
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    /**
+     * @param scores the scores to set
+     */
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
     }
 }
