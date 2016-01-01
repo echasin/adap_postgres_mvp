@@ -21,8 +21,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+         
             <column name="value" type="double"/>
             <column name="text" type="varchar(50)"/>
+            <column name="runid" type="bigint" />
+            <column name="rundate" type="timestamp"/>
             <column name="rulename" type="varchar(100)"/>
             <column name="ruleversion" type="varchar(25)"/>
             <column name="details" type="varchar(255)"/>
@@ -37,6 +40,7 @@
             <column name="objcategory_id" type="bigint"/>
             <column name="objtype_id" type="bigint"/>
             <column name="asset_id" type="bigint"/>
+            <column name="route_id" type="bigint"/>
         </createTable>
         <dropDefaultValue tableName="score" columnName="lastmodifieddate" columnDataType="datetime"/>
 
@@ -70,6 +74,12 @@
                                  constraintName="fk_score_asset_id"
                                  referencedColumnNames="id"
                                  referencedTableName="asset"/>
+        
+        <addForeignKeyConstraint baseColumnNames="route_id"
+                                 baseTableName="score"
+                                 constraintName="fk_score_route_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="route"/>
         
          <sql>
             ALTER SEQUENCE score_id_seq

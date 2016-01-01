@@ -5,3 +5,7 @@ id,name,objclassification_id,status,lastmodifiedby,lastmodifieddate,domain
 102,General Aviation,101,Active,system,2015-07-05 22:05:45,DEMO
 3001,Rule Value,3001,Active,system,2015-07-05 22:05:45,DEMO
 5200,Commerical Aviation,5200,Active,system,2015-07-05 22:05:45,DEMO
+3101,Score Category One,3100,Active,system,2015-07-05 22:05:45,DEMO
+3102,Score Category Two,3100,Active,system,2015-07-05 22:05:45,DEMO
+3103,Score Category Three,3100,Active,system,2015-07-05 22:05:45,DEMO
+3104,Score Category Four,3100,Active,system,2015-07-05 22:05:45,DEMO

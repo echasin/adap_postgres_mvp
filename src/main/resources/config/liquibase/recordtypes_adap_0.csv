@@ -8,7 +8,8 @@ id,objecttype,name,status,lastmodifiedby,lastmodifieddate,domain
 120,Organization,Sovereign Entity,Active,system,2015-07-26 11:50:15,DEMO
 1000,Location,Location Reference Data,Active,system,2015-07-26 11:50:15,DEMO
 1010,Location,Asset Location Data,Active,system,2015-07-26 11:50:15,DEMO
-2000,Score,Asset,Active,system,2015-07-26 11:50:15,DEMO
+2000,Score,Score Asset,Active,system,2015-07-26 11:50:15,DEMO
+2100,Score,Score Route,Active,system,2015-07-26 11:50:15,DEMO
 3000,Factor,Asset,Active,system,2015-07-26 11:50:15,DEMO
 4000,Attackscenario,Terrorist Attack,Active,system,2015-07-26 11:50:15,DEMO
 4010,Attackscenario,Cyber Attack CERT NIC.LV,Active,system,2015-07-26 11:50:15,DEMO

@@ -40,21 +40,25 @@
                   separator=","
                   tableName="asset"/> 
         <loadData encoding="UTF-8"
-                       file="config/liquibase/assets_adap_commercial_airports_us.csv"
-                       separator=","
-                       tableName="asset"/> 
+                  file="config/liquibase/assets_adap_commercial_airports_us.csv"
+                  separator=","
+                  tableName="asset"/> 
         <loadData encoding="UTF-8"
-                         file="config/liquibase/filters_adap_0.csv"
-                         separator=","
-                         tableName="filter"/>    
+                  file="config/liquibase/filters_adap_0.csv"
+                  separator=","
+                  tableName="filter"/>    
         <loadData encoding="UTF-8"
-                         file="config/liquibase/routes_adap_0.csv"
-                         separator=","
-                         tableName="route"/>
-         <loadData encoding="UTF-8"
-                         file="config/liquibase/locations_adap_0.csv"
-                         separator=","
-                         tableName="location"/>
+                  file="config/liquibase/routes_adap_0.csv"
+                  separator=","
+                  tableName="route"/>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/locations_adap_0.csv"
+                   separator=","
+                   tableName="location"/>
+        <loadData encoding="UTF-8"
+                     file="config/liquibase/scores_adap_0.csv"
+                     separator=","
+                     tableName="score"/>
          
     </changeSet>
 </databaseChangeLog>
