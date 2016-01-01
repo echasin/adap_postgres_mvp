@@ -10,5 +10,5 @@ import java.util.List;
  * Spring Data JPA repository for the Objclassification entity.
  */
 public interface ObjclassificationRepository extends JpaRepository<Objclassification,Long> {
-
+	List<Objclassification> findByObjrecordtypeIdAndDomain(long id,String domain);
 }

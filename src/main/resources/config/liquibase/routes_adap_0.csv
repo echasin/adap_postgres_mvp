@@ -1,0 +1,4 @@
+id,name,description,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
+1,TEST,,1,null,null,null,Active,system,2015-07-26 11:50:15,TEST
+0,All,,1,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5200,Development Route/Commerical Aviation/Segment,Develop record to plot single segment on Google Maps using development data,5200,5200,5200,5200,Active,system,2015-07-26 11:50:15,DEMO

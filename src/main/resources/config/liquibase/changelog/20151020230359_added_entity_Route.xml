@@ -62,7 +62,13 @@
                                  baseTableName="route"
                                  constraintName="fk_route_objtype_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="objtype"/>
-
+                                 referencedTableName="objtype" />
+                                                         
+        <sql>
+            ALTER SEQUENCE route_id_seq
+            RESTART 100000
+            INCREMENT 1  
+        </sql>
+        
     </changeSet>
 </databaseChangeLog>

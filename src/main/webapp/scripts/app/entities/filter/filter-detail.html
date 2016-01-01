@@ -1,0 +1,141 @@
+<div>
+<div id="builder"></div>
+<button id="btn-reset">Reset</button>
+<button id="btn-getsql">Save SQL</button>  
+<button id="btn-saveES">Save ES</button>  
+<button id="btn-set">Set</button>  
+<button id="execute" ng-click="executefilter()">Execute Filter</button>  
+</div>
+<div>
+    <h2><span translate="adapApp.filter.detail.title">Filter</span> {{filter.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.querysql">Querysql</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.querysql}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.queryspringdata">Queryspringdata</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.queryspringdata}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.queryelastic">Queryelastic</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.queryelastic}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + filter.status}}">{{filter.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{filter.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:filter.objrecordtype.id})">{{filter.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:filter.objclassification.id})">{{filter.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:filter.objcategory.id})">{{filter.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:filter.objtype.id})">{{filter.objtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.filter.location">location</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="location.detail({id:filter.location.id})">{{filter.location.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

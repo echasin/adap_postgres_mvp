@@ -14,6 +14,9 @@ import java.util.Set;
 import java.util.Objects;
 
 import com.innvo.domain.enumeration.Status;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
  * A Objclassification.
@@ -31,11 +34,13 @@ public class Objclassification implements Serializable {
     @NotNull
     @Size(max = 50)
     @Column(name = "name", length = 50, nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed) 
     private String name;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed) 
     private Status status;
 
     @Column(name = "lastmodifiedby")
@@ -72,6 +77,21 @@ public class Objclassification implements Serializable {
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Score> scores = new HashSet<>();
+    
+    @OneToMany(mappedBy = "objclassification")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Attackscenario> attackscenarios = new HashSet<>();
+
+    @OneToMany(mappedBy = "objclassification")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Vulnerability> vulnerabilitys = new HashSet<>();
+
+    @OneToMany(mappedBy = "objclassification")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Identifier> identifiers = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -192,5 +212,47 @@ public class Objclassification implements Serializable {
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
+    }
+
+    /**
+     * @return the attackscenarios
+     */
+    public Set<Attackscenario> getAttackscenarios() {
+        return attackscenarios;
+    }
+
+    /**
+     * @param attackscenarios the attackscenarios to set
+     */
+    public void setAttackscenarios(Set<Attackscenario> attackscenarios) {
+        this.attackscenarios = attackscenarios;
+    }
+
+    /**
+     * @return the vulnerabilitys
+     */
+    public Set<Vulnerability> getVulnerabilitys() {
+        return vulnerabilitys;
+    }
+
+    /**
+     * @param vulnerabilitys the vulnerabilitys to set
+     */
+    public void setVulnerabilitys(Set<Vulnerability> vulnerabilitys) {
+        this.vulnerabilitys = vulnerabilitys;
+    }
+
+    /**
+     * @return the identifiers
+     */
+    public Set<Identifier> getIdentifiers() {
+        return identifiers;
+    }
+
+    /**
+     * @param identifiers the identifiers to set
+     */
+    public void setIdentifiers(Set<Identifier> identifiers) {
+        this.identifiers = identifiers;
     }
 }

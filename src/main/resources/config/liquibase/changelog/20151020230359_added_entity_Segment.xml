@@ -95,6 +95,11 @@
                                  constraintName="fk_segment_route_id"
                                  referencedColumnNames="id"
                                  referencedTableName="route"/>
+         <sql>
+            ALTER SEQUENCE segment_id_seq
+            RESTART 100000
+            INCREMENT 1  
+        </sql>
 
     </changeSet>
 </databaseChangeLog>

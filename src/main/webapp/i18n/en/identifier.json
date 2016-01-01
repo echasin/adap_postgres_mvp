@@ -1,0 +1,34 @@
+{
+    "adapApp": {
+        "identifier" : {
+            "home": {
+                "title": "Identifiers",
+                "createLabel": "Create a new Identifier",
+                "createOrEditLabel": "Create or edit a Identifier"
+            },
+            "created": "A new Identifier is created with identifier {{ param }}",
+            "updated": "A Identifier is updated with identifier {{ param }}",
+            "deleted": "A Identifier is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Identifier {{ id }}?"
+            },
+            "detail": {
+                "title": "Identifier"
+            },
+            "value": "Value",
+            "effectivedatetime": "Effectivedatetime",
+            "enddatetime": "Enddatetime",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "objrecordtype": "Objrecordtype",
+            "objclassification": "Objclassification",
+            "objcategory": "Objcategory",
+            "objtype": "Objtype",
+            "asset": "Asset",
+            "vulnerability": "Vulnerability",
+            "attackscenario": "Attackscenario"
+        }
+    }
+}

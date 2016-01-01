@@ -1,0 +1,88 @@
+<div>
+    <h2 translate="adapApp.attackscenario.home.title">Attackscenarios</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="attackscenario.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.attackscenario.home.createLabel">Create a new Attackscenario</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Attackscenario</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="adapApp.attackscenario.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="adapApp.attackscenario.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="details"><span translate="adapApp.attackscenario.details">Details</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="adapApp.attackscenario.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifiedby"><span translate="adapApp.attackscenario.lastmodifiedby">Lastmodifiedby</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifieddate"><span translate="adapApp.attackscenario.lastmodifieddate">Lastmodifieddate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span translate="adapApp.attackscenario.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objrecordtype.name"><span translate="adapApp.attackscenario.objrecordtype">objrecordtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objclassification.name"><span translate="adapApp.attackscenario.objclassification">objclassification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objcategory.name"><span translate="adapApp.attackscenario.objcategory">objcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objtype.name"><span translate="adapApp.attackscenario.objtype">objtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="attackscenario in attackscenarios track by attackscenario.id">
+                    <td><a ui-sref="attackscenario.detail({id:attackscenario.id})">{{attackscenario.id}}</a></td>
+                    <td>{{attackscenario.name}}</td>
+                    <td>{{attackscenario.description}}</td>
+                    <td>{{attackscenario.details}}</td>
+                    <td translate="{{'adapApp.Status.' + attackscenario.status}}">{{attackscenario.status}}</td>
+                    <td>{{attackscenario.lastmodifiedby}}</td>
+                    <td>{{attackscenario.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{attackscenario.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:attackscenario.objrecordtype.id})">{{attackscenario.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:attackscenario.objclassification.id})">{{attackscenario.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:attackscenario.objcategory.id})">{{attackscenario.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:attackscenario.objtype.id})">{{attackscenario.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="attackscenario.detail({id:attackscenario.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="attackscenario.edit({id:attackscenario.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="attackscenario.delete({id:attackscenario.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

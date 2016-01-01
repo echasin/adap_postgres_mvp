@@ -38,6 +38,13 @@ public class Score implements Serializable {
     @Column(name = "rulename", length = 100)
     private String rulename;
 
+    @Column(name = "runid")
+    private Long runid;
+    
+    @Column(name = "rundate", nullable = false)
+    private ZonedDateTime rundate;
+
+
     @Size(max = 25)
     @Column(name = "ruleversion", length = 25)
     private String ruleversion;
@@ -73,6 +80,9 @@ public class Score implements Serializable {
 
     @ManyToOne
     private Asset asset;
+    
+    @ManyToOne
+    private Route route;
 
     public Long getId() {
         return id;
@@ -229,5 +239,47 @@ public class Score implements Serializable {
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
+    }
+
+    /**
+     * @param runid the runid to set
+     */
+    public void setRunid(Long runid) {
+        this.runid = runid;
+    }
+
+    /**
+     * @param rundate the rundate to set
+     */
+    public void setRundate(ZonedDateTime rundate) {
+        this.rundate = rundate;
+    }
+
+    /**
+     * @return the runid
+     */
+    public Long getRunid() {
+        return runid;
+    }
+
+    /**
+     * @return the rundate
+     */
+    public ZonedDateTime getRundate() {
+        return rundate;
+    }
+
+    /**
+     * @return the route
+     */
+    public Route getRoute() {
+        return route;
+    }
+
+    /**
+     * @param route the route to set
+     */
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }
