@@ -21,7 +21,7 @@ angular.module('adapApp')
     }).factory('AssetService', function ($http) {
           	 return {
           	        count: function(name) {
-          	            var promise = $http.get('api/recordsLength').then(function (response) {
+          	            var promise = $http.get('api/asset/recordsLength').then(function (response) {
           	            	return response.data;
           	            });
           	            return promise;
