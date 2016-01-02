@@ -4,6 +4,10 @@ angular.module('adapApp')
     .factory('Segment', function ($resource, DateUtils) {
         return $resource('api/segments/:id', {}, {
             'query': { method: 'GET', isArray: true},
+            'executefilter': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/executefilter/:id'},
+            'editfilter': {method: 'GET', params: {id:'@id'}, url: 'api/editfilter/:id'},
+            'getsegments': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/segments/:page/:size'},
+            'index': {method: 'GET', url: 'api/indexsegment'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -18,4 +22,13 @@ angular.module('adapApp')
             },
             'update': { method:'PUT' }
         });
-    });
+    }).factory('SegmentService', function ($http) {
+     	 return {
+   	        count: function(name) {
+   	            var promise = $http.get('api/segment/recordsLength').then(function (response) {
+   	            	return response.data;
+   	            });
+   	            return promise;
+   	        }
+   	 }
+   });

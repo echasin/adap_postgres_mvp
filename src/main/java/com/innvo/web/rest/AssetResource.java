@@ -15,21 +15,16 @@ import com.innvo.repository.ScoreRepository;
 import com.innvo.repository.UserRepository;
 import com.innvo.repository.search.AssetSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
-import com.innvo.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.FacetedPage;
 import org.springframework.data.elasticsearch.core.query.IndexQuery;
 import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -43,17 +38,9 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import javax.servlet.http.HttpServletRequest;
-
-import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.FilterBuilder;
-import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-
 import static org.elasticsearch.index.query.QueryBuilders.*;
 import org.elasticsearch.index.query.WrapperQueryBuilder;
 import org.springframework.data.domain.PageRequest;
@@ -163,7 +150,7 @@ public class AssetResource {
     /**
      * GET /assets/count -> Get Records Size
      */
-    @RequestMapping(value = "/recordsLength",
+    @RequestMapping(value = "/asset/recordsLength",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -245,8 +232,7 @@ public class AssetResource {
 		return result;
 
     }
-    
-       
+         
     /**
      * GET -> index objects.
      */
@@ -276,7 +262,7 @@ public class AssetResource {
     	Filter filter=filterRepository.findOne(id);
     	String query=filter.getQueryelastic();
 
-    	QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	//QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
     	BoolQueryBuilder bool = new BoolQueryBuilder()
         .must(new WrapperQueryBuilder(query));
         List<Asset> result = Lists.newArrayList(assetSearchRepository.search(bool));

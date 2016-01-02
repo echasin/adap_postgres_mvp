@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
  * Spring Data JPA repository for the Asset entity.
  */
 public interface AssetRepository extends JpaRepository<Asset,Long> {
-    	Page<Asset> findByDomain(String domain,Pageable pageable);
-	long countByDomain(String domain);
+    	
+	    Page<Asset> findByDomain(String domain,Pageable pageable);
+    	long countByDomain(String domain);
 }
