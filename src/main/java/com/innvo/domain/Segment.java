@@ -33,6 +33,9 @@ public class Segment implements Serializable {
     @Column(name = "name", length = 100, nullable = false)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String name;
+    
+    @Column(name = "segmentnumber", nullable = false)
+    private Long segmentnumber;
 
     @Size(max = 255)
     @Column(name = "description", length = 255)
@@ -277,5 +280,19 @@ public class Segment implements Serializable {
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
+    }
+
+    /**
+     * @return the segmentnumber
+     */
+    public Long getSegmentnumber() {
+        return segmentnumber;
+    }
+
+    /**
+     * @param segmentnumber the segmentnumber to set
+     */
+    public void setSegmentnumber(Long segmentnumber) {
+        this.segmentnumber = segmentnumber;
     }
 }

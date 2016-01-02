@@ -1,3 +1,6 @@
 id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,name,status,domain,lastmodifiedby,lastmodifieddate,description
 1,2000,1,1,null,TEST,Active,TEST,echasin,2015-01-01,"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 10,3000,null,null,null,Example One (Simple) Asset Classification = 'Airport',Active,DEMO,echasin,2015-01-01,User created filter to set seearch criteria Asset where Asset Classification = ‘Airport’
+521,5200,null,null,null,Commerical Aviation,Active,DEMO,echasin,2015-01-01,User created filter to set seearch criteria Asset where Asset Classification = ‘Airport’
+522,5200,null,null,null,"Commerical Aviation Origin,Objtype = X",Active,DEMO,echasin,2015-01-01,User created filter to set seearch criteria Asset where Asset Classification = ‘Airport’
+523,5200,null,null,null,Commerical Aviation Origin = MA,Active,DEMO,echasin,2015-01-01,User created filter to set seearch criteria Asset where Asset Classification = ‘Airport’

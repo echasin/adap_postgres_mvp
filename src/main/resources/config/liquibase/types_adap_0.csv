@@ -8,3 +8,4 @@ id,name,objcategory_id,status,lastmodifiedby,lastmodifieddate,domain
 104,IV,101,Active,system,2015-07-05 22:05:45,DEMO
 120,General Aviation,101,Active,system,2015-07-05 22:05:45,DEMO
 5200,Single Segment,5200,Active,system,2015-07-05 22:05:45,DEMO
+5201,Multi Segment,5200,Active,system,2015-07-05 22:05:45,DEMO

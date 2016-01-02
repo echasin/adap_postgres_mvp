@@ -24,6 +24,7 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
+            <column name="segmentnumber" type="bigint"/>
             <column name="description" type="varchar(255)"/>
             <column name="origineta" type="timestamp"/>
             <column name="origin_ata" type="timestamp"/>
