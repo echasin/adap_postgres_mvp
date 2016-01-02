@@ -222,7 +222,7 @@ public class ScoreResource {
                 .must(filterByDomain);
 
       	List<Score> result = Lists.newArrayList(scoreSearchRepository.search(bool));
-		return result;
+        return result;
     }
     
     /**

@@ -20,15 +20,27 @@ angular.module('adapApp')
         };
       //  $scope.loadAll();
 
-
+        $scope.index = function () {
+        	Route.index();
+        };
+        
         $scope.search = function () {
+        	console.log($scope.searchQuery)
+        	if($scope.searchQuery == "" || $scope.searchQuery == null){
+        		$scope.searchdata=[];
+     	    	$scope.gridOptions.data = $scope.data.slice((paginationOptions.pageNumber - 1) * paginationOptions.pageSize, ((paginationOptions.pageNumber - 1) * paginationOptions.pageSize) + paginationOptions.pageSize);
+            	getcount();
+        		getData();
+        		
+        	}else{
             RouteSearch.query({query: $scope.searchQuery}, function(result) {
-                $scope.routes = result;
-            }, function(response) {
-                if(response.status === 404) {
-                    $scope.loadAll();
-                }
-            });
+            	$scope.gridOptions.totalItems=result.length;
+                $scope.assets = result;
+ 	    		$scope.searchdata=result;
+ 	    		getPagesearch();
+                console.log(result)
+               });
+        	}
         };
 
         $scope.refresh = function () {

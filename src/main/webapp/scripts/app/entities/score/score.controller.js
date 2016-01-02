@@ -19,18 +19,31 @@ angular.module('adapApp')
 
 
         $scope.search = function () {
+        	console.log($scope.searchQuery)
+        	if($scope.searchQuery == "" || $scope.searchQuery == null){
+        		$scope.searchdata=[];
+     	    	$scope.gridOptions.data = $scope.data.slice((paginationOptions.pageNumber - 1) * paginationOptions.pageSize, ((paginationOptions.pageNumber - 1) * paginationOptions.pageSize) + paginationOptions.pageSize);
+            	getcount();
+        		getData();
+        		
+        	}else{
             ScoreSearch.query({query: $scope.searchQuery}, function(result) {
-                $scope.scores = result;
-            }, function(response) {
-                if(response.status === 404) {
-                    $scope.loadAll();
-                }
-            });
+            	$scope.gridOptions.totalItems=result.length;
+                $scope.assets = result;
+ 	    		$scope.searchdata=result;
+ 	    		getPagesearch();
+                console.log(result)
+               });
+        	}
         };
 
         $scope.refresh = function () {
             $scope.loadAll();
             $scope.clear();
+        };
+        
+        $scope.index = function () {
+        	Score.index();
         };
 
         $scope.clear = function () {

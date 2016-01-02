@@ -4,12 +4,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import com.innvo.domain.enumeration.Status;
@@ -30,36 +31,46 @@ public class Segment implements Serializable {
     @NotNull
     @Size(max = 100)
     @Column(name = "name", length = 100, nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String name;
 
     @Size(max = 255)
     @Column(name = "description", length = 255)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String description;
 
     @Column(name = "origineta")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime origineta;
 
     @Column(name = "origin_ata")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime originAta;
 
     @Column(name = "destinationeta")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime destinationeta;
 
     @Column(name = "destinationata")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime destinationata;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 
     @Column(name = "lastmodifiedby")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     @Column(name = "lastmodifieddate")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne
