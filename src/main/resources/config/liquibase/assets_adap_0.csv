@@ -1,9 +1,9 @@
-id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,name,status,domain,lastmodifiedby,lastmodifieddate,description
-1,1,1,1,null,TEST,Active,TEST,echasin,2015-01-01,"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-10,10,101,null,null,Test Airport One,Active,DEMO,echasin,2015-01-01,"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-11,10,101,null,null,Test Airport Two,Active,DEMO,echasin,2015-01-01,Description goes here
-12,10,101,null,null,Test Airport Three,Active,DEMO,echasin,2015-01-01,Description goes here
-201,10,101,null,null,Hartsfield–Jackson Atlanta International Airport,Active,DEMO,echasin,2015-01-01,Description goes here
-5201,10,101,101,101,Origin Airport (Development Statecode=MA),Active,DEMO,echasin,2015-01-01,Description goes here
-5202,10,101,101,101,Destination Airport (Development Statecode=DC),Active,DEMO,echasin,2015-01-01,Description goes here
-5203,10,101,101,101,Middle Airport (Development Statecode=NY),Active,DEMO,echasin,2015-01-01,Description goes here
+id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,name,nameshort,status,domain,lastmodifiedby,lastmodifieddate,description
+1,1,1,1,null,TEST,null,Active,TEST,echasin,2015-01-01,"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+10,10,101,null,null,Test Airport One,null,Active,DEMO,echasin,2015-01-01,"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+11,10,101,null,null,Test Airport Two,null,Active,DEMO,echasin,2015-01-01,Description goes here
+12,10,101,null,null,Test Airport Three,null,Active,DEMO,echasin,2015-01-01,Description goes here
+201,10,101,null,null,Hartsfield–Jackson Atlanta International Airport,null,Active,DEMO,echasin,2015-01-01,Description goes here
+5201,10,101,101,101,Origin Airport (Development Statecode=MA),Origin Airport,Active,DEMO,echasin,2015-01-01,Description goes here
+5202,10,101,101,101,Destination Airport (Development Statecode=DC),Destination Airport,Active,DEMO,echasin,2015-01-01,Description goes here
+5203,10,101,101,101,Middle Airport (Development Statecode=NY),Middle Airport,Active,DEMO,echasin,2015-01-01,Description goes here

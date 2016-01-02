@@ -37,6 +37,12 @@ public class Asset implements Serializable {
     @Column(name = "name", length = 100, nullable = false)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String name;
+    
+    //@NotNull
+    @Size(max = 20)
+    @Column(name = "nameshort", length = 20, nullable = true)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String nameshort;
 
     @Size(max = 255)
     @Column(name = "description", length = 255)
@@ -240,6 +246,20 @@ public class Asset implements Serializable {
                 + ", lastmodifieddate='" + getLastmodifieddate() + "'"
                 + ", domain='" + domain + "'"
                 + '}';
+    }
+
+    /**
+     * @return the nameshort
+     */
+    public String getNameshort() {
+        return nameshort;
+    }
+
+    /**
+     * @param nameshort the nameshort to set
+     */
+    public void setNameshort(String nameshort) {
+        this.nameshort = nameshort;
     }
 
    
