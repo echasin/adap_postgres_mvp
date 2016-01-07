@@ -187,7 +187,7 @@ public class AssetResource {
     public ResponseEntity<Asset> getAsset_h(@PathVariable Long id) {
         log.debug("REST request to get Asset : {}", id);
         Asset object = assetRepository.findOne(id);
-        Set<Location> locations = locationRepository.findByAssetId(id);
+        Set<Location> locations = locationRepository.findByAssetIds(id);
         Set<Score> scores = scoreRepository.findByAssetId(id);
         object.setLocations(locations);
         object.setScores(scores);

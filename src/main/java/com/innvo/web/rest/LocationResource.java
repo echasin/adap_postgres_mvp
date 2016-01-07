@@ -127,7 +127,7 @@ public class LocationResource {
     @Timed
     public ResponseEntity<Set<Location>> getLocationByAsset(@PathVariable Long id) {
         log.debug("REST request to get Location : {}", id);
-        return Optional.ofNullable(locationRepository.findByAssetId(id))
+        return Optional.ofNullable(locationRepository.findByAssetIds(id))
             .map(location -> new ResponseEntity<>(
                 location,
                 HttpStatus.OK))
