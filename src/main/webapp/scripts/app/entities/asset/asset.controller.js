@@ -5,8 +5,13 @@ angular.module('adapApp')
         $scope.assets = [];
         $scope.searchdata = [];
         $scope.page = 0;
-        $scope.filters = Filter.filtersByRecordtype();
-        console.log(Filter.query())
+        
+        $scope.loadFilters = function() {
+            Filter.filtersByRecordtype({name: "Asset"}, function(data) {
+            	$scope.filters = data;
+              });
+            }
+            $scope.loadFilters();
         
         $scope.loadAll = function() {
             Asset.query({page: $scope.page, size: 20}, function(result, headers) {

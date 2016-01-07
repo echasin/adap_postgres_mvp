@@ -78,30 +78,37 @@ public class Segment implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "objrecordtype_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objrecordtype objrecordtype;
 
     @ManyToOne
     @JoinColumn(name = "objclassification_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objclassification objclassification;
 
     @ManyToOne
     @JoinColumn(name = "objcategory_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objcategory objcategory;
 
     @ManyToOne
     @JoinColumn(name = "objtype_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
     @ManyToOne
     @JoinColumn(name = "assetorigin_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Asset assetorigin;
 
     @ManyToOne
     @JoinColumn(name = "assetdestination_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Asset assetdestination;
 
     @ManyToOne
     @JoinColumn(name = "route_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Route route;
 
     public Long getId() {

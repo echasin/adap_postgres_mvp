@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface FilterRepository extends JpaRepository<Filter,Long> {
 	
-	List<Filter> findByObjrecordtypeName(String name);
+	List<Filter> findByObjrecordtypeObjecttype(String name);
 
 }

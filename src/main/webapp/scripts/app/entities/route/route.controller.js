@@ -1,12 +1,20 @@
 'use strict';
 
 angular.module('adapApp')
-    .controller('RouteController', function ($scope, $state,$resource, Route,RouteService, RouteSearch, ParseLinks) {
+    .controller('RouteController', function ($scope, $state,$resource, Route,Filter, RouteService, RouteSearch, ParseLinks) {
 
         $scope.routes = [];
         $scope.predicate = 'id';
         $scope.reverse = true;
         $scope.page = 1;
+
+        $scope.loadFilters = function() {
+        Filter.filtersByRecordtype({name: "Route"}, function(data) {
+        	$scope.filters = data;
+          });
+        }
+        $scope.loadFilters();
+        
         $scope.loadAll = function() {
             Route.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
@@ -22,6 +30,18 @@ angular.module('adapApp')
 
         $scope.index = function () {
         	Route.index();
+        };
+        
+        $scope.executefilter=function(id){ 
+        	$scope.filterId=id;
+            console.log(id+""+$scope.filterId);
+        	 Route.executefilter({id:$scope.filterId}, function(output) {
+             	$scope.gridOptions.totalItems=output.length;
+                //$scope.assets = output;
+             	console.log(output)
+  	    		$scope.searchdata=output;
+ 	    		getPagesearch();
+             });
         };
         
         $scope.search = function () {
@@ -80,17 +100,16 @@ angular.module('adapApp')
        	    useExternalPagination: true,
        	    useExternalSorting: false,
        	    columnDefs: [
-       	                 { field: 'id',  displayName: 'ID', width: 60, enableSorting: true },
-       	                 { field: 'name', displayName: 'Name', enableSorting: true },
-                         { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
-                         { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
-       	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
+       	                 { field: 'routeId',  displayName: 'Route Id', width: 60, enableSorting: true },
+       	                 { field: 'routName', displayName: 'Route Name', enableSorting: true },
+                         { field: 'originName', displayName: 'origin', enableSorting: true },
+                         { field: 'destinationName', displayName: 'destination', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
-                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
+                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.routeId})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
+                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.routeId})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.routeId)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],
        	  onRegisterApi: function(gridApi) {
@@ -144,7 +163,7 @@ angular.module('adapApp')
          	    	size : size
          	   }).query();
        		 $scope.data=sasa;
-       	  }
+       	}
        	  
        	  function loadMore(startposition){
        		 if($scope.data[startposition+1]!=null){
@@ -166,23 +185,34 @@ angular.module('adapApp')
          		$scope.data.$promise.then(function(result) {
          	    var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
-        	  	
-        	    $scope.chartdata=[]
+        	    $scope.mapdata=[]
      			for(var i=0;i<$scope.gridOptions.data.length;++i){
-     				$scope.chartdata.push({x: $scope.gridOptions.data[i].name,y: $scope.gridOptions.data[i].id})
+      				$scope.mapdata.push({origin:{latitude: $scope.gridOptions.data[i].originLocation.latitudedd,longitude: $scope.gridOptions.data[i].originLocation.longitudedd},destination: {latitude: $scope.gridOptions.data[i].destinationLocation.latitudedd,longitude: $scope.gridOptions.data[i].destinationLocation.longitudedd}})
      			}
+                  arcs.arc($scope.mapdata);
            		 });
-            	  }
+             }
             	 
        	  getPage();
 
        	 function getPagesearch() {
   	    	$scope.gridOptions.data = $scope.searchdata.slice((paginationOptions.pageNumber - 1) * paginationOptions.pageSize, ((paginationOptions.pageNumber - 1) * paginationOptions.pageSize) + paginationOptions.pageSize);
-     	  	
-     	    $scope.chartdata=[]
-  			for(var i=0;i<$scope.gridOptions.data.length;++i){
-  				$scope.chartdata.push({x: $scope.gridOptions.data[i].name,y: $scope.gridOptions.data[i].id})
-  			}
-         	  }
-       	  
+  	    	$scope.mapdata=[]
+ 			for(var i=0;i<$scope.gridOptions.data.length;++i){
+  				$scope.mapdata.push({origin:{latitude: $scope.gridOptions.data[i].originLocation.latitudedd,longitude: $scope.gridOptions.data[i].originLocation.longitudedd},destination: {latitude: $scope.gridOptions.data[i].destinationLocation.latitudedd,longitude: $scope.gridOptions.data[i].destinationLocation.longitudedd}})
+ 			}
+              arcs.arc($scope.mapdata);
+         }
+       	 
+       	 var arcs = new Datamap({
+             element: document.getElementById("arcs"),
+             scope: 'usa',
+             height: 300,
+             width: 700,
+             fills: {
+             defaultFill: "#ABDDA4",
+             win: '#0fa0fa'
+           }
+        });
+
     });

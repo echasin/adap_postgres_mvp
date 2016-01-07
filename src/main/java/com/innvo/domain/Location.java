@@ -4,6 +4,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,105 +31,133 @@ public class Location implements Serializable {
     private Long id;
 
     @Column(name = "isprimary")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Boolean isprimary;
 
     @Size(max = 100)
     @Column(name = "address1", length = 100)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String address1;
 
     @Size(max = 100)
     @Column(name = "address2", length = 100)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String address2;
 
     @Size(max = 50)
     @Column(name = "cityname", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String cityname;
 
     @Size(max = 50)
     @Column(name = "citynamealias", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String citynamealias;
 
     @Size(max = 50)
     @Column(name = "countyname", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countyname;
 
     @Size(max = 50)
     @Column(name = "countyfips", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countyfips;
 
     @Size(max = 50)
     @Column(name = "countyansi", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countyansi;
 
     @Size(max = 50)
     @Column(name = "statename", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String statename;
 
     @Size(max = 50)
     @Column(name = "statecode", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String statecode;
 
     @Size(max = 50)
     @Column(name = "statefips", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String statefips;
 
     @Size(max = 50)
     @Column(name = "stateiso", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String stateiso;
 
     @Size(max = 50)
     @Column(name = "stateansi", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String stateansi;
 
     @Size(max = 50)
     @Column(name = "zippostcode", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String zippostcode;
 
     @Size(max = 50)
     @Column(name = "countryname", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countryname;
 
     @Size(max = 2)
     @Column(name = "countryiso2", length = 2)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countryiso2;
 
     @Size(max = 3)
     @Column(name = "countryiso3", length = 3)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String countryiso3;
 
     @Column(name = "latitudedd")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Double latitudedd;
 
     @Column(name = "longitudedd")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Double longitudedd;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 
     @Column(name = "lastmodifiedby")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     @Column(name = "lastmodifieddate", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objrecordtype objrecordtype;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objclassification objclassification;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objcategory objcategory;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Asset asset;
 
     public Long getId() {

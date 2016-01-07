@@ -4,7 +4,7 @@ angular.module('adapApp')
     .factory('Route', function ($resource, DateUtils) {
         return $resource('api/routes/:id', {}, {
             'query': { method: 'GET', isArray: true},
-            'executefilter': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/executefilter/:id'},
+            'executefilter': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/executeRoutFilter/:id'},
             'editfilter': {method: 'GET', params: {id:'@id'}, url: 'api/editfilter/:id'},
             'getroutes': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/routes/:page/:size'},
             'index': {method: 'GET', url: 'api/indexroute'},

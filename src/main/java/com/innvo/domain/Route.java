@@ -66,18 +66,22 @@ public class Route implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "objrecordtype_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objrecordtype objrecordtype;
 
     @ManyToOne
     @JoinColumn(name = "objclassification_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objclassification objclassification;
 
     @ManyToOne
     @JoinColumn(name = "objcategory_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objcategory objcategory;
 
     @ManyToOne
     @JoinColumn(name = "objtype_id")
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
     @OneToMany(mappedBy = "route")

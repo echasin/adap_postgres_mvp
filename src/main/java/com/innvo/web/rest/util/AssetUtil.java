@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.innvo.web.rest.util;
 
 import com.innvo.domain.Asset;
 import java.util.List;

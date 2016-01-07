@@ -56,6 +56,7 @@ public class Objclassification implements Serializable {
     private String domain;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objrecordtype objrecordtype;
 
     @OneToMany(mappedBy = "objclassification")

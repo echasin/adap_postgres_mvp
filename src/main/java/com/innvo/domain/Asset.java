@@ -76,15 +76,19 @@ public class Asset implements Serializable {
     private String domain;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objrecordtype objrecordtype;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objclassification objclassification;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objcategory objcategory;
 
     @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
     @OneToMany(mappedBy = "asset")

@@ -127,13 +127,13 @@ public class FilterResource {
     /**
      * GET  /filters -> get  the filters By Recordtype.
      */
-    @RequestMapping(value = "/filtersByRecordtype",
+    @RequestMapping(value = "/filtersByRecordtype/{name}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Filter>> geFiltersByRecordtype()
+    public ResponseEntity<List<Filter>> geFiltersByRecordtype(@PathVariable String name)
         throws URISyntaxException {
-        List<Filter> list = filterRepository.findByObjrecordtypeName("Asset");
+        List<Filter> list = filterRepository.findByObjrecordtypeObjecttype(name);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 

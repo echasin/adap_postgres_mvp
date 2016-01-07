@@ -2,6 +2,7 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.innvo.domain.Location;
+import com.innvo.domain.Route;
 import com.innvo.repository.LocationRepository;
 import com.innvo.repository.search.LocationSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
@@ -10,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
+import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -43,6 +47,9 @@ public class LocationResource {
     @Inject
     private LocationSearchRepository locationSearchRepository;
 
+    @Inject 
+    ElasticsearchTemplate elasticsearchTemplate;
+    
     /**
      * POST  /locations -> Create a new location.
      */
@@ -153,5 +160,22 @@ public class LocationResource {
         return StreamSupport
             .stream(locationSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+    /**
+     * GET -> index location.
+     */
+    @RequestMapping(value = "indexLocation",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public void add() {
+        List<Location> locations = locationRepository.findAll();
+        log.debug("In IndexResource.java");
+
+        for (Location location:locations) {
+            String id = location.getId().toString();
+            IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(location).build();
+            elasticsearchTemplate.index(indexQuery);
+        }
     }
 }

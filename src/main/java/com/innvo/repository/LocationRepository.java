@@ -13,5 +13,5 @@ import java.util.Set;
  */
 public interface LocationRepository extends JpaRepository<Location,Long> {
 
-      Set<Location> findByAssetId(long id);  
+      Location findByAssetId(long aseetId);
 }

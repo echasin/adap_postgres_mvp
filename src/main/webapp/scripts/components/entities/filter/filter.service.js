@@ -3,7 +3,7 @@
 angular.module('adapApp')
     .factory('Filter', function ($resource, DateUtils) {
         return $resource('api/filters/:id', {}, {
-            'filtersByRecordtype': { method: 'GET', isArray: true,url: 'api/filtersByRecordtype'},
+            'filtersByRecordtype': { method: 'GET', isArray: true, params: {name:'@name'},url: 'api/filtersByRecordtype/:name'},
             'query': { method: 'GET', isArray: true},
             'saveES': {method: 'GET', params: {rulejson:'@rulejson',esjson: '@esjson',id:'@id'}, url: 'api/saveES/:rulejson/:esjson'},
             'get': {

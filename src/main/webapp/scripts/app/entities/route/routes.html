@@ -1,14 +1,18 @@
+<button id="index" ng-click="index()">index</button>
 <div>
     <h2 translate="adapApp.route.home.title">Routes</h2>
     <jh-alert></jh-alert>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+    
+    <div class="row">
+     <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="route.new">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
                 </button>
             </div>
-            <div class="col-md-8">
+    </div>
+        <div class="row">
+         <div class="col-md-4">
                 <form name="searchForm" class="form-inline">
                     <div class="form-group">
                         <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
@@ -17,8 +21,27 @@
                     </button>
                 </form>
             </div>
+            
+         <div class="col-md-4">
+               <div class="input-group m-b">
+                  <div class="input-group-btn">                                       
+                      <button aria-expanded="false" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
+                       <ul class="dropdown-menu">
+                          <li><a ng-click="executefilter()">Execute Filter</a></li>
+                          <li><a ng-click="editfilter()">Edit Filter</a></li>
+                          <li><a href="#">New Filter</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                       </ul>
+                   </div>
+                   <select class="form-control input" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                   </select>
+                 </div>
+         </div>
         </div>
     </div>
+      
+       <div id="arcs" style="position: relative; width: 500px; height: 300px;"></div>
 
     <div  class="panel-body">
         <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>

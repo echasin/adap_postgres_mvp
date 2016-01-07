@@ -45,11 +45,6 @@ angular.module('adapApp')
                 type: 'string',
                 operators: ['equal', 'not_equal', 'in', 'between','less','less_or_equal','greater','greater_or_equal']
             } , {
-                id: 'objclassification.id',
-                label: 'Classification',
-                type: 'string',
-                operators: ['equal', 'not_equal', 'in', 'between','less','less_or_equal','greater','greater_or_equal']
-            } , {
                 id: 'objrecordtype.name',
                 label: 'Recordtype Name',
                 type: 'string',
