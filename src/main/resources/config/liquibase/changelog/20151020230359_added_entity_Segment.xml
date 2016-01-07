@@ -24,6 +24,7 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
+            <column name="segmentnumber" type="bigint"/>
             <column name="description" type="varchar(255)"/>
             <column name="origineta" type="timestamp"/>
             <column name="origin_ata" type="timestamp"/>
@@ -95,6 +96,11 @@
                                  constraintName="fk_segment_route_id"
                                  referencedColumnNames="id"
                                  referencedTableName="route"/>
+         <sql>
+            ALTER SEQUENCE segment_id_seq
+            RESTART 100000
+            INCREMENT 1  
+        </sql>
 
     </changeSet>
 </databaseChangeLog>

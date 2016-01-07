@@ -24,6 +24,9 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
+            <column name="nameshort" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
             <column name="description" type="varchar(255)"/>
             <column name="details" type="varchar(255)"/>
             <column name="status" type="varchar(255)">
@@ -64,11 +67,13 @@
                                  referencedColumnNames="id"
                                  referencedTableName="objtype"/>
         
+        
         <sql>
             ALTER SEQUENCE asset_id_seq
             RESTART 100000
             INCREMENT 1  
         </sql>
+                              
         
         
     </changeSet>

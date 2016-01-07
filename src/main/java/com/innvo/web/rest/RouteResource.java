@@ -1,15 +1,37 @@
 package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.collect.Lists;
+import com.innvo.domain.Filter;
+import com.innvo.domain.Location;
 import com.innvo.domain.Route;
+import com.innvo.domain.Segment;
+import com.innvo.domain.User;
+import com.innvo.domain.enumeration.Status;
+import com.innvo.repository.FilterRepository;
+import com.innvo.repository.LocationRepository;
 import com.innvo.repository.RouteRepository;
+import com.innvo.repository.SegmentRepository;
+import com.innvo.repository.UserRepository;
+import com.innvo.repository.search.LocationSearchRepository;
 import com.innvo.repository.search.RouteSearchRepository;
+import com.innvo.repository.search.SegmentSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
+import com.innvo.web.rest.util.RouteUtil;
+
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.WrapperQueryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
+import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,13 +39,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -42,6 +67,26 @@ public class RouteResource {
     @Inject
     private RouteSearchRepository routeSearchRepository;
     
+    @Inject
+    private SegmentRepository segmentRepository;
+    
+    @Inject
+    LocationRepository locationRepository;
+    
+    @Inject
+    private SegmentSearchRepository segmentSearchRepository;
+    
+    @Inject
+    LocationSearchRepository locationSearchRepository;
+    
+    @Inject
+    FilterRepository filterRepository;
+    
+    @Inject
+    UserRepository userRepository;
+    
+    @Inject
+    ElasticsearchTemplate elasticsearchTemplate;
     /**
      * POST  /routes -> Create a new route.
      */
@@ -49,13 +94,19 @@ public class RouteResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Route> createRoute(@Valid @RequestBody Route route) throws URISyntaxException {
+    public ResponseEntity<Route> createRoute(@Valid @RequestBody Route route,Principal principal) throws URISyntaxException {
         log.debug("REST request to save Route : {}", route);
         if (route.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new route cannot already have an ID").body(null);
             // Commented Out echasin - Migrated code from adap_postgres_mvp_codegen_oauth.  Replace with code above.
             //return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("route", "idexists", "A new route cannot already have an ID")).body(null);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        route.setDomain(user.getDomain());
+        route.setStatus(Status.Active);
+        route.setLastmodifiedby(principal.getName());
+        route.setLastmodifieddate(lastmodifieddate);
         Route result = routeRepository.save(route);
         routeSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/routes/" + result.getId()))
@@ -70,11 +121,17 @@ public class RouteResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Route> updateRoute(@Valid @RequestBody Route route) throws URISyntaxException {
+    public ResponseEntity<Route> updateRoute(@Valid @RequestBody Route route,Principal principal) throws URISyntaxException {
         log.debug("REST request to update Route : {}", route);
         if (route.getId() == null) {
-            return createRoute(route);
+            return createRoute(route,principal);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        route.setDomain(user.getDomain());
+        route.setStatus(Status.Active);
+        route.setLastmodifiedby(principal.getName());
+        route.setLastmodifieddate(lastmodifieddate);
         Route result = routeRepository.save(route);
         routeSearchRepository.save(result);
         return ResponseEntity.ok()
@@ -97,6 +154,57 @@ public class RouteResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * GET /routes -> get all the routes.
+     */
+    @RequestMapping(value = "/routes/{paginationOptions.pageNumber}/{paginationOptions.pageSize}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<RouteUtil>> getAllSegments(HttpServletRequest request, Principal principal, @PathVariable("paginationOptions.pageNumber") String pageNumber,
+            @PathVariable("paginationOptions.pageSize") String pageSize
+    )
+            throws URISyntaxException {
+        int thepage = Integer.parseInt(pageNumber);
+        int thepagesize = Integer.parseInt(pageSize);
+    	List<RouteUtil> list=new ArrayList<RouteUtil>();
+        User user = userRepository.findByLogin(principal.getName());
+        PageRequest pageRequest = new PageRequest(thepage, thepagesize, Sort.Direction.ASC, "id");
+        Page<Route> data =routeRepository.findByDomain(user.getDomain(), pageRequest);
+        
+        Segment segment1=null;
+        Segment segment2=null;
+        for(Route route:data.getContent()){
+        	 RouteUtil routeUtil=new RouteUtil();
+             segment1=segmentRepository.findByRouteIdAndSegmentnumber(route.getId());
+        	 segment2=segmentRepository.findByRouteIdAndSegmentnumber(route.getId());
+             Location location1=locationRepository.findByAssetId(segment1.getAssetorigin().getId());
+             Location location2=locationRepository.findByAssetId(segment2.getAssetdestination().getId());
+             routeUtil.setRouteId(route.getId());
+             routeUtil.setRoutName(route.getName());
+             routeUtil.setOriginName(segment1.getAssetorigin().getName());
+             routeUtil.setDestinationName(segment2.getAssetorigin().getName());
+             routeUtil.setOriginLocation(location1);
+             routeUtil.setDestinationLocation(location2);
+             list.add(routeUtil);
+        }
+   
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    /**
+     * GET /route/count -> Get Records Size
+     */
+    @RequestMapping(value = "/route/recordsLength",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public long getlength(Principal principal)
+            throws URISyntaxException {
+        User user = userRepository.findByLogin(principal.getName());
+        long length = routeRepository.countByDomain(user.getDomain());
+        return length;
+    }
     /**
      * GET  /routes/:id -> get the "id" route.
      */
@@ -136,10 +244,69 @@ public class RouteResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Route> searchRoutes(@PathVariable String query) {
+    public List<Route> searchRoutes(@PathVariable String query,Principal principal) {
         log.debug("REST request to search Routes for query {}", query);
-        return StreamSupport
-            .stream(routeSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+        User user = userRepository.findByLogin(principal.getName());
+    	QueryBuilder filterByDomain = termQuery("domain", user.getDomain()); 
+    	QueryBuilder queryBuilder = queryStringQuery(query); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+    			.must(queryBuilder)
+                .must(filterByDomain);
+
+      	List<Route> result = Lists.newArrayList(routeSearchRepository.search(bool));
+		return result;
+    }
+    
+    /**
+     * GET -> index route.
+     */
+    @RequestMapping(value = "indexroute",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public void add() {
+        List<Route> routes = routeRepository.findAll();
+        log.debug("In IndexResource.java");
+
+        for (Route route:routes) {
+            String id = route.getId().toString();
+            IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(route).build();
+            elasticsearchTemplate.index(indexQuery);
+        }
+    }
+    
+    /**
+     * GET ->Execute filter route.
+     */
+    @RequestMapping(value = "executeRoutFilter/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<RouteUtil> elastic(HttpServletRequest request,@PathVariable long id) {
+    	List<RouteUtil> list=new ArrayList<RouteUtil>();
+    	Filter filter=filterRepository.findOne(id);
+    	String query=filter.getQueryelastic();
+    	System.out.println(query);
+    	//QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+        .must(new WrapperQueryBuilder(query));
+        List<Route> result = Lists.newArrayList(routeSearchRepository.search(bool));
+        Segment segment1=null;
+        Segment segment2=null;
+        for(Route route:result){
+        	 RouteUtil routeUtil=new RouteUtil();
+             segment1=segmentSearchRepository.findByRouteIdAndSegmentnumber(route.getId());
+        	 segment2=segmentSearchRepository.findByRouteIdAndSegmentnumber(route.getId());
+        	 Location location1=locationSearchRepository.findByAssetId(segment1.getAssetorigin().getId());
+             Location location2=locationSearchRepository.findByAssetId(segment2.getAssetdestination().getId());
+             routeUtil.setRouteId(route.getId());
+             routeUtil.setRoutName(route.getName());
+             routeUtil.setOriginName(segment1.getAssetorigin().getName());
+             routeUtil.setDestinationName(segment2.getAssetorigin().getName());
+             routeUtil.setOriginLocation(location1);
+             routeUtil.setDestinationLocation(location2);
+             list.add(routeUtil);
+        }
+    		return list;
     }
 }

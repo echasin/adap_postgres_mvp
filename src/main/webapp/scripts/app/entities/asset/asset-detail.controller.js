@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adapApp')
-    .controller('AssetDetailController', function ($scope, $rootScope, $stateParams, entity, Asset, Objrecordtype, Objclassification, Objcategory, Objtype, Location, Score) {
+    .controller('AssetDetailController', function ($scope, $rootScope, $stateParams, entity, Asset, Objrecordtype, Objclassification, Objcategory, Objtype, Location, Score, Vulnerability, Identifier) {
         $scope.asset = entity;
         $scope.load = function (id) {
             Asset.get({id: id}, function(result) {

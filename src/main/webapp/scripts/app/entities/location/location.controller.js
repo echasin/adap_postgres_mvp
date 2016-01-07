@@ -18,6 +18,10 @@ angular.module('adapApp')
         $scope.loadAll();
 
 
+        $scope.index = function () {
+        	Location.index();
+        };
+        
         $scope.search = function () {
             LocationSearch.query({query: $scope.searchQuery}, function(result) {
                 console.info('In LocationSearch.query');

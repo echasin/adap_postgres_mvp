@@ -43,7 +43,8 @@
         <!-- Main Inspinia:CSS files -->
         <link id="loadBefore" href="assets/css/style.css" rel="stylesheet">
 
-
+        <!-- Main Querybuilder:CSS files -->
+        <link rel="stylesheet" href="bower_components/querybuilder/css/query-builder.default.css" />
 
         <!-- endbuild -->
     </head>
@@ -102,6 +103,15 @@
 
         <script src="bower_components/angular/angular.js"></script>
 
+        <script src="bower_components/highcharts/highcharts.js"></script>
+
+        <script src="bower_components/querybuilder/js/jQuery.extendext.js"></script>
+        <script src="bower_components/querybuilder/js/doT.js"></script>
+        <script src="bower_components/querybuilder/js/query-builder.js"></script>
+        <script src="bower_components/querybuilder/js/query-builder-elasticsearch.js"></script>
+        <script src="bower_components/querybuilder/js/json2.js"></script>
+        <script src="bower_components/querybuilder/js/condition-builder.js"></script>
+
         <!--
         <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
         <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
@@ -125,7 +135,6 @@
 
         <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
         <!--<script src="/bower_components/angular-animate/angular-animate.js"></script> Causes Sort to display over column -->
-        <script src="/bower_components/angular-touch/angular-touch.js"></script>
 
         <script src = "bower_components/angular-aria/angular-aria.js" ></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -153,9 +162,10 @@
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <!-- endbower -->
-        <!-- endbower -->
-        <!-- endbuild -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+        <script src="http://datamaps.github.io/scripts/0.4.2/datamaps.usa.min.js"></script>
+
 
 
 
@@ -301,7 +311,23 @@
         <script src="scripts/app/entities/location/location-detail.controller.js"></script>
         <script src="scripts/components/entities/location/location.service.js"></script>
         <script src="scripts/components/entities/location/location.search.service.js"></script>
-        
+
+        <script src="scripts/app/entities/filter/filter.js"></script>
+        <script src="scripts/app/entities/filter/filter.controller.js"></script>
+        <script src="scripts/app/entities/filter/filter-dialog.controller.js"></script>
+        <script src="scripts/app/entities/filter/filter-detail.controller.js"></script>
+        <script src="scripts/components/entities/filter/filter.service.js"></script>
+        <script src="scripts/components/entities/filter/filter.search.service.js"></script>
+
+
+        <script src="scripts/app/entities/identifier/identifier.js"></script>
+        <script src="scripts/app/entities/identifier/identifier.controller.js"></script>
+        <script src="scripts/app/entities/identifier/identifier-dialog.controller.js"></script>
+        <script src="scripts/app/entities/identifier/identifier-delete-dialog.controller.js"></script>
+        <script src="scripts/app/entities/identifier/identifier-detail.controller.js"></script>
+        <script src="scripts/components/entities/identifier/identifier.service.js"></script>
+        <script src="scripts/components/entities/identifier/identifier.search.service.js"></script>
+
         <script src="scripts/app/entities/route/route.js"></script>
         <script src="scripts/app/entities/route/route.controller.js"></script>
         <script src="scripts/app/entities/route/route-dialog.controller.js"></script>
@@ -309,7 +335,7 @@
         <script src="scripts/app/entities/route/route-detail.controller.js"></script>
         <script src="scripts/components/entities/route/route.service.js"></script>
         <script src="scripts/components/entities/route/route.search.service.js"></script>
-        
+
         <script src="scripts/app/entities/segment/segment.js"></script>
         <script src="scripts/app/entities/segment/segment.controller.js"></script>
         <script src="scripts/app/entities/segment/segment-dialog.controller.js"></script>
@@ -318,6 +344,21 @@
         <script src="scripts/components/entities/segment/segment.service.js"></script>
         <script src="scripts/components/entities/segment/segment.search.service.js"></script>
 
+        <script src="scripts/app/entities/attackscenario/attackscenario.js"></script>
+        <script src="scripts/app/entities/attackscenario/attackscenario.controller.js"></script>
+        <script src="scripts/app/entities/attackscenario/attackscenario-dialog.controller.js"></script>
+        <script src="scripts/app/entities/attackscenario/attackscenario-delete-dialog.controller.js"></script>
+        <script src="scripts/app/entities/attackscenario/attackscenario-detail.controller.js"></script>
+        <script src="scripts/components/entities/attackscenario/attackscenario.service.js"></script>
+        <script src="scripts/components/entities/attackscenario/attackscenario.search.service.js"></script>
+
+        <script src="scripts/app/entities/vulnerability/vulnerability.js"></script>
+        <script src="scripts/app/entities/vulnerability/vulnerability.controller.js"></script>
+        <script src="scripts/app/entities/vulnerability/vulnerability-dialog.controller.js"></script>
+        <script src="scripts/app/entities/vulnerability/vulnerability-delete-dialog.controller.js"></script>
+        <script src="scripts/app/entities/vulnerability/vulnerability-detail.controller.js"></script>
+        <script src="scripts/components/entities/vulnerability/vulnerability.service.js"></script>
+        <script src="scripts/components/entities/vulnerability/vulnerability.search.service.js"></script>
         <!-- endbuild -->
 
 

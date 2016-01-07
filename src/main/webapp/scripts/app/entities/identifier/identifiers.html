@@ -1,0 +1,100 @@
+<div>
+    <h2 translate="adapApp.identifier.home.title">Identifiers</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="identifier.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.identifier.home.createLabel">Create a new Identifier</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Identifier</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="value"><span translate="adapApp.identifier.value">Value</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="effectivedatetime"><span translate="adapApp.identifier.effectivedatetime">Effectivedatetime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="enddatetime"><span translate="adapApp.identifier.enddatetime">Enddatetime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="adapApp.identifier.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifiedby"><span translate="adapApp.identifier.lastmodifiedby">Lastmodifiedby</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifieddate"><span translate="adapApp.identifier.lastmodifieddate">Lastmodifieddate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span translate="adapApp.identifier.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objrecordtype.name"><span translate="adapApp.identifier.objrecordtype">objrecordtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objclassification.name"><span translate="adapApp.identifier.objclassification">objclassification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objcategory.name"><span translate="adapApp.identifier.objcategory">objcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objtype.name"><span translate="adapApp.identifier.objtype">objtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="asset.name"><span translate="adapApp.identifier.asset">asset</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vulnerability.name"><span translate="adapApp.identifier.vulnerability">vulnerability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="attackscenario.name"><span translate="adapApp.identifier.attackscenario">attackscenario</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="identifier in identifiers track by identifier.id">
+                    <td><a ui-sref="identifier.detail({id:identifier.id})">{{identifier.id}}</a></td>
+                    <td>{{identifier.value}}</td>
+                    <td>{{identifier.effectivedatetime | date:'medium'}}</td>
+                    <td>{{identifier.enddatetime | date:'medium'}}</td>
+                    <td translate="{{'adapApp.Status.' + identifier.status}}">{{identifier.status}}</td>
+                    <td>{{identifier.lastmodifiedby}}</td>
+                    <td>{{identifier.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{identifier.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:identifier.objrecordtype.id})">{{identifier.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:identifier.objclassification.id})">{{identifier.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:identifier.objcategory.id})">{{identifier.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:identifier.objtype.id})">{{identifier.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="asset.detail({id:identifier.asset.id})">{{identifier.asset.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="vulnerability.detail({id:identifier.vulnerability.id})">{{identifier.vulnerability.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="attackscenario.detail({id:identifier.attackscenario.id})">{{identifier.attackscenario.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="identifier.detail({id:identifier.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="identifier.edit({id:identifier.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="identifier.delete({id:identifier.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

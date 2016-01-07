@@ -4,6 +4,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,35 +31,53 @@ public class Score implements Serializable {
     private Long id;
 
     @Column(name = "value")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Double value;
 
     @Size(max = 50)
     @Column(name = "text", length = 50)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String text;
 
     @Size(max = 100)
     @Column(name = "rulename", length = 100)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String rulename;
+
+    @Column(name = "runid")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private Long runid;
+    
+    @Column(name = "rundate", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private ZonedDateTime rundate;
+
 
     @Size(max = 25)
     @Column(name = "ruleversion", length = 25)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String ruleversion;
 
     @Column(name = "details")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String details;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 
     @Column(name = "lastmodifiedby")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String lastmodifiedby;
 
     @Column(name = "lastmodifieddate", nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private ZonedDateTime lastmodifieddate;
 
     @Column(name = "domain")
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String domain;
 
     @ManyToOne
@@ -73,6 +94,9 @@ public class Score implements Serializable {
 
     @ManyToOne
     private Asset asset;
+    
+    @ManyToOne
+    private Route route;
 
     public Long getId() {
         return id;
@@ -229,5 +253,47 @@ public class Score implements Serializable {
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
+    }
+
+    /**
+     * @param runid the runid to set
+     */
+    public void setRunid(Long runid) {
+        this.runid = runid;
+    }
+
+    /**
+     * @param rundate the rundate to set
+     */
+    public void setRundate(ZonedDateTime rundate) {
+        this.rundate = rundate;
+    }
+
+    /**
+     * @return the runid
+     */
+    public Long getRunid() {
+        return runid;
+    }
+
+    /**
+     * @return the rundate
+     */
+    public ZonedDateTime getRundate() {
+        return rundate;
+    }
+
+    /**
+     * @return the route
+     */
+    public Route getRoute() {
+        return route;
+    }
+
+    /**
+     * @param route the route to set
+     */
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

@@ -17,8 +17,7 @@ angular.module('adapApp', [
                'infinite-scroll', 
                'angular-loading-bar',
                //'datatables','datatables.buttons','datatables.columnfilter','datatables.bootstrap','datatables.select',
-               'ui.grid','ui.grid.edit', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.pagination', 'ui.grid.autoResize', 'ui.grid.resizeColumns',
-               'ngTouch'
+               'ui.grid','ui.grid.edit', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.pagination', 'ui.grid.autoResize', 'ui.grid.resizeColumns'
            ])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {

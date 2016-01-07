@@ -1,0 +1,10 @@
+id,name,route_id,segmentnumber,assetorigin_id,assetdestination_id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
+5200,BOS-IAD,5200,1,5201,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5201,BOS-JFK,5200,2,5201,5203,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5202,JFK-IAD,0,1,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5203,JFK-IAD,0,2,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5204,JFK-IAD,5201,1,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5205,JFK-IAD,5201,2,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5206,JFK-IAD,1,1,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5207,JFK-IAD,1,2,5203,5202,null,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+

@@ -1,0 +1,134 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myIdentifierLabel" translate="adapApp.identifier.home.createOrEditLabel">Create or edit a Identifier</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="identifier.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.value" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                    ng-model="identifier.value"
+                    required ng-maxlength="50" />
+            <div ng-show="editForm.value.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.value.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.value.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.effectivedatetime" for="field_effectivedatetime">Effectivedatetime</label>
+            <input id="field_effectivedatetime" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="identifier.effectivedatetime" is-open="datePickerForEffectivedatetime.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForEffectivedatetimeOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.enddatetime" for="field_enddatetime">Enddatetime</label>
+            <input id="field_enddatetime" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="identifier.enddatetime" is-open="datePickerForEnddatetime.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForEnddatetimeOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="identifier.status" id="field_status" required>
+                <option value="Active" translate="adapApp.Status.Active">Active</option>
+                <option value="Pending" translate="adapApp.Status.Pending">Pending</option>
+                <option value="ToBeDeleted" translate="adapApp.Status.ToBeDeleted">ToBeDeleted</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.lastmodifiedby" for="field_lastmodifiedby">Lastmodifiedby</label>
+            <input type="text" class="form-control" name="lastmodifiedby" id="field_lastmodifiedby"
+                    ng-model="identifier.lastmodifiedby"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.lastmodifieddate" for="field_lastmodifieddate">Lastmodifieddate</label>
+            <input id="field_lastmodifieddate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="identifier.lastmodifieddate" is-open="datePickerForLastmodifieddate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForLastmodifieddateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="adapApp.identifier.domain" for="field_domain">Domain</label>
+            <input type="text" class="form-control" name="domain" id="field_domain"
+                    ng-model="identifier.domain"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="adapApp.identifier.objrecordtype" for="field_objrecordtype">objrecordtype</label>
+            <select class="form-control" id="field_objrecordtype" name="objrecordtype" ng-model="identifier.objrecordtype" ng-options="objrecordtype as objrecordtype.name for objrecordtype in objrecordtypes track by objrecordtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.objclassification" for="field_objclassification">objclassification</label>
+            <select class="form-control" id="field_objclassification" name="objclassification" ng-model="identifier.objclassification" ng-options="objclassification as objclassification.name for objclassification in objclassifications track by objclassification.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.objcategory" for="field_objcategory">objcategory</label>
+            <select class="form-control" id="field_objcategory" name="objcategory" ng-model="identifier.objcategory" ng-options="objcategory as objcategory.name for objcategory in objcategorys track by objcategory.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.objtype" for="field_objtype">objtype</label>
+            <select class="form-control" id="field_objtype" name="objtype" ng-model="identifier.objtype" ng-options="objtype as objtype.name for objtype in objtypes track by objtype.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.asset" for="field_asset">asset</label>
+            <select class="form-control" id="field_asset" name="asset" ng-model="identifier.asset" ng-options="asset as asset.name for asset in assets track by asset.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.vulnerability" for="field_vulnerability">vulnerability</label>
+            <select class="form-control" id="field_vulnerability" name="vulnerability" ng-model="identifier.vulnerability" ng-options="vulnerability as vulnerability.name for vulnerability in vulnerabilitys track by vulnerability.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.identifier.attackscenario" for="field_attackscenario">attackscenario</label>
+            <select class="form-control" id="field_attackscenario" name="attackscenario" ng-model="identifier.attackscenario" ng-options="attackscenario as attackscenario.name for attackscenario in attackscenarios track by attackscenario.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
