@@ -1,4 +1,4 @@
 id,asset_id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,isprimary,cityname,statecode,latitudedd,longitudedd,status,domain,lastmodifiedby,lastmodifieddate
-5202,5202,1010,1010,null,null,t,Washington,DC,40.639722,-73.778889,Active,DEMO,echasin,2015-01-01
-5201,5201,1010,1010,null,null,t,Boston,MA,37.618889,-122.375,Active,DEMO,echasin,2015-01-01
-5203,5203,1010,1010,null,null,t,NYC,NY,25.793333,-80.290556,Active,DEMO,echasin,2015-01-01
+5202,5202,1010,1010,null,null,t,Washington,DC,38.8514444,-77.0377222,Active,DEMO,echasin,2015-01-01
+5201,5201,1010,1010,null,null,t,Boston,MA,42.3629444,-71.0063889,Active,DEMO,echasin,2015-01-01
+5203,5203,1010,1010,null,null,t,NYC,NY,40.6399257,-73.7786950,Active,DEMO,echasin,2015-01-01

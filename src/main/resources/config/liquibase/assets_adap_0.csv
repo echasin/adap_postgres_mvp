@@ -4,6 +4,6 @@ id,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,name,nameshor
 11,10,101,null,null,Test Airport Two,null,Active,DEMO,echasin,2015-01-01,Description goes here
 12,10,101,null,null,Test Airport Three,null,Active,DEMO,echasin,2015-01-01,Description goes here
 201,10,101,null,null,Hartsfield–Jackson Atlanta International Airport,null,Active,DEMO,echasin,2015-01-01,Description goes here
-5201,10,101,101,100,Origin Airport (Development Statecode=MA),Origin Airport,Active,DEMO,echasin,2015-01-01,Description goes here
-5202,10,101,101,100,Destination Airport (Development Statecode=DC),Destination Airport,Active,DEMO,echasin,2015-01-01,Description goes here
-5203,10,101,101,100,Middle Airport (Development Statecode=NY),Middle Airport,Active,DEMO,echasin,2015-01-01,Description goes here
+5201,10,101,101,100,BOS Origin Airport,Origin Airport,Active,DEMO,echasin,2015-01-01,Description goes here
+5202,10,101,101,100,DCA Destination Airport,Destination Airport,Active,DEMO,echasin,2015-01-01,Description goes here
+5203,10,101,101,100,JFK Middle Airport,Middle Airport,Active,DEMO,echasin,2015-01-01,Description goes here
