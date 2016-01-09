@@ -27,7 +27,16 @@ angular.module('adapApp')
         //    $scope.loadAll();
         };
       //  $scope.loadAll();
-
+     	function initialize()
+       	{
+       	    $scope.map = new google.maps.Map(document.getElementById("map_canvas"),
+       	    {
+       	        zoom: 4,
+       	        center: new google.maps.LatLng(38.3629444,-97.0063889),
+       	        mapTypeId: google.maps.MapTypeId.ROADMAP  
+       	    });
+       	}
+     	
         $scope.index = function () {
         	Route.index();
         };
@@ -185,34 +194,47 @@ angular.module('adapApp')
          		$scope.data.$promise.then(function(result) {
          	    var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
-        	    $scope.mapdata=[]
-     			for(var i=0;i<$scope.gridOptions.data.length;++i){
-      				$scope.mapdata.push({origin:{latitude: $scope.gridOptions.data[i].originLocation.latitudedd,longitude: $scope.gridOptions.data[i].originLocation.longitudedd},destination: {latitude: $scope.gridOptions.data[i].destinationLocation.latitudedd,longitude: $scope.gridOptions.data[i].destinationLocation.longitudedd}})
-     			}
-                  arcs.arc($scope.mapdata);
+              	initialize();
+        	    for(var i=0;i<$scope.gridOptions.data.length;++i){
+      			  var route =
+                 	    [
+                 	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
+                 	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
+                	    ];   
+      			  
+          	      var path = new google.maps.Polyline(
+                 	    {
+                 	        path: route,
+                 	        strokeColor: "red",
+                 	        strokeOpacity: 0.75,
+                 	        strokeWeight: 2,
+                 	        geodesic: true   
+                 	      });
+               	    path.setMap($scope.map);
+     			  }
            		 });
              }
             	 
        	  getPage();
 
        	 function getPagesearch() {
+       		initialize();
   	    	$scope.gridOptions.data = $scope.searchdata.slice((paginationOptions.pageNumber - 1) * paginationOptions.pageSize, ((paginationOptions.pageNumber - 1) * paginationOptions.pageSize) + paginationOptions.pageSize);
-  	    	$scope.mapdata=[]
  			for(var i=0;i<$scope.gridOptions.data.length;++i){
-  				$scope.mapdata.push({origin:{latitude: $scope.gridOptions.data[i].originLocation.latitudedd,longitude: $scope.gridOptions.data[i].originLocation.longitudedd},destination: {latitude: $scope.gridOptions.data[i].destinationLocation.latitudedd,longitude: $scope.gridOptions.data[i].destinationLocation.longitudedd}})
- 			}
-              arcs.arc($scope.mapdata);
+ 				var route =
+             	    [
+             	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
+             	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
+            	    ];   
+  			  
+      	      var path = new google.maps.Polyline(
+             	    {
+             	        path: route,
+             	        strokeColor: "red",
+             	        strokeOpacity: 0.75,
+             	        strokeWeight: 2,
+             	        geodesic: true   
+             	      });
+           	    path.setMap($scope.map); 			}
          }
-       	 
-       	 var arcs = new Datamap({
-             element: document.getElementById("arcs"),
-             scope: 'usa',
-             height: 300,
-             width: 700,
-             fills: {
-             defaultFill: "#ABDDA4",
-             win: '#0fa0fa'
-           }
-        });
-
     });
