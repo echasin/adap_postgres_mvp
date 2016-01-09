@@ -11,15 +11,15 @@ public class RouteUtil {
 	private Location originLocation;
 	private Location destinationLocation;
 	private String segmentName;
+	private double averageScore; 
 	
 	public RouteUtil() {
 		super();
 	}
 	
 	
-	
 	public RouteUtil(long routeId, String routName, String originName, String destinationName, Location originLocation,
-			Location destinationLocation, String segmentName) {
+			Location destinationLocation, String segmentName, double averageScore) {
 		super();
 		this.routeId = routeId;
 		this.routName = routName;
@@ -28,8 +28,8 @@ public class RouteUtil {
 		this.originLocation = originLocation;
 		this.destinationLocation = destinationLocation;
 		this.segmentName = segmentName;
+		this.averageScore = averageScore;
 	}
-
 
 
 	public long getRouteId() {
@@ -107,13 +107,27 @@ public class RouteUtil {
 	public void setSegmentName(String segmentName) {
 		this.segmentName = segmentName;
 	}
+	
+	
+	public double getAverageScore() {
+		return averageScore;
+	}
+
+
+	public void setAverageScore(double averageScore) {
+		this.averageScore = averageScore;
+	}
+
 
 	@Override
 	public String toString() {
 		return "RouteUtil [routeId=" + routeId + ", routName=" + routName + ", originName=" + originName
 				+ ", destinationName=" + destinationName + ", originLocation=" + originLocation
-				+ ", destinationLocation=" + destinationLocation + ", segmentName=" + segmentName + "]";
+				+ ", destinationLocation=" + destinationLocation + ", segmentName=" + segmentName + ", averageScore="
+				+ averageScore + "]";
 	}
+
+
 
 	
 }

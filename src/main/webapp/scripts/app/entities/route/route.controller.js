@@ -113,6 +113,7 @@ angular.module('adapApp')
        	                 { field: 'routName', displayName: 'Route Name', enableSorting: true },
                          { field: 'originName', displayName: 'origin', enableSorting: true },
                          { field: 'destinationName', displayName: 'destination', enableSorting: true },
+                         { field: 'averageScore', displayName: 'averageScore', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
@@ -201,11 +202,19 @@ angular.module('adapApp')
                  	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
                  	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
                 	    ];   
-      			  
+      			  var color;
+      		    	if ($scope.gridOptions.data[i].averageScore <= 5) {
+      			    color = "green";
+      			 }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
+      				 color = "yellow";
+				 }else if ($scope.gridOptions.data[i].averageScore > 7.5){
+					 color = "red";
+				 }
+      		    	
           	      var path = new google.maps.Polyline(
                  	    {
                  	        path: route,
-                 	        strokeColor: "red",
+                 	        strokeColor: color,
                  	        strokeOpacity: 0.75,
                  	        strokeWeight: 2,
                  	        geodesic: true   
@@ -226,11 +235,18 @@ angular.module('adapApp')
              	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
              	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
             	    ];   
-  			  
+ 				  var color;
+    		    	if ($scope.gridOptions.data[i].averageScore <= 5) {
+    			    color = "green";
+    			 }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
+    				 color = "yellow";
+				 }else if ($scope.gridOptions.data[i].averageScore > 7.5){
+					 color = "red";
+				 }
       	      var path = new google.maps.Polyline(
              	    {
              	        path: route,
-             	        strokeColor: "red",
+             	        strokeColor: color,
              	        strokeOpacity: 0.75,
              	        strokeWeight: 2,
              	        geodesic: true   
