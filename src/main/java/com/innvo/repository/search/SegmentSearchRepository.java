@@ -13,10 +13,8 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  */
 public interface SegmentSearchRepository extends ElasticsearchRepository<Segment, Long> {
 	
-//	@Query("SELECT u FROM Segment u WHERE u.segmentnumber = (SELECT MAX(u.segmentnumber) FROM Segment u) AND u.route.id=:routeId")
-//	@Query(value="{\"bool\":{\"must\":{\"term\":{\"name\":\"?0\"}}}}")
 //  @Query(value="{\"sort\": { \"id\" : {\"order\" : \"desc\"}},\"bool\" : {\"match_all\" : {}}}")
 //	@Query(value="{\"aggs\":{\"max_id\":{\"max\":{\"field\":\"id\"}}}}")
-	@Query("{\"bool\":{\"must\":{\"term\":{\"route.id\":\"?0\"}}}},\"sort\":{\"segmentnumber\":{\"order\":\"desc\"}}")
+	@Query(value="{\"bool\":{\"must\":{\"term\":{\"route.id\":\"?0\"}}}}")
 	Segment findByRouteIdAndSegmentnumber(long routeId);
 }

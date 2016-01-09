@@ -13,8 +13,11 @@ import org.springframework.data.repository.query.Param;
 public interface SegmentRepository extends JpaRepository<Segment,Long> {
 	
 	 Page<Segment> findByDomain(String domain,Pageable pageable);
-	 @Query("SELECT u FROM Segment u WHERE u.segmentnumber = (SELECT MAX(u.segmentnumber) FROM Segment u) AND u.route.id=:routeId")
-	 Segment findByRouteIdAndSegmentnumber(@Param("routeId") long routeId);
+	 @Query("SELECT MAX(u.segmentnumber) FROM Segment u WHERE u.route.id=:routeId")
+	 long getMaxSegmentnumberByRouteId(@Param("routeId") long routeId);
+	 @Query("SELECT MIN(u.segmentnumber) FROM Segment u WHERE u.route.id=:routeId")
+	 long getMinSegmentnumberByRouteId(@Param("routeId") long routeId);
+	 Segment findByRouteIdAndSegmentnumber(long routeId,long segmentNumber);
  	 long countByDomain(String domain); 
 
 }
