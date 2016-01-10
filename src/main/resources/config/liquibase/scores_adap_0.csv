@@ -12,3 +12,5 @@ id,route_id,value,text,runid,rundate,rulename,objrecordtype_id,objclassification
 5220,5201,5.5,null,2,2016-01-01 00:00:00,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
 5221,5201,3.5,null,2,2016-01-01 00:00:00,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
 5222,5201,7.5,null,2,2016-01-01 00:00:00,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5223,5202,8.0,null,2,2016-01-01 00:00:00,Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5224,5205,2.0,null,2,2016-01-01 00:00:00,Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
