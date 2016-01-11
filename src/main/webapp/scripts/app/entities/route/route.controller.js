@@ -221,6 +221,21 @@ angular.module('adapApp')
               	        strokeWeight: 2,
               	        geodesic: true   
               	      });
+         	 	    var mapLabelorigin = new MapLabel({
+              	        text: $scope.gridOptions.data[i].originName,
+              	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
+              	        map: $scope.map,
+              	        fontSize: 15,
+              	        align: 'right'
+              	    });
+         	 	    
+         	 	  var mapLabeldestination = new MapLabel({
+            	        text: $scope.gridOptions.data[i].destinationName,
+            	        position: new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd, $scope.gridOptions.data[i].destinationLocations[j].longitudedd),
+            	        map: $scope.map,
+            	        fontSize: 15,
+            	        align: 'right'
+            	    });
            	    path.setMap($scope.map); 
         	    }
      		}
