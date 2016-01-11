@@ -1,5 +1,7 @@
 package com.innvo.web.rest.util;
 
+import java.util.List;
+
 import com.innvo.domain.Location;
 
 public class RouteUtil {
@@ -12,6 +14,8 @@ public class RouteUtil {
 	private Location destinationLocation;
 	private String segmentName;
 	private double averageScore; 
+	private List<Location> originLocations;
+	private List<Location> destinationLocations;
 	
 	public RouteUtil() {
 		super();
@@ -19,7 +23,8 @@ public class RouteUtil {
 	
 	
 	public RouteUtil(long routeId, String routName, String originName, String destinationName, Location originLocation,
-			Location destinationLocation, String segmentName, double averageScore) {
+			Location destinationLocation, String segmentName, double averageScore, List<Location> originLocations,
+			List<Location> destinationLocations) {
 		super();
 		this.routeId = routeId;
 		this.routName = routName;
@@ -29,6 +34,8 @@ public class RouteUtil {
 		this.destinationLocation = destinationLocation;
 		this.segmentName = segmentName;
 		this.averageScore = averageScore;
+		this.originLocations = originLocations;
+		this.destinationLocations = destinationLocations;
 	}
 
 
@@ -119,15 +126,35 @@ public class RouteUtil {
 	}
 
 
+	public List<Location> getOriginLocations() {
+		return originLocations;
+	}
+
+
+	public void setOriginLocations(List<Location> originLocations) {
+		this.originLocations = originLocations;
+	}
+
+
+	public List<Location> getDestinationLocations() {
+		return destinationLocations;
+	}
+
+
+	public void setDestinationLocations(List<Location> destinationLocations) {
+		this.destinationLocations = destinationLocations;
+	}
+
+
 	@Override
 	public String toString() {
 		return "RouteUtil [routeId=" + routeId + ", routName=" + routName + ", originName=" + originName
 				+ ", destinationName=" + destinationName + ", originLocation=" + originLocation
 				+ ", destinationLocation=" + destinationLocation + ", segmentName=" + segmentName + ", averageScore="
-				+ averageScore + "]";
+				+ averageScore + ", originLocations=" + originLocations + ", destinationLocations="
+				+ destinationLocations + "]";
 	}
 
-
-
+	
 	
 }

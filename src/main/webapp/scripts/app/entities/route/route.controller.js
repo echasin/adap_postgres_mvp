@@ -197,32 +197,35 @@ angular.module('adapApp')
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
               	initialize();
         	    for(var i=0;i<$scope.gridOptions.data.length;++i){
-      			  var route =
-                 	    [
-                 	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
-                 	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
-                	    ];   
+        	    	console.log("5555555555555555555555555000000000000")
+        	    	console.log($scope.gridOptions.data[i]);
+        	    	for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
+        	    		console.log($scope.gridOptions.data[i].destinationLocations[j].latitudedd);
+      			  $scope.route =[
+                 	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
+                 	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
+                	    ];  
       			  var color;
-      		    	if ($scope.gridOptions.data[i].averageScore <= 5) {
-      			    color = "green";
-      			 }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
-      				 color = "yellow";
-				 }else if ($scope.gridOptions.data[i].averageScore > 7.5){
-					 color = "red";
-				 }
-      		    	
-          	      var path = new google.maps.Polyline(
-                 	    {
-                 	        path: route,
-                 	        strokeColor: color,
-                 	        strokeOpacity: 0.75,
-                 	        strokeWeight: 2,
-                 	        geodesic: true   
-                 	      });
-               	    path.setMap($scope.map);
-     			  }
-           		 });
-             }
+   		    	  if ($scope.gridOptions.data[i].averageScore <= 5) {
+   			      color = "green";
+   			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
+   				    color = "yellow";
+				   } else if ($scope.gridOptions.data[i].averageScore > 7.5){
+				    color = "red";
+				  }
+       	          var path = new google.maps.Polyline(
+              	    {
+              	        path: $scope.route,
+              	        strokeColor: color,
+              	        strokeOpacity: 0.75,
+              	        strokeWeight: 2,
+              	        geodesic: true   
+              	      });
+           	    path.setMap($scope.map); 
+        	    }
+     		}
+        });
+     }
             	 
        	  getPage();
 
@@ -251,6 +254,7 @@ angular.module('adapApp')
              	        strokeWeight: 2,
              	        geodesic: true   
              	      });
+              
            	    path.setMap($scope.map); 			}
          }
     });

@@ -1,6 +1,9 @@
 package com.innvo.repository;
 
 import com.innvo.domain.Segment;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -18,6 +21,7 @@ public interface SegmentRepository extends JpaRepository<Segment,Long> {
 	 @Query("SELECT MIN(u.segmentnumber) FROM Segment u WHERE u.route.id=:routeId")
 	 long getMinSegmentnumberByRouteId(@Param("routeId") long routeId);
 	 Segment findByRouteIdAndSegmentnumber(long routeId,long segmentNumber);
+	 List<Segment> findByRouteId(long routeId);
  	 long countByDomain(String domain); 
 
 }

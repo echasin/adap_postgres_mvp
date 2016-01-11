@@ -51,6 +51,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -191,10 +192,21 @@ public class RouteResource {
         	 maxSegmentNumber=segmentRepository.getMaxSegmentnumberByRouteId(route.getId());
         	 firstSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
         	 lastSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), maxSegmentNumber);
-                    	 
+             List<Segment> segments=segmentRepository.findByRouteId(route.getId());       	 
              Location location1=locationRepository.findByAssetId(firstSegment.getAssetorigin().getId());
              Location location2=locationRepository.findByAssetId(lastSegment.getAssetdestination().getId());
-            
+             List<Location> originLocations=new ArrayList<Location>();
+             List<Location> destinationLocations=new ArrayList<Location>();
+             
+             for(Segment segment:segments){
+             Location getOriginLocations=locationRepository.findByAssetId(segment.getAssetorigin().getId());
+             Location getDestinationLocations=locationRepository.findByAssetId(segment.getAssetdestination().getId());
+             originLocations.add(getOriginLocations);
+             destinationLocations.add(getDestinationLocations);
+             routeUtil.setOriginLocations(originLocations);
+             routeUtil.setDestinationLocations(destinationLocations);
+             
+             }
              double sum=0;
              double averageScore;
              ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(route.getId());

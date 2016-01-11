@@ -17,5 +17,8 @@ public interface LocationRepository extends JpaRepository<Location,Long> {
 	 @Query("SELECT u FROM Location u WHERE u.asset.id=:assetId")
      Set<Location> findByAssetIds(@Param("assetId")long aseetId);
 
-      Location findByAssetId(long aseetId);
+	 @Query("SELECT u FROM Location u WHERE u.asset.id=:assetId")
+     List<Location> findByAssets(@Param("assetId")long aseetId);
+
+	 Location findByAssetId(long aseetId);
 }
