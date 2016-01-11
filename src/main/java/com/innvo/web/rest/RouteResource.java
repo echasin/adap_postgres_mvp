@@ -210,12 +210,20 @@ public class RouteResource {
              double sum=0;
              double averageScore;
              ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(route.getId());
-             long runid=scoreRepository.findMaxRunid(lastmodifieddate,route.getId());
-             List<Score> scores=scoreRepository.findByRunidAndRouteId(runid, route.getId());
-             for(Score score:scores){
-            	 sum=sum+score.getValue();
+             if(lastmodifieddate==null){
+            	 averageScore=Double.NaN;
              }
-             averageScore=sum/scores.size();
+            	 else {
+            	 long runid=scoreRepository.findMaxRunid(lastmodifieddate,route.getId());
+                 List<Score> scores=scoreRepository.findByRunidAndRouteId(runid, route.getId());
+                 System.out.println(route.getId());
+                 System.out.println(scores);
+                 for(Score score:scores){
+                	 sum=sum+score.getValue();
+                 }
+                 averageScore=sum/scores.size();
+             }
+            
              
              routeUtil.setRouteId(route.getId());
              routeUtil.setRoutName(route.getName());

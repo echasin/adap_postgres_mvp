@@ -197,8 +197,6 @@ angular.module('adapApp')
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
               	initialize();
         	    for(var i=0;i<$scope.gridOptions.data.length;++i){
-        	    	console.log("5555555555555555555555555000000000000")
-        	    	console.log($scope.gridOptions.data[i]);
         	    	for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
         	    		console.log($scope.gridOptions.data[i].destinationLocations[j].latitudedd);
       			  $scope.route =[
@@ -206,13 +204,15 @@ angular.module('adapApp')
                  	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
                 	    ];  
       			  var color;
-   		    	  if ($scope.gridOptions.data[i].averageScore <= 5) {
-   			      color = "green";
+   		    	  if (isNaN($scope.gridOptions.data[i].averageScore)) {
+   			        color = "#000000";
    			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
-   				    color = "yellow";
+   				    color = "#ffff00";
 				   } else if ($scope.gridOptions.data[i].averageScore > 7.5){
-				    color = "red";
-				  }
+				    color = "#ff4000";
+				  }else if ($scope.gridOptions.data[i].averageScore <=5) {
+					color = "#00ff00";
+				 } 
        	          var path = new google.maps.Polyline(
               	    {
               	        path: $scope.route,
@@ -225,7 +225,7 @@ angular.module('adapApp')
               	        text: $scope.gridOptions.data[i].originName,
               	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
               	        map: $scope.map,
-              	        fontSize: 15,
+              	        fontSize: 30,
               	        align: 'right'
               	    });
          	 	    
