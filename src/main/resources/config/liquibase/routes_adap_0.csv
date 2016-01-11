@@ -1,5 +1,6 @@
 id,name,description,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
 5200,BOS-DCA Single Segment,Develop record to plot single segment on Google Maps using development data,5200,5200,5200,5200,Active,system,2015-07-26 11:50:15,DEMO
 5201,BOS-ORD-DCA MultiSegment Route,Mutli Segement Route ,5200,5200,5200,5201,Active,system,2015-07-26 11:50:15,DEMO
+5206,BOS-ORD-DCA-JFK MultiSegment Route,Mutli Segement Route ,5200,5200,5200,5201,Active,system,2015-07-26 11:50:15,DEMO
 5202,JFK-DCA Single Segment,Single Segment,5200,5200,5200,5201,Active,system,2015-07-26 11:50:15,DEMO
 5205,BOS-JFK-Single Segment,Single Segment,5200,5200,5200,5201,Active,system,2015-07-26 11:50:15,DEMO

@@ -4,3 +4,6 @@ id,name,route_id,segmentnumber,assetorigin_id,assetdestination_id,objrecordtype_
 5203,BOS-ORD,5201,1,5201,5204,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
 5204,ORD-DCA,5201,2,5204,5202,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
 5205,BOS-JFK,5205,1,5201,5203,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
+52061,BOS-ORD,5206,1,5201,5204,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
+52062,ORD-DCA,5206,2,5204,5202,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
+52063,DCA-JFK,5206,3,5202,5203,null,null,null,null,Active,system,7/26/2015 11:50,DEMO
