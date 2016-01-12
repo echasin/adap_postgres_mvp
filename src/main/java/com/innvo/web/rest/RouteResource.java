@@ -228,7 +228,7 @@ public class RouteResource {
              routeUtil.setRouteId(route.getId());
              routeUtil.setRoutName(route.getName());
              routeUtil.setOriginName(firstSegment.getAssetorigin().getName());
-             routeUtil.setDestinationName(lastSegment.getAssetorigin().getName());
+             routeUtil.setDestinationName(lastSegment.getAssetdestination().getName());
              routeUtil.setOriginLocation(location1);
              routeUtil.setDestinationLocation(location2);
              routeUtil.setAverageScore(averageScore);

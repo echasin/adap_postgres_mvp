@@ -204,14 +204,15 @@ angular.module('adapApp')
                  	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
                 	    ];  
       			  var color;
+      			  console.log("id "+$scope.gridOptions.data[i].routeId+"/////////averageScore "+$scope.gridOptions.data[i].averageScore)
    		    	  if (isNaN($scope.gridOptions.data[i].averageScore)) {
-   			        color = "#000000";
-   			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
-   				    color = "#ffff00";
+   			      color = "black";
+   			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore > 5) {
+   				    color = "yellow";
 				   } else if ($scope.gridOptions.data[i].averageScore > 7.5){
-				    color = "#ff4000";
-				  }else if ($scope.gridOptions.data[i].averageScore <=5) {
-					color = "#00ff00";
+				    color = "red";
+				  }else if ($scope.gridOptions.data[i].averageScore <= 5) {
+					  color = "green";
 				 } 
        	          var path = new google.maps.Polyline(
               	    {
@@ -229,13 +230,6 @@ angular.module('adapApp')
               	        align: 'right'
               	    });
          	 	    
-         	 	  var mapLabeldestination = new MapLabel({
-            	        text: $scope.gridOptions.data[i].destinationName,
-            	        position: new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd, $scope.gridOptions.data[i].destinationLocations[j].longitudedd),
-            	        map: $scope.map,
-            	        fontSize: 15,
-            	        align: 'right'
-            	    });
            	    path.setMap($scope.map); 
         	    }
      		}
