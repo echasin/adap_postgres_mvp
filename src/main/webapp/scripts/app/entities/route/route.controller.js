@@ -190,21 +190,50 @@ angular.module('adapApp')
           	  }
        	  
        	  getData();
-       	        	           	   
+	    	
+       	  function isInArray(value, array) {
+	         	  return array.indexOf(value) > -1;
+	         	}
+	    	
          	  function getPage() {
          		$scope.data.$promise.then(function(result) {
          	    var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
               	initialize();
-        	    for(var i=0;i<$scope.gridOptions.data.length;++i){
-        	    	for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
-        	    		console.log($scope.gridOptions.data[i].destinationLocations[j].latitudedd);
-      			  $scope.route =[
+              	var points=[];
+        	    for(var i=0;i<$scope.gridOptions.data.length;++i){        	    	
+        	       for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
+        	    	$scope.route =[
                  	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
                  	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
-                	    ];  
+                	    ];         	    	        	    	
+        	    	console.log(points)
+        	    	  if(isInArray($scope.gridOptions.data[i].originLocations[j].id,points)){
+                       }
+        	    	  else{
+                      	points.push($scope.gridOptions.data[i].originLocations[j].id);
+                        var mapLabelorigin = new MapLabel({
+                 	        text: $scope.gridOptions.data[i].originNames[j],
+                 	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
+                 	        map: $scope.map,
+                 	        fontSize: 15,
+                 	        align: 'right'
+                 	    });
+                      }
+        	    	
+        	    	  if(isInArray($scope.gridOptions.data[i].destinationLocations[j].id,points)){
+        	             }
+        		    	  else{
+        	            	points.push($scope.gridOptions.data[i].destinationLocations[j].id);
+        	              var mapLabelorigin = new MapLabel({
+        	       	        text: $scope.gridOptions.data[i].destinationNames[j],
+        	       	        position: new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd, $scope.gridOptions.data[i].destinationLocations[j].longitudedd),
+        	       	        map: $scope.map,
+        	       	        fontSize: 15,
+        	       	        align: 'right'
+        	       	    });
+        	            }
       			  var color;
-      			  console.log("id "+$scope.gridOptions.data[i].routeId+"/////////averageScore "+$scope.gridOptions.data[i].averageScore)
    		    	  if (isNaN($scope.gridOptions.data[i].averageScore)) {
    			      color = "black";
    			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore > 5) {
@@ -222,14 +251,7 @@ angular.module('adapApp')
               	        strokeWeight: 2,
               	        geodesic: true   
               	      });
-         	 	    var mapLabelorigin = new MapLabel({
-              	        text: $scope.gridOptions.data[i].originName,
-              	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
-              	        map: $scope.map,
-              	        fontSize: 30,
-              	        align: 'right'
-              	    });
-         	 	    
+       	       
            	    path.setMap($scope.map); 
         	    }
      		}
@@ -240,30 +262,64 @@ angular.module('adapApp')
 
        	 function getPagesearch() {
        		initialize();
+       		var points=[];
   	    	$scope.gridOptions.data = $scope.searchdata.slice((paginationOptions.pageNumber - 1) * paginationOptions.pageSize, ((paginationOptions.pageNumber - 1) * paginationOptions.pageSize) + paginationOptions.pageSize);
  			for(var i=0;i<$scope.gridOptions.data.length;++i){
- 				var route =
-             	    [
-             	        new google.maps.LatLng($scope.gridOptions.data[i].originLocation.latitudedd,$scope.gridOptions.data[i].originLocation.longitudedd),
-             	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocation.latitudedd,$scope.gridOptions.data[i].destinationLocation.longitudedd),
-            	    ];   
- 				  var color;
-    		    	if ($scope.gridOptions.data[i].averageScore <= 5) {
-    			    color = "green";
-    			 }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore >5) {
-    				 color = "yellow";
-				 }else if ($scope.gridOptions.data[i].averageScore > 7.5){
-					 color = "red";
-				 }
-      	      var path = new google.maps.Polyline(
+ 				
+              
+     	       for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
+       	    	$scope.route =[
+                	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
+                	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
+               	    ];         	    	        	    	
+       	    	console.log(points)
+       	    	  if(isInArray($scope.gridOptions.data[i].originLocations[j].id,points)){
+                      }
+       	    	  else{
+                     	points.push($scope.gridOptions.data[i].originLocations[j].id);
+                       var mapLabelorigin = new MapLabel({
+                	        text: $scope.gridOptions.data[i].originNames[j],
+                	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
+                	        map: $scope.map,
+                	        fontSize: 15,
+                	        align: 'right'
+                	    });
+                     }
+       	    	
+       	     if(isInArray($scope.gridOptions.data[i].destinationLocations[j].id,points)){
+             }
+	    	  else{
+            	points.push($scope.gridOptions.data[i].destinationLocations[j].id);
+              var mapLabelorigin = new MapLabel({
+       	        text: $scope.gridOptions.data[i].destinationNames[j],
+       	        position: new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd, $scope.gridOptions.data[i].destinationLocations[j].longitudedd),
+       	        map: $scope.map,
+       	        fontSize: 15,
+       	        align: 'right'
+       	    });
+            }
+     			  var color;
+  		    	  if (isNaN($scope.gridOptions.data[i].averageScore)) {
+  			      color = "black";
+  			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore > 5) {
+  				    color = "yellow";
+				   } else if ($scope.gridOptions.data[i].averageScore > 7.5){
+				    color = "red";
+				  }else if ($scope.gridOptions.data[i].averageScore <= 5) {
+					  color = "green";
+				 } 
+      	          var path = new google.maps.Polyline(
              	    {
-             	        path: route,
+             	        path: $scope.route,
              	        strokeColor: color,
              	        strokeOpacity: 0.75,
              	        strokeWeight: 2,
              	        geodesic: true   
              	      });
-              
-           	    path.setMap($scope.map); 			}
+      	       
+          	    path.setMap($scope.map); 
+       	    }		
+           	    
+ 			}
          }
     });
