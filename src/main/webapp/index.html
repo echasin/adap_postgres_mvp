@@ -24,6 +24,7 @@
 
         <!-- DATATABLES:css -->  
         <!--<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css"/>
+    
         <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css"/>
         <link rel="stylesheet" href="bower_components/datatables-buttons/css/buttons.dataTables.scss">
         <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.responsive.css">
@@ -45,6 +46,9 @@
 
         <!-- Main Querybuilder:CSS files -->
         <link rel="stylesheet" href="bower_components/querybuilder/css/query-builder.default.css" />
+ 
+        <link href="http://cdn-na.infragistics.com/igniteui/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
+        <link href="http://cdn-na.infragistics.com/igniteui/latest/css/structure/infragistics.css" rel="stylesheet"></link>
 
         <!-- endbuild -->
     </head>
@@ -98,6 +102,7 @@
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+        
         <script src="bower_components/modernizr/modernizr.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
 
@@ -170,7 +175,12 @@
         <script src="bower_components/map/maplabel-compiled.js"></script>
         <script src="bower_components/map/latlon.js"></script>
         <script src="bower_components/map/dms.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/infragistics.lob.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/extensions/igniteui-angular.js"></script>
 
 
         <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
@@ -335,6 +345,7 @@
         <script src="scripts/app/entities/route/route-dialog.controller.js"></script>
         <script src="scripts/app/entities/route/route-delete-dialog.controller.js"></script>
         <script src="scripts/app/entities/route/route-detail.controller.js"></script>
+        <script src="scripts/app/entities/route/route-score-detail.controller.js"></script>
         <script src="scripts/components/entities/route/route.service.js"></script>
         <script src="scripts/components/entities/route/route.search.service.js"></script>
 

@@ -109,11 +109,16 @@ angular.module('adapApp')
        	    useExternalPagination: true,
        	    useExternalSorting: false,
        	    columnDefs: [
-       	                 { field: 'routeId',  displayName: 'Route Id', width: 60, enableSorting: true },
+       	                 { name: 'routeId',
+       	                   cellTemplate:' <a ui-sref="route.detail({id:row.entity.routeId})">{{row.entity.routeId}}</a>'
+       	                 },
        	                 { field: 'routName', displayName: 'Route Name', enableSorting: true },
                          { field: 'originName', displayName: 'origin', enableSorting: true },
                          { field: 'destinationName', displayName: 'destination', enableSorting: true },
                          { field: 'averageScore', displayName: 'averageScore', enableSorting: true },
+                         { name: 'averageScore',
+         	                   cellTemplate:' <a ui-sref="route.score({id:row.entity.routeId})">{{row.entity.averageScore}}</a>'
+         	                 },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
@@ -135,9 +140,10 @@ angular.module('adapApp')
        	      $scope.gridApi.core.on.filterChanged( $scope, function() {
        	    	if($scope.searchdata != null && $scope.searchdata.length > 0){
        	    		 $scope.gridOptions.data = $scope.searchdata; 
-       	       }else{
+       	    	}else{
                       $scope.gridOptions.data = $scope.data;        	    		  
                }
+       	    	
 
        	      });
        	      gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {

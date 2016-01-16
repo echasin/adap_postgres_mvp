@@ -2,19 +2,20 @@ package com.innvo.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
 import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
-
+import com.innvo.json.StringJsonUserType;
 import com.innvo.domain.enumeration.Status;
 
 /**
@@ -24,6 +25,7 @@ import com.innvo.domain.enumeration.Status;
 @Table(name = "score")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "score")
+@TypeDefs({@TypeDef(name = "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class Score implements Serializable {
 
     @Id
@@ -60,6 +62,7 @@ public class Score implements Serializable {
 
     @Column(name = "details")
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    @Type(type = "StringJsonObject")
     private String details;
 
     @NotNull

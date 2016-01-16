@@ -36,6 +36,7 @@ import java.net.URISyntaxException;
 import java.security.Principal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -189,6 +190,39 @@ public class ScoreResource {
                 score,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    
+    /**
+     * GET  /scores/averageScore/:id -> get averageScore by id.
+     */
+    @RequestMapping(value = "/averageScore/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Score>> getAverageScore(@PathVariable Long id) {
+    	 double sum=0;
+         double averageScore;
+         List<Score> scores=new ArrayList<Score>();
+         long runid;
+         ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(id);
+         if(lastmodifieddate==null){
+        	 averageScore=Double.NaN;
+         }
+        	 else {
+        	 runid=scoreRepository.findMaxRunid(lastmodifieddate,id);
+             scores=scoreRepository.findByRunidAndRouteId(runid, id);
+             System.out.println(id);
+             System.out.println(scores);
+             for(Score score:scores){
+            	 sum=sum+score.getValue();
+             }
+             averageScore=sum/scores.size();
+         }
+         return Optional.ofNullable(scores)
+                 .map(score -> new ResponseEntity<>(
+                     score,
+                     HttpStatus.OK))
+                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**

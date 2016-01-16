@@ -14,7 +14,8 @@ angular.module('adapApp', [
                'ngAria',
                'ngCacheBuster',
                'ngFileUpload', 
-               'infinite-scroll', 
+               'infinite-scroll',
+               'igniteui-directives',
                'angular-loading-bar',
                //'datatables','datatables.buttons','datatables.columnfilter','datatables.bootstrap','datatables.select',
                'ui.grid','ui.grid.edit', 'ui.grid.selection', 'ui.grid.exporter', 'ui.grid.pagination', 'ui.grid.autoResize', 'ui.grid.resizeColumns'
