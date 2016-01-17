@@ -33,8 +33,8 @@ angular.module('adapApp')
        	    {
        	        zoom: 4,
        	        center: new google.maps.LatLng(38.3629444,-97.0063889),
-       	        mapTypeId: google.maps.MapTypeId.ROADMAP  
-       	    });
+       	        mapTypeId: google.maps.MapTypeId.ROADMAP
+       	    })         
        	}
      	
         $scope.index = function () {
