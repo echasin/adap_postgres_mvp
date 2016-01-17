@@ -1,7 +1,42 @@
 <!-- <button id="index" ng-click="index()">index</button>  -->
 <div>
-    <h2 translate="adapApp.route.home.title">Routes</h2>
-    <jh-alert></jh-alert>
+    <!-- <row>
+        <div class="col-md-3">
+            <h2 translate="adapApp.route.home.title">Routes</h2>
+            <jh-alert></jh-alert>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" ui-sref="route.new">
+                <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
+            </button>
+        </div>  
+        <div class="col-md-4">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                </div>
+                <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Route</span>
+                </button>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group m-b">
+                <div class="input-group-btn">                                       
+                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="executefilter()">Execute Filter</a></li>
+                        <li><a ng-click="editfilter()">Edit Filter</a></li>
+                        <li><a href="#">New Filter</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <select class="form-control input" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                </select>
+            </div>
+        </div>
+    </row>
+    -->
     <div class="container">
         <div class="row">
             <!--
@@ -14,7 +49,7 @@
                  <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
              </button>
          </div>
-
+    
                
                   <div class="col-md-8">
                       <form name="searchForm" class="form-inline">
@@ -63,15 +98,46 @@
             <div class="col-lg-12">
                 <div class="tabs-container">
                     <tabset>
-                        <tab heading="First Tab">
+                        <tab heading="Route Home"  >
                             <div class="panel-body">
                                 <div class="col-sm-3">
                                     <ul class="list-group clear-list m-t">
+                                        <!--  <li class="list-group-item fist-item"> 
+                                             <div class="form-group">
+                                                 <div class="input-group m-b">
+                                                     <div class="input-group-btn">                                       
+                                                         <button aria-expanded="false" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
+                                                         <ul class="dropdown-menu">
+                                                             <li><a ng-click="executefilter()">Execute Filter</a></li>
+                                                             <li><a ng-click="editfilter()">Edit Filter</a></li>
+                                                             <li><a href="#">New Filter</a></li>
+                                                             <li class="divider"></li>
+                                                             <li><a href="#">Separated link</a></li>
+                                                         </ul>
+                                                     </div>
+                                                     <select class="form-control input-sm" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                                                     </select>
+                                                 </div>
+                                             </div>
+                                         </li>
+                                        -->
+                                        <li class="list-group-item">
+                                            <strong>Actions</strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" placeholder="Find a Route">
+                                                <span class="input-group-btn">
+                                                    <button class="btn-sm btn-primary" type="button">go! </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <!-- <li class="list-group-item"> -->
                                         <li class="list-group-item fist-item"> 
                                             <div class="form-group">
                                                 <div class="input-group m-b">
                                                     <div class="input-group-btn">                                       
-                                                        <button aria-expanded="false" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
+                                                        <button aria-expanded="false" data-toggle="dropdown" class="btn-sm btn-primary dropdown-toggle" type="button">Apply a Filter <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
                                                             <li><a ng-click="executefilter()">Execute Filter</a></li>
                                                             <li><a ng-click="editfilter()">Edit Filter</a></li>
@@ -80,31 +146,35 @@
                                                             <li><a href="#">Separated link</a></li>
                                                         </ul>
                                                     </div>
-                                                    <select class="form-control input" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                                                    <select class="form-control input-sm" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
                                                     </select>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item">
-                                            <strong> Recent Activity</strong>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="pull-right">
-                                                01/01/2015 08:22 pm
-                                            </span>
-                                            <span class="label label-primary">1</span> Asset One
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="pull-right">
-                                                01/01/2015 11:06 pm
-                                            </span>
-                                            <span class="label label-default">2</span> Organization Three
-                                        </li>
-                                        <li class="list-group-item">
+
+                                        <!-- <span class="pull-right">
+                                            01/01/2015 11:06 pm
+                                        </span>
+                                        <span class="label label-default">2</span> Organization Three
+                                        -->
+                                        <!-- </li> -->
+
+                                        <!-- <li class="list-group-item">
                                             <span class="pull-right">
                                                 01/01/2015 12:00 am
                                             </span>
                                             <span class="label label-primary">3</span> Contact Five
+                                        </li>
+                                        -->
+                                        <li class="list-group-item">
+                                            <!--<span class="pull-right">
+                                                01/01/2015 08:22 pm
+                                            </span>
+                                            -->
+                                            <!-- <span class="label label-primary" ui-sref="route.new">Create a Route </span> -->
+                                            <button class="btn-sm btn-primary" ui-sref="route.new">
+                                                <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
