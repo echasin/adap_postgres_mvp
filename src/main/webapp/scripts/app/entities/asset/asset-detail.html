@@ -1,6 +1,37 @@
 <div>
     <!--<h2><span translate="adapApp.asset.detail.title">Asset</span> {{asset.id}}</h2>-->
-    <div class="wrapper wrapper-content animated fadeIn">
+    <!-- <div class="row"> -->
+    <div class="col-sm-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">ADAP</a>
+            </li>
+            <li class="active">
+                Asset
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-2">
+        <!-- <div class="title-action"> -->
+        <button class="btn-sm btn-primary " type="button">
+            <i class="fa fa-check"></i>
+            <span translate="entity.action.save">Save</span>
+        </button>
+
+        <button class="btn-sm btn-danger" ng-disabled="deleteForm.$invalid" >
+            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+        </button>
+
+        <button class="btn-sm btn-info" onclick="window.history.back()" >
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        </button>
+        <!-- </div>  -->
+    </div>
+    <!-- </div> -->
+    <div class="wrapper wrapper-content animated fadeIn">             
         <div class="row">
             <div class="col-lg-12">
                 <div class="tabs-container">
@@ -9,6 +40,38 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label translate="adapApp.asset.name" for="field_name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="field_name"
+                                                   ng-model="asset.name"
+                                                   required ng-maxlength="50" />
+                                            <div ng-show="editForm.name.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                                                    This field cannot be longer than 50 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label translate="adapApp.asset.nameshort" for="field_nameshort">Short Name</label>
+                                            <input type="text" class="form-control" name="name" id="field_name"
+                                                   ng-model="asset.nameshort"
+                                                   required ng-maxlength="20" />
+                                            <div ng-show="editForm.name.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                                                    This field cannot be longer than 20 characters.
+                                                </p>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label translate="adapApp.asset.description" for="field_description">Description</label>
                                             <!--<textarea class="note-codable"></textarea>-->
@@ -29,9 +92,11 @@
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-title">
                                                 <h5>Asset  <small>Google Map Centered on Asset.</small></h5>
+                                                <br>
                                                 <div class="ibox-tools">
-                                                    <div id="map_canvas" style="width: 660px; height: 300px; max-width: 660px"></div> 
+                                                    <!-- <div id="map_canvas" style="width: 660px; height: 300px; max-width: 660px"></div> -->
                                                 </div>
+                                                <div> <strong> Ali, Please update based adap_postgres_demo5 </strong> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -101,9 +166,16 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div> 
+                                                    <strong> 
+                                                        Ali, Please update based adap_postgres_demo5. 
+                                                        The Objclassification, Objcategory, and Objecttype 
+                                                        must include the dependency rules for the previous POC 
+                                                    </strong> 
+                                                </div>
                                             </tab>
                                             <tab heading="Locations"> 
-                                                Ali please update from previous POCS.
+                                                Ali please update from adap_postgres_demo5 POC.
                                             </tab>
                                             <tab heading="Related Assets">
                                                 To Be Updated
@@ -145,9 +217,6 @@
                         </tab>
                     </tabset> 
                 </div>
-                <button type="submit" onclick="window.history.back()" class="btn btn-info">
-                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-                </button>
             </div>
         </div>
     </div>

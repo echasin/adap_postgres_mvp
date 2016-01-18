@@ -3625,7 +3625,7 @@ img.circle-border {
     cursor: move;
 }
 .breadcrumb {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */ removed echasin
     padding: 0;
     margin-bottom: 0;
 }
