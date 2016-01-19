@@ -1,0 +1,110 @@
+
+<div>
+    <h2><span translate="adapApp.route.detail.title">Route</span> {{route.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.details">Details</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.details}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + route.status}}">{{route.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{route.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:route.objrecordtype.id})">{{route.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:route.objclassification.id})">{{route.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:route.objcategory.id})">{{route.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.route.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:route.objtype.id})">{{route.objtype.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

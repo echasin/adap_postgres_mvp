@@ -33,8 +33,8 @@ angular.module('adapApp')
        	    {
        	        zoom: 4,
        	        center: new google.maps.LatLng(38.3629444,-97.0063889),
-       	        mapTypeId: google.maps.MapTypeId.ROADMAP  
-       	    });
+       	        mapTypeId: google.maps.MapTypeId.ROADMAP
+       	    })         
        	}
      	
         $scope.index = function () {
@@ -122,9 +122,9 @@ angular.module('adapApp')
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.routeId})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.routeId})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
-                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.routeId)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
+                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.routeId})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
+                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.routeId})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.routeId)" class="btn-xs btn-danger"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],
        	  onRegisterApi: function(gridApi) {
