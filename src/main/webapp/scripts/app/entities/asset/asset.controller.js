@@ -5,7 +5,7 @@ angular.module('adapApp')
         $scope.assets = [];
         $scope.searchdata = [];
         $scope.page = 0;
-        
+        console.log("444444444444444444444444444444444444444444444444")
         $scope.loadFilters = function() {
             Filter.filtersByRecordtype({name: "Asset"}, function(data) {
             	$scope.filters = data;
