@@ -1,19 +1,19 @@
 <!-- <button id="index" ng-click="index()">index</button>  -->
-  <div class="col-sm-10">
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.html">ADAP</a>
-            </li>
-            <li class="active">
-                <strong>Route Home</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn-sm btn-primary" ui-sref="route.new">
-            <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
-        </button>
-    </div>
+<div class="col-sm-10">
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.html">ADAP</a>
+        </li>
+        <li class="active">
+            <strong>Route Home</strong>
+        </li>
+    </ol>
+</div>
+<div class="col-sm-2">
+    <button class="btn-sm btn-primary" ui-sref="route.new">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.route.home.createLabel">Create a new Route</span>
+    </button>
+</div>
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
         <div class="col-lg-12">
@@ -60,8 +60,14 @@
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Route  <small>With config options.</small></h5>
+                                        <br>
                                         <div class="ibox-tools">
+                                            <!--
                                             <div id="map_canvas" style="width: 660px; height: 300px; max-width: 660px"></div> 
+                                            -->
+                                            <div class="map_container">
+                                                <div id="map_canvas" class="map_canvas"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +147,7 @@
                         <div class="panel-body">
                             <strong>Configuration and Administration</strong>
                             <button id="index" ng-click="index()">index</button> 
-                            
+
                             <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
                                 the stalks, and grow familiar with the countless indescribable forms of the insects
                                 and flies, then I feel the presence of the Almighty, who formed us in his own image, and
