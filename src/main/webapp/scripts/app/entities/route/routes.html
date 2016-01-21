@@ -21,95 +21,83 @@
                 <tabset>
                     <tab heading="Route Home"  >
                         <div class="panel-body">
-                            <div class="col-sm-3">
-                                <ul class="list-group clear-list m-t">
-                                    <li class="list-group-item">
-                                        <strong>Actions</strong>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="input-group">
-                                            <input class="form-control" type="text" id="searchQuery" placeholder="Find a Route">
-                                            <span class="input-group-btn">
-                                                <button class="btn-sm btn-primary" ng-click="search()" type ="button">go! </button>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item fist-item"> 
-                                        <div class="form-group">
-                                            <div class="input-group m-b">
-                                                <div class="input-group-btn">                                       
-                                                    <button aria-expanded="false" data-toggle="dropdown" class="btn-sm btn-primary dropdown-toggle" type="button">Filters <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a ng-click="executefilter()">Execute Filter</a></li>
-                                                        <li><a ng-click="editfilter()">Edit Filter</a></li>
-                                                        <!-- 
-                                                        <li><a href="#">New Filter</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Separated link</a></li>
-                                                        -->
-                                                    </ul>
-                                                </div>
-                                                <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
-                                                </select>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <h5>Actions</h5>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="searchQuery" placeholder="Find a Route">
+                                        <span class="input-group-btn">
+                                            <button class="btn-sm btn-primary" ng-click="search()" type ="button">go! </button>
+                                        </span>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="input-group m-b">
+                                            <div class="input-group-btn">                                       
+                                                <button class="btn-sm btn-primary dropdown-toggle"  type="button" aria-expanded="false" data-toggle="dropdown"  >Filters <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a ng-click="executefilter()">Execute Filter</a></li>
+                                                    <li><a ng-click="editfilter()">Edit Filter</a></li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">  
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Route  <small>With config options.</small></h5>
-                                        <br>
-                                        <div class="ibox-tools">
-                                            <!--
-                                            <div id="map_canvas" style="width: 660px; height: 300px; max-width: 660px"></div> 
-                                            -->
-                                            <div class="map_container">
-                                                <div id="map_canvas" class="map_canvas"></div>
-                                            </div>
+                                            <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filter.id" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="ibox float-e-margins">
-
-                                    <div class="ibox-title">
-                                        <h5>Chart Area sm-3 <small>With custom colors.</small></h5>
-                                        <div class="ibox-tools">
-                                            <!-- 
-                                            <a class="collapse-link">
-                                              <i class="fa fa-chevron-up"></i>
-                                            </a>
-                                            -->
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="fa fa-wrench"></i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-user">
-                                                <li><a href="#">Config option 1</a>
-                                                </li>
-                                                <li><a href="#">Config option 2</a>
-                                                </li>
-                                            </ul>
-                                            <!--
-                                            <a class="close-link">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                            -->
-                                        </div>
-                                    </div>
+                                <div class="col-lg-6">               
+                                    <h5>Route  <small>risk scores.</small></h5>
+                                    <br>
+                                    <div class="map_container">
+                                        <div id="map_canvas" class="map_canvas"></div>
+                                    </div>                 
+                                </div>
+                                <br>
+                                <div class="col-lg-3">
+                                    <h5>Chart Area sm-3 <small>Sample Progress Metrics</small></h5>
                                     <div class="ibox-content">
-                                        <div class="flot-chart">
-                                            <div style="padding: 0px; position: relative;" class="flot-chart-content" id="flot-bar-chart"><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 13px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 140px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 266px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 393px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 519px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 646px; text-align: center;">6</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 174px; left: 5px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 139px; left: 0px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 105px; left: 0px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 0px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 36px; left: 0px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">50</div></div></div><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-overlay"></canvas></div>
+                                        <div>
+                                            <div>
+                                                <span>Memory</span>
+                                                <small class="pull-right">10/200 GB</small>
+                                            </div>
+                                            <div class="progress progress-small">
+                                                <div class="progress-bar" style="width: 60%;"></div>
+                                            </div>
+
+                                            <div>
+                                                <span>Bandwidth</span>
+                                                <small class="pull-right">20 GB</small>
+                                            </div>
+                                            <div class="progress progress-small">
+                                                <div class="progress-bar" style="width: 50%;"></div>
+                                            </div>
+
+                                            <div>
+                                                <span>Activity</span>
+                                                <small class="pull-right">73%</small>
+                                            </div>
+                                            <div class="progress progress-small">
+                                                <div class="progress-bar" style="width: 40%;"></div>
+                                            </div>
+
+                                            <div>
+                                                <span>FTP</span>
+                                                <small class="pull-right">400 GB</small>
+                                            </div>
+                                            <div class="progress progress-small">
+                                                <div class="progress-bar progress-bar-danger" style="width: 20%;"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
-                                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div> 
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
+                                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div> 
+                                </div>
                             </div>
                         </div>
                     </tab>
