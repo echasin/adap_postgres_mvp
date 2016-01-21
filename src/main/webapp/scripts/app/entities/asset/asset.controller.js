@@ -5,7 +5,7 @@ angular.module('adapApp')
         $scope.assets = [];
         $scope.searchdata = [];
         $scope.page = 0;
-        console.log("444444444444444444444444444444444444444444444444")
+
         $scope.loadFilters = function() {
             Filter.filtersByRecordtype({name: "Asset"}, function(data) {
             	$scope.filters = data;
@@ -168,7 +168,7 @@ angular.module('adapApp')
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
                                	          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-                                          ' <button type="submit" ui-sref="asset.edit({id:row.entity.id})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
                                           ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn-xs btn-danger"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],

@@ -122,9 +122,8 @@ public class Location implements Serializable {
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Double longitudedd;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 

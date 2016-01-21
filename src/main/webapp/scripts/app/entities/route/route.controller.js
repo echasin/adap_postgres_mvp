@@ -145,7 +145,10 @@ angular.module('adapApp')
        	    	}else{
                       $scope.gridOptions.data = $scope.data;
                       console.log("22222222222222222222222222222222222");
-                      console.log($scope.gridApi.grid.renderContainers.body.renderedRows.length);
+                      $scope.filteredRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+                      console.log($scope.filteredRows);
+                      console.log( $scope.gridApi.core.on.rowsVisibleChanged);
+                      console.log( $scope.gridApi.core.on.rowsVisibleChanged);
                       initialize();
                     	var points=[];
               	    for(var i=0;i<$scope.gridOptions.data.length;++i){        	    	

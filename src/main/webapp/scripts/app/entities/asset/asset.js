@@ -101,5 +101,28 @@ angular.module('adapApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('asset.newlocation', {
+                parent: 'asset',
+                url: '/newlocation/{id}',
+                data: {
+                    roles: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/asset/location-asset-dialog.html',
+                        controller: 'LocationAssetDialogController',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {address1: null, address2: null, cityname: null, cityaliasname: null, countyname: null, countyfips: null, statename: null, statecode: null, statefips: null, stateiso: null, stateansi: null, id: null};
+                            }
+                        }
+                    }).result.then(function(result) {
+                        $state.go('asset.detail', {id: $stateParams.id});
+                    }, function() {
+                        $state.go('asset.detail', {id: $stateParams.id});
+                    })
+                }]
             });
     });

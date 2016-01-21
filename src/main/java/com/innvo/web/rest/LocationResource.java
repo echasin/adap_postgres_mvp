@@ -3,14 +3,20 @@ package com.innvo.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.innvo.domain.Location;
 import com.innvo.domain.Route;
+import com.innvo.domain.Score;
+import com.innvo.domain.User;
+import com.innvo.domain.enumeration.Status;
 import com.innvo.repository.LocationRepository;
+import com.innvo.repository.UserRepository;
 import com.innvo.repository.search.LocationSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.IndexQuery;
 import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
@@ -21,9 +27,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -50,6 +60,8 @@ public class LocationResource {
     @Inject 
     ElasticsearchTemplate elasticsearchTemplate;
     
+    @Inject
+    UserRepository userRepository;
     /**
      * POST  /locations -> Create a new location.
      */
@@ -57,11 +69,17 @@ public class LocationResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Location> createLocation(@Valid @RequestBody Location location) throws URISyntaxException {
+    public ResponseEntity<Location> createLocation(@Valid @RequestBody Location location,Principal principal) throws URISyntaxException {
         log.debug("REST request to save Location : {}", location);
         if (location.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new location cannot already have an ID").body(null);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        location.setDomain(user.getDomain());
+        location.setStatus(Status.Active);
+        location.setLastmodifiedby(principal.getName());
+        location.setLastmodifieddate(lastmodifieddate);
         Location result = locationRepository.save(location);
         locationSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/locations/" + result.getId()))
@@ -76,11 +94,17 @@ public class LocationResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Location> updateLocation(@Valid @RequestBody Location location) throws URISyntaxException {
+    public ResponseEntity<Location> updateLocation(@Valid @RequestBody Location location,Principal principal) throws URISyntaxException {
         log.debug("REST request to update Location : {}", location);
         if (location.getId() == null) {
-            return createLocation(location);
+            return createLocation(location,principal);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+        location.setDomain(user.getDomain());
+        location.setStatus(Status.Active);
+        location.setLastmodifiedby(principal.getName());
+        location.setLastmodifieddate(lastmodifieddate);
         Location result = locationRepository.save(location);
         locationSearchRepository.save(location);
         return ResponseEntity.ok()
@@ -102,6 +126,39 @@ public class LocationResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * GET /location -> get all the location.
+     */
+    @RequestMapping(value = "/locations/{paginationOptions.pageNumber}/{paginationOptions.pageSize}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Location>> getAlllocations(HttpServletRequest request, Principal principal, @PathVariable("paginationOptions.pageNumber") String pageNumber,
+            @PathVariable("paginationOptions.pageSize") String pageSize
+    )
+            throws URISyntaxException {
+        int thepage = Integer.parseInt(pageNumber);
+        int thepagesize = Integer.parseInt(pageSize);
+        User user = userRepository.findByLogin(principal.getName());
+        PageRequest pageRequest = new PageRequest(thepage, thepagesize, Sort.Direction.ASC, "id");
+        Page<Location> data = locationRepository.findByDomain(user.getDomain(), pageRequest);
+        return new ResponseEntity<>(data.getContent(), HttpStatus.OK);
+    }
+    
+    /**
+     * GET /location/count -> Get Records Size
+     */
+    @RequestMapping(value = "/location/recordsLength",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public long getlength(Principal principal)
+            throws URISyntaxException {
+        User user = userRepository.findByLogin(principal.getName());
+        long length = locationRepository.countByDomain(user.getDomain());
+        return length;
+    }
+    
     /**
      * GET  /locations/:id -> get the "id" location.
      */
@@ -177,5 +234,22 @@ public class LocationResource {
             IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(location).build();
             elasticsearchTemplate.index(indexQuery);
         }
+    }
+    
+    /**
+     * GET  /identifiersByAssetId/:assetId -> get location By Asset Id and isprimary.
+     */
+    @RequestMapping(value = "/locationIsprimary/{assetId}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Location> getByAssetIdAndIsprimary(@PathVariable Long assetId) {
+        log.debug("REST request to get Location By asset Id : {}", assetId);
+        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhh "+assetId);
+        return Optional.ofNullable(locationRepository.findByAssetIdAndIsprimary(assetId,true))
+            .map(identifier -> new ResponseEntity<>(
+                identifier,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

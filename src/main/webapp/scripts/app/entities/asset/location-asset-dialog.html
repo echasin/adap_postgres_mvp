@@ -1,0 +1,228 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myLocationLabel">Create or edit a Location</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   ng-model="location.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label translate="adapApp.location.address1" for="field_address1">Address1</label>
+            <input type="text" class="form-control" name="address1" id="field_address1"
+                   ng-model="location.address1"
+                   ng-maxlength="100">
+
+            <div ng-show="editForm.address1.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.address1.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.address2" for="field_address2">Address2</label>
+            <input type="text" class="form-control" name="address2" id="field_address2"
+                   ng-model="location.address2"
+                   >
+
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.cityname" for="field_cityname">Cityname</label>
+            <input type="text" class="form-control" name="cityname" id="field_cityname"
+                   ng-model="location.cityname"
+                   ng-maxlength="50">
+
+            <div ng-show="editForm.cityname.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.cityname.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.cityaliasname" for="field_cityaliasname">Cityaliasname</label>
+            <input type="text" class="form-control" name="cityaliasname" id="field_cityaliasname"
+                   ng-model="location.cityaliasname"
+                   ng-maxlength="50">
+
+            <div ng-show="editForm.cityaliasname.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.cityaliasname.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.countryname" for="field_countryname">countryname</label>
+            <input type="text" class="form-control" name="countryname" id="field_countryname"
+                   ng-model="location.countryname"
+                   ng-maxlength="50">
+
+            <div ng-show="editForm.countyname.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.countyname.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.countyfips" for="field_countyfips">Countyfips</label>
+            <input type="text" class="form-control" name="countyfips" id="field_countyfips"
+                   ng-model="location.countyfips"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.countyfips.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.countyfips.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.statename" for="field_statename">Statename</label>
+            <input type="text" class="form-control" name="statename" id="field_statename"
+                   ng-model="location.statename"
+                   ng-maxlength="50">
+
+            <div ng-show="editForm.statename.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.statename.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.statecode" for="field_statecode">Statecode</label>
+            <input type="text" class="form-control" name="statecode" id="field_statecode"
+                   ng-model="location.statecode"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.statecode.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.statecode.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.zippostcode" for="field_zippostcode">zippostcode</label>
+            <input type="text" class="form-control" name="zippostcode" id="field_zippostcode"
+                   ng-model="location.zippostcode"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.zippostcode.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.zippostcode.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.statefips" for="field_statefips">Statefips</label>
+            <input type="text" class="form-control" name="statefips" id="field_statefips"
+                   ng-model="location.statefips"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.statefips.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.statefips.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.stateiso" for="field_stateiso">Stateiso</label>
+            <input type="text" class="form-control" name="stateiso" id="field_stateiso"
+                   ng-model="location.stateiso"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.stateiso.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.stateiso.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.stateansi" for="field_stateansi">Stateansi</label>
+            <input type="text" class="form-control" name="stateansi" id="field_stateansi"
+                   ng-model="location.stateansi"
+                   ng-maxlength="20">
+
+            <div ng-show="editForm.stateansi.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.stateansi.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        
+          <div class="form-group">
+            <label translate="adapApp.location.latitudeDD" for="field_stateiso">LatitudeDD</label>
+            <input type="text" class="form-control" name="latitudeDD" id="field_latitudeDD"
+                   ng-model="location.latitudeDD"
+                   ng-maxlength="20">
+        </div>  
+        
+        <div class="form-group">
+            <label translate="adapApp.location.longitudeDD" for="field_stateiso">LongitudeDD</label>
+            <input type="text" class="form-control" name="longitudeDD" id="field_longitudeDD"
+                   ng-model="location.longitudeDD"
+                   ng-maxlength="20">
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.objrecordtype" for="field_objrecordtype">objrecordtype</label>
+
+            <select class="form-control" name="obj_recordtype" ng-model="location.objRecordtype.id" ng-options="obj_recordtype.id as obj_recordtype.name for obj_recordtype in obj_recordtypes | filter : {objecttype: 'Asset'}" 
+                    ng-change="getclassifications(location.objRecordtype.id)" required>
+            </select> 
+            <div ng-show="editForm.obj_recordtype.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.obj_recordtype.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.objclassification" for="field_objclassification">objclassification</label>
+
+            <select class="form-control" name="obj_classfication" ng-model="location.objClassification.id" ng-options="obj_classification.id as obj_classification.name for obj_classification in obj_classifications"
+                    ng-change="getcategories(location.objClassification.id)">
+            </select> 
+
+        </div>
+        <div class="form-group">
+            <label translate="adapApp.location.objcategory" for="field_objcategory">objcategory</label>
+
+            <select class="form-control" name="obj_category" ng-model="location.objCategory.id" ng-options="obj_category.id as obj_category.name for obj_category in obj_categories"
+                    ng-change="gettypes(location.objCategory.id)" >
+            </select>                         
+        </div>
+
+        <div class="form-group">
+            <label translate="adapApp.location.objtype" for="field_objtype">objtype</label>
+            <select class="form-control" name="obj_Type" ng-model="location.objType.id" ng-options="obj_type.id as obj_type.name for obj_type in obj_types">
+            </select>                          
+        </div>
+        
+       
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+    </button>
+</div>
+</form>

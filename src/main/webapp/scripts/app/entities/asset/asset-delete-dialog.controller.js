@@ -23,6 +23,7 @@ angular.module('adapApp').controller('AssetDialogController',
            });
         };
         
+        
         $scope.getcategories = function (id) {
         	Objcategory.getcategories({id: id}, function (result) {
                $scope.objcategorys = result;
@@ -35,22 +36,6 @@ angular.module('adapApp').controller('AssetDialogController',
                $scope.objtypes = result;
            });
         };
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         $scope.load = function(id) {
