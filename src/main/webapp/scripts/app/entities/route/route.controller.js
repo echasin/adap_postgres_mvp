@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adapApp')
-    .controller('RouteController', function ($scope, $state,$resource, Route,Filter, RouteService, RouteSearch, ParseLinks) {
+    .controller('RouteController', function ($scope, $state,$resource, Route,Filter, RouteService,$timeout, RouteSearch, ParseLinks) {
 
         $scope.routes = [];
         $scope.predicate = 'id';
@@ -29,12 +29,17 @@ angular.module('adapApp')
       //  $scope.loadAll();
      	function initialize()
        	{
-       	    $scope.map = new google.maps.Map(document.getElementById("map_canvas"),
-       	    {
-       	        zoom: 4,
-       	        center: new google.maps.LatLng(38.3629444,-97.0063889),
-       	        mapTypeId: google.maps.MapTypeId.ROADMAP
-       	    })         
+     		var map_canvas = document.getElementById('map_canvas');
+     		var mapcanvas = document.getElementById('mapcanvas');
+     	    var mapOptions = {
+     	    		zoom: 4,
+           	        center: new google.maps.LatLng(38.3629444,-97.0063889),
+           	        mapTypeId: google.maps.MapTypeId.ROADMAP
+     	    }
+     	    
+       	    $scope.map = new google.maps.Map(map_canvas, mapOptions);
+       	    $scope.largemap =new google.maps.Map(mapcanvas, mapOptions);
+
        	}
      	
         $scope.index = function () {
@@ -121,10 +126,11 @@ angular.module('adapApp')
          	                 },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
+       		            	width: 190,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.routeId})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.routeId})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
-                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.routeId)" class="btn-xs btn-danger"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
+                               	          ' <button type="submit" ui-sref="route.detail({id:row.entity.routeId})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span><span translate="entity.action.view"> View</span></button>'+
+                                          ' <button type="submit" ui-sref="route.edit({id:row.entity.routeId})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span><span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.routeId)" class="btn-xs btn-danger"><span class="glyphicon glyphicon-remove-circle"></span><span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],
        	  onRegisterApi: function(gridApi) {
@@ -140,19 +146,27 @@ angular.module('adapApp')
        	      $scope.gridApi.core.on.filterChanged( $scope, function() {
        	    	if($scope.searchdata != null && $scope.searchdata.length > 0){
        	    		 $scope.gridOptions.data = $scope.searchdata;
-       	    		console.log("1111111111111111111111111111111111111");
-       	    		 console.log($scope.gridOptions.data);
        	    	}else{
+       	    		
+       	    		 var filteredData=[];
                       $scope.gridOptions.data = $scope.data;
-                      console.log("22222222222222222222222222222222222");
-                      $scope.filteredRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
-                      console.log($scope.filteredRows);
-                      console.log( $scope.gridApi.core.on.rowsVisibleChanged);
-                      console.log( $scope.gridApi.core.on.rowsVisibleChanged);
+                      $timeout(function() {
+                      var filteredRows = $scope.gridApi.grid.renderContainers.body.renderedRows;
+                      console.log(filteredRows);
+                      console.log(filteredRows.length);
+                      for(var filtered=0;filtered<filteredRows.length;++filtered){
+                    	  filteredData.push(filteredRows[filtered].entity); 
+                      }
+                      console.log("$scope.filterdData");
+                      console.log(filteredData);
+                      });
                       initialize();
                     	var points=[];
-              	    for(var i=0;i<$scope.gridOptions.data.length;++i){        	    	
-              	       for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
+              	    for(var i=0;i<filteredData.length;++i){        	    	
+              	    	 if (isNaN(filteredData[i].averageScore)) {
+            	    		 console.log("no score available");
+            	    	 }else{
+              	    	for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
               	    	$scope.route =[
                        	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
                        	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
@@ -204,6 +218,7 @@ angular.module('adapApp')
                  	    path.setMap($scope.map); 
               	    }
            		}
+             }
                }
        	    	
 
@@ -267,11 +282,13 @@ angular.module('adapApp')
          		$scope.data.$promise.then(function(result) {
          	    var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
-        	    console.log("333333333333333333333333333333333333333333");
                 console.log($scope.gridOptions.data);
               	initialize();
               	var points=[];
-        	    for(var i=0;i<$scope.gridOptions.data.length;++i){        	    	
+        	    for(var i=0;i<$scope.gridOptions.data.length;++i){  
+        	    	 if (isNaN($scope.gridOptions.data[i].averageScore)) {
+        	    		 console.log("no score available");
+        	    	 }else{
         	       for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
         	    	$scope.route =[
                  	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
@@ -320,10 +337,21 @@ angular.module('adapApp')
               	        strokeWeight: 2,
               	        geodesic: true   
               	      });
+       	       var largepath = new google.maps.Polyline(
+                 	    {
+                 	        path: $scope.route,
+                 	        strokeColor: color,
+                 	        strokeOpacity: 0.75,
+                 	        strokeWeight: 2,
+                 	        geodesic: true   
+                 	      });
        	       
-           	    path.setMap($scope.map); 
+           	    path.setMap($scope.map);
+           	    largepath.setMap($scope.largemap);
         	    }
-     		}
+        	    	 }
+     		
+        	    }
         });
      }
             	 

@@ -166,6 +166,7 @@ angular.module('adapApp')
        	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
+       		            	width: 190,
                                 cellTemplate:
                                	          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
                                           ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+

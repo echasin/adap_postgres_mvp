@@ -29,7 +29,6 @@ angular.module('adapApp')
                 function () {
             $('#deleteAssetConfirmation').modal('hide');
         	});
-        	console.log("yyyyyyyyyyyyyyyyyyyyyyyYYYYYYYYYYYYYYYYYYY")
         	 $location.url("assets");
         };
         
@@ -144,8 +143,9 @@ angular.module('adapApp')
        	  };
 
        	  function getData(){
-       		 var sasa= $resource('api/locations/:page/:size', {
-         	    	page : page,
+       		 var sasa= $resource('api/locationsByAsset/:id/:page/:size', {
+         	    	id: $stateParams.id,
+       			    page : page,
          	    	size : size
          	   }).query();
        		 $scope.data=sasa;
@@ -155,7 +155,7 @@ angular.module('adapApp')
        		 if($scope.data[startposition+1]!=null){
        			 console.log("required data are available")
        		 }else{
-       			 Location.getlocations({page: page, size: size}, function(data, headers) {
+       			 Location.getlocationsByAsset({page: page, size: size}, function(data, headers) {
                      console.log("new data has loaded");
                      for (var i=0 ;i < data.length; ++i) {
                 	    	$scope.data[startposition+i]=data[i];
@@ -172,7 +172,8 @@ angular.module('adapApp')
          	    var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
         	    $scope.gridOptions.data = $scope.data.slice(firstRow, firstRow + paginationOptions.pageSize);
     	  		var map;
-                Location.locationByIsprimary({assetId: $stateParams.id}, function(result) {      
+    	  		Location.locationByIsprimary({id: $stateParams.id}, function(result) {      
+        	    	console.log(result)
         	    	console.log(result.latitudedd)
                     function initialize() {
                       var myOptions = {

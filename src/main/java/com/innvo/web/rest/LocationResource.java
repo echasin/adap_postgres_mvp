@@ -146,6 +146,25 @@ public class LocationResource {
     }
     
     /**
+     * GET /location -> get all the location By Asset.
+     */
+    @RequestMapping(value = "/locationsByAsset/{id}/{paginationOptions.pageNumber}/{paginationOptions.pageSize}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Location>> getAlllocationsByAsset(HttpServletRequest request, Principal principal,@PathVariable("id") long id ,@PathVariable("paginationOptions.pageNumber") String pageNumber,
+            @PathVariable("paginationOptions.pageSize") String pageSize
+    )
+            throws URISyntaxException {
+        int thepage = Integer.parseInt(pageNumber);
+        int thepagesize = Integer.parseInt(pageSize);
+        User user = userRepository.findByLogin(principal.getName());
+        PageRequest pageRequest = new PageRequest(thepage, thepagesize, Sort.Direction.ASC, "id");
+        Page<Location> data = locationRepository.findByDomainAndAssetId(user.getDomain(), id,pageRequest);
+        return new ResponseEntity<>(data.getContent(), HttpStatus.OK);
+    }
+    
+    /**
      * GET /location/count -> Get Records Size
      */
     @RequestMapping(value = "/location/recordsLength",
@@ -237,19 +256,14 @@ public class LocationResource {
     }
     
     /**
-     * GET  /identifiersByAssetId/:assetId -> get location By Asset Id and isprimary.
+     * GET  /locationIsprimary/:assetId -> get location By Asset Id and isprimary.
      */
-    @RequestMapping(value = "/locationIsprimary/{assetId}",
+    @RequestMapping(value = "/locationIsprimary/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Location> getByAssetIdAndIsprimary(@PathVariable Long assetId) {
-        log.debug("REST request to get Location By asset Id : {}", assetId);
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhh "+assetId);
-        return Optional.ofNullable(locationRepository.findByAssetIdAndIsprimary(assetId,true))
-            .map(identifier -> new ResponseEntity<>(
-                identifier,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public Location getByIsprimary(@PathVariable Long id) {
+        log.debug("REST request to get Location By asset Id : {}", id);
+        return locationRepository.findByAssetIdAndIsprimary(id,true);
     }
 }

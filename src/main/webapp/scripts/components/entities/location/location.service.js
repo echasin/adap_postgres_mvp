@@ -5,7 +5,8 @@ angular.module('adapApp')
         return $resource('api/locations/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'getlocations': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/locations/:page/:size'},
-            'locationByIsprimary': {method: 'GET', params: {assetId: '@assetId'}, url: 'api/locationIsprimary/:assetId'},
+            'getlocationsByAsset': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/locationsByAsset/:page/:size'},
+            'locationByIsprimary': {method: 'GET', params: {id: '@id'}, url: 'api/locationIsprimary/:id'},
             'index': {method: 'GET', url: 'api/indexLocation'},
             'get': {
                 method: 'GET',

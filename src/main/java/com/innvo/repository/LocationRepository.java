@@ -24,8 +24,12 @@ public interface LocationRepository extends JpaRepository<Location,Long> {
 	 Location findByAssetId(long aseetId);
 	 
 	 Page<Location> findByDomain(String domain,Pageable pageable);
-	 
+
 	 long countByDomain(String domain);
+	 
+	 Page<Location> findByDomainAndAssetId(String domain,long id,Pageable pageable);
+
+	 long countByDomainAndAssetId(String domain,long id);
 	 
 	 public Location findByAssetIdAndIsprimary(long id,boolean isprimary);
 }
