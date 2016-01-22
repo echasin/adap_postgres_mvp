@@ -91,7 +91,7 @@ public class Asset implements Serializable {
     @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
-    @OneToMany(mappedBy = "asset")
+    @OneToMany(mappedBy = "asset",cascade=CascadeType.ALL)
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Location> locations = new HashSet<>();

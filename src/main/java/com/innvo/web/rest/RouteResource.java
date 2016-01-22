@@ -27,6 +27,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.WrapperQueryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -171,7 +172,7 @@ public class RouteResource {
     public ResponseEntity<List<RouteUtil>> getAllRoutes(HttpServletRequest request, Principal principal, @PathVariable("paginationOptions.pageNumber") String pageNumber,
             @PathVariable("paginationOptions.pageSize") String pageSize
     )
-            throws URISyntaxException {
+            throws URISyntaxException,AopInvocationException {
       
     	int thepage = Integer.parseInt(pageNumber);
         int thepagesize = Integer.parseInt(pageSize);
@@ -186,59 +187,61 @@ public class RouteResource {
         Segment lastSegment=null;
      
         for(Route route:data.getContent()){
-        	 RouteUtil routeUtil=new RouteUtil();
-          
-        	 minSegmentNumber=segmentRepository.getMinSegmentnumberByRouteId(route.getId());
-        	 maxSegmentNumber=segmentRepository.getMaxSegmentnumberByRouteId(route.getId());
-        	 firstSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
-        	 lastSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), maxSegmentNumber);
-             List<Segment> segments=segmentRepository.findByRouteId(route.getId());
-             
-             List<Location> originLocations=new ArrayList<Location>();
-             List<Location> destinationLocations=new ArrayList<Location>();
-             List<String> originNames=new ArrayList<String>();
-             List<String> destinationNames=new ArrayList<String>();
-             
-             for(Segment segment:segments){
-             Location getOriginLocations=locationRepository.findByAssetId(segment.getAssetorigin().getId());
-             Location getDestinationLocations=locationRepository.findByAssetId(segment.getAssetdestination().getId());
-             segment.getAssetdestination().getName();
-             
-             originNames.add(segment.getAssetorigin().getName());
-             destinationNames.add(segment.getAssetdestination().getName());
-             routeUtil.setOriginNames(originNames);
-             routeUtil.setDestinationNames(destinationNames);
-             originLocations.add(getOriginLocations);
-             destinationLocations.add(getDestinationLocations);
-             routeUtil.setOriginLocations(originLocations);
-             routeUtil.setDestinationLocations(destinationLocations);
-             
-             }
-             double sum=0;
-             double averageScore;
-             ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(route.getId());
-             if(lastmodifieddate==null){
-            	 averageScore=Double.NaN;
-             }
-            	 else {
-            	 long runid=scoreRepository.findMaxRunid(lastmodifieddate,route.getId());
-                 List<Score> scores=scoreRepository.findByRunidAndRouteId(runid, route.getId());
-                 System.out.println(route.getId());
-                 System.out.println(scores);
-                 for(Score score:scores){
-                	 sum=sum+score.getValue();
-                 }
-                 averageScore=sum/scores.size();
-             }
-            
-             
-             routeUtil.setRouteId(route.getId());
-             routeUtil.setRoutName(route.getName());
-             routeUtil.setOriginName(firstSegment.getAssetorigin().getName());
-             routeUtil.setDestinationName(lastSegment.getAssetdestination().getName());
-             routeUtil.setAverageScore(averageScore);
-             
-             list.add(routeUtil);
+        	 RouteUtil routeUtil=new RouteUtil(); 
+        	 
+        	 try{      	 
+        			 minSegmentNumber=segmentRepository.getMinSegmentnumberByRouteId(route.getId());
+                	 maxSegmentNumber=segmentRepository.getMaxSegmentnumberByRouteId(route.getId());
+                	 firstSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
+                	 lastSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), maxSegmentNumber);
+                    
+                	 List<Segment> segments=segmentRepository.findByRouteId(route.getId());
+                     List<Location> originLocations=new ArrayList<Location>();
+                     List<Location> destinationLocations=new ArrayList<Location>();
+                     List<String> originNames=new ArrayList<String>();
+                     List<String> destinationNames=new ArrayList<String>();
+                     
+                     for(Segment segment:segments){
+                     Location getOriginLocations=locationRepository.findByAssetId(segment.getAssetorigin().getId());
+                     Location getDestinationLocations=locationRepository.findByAssetId(segment.getAssetdestination().getId());
+                     segment.getAssetdestination().getName();
+                     originNames.add(segment.getAssetorigin().getName());
+                     destinationNames.add(segment.getAssetdestination().getName());
+                     routeUtil.setOriginNames(originNames);routeUtil.setDestinationNames(destinationNames);
+                    
+                     originLocations.add(getOriginLocations);
+                     destinationLocations.add(getDestinationLocations); 
+                     routeUtil.setOriginLocations(originLocations);
+                     routeUtil.setDestinationLocations(destinationLocations);
+                     } 
+                     
+                     double sum=0;
+                     double averageScore;
+                     ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(route.getId());
+                     
+                     if(lastmodifieddate==null){
+                    	 averageScore=Double.NaN;
+                    	 }	
+                     else {
+                    	 long runid=scoreRepository.findMaxRunid(lastmodifieddate,route.getId());
+                         List<Score> scores=scoreRepository.findByRunidAndRouteId(runid, route.getId());
+                         for(Score score:scores){
+                        	 sum=sum+score.getValue();
+                        	 }
+                         averageScore=sum/scores.size();
+                         }
+                     
+                     routeUtil.setRouteId(route.getId());
+                     routeUtil.setRoutName(route.getName());
+                     routeUtil.setOriginName(firstSegment.getAssetorigin().getName());
+                     routeUtil.setDestinationName(lastSegment.getAssetdestination().getName());
+                     routeUtil.setAverageScore(averageScore);
+                     list.add(routeUtil);
+        	 }catch(AopInvocationException e){
+        		 routeUtil.setRouteId(route.getId());
+        		 routeUtil.setAverageScore(Double.NaN);
+        		 list.add(routeUtil);
+        	 }
         }
    
         return new ResponseEntity<>(list, HttpStatus.OK);

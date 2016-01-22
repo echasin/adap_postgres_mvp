@@ -2,7 +2,9 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.innvo.domain.Objtype;
+import com.innvo.domain.User;
 import com.innvo.repository.ObjtypeRepository;
+import com.innvo.repository.UserRepository;
 import com.innvo.repository.search.ObjtypeSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,6 +45,8 @@ public class ObjtypeResource {
     @Inject
     private ObjtypeSearchRepository objtypeSearchRepository;
 
+    @Inject
+    UserRepository userRepository;
     /**
      * POST  /objtypes -> Create a new objtype.
      */
@@ -110,6 +115,21 @@ public class ObjtypeResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    /**
+     * GET /obj_types -> get all the Types by CategoryId.
+     */
+    @RequestMapping(value = "/types/category/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Objtype>> getAllByCategoryId(
+            @PathVariable Long id,Principal principal)
+          throws URISyntaxException {
+        User user = userRepository.findByLogin(principal.getName());
+        List<Objtype> list = objtypeRepository.findByObjcategoryIdAndDomain(id, user.getDomain());
+        return new ResponseEntity<>(list ,HttpStatus.OK);
+    }
+    
     /**
      * DELETE  /objtypes/:id -> delete the "id" objtype.
      */
