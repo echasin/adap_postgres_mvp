@@ -32,7 +32,7 @@ angular.module('adapApp')
      		var map_canvas = document.getElementById('map_canvas');
      		var mapcanvas = document.getElementById('mapcanvas');
      	    var mapOptions = {
-     	    		zoom: 4,
+     	    		zoom: 3,
            	        center: new google.maps.LatLng(38.3629444,-97.0063889),
            	        mapTypeId: google.maps.MapTypeId.ROADMAP
      	    }
@@ -111,7 +111,7 @@ angular.module('adapApp')
        	    enableFiltering: true,
        	    paginationPageSizes: [10, 20, 50, 100],
        	    paginationPageSize: 10,
-       	    useExternalPagination: true,
+       	    useExternalPagination: false,
        	    useExternalSorting: false,
        	    columnDefs: [
        	                 { name: 'routeId',
@@ -143,83 +143,79 @@ angular.module('adapApp')
        	        }
        	        getPage();
        	      });
+       	      $scope.gridApi.core.on.rowsVisibleChanged($scope, function(){
+       	    	var filteredData = [];
+     	    		angular.forEach($scope.gridApi.grid.rows,function(v,k){
+     	    			if(v.visible)
+     	    				filteredData.push(v.entity);
+     	    		});
+     	    		console.log(filteredData);    		           
+                    initialize();
+                  	var points=[];
+            	    	for(var j=0;j<filteredData.length;++j){
+            	    		 if (isNaN(filteredData[j].averageScore)) {
+              	    		 console.log("no score available");
+              	    	 }else{
+            	    		for(var i=0;i<filteredData[j].originLocations.length;++i){
+                        $scope.route =[
+                     	        new google.maps.LatLng(filteredData[j].originLocations[i].latitudedd,filteredData[j].originLocations[i].longitudedd),
+                     	        new google.maps.LatLng(filteredData[j].destinationLocations[i].latitudedd,filteredData[j].destinationLocations[i].longitudedd),
+                    	    ];         	    	        	    	
+            	    	  if(isInArray(filteredData[j].id,points)){
+                           }
+            	    	  else{
+                          	points.push(filteredData[j].id);
+                            var mapLabelorigin = new MapLabel({
+                     	        text: filteredData[j].originNames[i],
+                     	        position: new google.maps.LatLng(filteredData[j].originLocations[i].latitudedd, filteredData[j].originLocations[i].longitudedd),
+                     	        map: $scope.map,
+                     	        fontSize: 15,
+                     	        align: 'right'
+                     	    });
+                          }
+            	    	
+            	    	  if(isInArray(filteredData[j].id,points)){
+            	             }
+            		    	  else{
+            	            	points.push(filteredData[j].id);
+            	              var mapLabelorigin = new MapLabel({
+            	       	        text: filteredData[j].destinationNames[i],
+            	       	        position: new google.maps.LatLng(filteredData[j].originLocations[i].latitudedd, filteredData[j].originLocations[i].longitudedd),
+            	       	        map: $scope.map,
+            	       	        fontSize: 15,
+            	       	        align: 'right'
+            	       	    });
+            	            }
+          			  var color;
+       		    	  if (isNaN(filteredData[j].averageScore)) {
+       			      color = "black";
+       			       }else if (filteredData[j].averageScore <= 7.5 && filteredData[j].averageScore > 5) {
+       				    color = "yellow";
+    				   } else if (filteredData[j].averageScore > 7.5){
+    				    color = "red";
+    				  }else if (filteredData[j].averageScore <= 5) {
+    					  color = "green";
+    				 } 
+           	          var path = new google.maps.Polyline(
+                  	    {
+                  	        path: $scope.route,
+                  	        strokeColor: color,
+                  	        strokeOpacity: 0.75,
+                  	        strokeWeight: 2,
+                  	        geodesic: true   
+                  	      });
+           	       
+               	    path.setMap($scope.map); 
+                }
+             }
+     	      }
+       	      });
        	      $scope.gridApi.core.on.filterChanged( $scope, function() {
-       	    	if($scope.searchdata != null && $scope.searchdata.length > 0){
+       	    	  if($scope.searchdata != null && $scope.searchdata.length > 0){
        	    		 $scope.gridOptions.data = $scope.searchdata;
        	    	}else{
-       	    		
-       	    		 var filteredData=[];
-                      $scope.gridOptions.data = $scope.data;
-                      $timeout(function() {
-                      var filteredRows = $scope.gridApi.grid.renderContainers.body.renderedRows;
-                      console.log(filteredRows);
-                      console.log(filteredRows.length);
-                      for(var filtered=0;filtered<filteredRows.length;++filtered){
-                    	  filteredData.push(filteredRows[filtered].entity); 
-                      }
-                      console.log("$scope.filterdData");
-                      console.log(filteredData);
-                      });
-                      initialize();
-                    	var points=[];
-              	    for(var i=0;i<filteredData.length;++i){        	    	
-              	    	 if (isNaN(filteredData[i].averageScore)) {
-            	    		 console.log("no score available");
-            	    	 }else{
-              	    	for(var j=0;j<$scope.gridOptions.data[i].originLocations.length;++j){
-              	    	$scope.route =[
-                       	        new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd,$scope.gridOptions.data[i].originLocations[j].longitudedd),
-                       	        new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd,$scope.gridOptions.data[i].destinationLocations[j].longitudedd),
-                      	    ];         	    	        	    	
-              	    	  if(isInArray($scope.gridOptions.data[i].originLocations[j].id,points)){
-                             }
-              	    	  else{
-                            	points.push($scope.gridOptions.data[i].originLocations[j].id);
-                              var mapLabelorigin = new MapLabel({
-                       	        text: $scope.gridOptions.data[i].originNames[j],
-                       	        position: new google.maps.LatLng($scope.gridOptions.data[i].originLocations[j].latitudedd, $scope.gridOptions.data[i].originLocations[j].longitudedd),
-                       	        map: $scope.map,
-                       	        fontSize: 15,
-                       	        align: 'right'
-                       	    });
-                            }
-              	    	
-              	    	  if(isInArray($scope.gridOptions.data[i].destinationLocations[j].id,points)){
-              	             }
-              		    	  else{
-              	            	points.push($scope.gridOptions.data[i].destinationLocations[j].id);
-              	              var mapLabelorigin = new MapLabel({
-              	       	        text: $scope.gridOptions.data[i].destinationNames[j],
-              	       	        position: new google.maps.LatLng($scope.gridOptions.data[i].destinationLocations[j].latitudedd, $scope.gridOptions.data[i].destinationLocations[j].longitudedd),
-              	       	        map: $scope.map,
-              	       	        fontSize: 15,
-              	       	        align: 'right'
-              	       	    });
-              	            }
-            			  var color;
-         		    	  if (isNaN($scope.gridOptions.data[i].averageScore)) {
-         			      color = "black";
-         			       }else if ($scope.gridOptions.data[i].averageScore <= 7.5 && $scope.gridOptions.data[i].averageScore > 5) {
-         				    color = "yellow";
-      				   } else if ($scope.gridOptions.data[i].averageScore > 7.5){
-      				    color = "red";
-      				  }else if ($scope.gridOptions.data[i].averageScore <= 5) {
-      					  color = "green";
-      				 } 
-             	          var path = new google.maps.Polyline(
-                    	    {
-                    	        path: $scope.route,
-                    	        strokeColor: color,
-                    	        strokeOpacity: 0.75,
-                    	        strokeWeight: 2,
-                    	        geodesic: true   
-                    	      });
-             	       
-                 	    path.setMap($scope.map); 
-              	    }
-           		}
-             }
-               }
+                    $scope.gridOptions.data = $scope.data;
+       	   }
        	    	
 
        	      });
