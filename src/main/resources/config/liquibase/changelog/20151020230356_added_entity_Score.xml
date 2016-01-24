@@ -28,7 +28,7 @@
             <column name="rundate" type="timestamp"/>
             <column name="rulename" type="varchar(100)"/>
             <column name="ruleversion" type="varchar(25)"/>
-            <column name="details" type="varchar(255)"/>
+            <column name="details" type="json"/>
             <column name="status" type="varchar(255)">
                 <constraints nullable="false" />
             </column>

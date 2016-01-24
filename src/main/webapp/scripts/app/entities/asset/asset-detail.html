@@ -1,110 +1,327 @@
-
 <div>
-    <h2><span translate="adapApp.asset.detail.title">Asset</span> {{asset.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.name">Name</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.name}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.description">Description</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.description}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.details">Details</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.details}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.status">Status</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.status}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.lastmodifiedby">Lastmodifiedby</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.lastmodifiedby}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.lastmodifieddate">Lastmodifieddate</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.lastmodifieddate | date:'medium'}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.domain">Domain</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{asset.domain}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.objrecordtype">objrecordtype</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:asset.objrecordtype.id})">{{asset.objrecordtype.name}}</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.objclassification">objclassification</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="objclassification.detail({id:asset.objclassification.id})">{{asset.objclassification.name}}</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.objcategory">objcategory</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="objcategory.detail({id:asset.objcategory.id})">{{asset.objcategory.name}}</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="adapApp.asset.objtype">objtype</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="objtype.detail({id:asset.objtype.id})">{{asset.objtype.name}}</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <!--<h2><span translate="adapApp.asset.detail.title">Asset</span> {{asset.id}}</h2>-->
+    <!-- <div class="row"> -->
+    <div class="col-sm-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">ADAP</a>
+            </li>
+            <li class="active">
+                Asset
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
     </div>
+    <div class="col-sm-2">
+        <!-- <div class="title-action"> -->
+        <button class="btn-sm btn-primary " type="button" ng-click=save()>
+            <i class="fa fa-check"></i>
+            <span translate="entity.action.save">Save</span>
+        </button>
 
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+        <button class="btn-sm btn-danger" ng-click="delete()" >
+            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+        </button>
+
+        <button class="btn-sm btn-info" onclick="window.history.back()" >
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        </button>
+        <!-- </div>  -->
+    </div>
+     <div class="modal fade" id="deleteAssetConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(asset.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="adapApp.asset.delete.question" translate-values="{id: '{{asset.id}}'}">Are you sure you want to delete this Asset?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <div class="wrapper wrapper-content animated fadeIn">             
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-container">
+                    <tabset>
+                        <tab heading="{{asset.name}}">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label translate="adapApp.asset.name" for="field_name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="field_name"
+                                                   ng-model="asset.name"
+                                                   required ng-maxlength="50" />
+                                            <div ng-show="editForm.name.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                                                    This field cannot be longer than 50 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label translate="adapApp.asset.nameshort" for="field_nameshort">Short Name</label>
+                                            <input type="text" class="form-control" name="name" id="field_name"
+                                                   ng-model="asset.nameshort"
+                                                   required ng-maxlength="20" />
+                                            <div ng-show="editForm.name.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                                                    This field cannot be longer than 20 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label translate="adapApp.asset.description" for="field_description">Description</label>
+                                            <!--<textarea class="note-codable"></textarea>-->
+                                            <textarea class="form-control" name="description" id="field_description" 
+                                                      rows="6" 
+                                                      placeholder="Enter a short description"
+                                                      ng-model="asset.description"
+                                                      ng-maxlength="255" />
+                                            <div ng-show="editForm.description.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="255">
+                                                    This field cannot be longer than 255 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">  
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                     <div id="map" style="width: 200px; height: 150px;"></div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Chart Area sm-3 <small>With custom colors.</small></h5>
+                                                <div class="ibox-tools">
+                                                    <!-- 
+                                                    <a class="collapse-link">
+                                                      <i class="fa fa-chevron-up"></i>
+                                                    </a>
+                                                    -->
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <i class="fa fa-wrench"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-user">
+                                                        <li><a href="#">Config option 1</a>
+                                                        </li>
+                                                        <li><a href="#">Config option 2</a>
+                                                        </li>
+                                                    </ul>
+                                                    <!--
+                                                    <a class="close-link">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                    -->
+                                                </div>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="flot-chart">
+                                                    <div style="padding: 0px; position: relative;" class="flot-chart-content" id="flot-bar-chart"><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 13px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 140px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 266px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 393px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 519px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 104px; top: 186px; left: 646px; text-align: center;">6</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 174px; left: 5px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 139px; left: 0px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 105px; left: 0px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 0px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 36px; left: 0px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">50</div></div></div><canvas height="200" width="733" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 733px; height: 200px;" class="flot-overlay"></canvas></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tabs-container">
+                                        <tabset>
+                                            <tab heading="Details">                                              
+                                                <div>
+                                                <div class="form-group">
+                                                  <label translate="adapApp.asset.objrecordtype" for="field_objrecordtype">objrecordtype</label>
+                                                    <select class="form-control" id="field_objrecordtype" name="objrecordtype" ng-model="asset.objrecordtype" ng-options="objrecordtype as objrecordtype.name for objrecordtype in objrecordtypes track by objrecordtype.id" ng-change="getclassifications(asset.objrecordtype.id)">
+                                                      <option value=""></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label translate="adapApp.asset.objclassification" for="field_objclassification">objclassification</label>
+                                                     <select class="form-control" id="field_objclassification" name="objclassification" ng-model="asset.objclassification" ng-options="objclassification as objclassification.name for objclassification in objclassifications track by objclassification.id" ng-change="getcategories(asset.objclassification.id)">
+                                                         <option value=""></option>
+                                                     </select>
+                                                 </div>
+                                                 <div class="form-group">
+                                                    <label translate="adapApp.asset.objcategory" for="field_objcategory">objcategory</label>
+                                                       <select class="form-control" id="field_objcategory" name="objcategory" ng-model="asset.objcategory" ng-options="objcategory as objcategory.name for objcategory in objcategorys track by objcategory.id" ng-change="gettypes(asset.objcategory.id)">
+                                                        <option value=""></option>
+                                                       </select>
+                                                 </div>
+                                                 <div class="form-group">
+                                                    <label translate="adapApp.asset.objtype" for="field_objtype">objtype</label>
+                                                       <select class="form-control" id="field_objtype" name="objtype" ng-model="asset.objtype" ng-options="objtype as objtype.name for objtype in objtypes track by objtype.id">
+                                                              <option value=""></option>
+                                                       </select>
+                                                 </div>
+                                                 </div>
+                                            </tab>
+                                            <tab heading="Locations"> 
+ 
+                                                 <button class="btn btn-primary" ui-sref="asset.newlocation({id:asset.id})">
+                                                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Location</span>
+                                                 </button>
+                                          
+                                          
+                                                 <div class="modal fade" id="saveLocationModal" tabindex="-1" role="dialog" aria-labelledby="myLocationLabel"
+                                                    aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                         <form name="editForm" role="form" novalidate ng-submit="addLocation()" show-validation>
+                                                       <div class="modal-header">
+                                                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                               ng-click="clear()">&times;</button>
+                                                                     <h4 class="modal-title" id="myLocationLabel" translate="adapApp.location.home.createOrEditLabel">Create or edit a Location</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                          <div class="form-group">
+                                                             <label>ID</label>
+                                                                   <input type="text" class="form-control" name="id"
+                                                                        ng-model="location.id" readonly>
+                                                          </div>
+                                                          <div class="form-group">
+                                                                     <label translate="adapApp.location.address1">Address1</label>
+                                                                        <input type="text" class="form-control" name="address1"
+                                                                                ng-model="location.address" ng-maxlength="50">
+
+                                                          </div>
+                                                          <div class="form-group">
+                                                             <label translate="adapApp.location.latitudeDD">LatitudeDD</label>
+                                                               <input type="text" class="form-control" name="latitudeDD"
+                                                                      ng-model="location.latitudeDD" ng-pattern="/^-?([0-8]?[0-9]|90).[0-9]{1,7}$/">
+                                                               <div ng-show="editForm.latitudeDD.$invalid">
+                                                                  <p class="help-block"
+                                                                     ng-show="editForm.latitudeDD.$error.pattern" translate="entity.validation.pattern" translate-value-pattern="###.#######">
+                                                                            This field should follow pattern "###".########"
+                                                                  </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                   <label translate="adapApp.location.longitudeDD">LongitudeDD</label>
+                                                                     <input type="text" class="form-control" name="longitudeDD"
+                                                                           ng-model="location.longitudeDD" ng-pattern="/^-?((1?[0-7]?|[0-9]?)[0-9]|180)\.[0-9]{1,7}$/">
+
+                                                                 <div ng-show="editForm.longitudeDD.$invalid">
+                                                                    <p class="help-block"
+                                                                       ng-show="editForm.longitudeDD.$error.pattern" translate="entity.validation.pattern" translate-value-pattern="###.#######">
+                                                                             This field should follow pattern "###".#######".
+                                                                    </p>
+                                                                  </div>
+                                                             </div>
+
+                                                         </div>
+                                                         <div class="modal-footer">
+                                                             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                                             </button>
+                                                             <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                                                 <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                                                             </button>
+                                                         </div>
+                                                       </form>
+                                                   </div>
+                                               </div>
+                                             </div>                                  
+                                             <div class="modal fade" id="deleteLocationConfirmation">
+                                                 <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                       <form name="deleteForm" ng-submit="confirmDelete(location.id)">
+                                                         <div class="modal-header">
+                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                                        ng-click="clear()">&times;</button>
+                                                                  <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                                                         </div>
+                                                         <div class="modal-body">
+                                                               <p translate="adapApp.location.delete.question" translate-values="{id: '{{location.id}}'}">Are you sure you want to delete this Location?</p>
+                                                         </div>
+                                                          <div class="modal-footer">
+                                                             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                                                 <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                                             </button>
+                                                             <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                                                                    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                                                             </button>
+                                                         </div>
+                                                       </form>
+                                                    </div>
+                                                  </div>
+                                               </div>   
+                                                   <div class="ibox-content">
+                                                      <div ui-grid="gridOptions" ui-grid-pagination   style="width: 900px;height: 400px;"></div>
+                                                   </div>                                    
+                                            </tab>
+                                            <tab heading="Related Assets">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Organizations">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="People">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Vulnerabilites">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Metrics">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Events">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Attachments">
+                                                To Be Updated
+                                            </tab>
+                                            <tab heading="Notes">
+                                                To Be Updated
+                                            </tab>
+                                        </tabset> 
+                                    </div>
+                                </div>
+                            </div>  
+                        </tab>
+                        <tab  heading="Risk Analysis">
+                            TAB TWO  Risk Profile
+                        </tab>  
+                        <tab  heading="Geospatial Analysis">
+                            TAB THREE Geospatial Analysis
+                        </tab>
+                        <tab  heading="Metrics Analysis">
+                            TAB FOUR Metrics Analysis
+                        </tab>
+                    </tabset> 
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+

@@ -6,6 +6,7 @@ angular.module('adapApp')
             'query': { method: 'GET', isArray: true},
             'executefilter': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/executefilter/:id'},
             'editfilter': {method: 'GET', params: {id:'@id'}, url: 'api/editfilter/:id'},
+            'getAverageScore': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/averageScore/:id'},
             'getroutes': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/scores/:page/:size'},
             'index': {method: 'GET', url: 'api/indexscore'},
             'get': {
@@ -22,6 +23,12 @@ angular.module('adapApp')
    	 return {
 	        count: function(name) {
 	            var promise = $http.get('api/score/recordsLength').then(function (response) {
+	            	return response.data;
+	            });
+	            return promise;
+	        },
+	        getAverageScore: function(id) {
+	            var promise = $http.get('api/averageScore',{params:  {id: id}}).then(function (response) {
 	            	return response.data;
 	            });
 	            return promise;

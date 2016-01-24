@@ -5,7 +5,7 @@ angular.module('adapApp').controller('AssetDialogController',
         function($scope, $stateParams, $modalInstance, entity, Asset, Objrecordtype, Objclassification, Objcategory, Objtype, Location, Score, Vulnerability, Identifier) {
 
         $scope.asset = entity;
-        //$scope.objrecordtypes = Objrecordtype.getrecordtypes();
+        $scope.objrecordtypes = Objrecordtype.getrecordtypes();
         $scope.objclassifications;
         $scope.objcategorys;
         $scope.objtypes;
@@ -23,6 +23,7 @@ angular.module('adapApp').controller('AssetDialogController',
            });
         };
         
+        
         $scope.getcategories = function (id) {
         	Objcategory.getcategories({id: id}, function (result) {
                $scope.objcategorys = result;
@@ -35,22 +36,6 @@ angular.module('adapApp').controller('AssetDialogController',
                $scope.objtypes = result;
            });
         };
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         $scope.load = function(id) {

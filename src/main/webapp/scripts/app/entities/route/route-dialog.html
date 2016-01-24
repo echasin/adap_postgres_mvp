@@ -42,47 +42,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="adapApp.route.details" for="field_details">Details</label>
-            <input type="text" class="form-control" name="details" id="field_details"
-                    ng-model="route.details"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="adapApp.route.status" for="field_status">Status</label>
-            <select class="form-control" name="status" ng-model="route.status" id="field_status" required>
-                <option value="Active" translate="adapApp.Status.Active">Active</option>
-                <option value="Pending" translate="adapApp.Status.Pending">Pending</option>
-                <option value="ToBeDeleted" translate="adapApp.Status.ToBeDeleted">ToBeDeleted</option>
-            </select>
-            <div ng-show="editForm.status.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="adapApp.route.lastmodifiedby" for="field_lastmodifiedby">Lastmodifiedby</label>
-            <input type="text" class="form-control" name="lastmodifiedby" id="field_lastmodifiedby"
-                    ng-model="route.lastmodifiedby"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="adapApp.route.lastmodifieddate" for="field_lastmodifieddate">Lastmodifieddate</label>
-            <input id="field_lastmodifieddate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="route.lastmodifieddate" is-open="datePickerForLastmodifieddate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForLastmodifieddateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="adapApp.route.domain" for="field_domain">Domain</label>
-            <input type="text" class="form-control" name="domain" id="field_domain"
-                    ng-model="route.domain"
-                     />
-        </div>
-
-        <div class="form-group">
             <label translate="adapApp.route.objrecordtype" for="field_objrecordtype">objrecordtype</label>
             <select class="form-control" id="field_objrecordtype" name="objrecordtype" ng-model="route.objrecordtype" ng-options="objrecordtype as objrecordtype.name for objrecordtype in objrecordtypes track by objrecordtype.id">
                 <option value=""></option>

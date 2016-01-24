@@ -2,7 +2,9 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.innvo.domain.Objclassification;
+import com.innvo.domain.User;
 import com.innvo.repository.ObjclassificationRepository;
+import com.innvo.repository.UserRepository;
 import com.innvo.repository.search.ObjclassificationSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,6 +45,8 @@ public class ObjclassificationResource {
     @Inject
     private ObjclassificationSearchRepository objclassificationSearchRepository;
 
+    @Inject
+    UserRepository userRepository;
     /**
      * POST  /objclassifications -> Create a new objclassification.
      */
@@ -110,6 +115,21 @@ public class ObjclassificationResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    /**
+     * GET /obj_classifications -> get all the Classifications by RecordtypeId.
+     */
+    @RequestMapping(value = "/classifications/recordtype/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Objclassification>> getAllByRecordtype(
+            @PathVariable Long id,Principal principal)
+          throws URISyntaxException {
+        User user = userRepository.findByLogin(principal.getName());
+        List<Objclassification> list = objclassificationRepository.findByObjrecordtypeIdAndDomain(id, user.getDomain());
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+    
     /**
      * DELETE  /objclassifications/:id -> delete the "id" objclassification.
      */
