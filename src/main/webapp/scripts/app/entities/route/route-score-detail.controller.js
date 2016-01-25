@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adapApp')
-        .controller('RouteScoreDetailsController', function ($scope, $resource, $rootScope, $stateParams, entity, Route, Score, Objrecordtype, Objclassification, Objcategory, Objtype, Segment) {
+        .controller('RouteScoreDetailsController', function ($scope, $location,$resource, $rootScope, $stateParams, entity, Route, Score, Objrecordtype, Objclassification, Objcategory, Objtype, Segment) {
             $scope.route = entity;
             $scope.jsonData = [];
 
@@ -35,9 +35,9 @@ angular.module('adapApp')
             getAverageScore();
 
 
-            function getPage() {
+            function getData() {
                 getAverageScore().$promise.then(function (result) {
-                    var dataSource = new $.ig.OlapFlatDataSource({
+                	var dataSource = new $.ig.OlapFlatDataSource({
                         dataSource: $scope.jsonData,
                         metadata: {
                             cube: {
@@ -101,18 +101,49 @@ angular.module('adapApp')
                     });
 
 
-
                     if ($scope.jsonData === null) {
-                        $("#message").html("<b>No Score details available</b>");
+                    	$location.path("noscore");
                     } else {
                         $("#pivotGrid").igPivotGrid({
                             dataSource: dataSource,
-                            height: "565px",
-                            width: "720px"
+                            height: "465px",
+                            width: "920px"
                         });
-                    }
-
+                    
+                    $("#chart").igDataChart({
+                        width: "100%",
+                        height: "400px",
+                        title: "Population per Scenario Name",
+                        subtitle: "",
+                        dataSource: $scope.jsonData,
+                        axes: [
+                            {
+                                name: "NameAxis",
+                                type: "categoryX",
+                                title: "Scenario Name",
+                                label: "ScenarioName"
+                            },
+                            {
+                                name: "PopulationAxis",
+                                type: "numericY",
+                                minimumValue: 0,
+                                title: "Value",
+                            }
+                        ],
+                        series: [
+                            {
+                                name: "value",
+                                type: "column",
+                                isHighlightingEnabled: true,
+                                isTransitionInEnabled: true,
+                                xAxis: "NameAxis",
+                                yAxis: "PopulationAxis",
+                                valueMemberPath: "Value"
+                            }
+                        ]
+                    });
+                }
                 });
             }
-            getPage();
+            getData();
         });

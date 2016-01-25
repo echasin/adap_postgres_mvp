@@ -150,5 +150,22 @@ angular.module('adapApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('noscore', {
+                parent: 'entity',
+                url: '/noscore',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'adapApp.route.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/route/emptyscore.html',
+                        controller: 'EmptyScoreController'
+                    }
+                },
+                resolve: {
+
+                }
             });
     });

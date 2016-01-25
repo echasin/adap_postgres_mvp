@@ -5,10 +5,10 @@ angular.module('adapApp').controller('RouteDialogController',
         function($scope, $stateParams, $uibModalInstance, entity, Route, Objrecordtype, Objclassification, Objcategory, Objtype, Segment) {
 
         $scope.route = entity;
-        $scope.objrecordtypes = Objrecordtype.query();
-        $scope.objclassifications = Objclassification.query();
-        $scope.objcategorys = Objcategory.query();
-        $scope.objtypes = Objtype.query();
+        $scope.objrecordtypes = Objrecordtype.getrecordtypes();
+        $scope.objclassifications;
+        $scope.objcategorys;
+        $scope.objtypes;
         $scope.segments = Segment.query();
         $scope.load = function(id) {
             Route.get({id : id}, function(result) {
@@ -16,6 +16,28 @@ angular.module('adapApp').controller('RouteDialogController',
             });
         };
 
+        $scope.getclassifications = function (id) {
+            Objclassification.getclassifications({id: id}, function (result) {
+               $scope.objclassifications = result;
+               $scope.objcategorys="";
+               $scope.objtypes="";
+           });
+        };
+        
+        
+        $scope.getcategories = function (id) {
+        	Objcategory.getcategories({id: id}, function (result) {
+               $scope.objcategorys = result;
+               $scope.objtypes="";
+           });
+        };
+        
+        $scope.gettypes = function (id) {
+        	Objtype.gettypes({id: id}, function (result) {
+               $scope.objtypes = result;
+           });
+        };
+        
         var onSaveSuccess = function (result) {
             $scope.$emit('adapApp:routeUpdate', result);
             $uibModalInstance.close(result);
