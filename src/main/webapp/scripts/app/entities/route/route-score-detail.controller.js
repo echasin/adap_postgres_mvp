@@ -106,14 +106,14 @@ angular.module('adapApp')
                     } else {
                         $("#pivotGrid").igPivotGrid({
                             dataSource: dataSource,
-                            height: "465px",
-                            width: "920px"
+                            height: "100%",
+                            width: "100%"
                         });
                     
                     $("#chart").igDataChart({
                         width: "100%",
-                        height: "400px",
-                        title: "Population per Scenario Name",
+                        height: "300px",
+                        title: "Route Score Details",
                         subtitle: "",
                         dataSource: $scope.jsonData,
                         axes: [
