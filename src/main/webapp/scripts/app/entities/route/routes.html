@@ -19,13 +19,13 @@
         <div class="col-lg-12">
             <div class="tabs-container">
                 <tabset>
-                    <tab heading="Route Home" ng-click="mapView()">
+                    <tab heading="Route Home"  >
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3">
                                     <h5>Actions</h5>
-                                    <div class="input-group">                                    
-                                        <input class="form-control" type="text" id="searchQuery" ng-model="data.searchQuery"  placeholder="Find a Route">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="searchQuery" placeholder="Find a Route">
                                         <span class="input-group-btn">
                                             <button class="btn-sm btn-primary" ng-click="search()" type ="button">go! </button>
                                         </span>
@@ -102,14 +102,14 @@
                         </div>
                     </tab>
                     <!-- </tab> -->
-                    <tab heading="Map View" ng-click="mapView()">
+                    <tab heading="Map View">
                         <div class="panel-body">
                             <strong>Map View</strong>
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
                                     <h5>Route  <small>This should be a full size copy of the goggle map on Route Home.</small></h5>
                                     <div class="ibox-tools">
-                                        <div id="mapcanvas"  style="height: 410px; width: 860px"></div> 
+                                        <div id="mapcanvas"  style="height: 310px; width: 660px"></div> 
                                     </div>
                                 </div>
                             </div>
