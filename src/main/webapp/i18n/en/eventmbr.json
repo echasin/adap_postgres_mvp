@@ -1,0 +1,26 @@
+{
+    "adapApp": {
+        "eventmbr" : {
+            "home": {
+                "title": "Eventmbrs",
+                "createLabel": "Create a new Eventmbr",
+                "createOrEditLabel": "Create or edit a Eventmbr"
+            },
+            "created": "A new Eventmbr is created with identifier {{ param }}",
+            "updated": "A Eventmbr is updated with identifier {{ param }}",
+            "deleted": "A Eventmbr is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Eventmbr {{ id }}?"
+            },
+            "detail": {
+                "title": "Eventmbr"
+            },
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddate": "Lastmodifieddate",
+            "domain": "Domain",
+            "event": "Event",
+            "asset": "Asset"
+        }
+    }
+}

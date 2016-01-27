@@ -86,6 +86,13 @@
                 "main": "Vulnerabilities",
                 "v1": "V One"
             },
+            "event": {
+                "main": "Events"
+            },
+            "eventmbr": {
+                "main": "Event Associations"
+            }
+            ,
             "language": "Language"
         },
         "form": {
