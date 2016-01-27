@@ -30,7 +30,7 @@ angular.module('adapApp')
      	function initialize()
        	{
      		var map_canvas = document.getElementById('map_canvas');
-     		var mapcanvas = document.getElementById('mapcanvas');
+     		var map_canvas_full = document.getElementById('map_canvas_full');
      	    var mapOptions = {
      	    		zoom: 3,
            	        center: new google.maps.LatLng(38.3629444,-97.0063889),
@@ -38,7 +38,7 @@ angular.module('adapApp')
      	    }
      	    
        	    $scope.map = new google.maps.Map(map_canvas, mapOptions);
-       	    $scope.largemap =new google.maps.Map(mapcanvas, mapOptions);
+       	    $scope.largemap =new google.maps.Map(map_canvas_full, mapOptions);
 
        	}
      	

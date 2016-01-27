@@ -107,11 +107,43 @@ angular.module('adapApp')
                     } else {
                         $("#pivotGrid").igPivotGrid({
                             dataSource: dataSource,
-                            height: "565px",
-                            width: "720px"
+                            height: "100%",
+                            width: "100%"
                         });
-                    }
-
+                    
+                    $("#chart").igDataChart({
+                        width: "100%",
+                        height: "300px",
+                        title: "Route Score Details",
+                        subtitle: "",
+                        dataSource: $scope.jsonData,
+                        axes: [
+                            {
+                                name: "NameAxis",
+                                type: "categoryX",
+                                title: "Scenario Name",
+                                label: "ScenarioName"
+                            },
+                            {
+                                name: "PopulationAxis",
+                                type: "numericY",
+                                minimumValue: 0,
+                                title: "Value",
+                            }
+                        ],
+                        series: [
+                            {
+                                name: "value",
+                                type: "column",
+                                isHighlightingEnabled: true,
+                                isTransitionInEnabled: true,
+                                xAxis: "NameAxis",
+                                yAxis: "PopulationAxis",
+                                valueMemberPath: "Value"
+                            }
+                        ]
+                    });
+                }
                 });
             }
             getPage();
