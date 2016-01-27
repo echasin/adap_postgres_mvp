@@ -1,0 +1,11 @@
+{
+    "adapApp": {
+        "Severity" : {
+            "null": "",
+            "Low": "Low",
+            "Medium": "Medium",
+            "High": "High",
+            "Catastrophic": "Catastrophic"
+        }
+    }
+}

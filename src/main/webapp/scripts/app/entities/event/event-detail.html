@@ -1,0 +1,126 @@
+
+<div>
+    <h2><span translate="adapApp.event.detail.title">Event</span> {{event.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.details">Details</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.details}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.eventdate">Eventdate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.eventdate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.severity">Severity</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Severity.' + event.severity}}">{{event.severity}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + event.status}}">{{event.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.objrecordtype">objrecordtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objrecordtype.detail({id:event.objrecordtype.id})">{{event.objrecordtype.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.objclassification">objclassification</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objclassification.detail({id:event.objclassification.id})">{{event.objclassification.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.objcategory">objcategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objcategory.detail({id:event.objcategory.id})">{{event.objcategory.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.event.objtype">objtype</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="objtype.detail({id:event.objtype.id})">{{event.objtype.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

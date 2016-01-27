@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="adapApp.eventmbr.detail.title">Eventmbr</span> {{eventmbr.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'adapApp.Status.' + eventmbr.status}}">{{eventmbr.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.lastmodifiedby">Lastmodifiedby</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{eventmbr.lastmodifiedby}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.lastmodifieddate">Lastmodifieddate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{eventmbr.lastmodifieddate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.domain">Domain</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{eventmbr.domain}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.event">event</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="event.detail({id:eventmbr.event.id})">{{eventmbr.event.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="adapApp.eventmbr.asset">asset</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="asset.detail({id:eventmbr.asset.id})">{{eventmbr.asset.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
