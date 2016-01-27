@@ -1,6 +1,7 @@
 package com.innvo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.innvo.domain.enumeration.EventSeverity;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-import com.innvo.domain.enumeration.Severity;
+
 
 import com.innvo.domain.enumeration.Status;
 
@@ -47,7 +48,7 @@ public class Event implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "severity")
-    private Severity severity;
+    private EventSeverity eventseverity;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -124,15 +125,15 @@ public class Event implements Serializable {
     public void setEventdate(ZonedDateTime eventdate) {
         this.eventdate = eventdate;
     }
-
-    public Severity getSeverity() {
-        return severity;
+    
+       public EventSeverity getEventseverity() {
+        return eventseverity;
     }
 
-    public void setSeverity(Severity severity) {
-        this.severity = severity;
+    public void setEventseverity(EventSeverity eventseverity) {
+        this.eventseverity = eventseverity;
     }
-
+    
     public Status getStatus() {
         return status;
     }
@@ -230,11 +231,12 @@ public class Event implements Serializable {
             ", description='" + description + "'" +
             ", details='" + details + "'" +
             ", eventdate='" + eventdate + "'" +
-            ", severity='" + severity + "'" +
+            ", severity='" + eventseverity + "'" +
             ", status='" + status + "'" +
             ", lastmodifiedby='" + lastmodifiedby + "'" +
             ", lastmodifieddate='" + lastmodifieddate + "'" +
             ", domain='" + domain + "'" +
             '}';
     }
+
 }

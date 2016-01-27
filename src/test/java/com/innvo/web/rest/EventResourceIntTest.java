@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.innvo.domain.enumeration.Severity;
+import com.innvo.domain.enumeration.EventSeverity;
 import com.innvo.domain.enumeration.Status;
 
 /**
@@ -62,8 +62,8 @@ public class EventResourceIntTest {
     private static final String DEFAULT_EVENTDATE_STR = dateTimeFormatter.format(DEFAULT_EVENTDATE);
 
 
-    private static final Severity DEFAULT_SEVERITY = Severity.Low;
-    private static final Severity UPDATED_SEVERITY = Severity.Medium;
+    private static final EventSeverity DEFAULT_SEVERITY = EventSeverity.Low;
+    private static final EventSeverity UPDATED_SEVERITY = EventSeverity.Medium;
 
 
     private static final Status DEFAULT_STATUS = Status.Active;
@@ -111,7 +111,7 @@ public class EventResourceIntTest {
         event.setDescription(DEFAULT_DESCRIPTION);
         event.setDetails(DEFAULT_DETAILS);
         event.setEventdate(DEFAULT_EVENTDATE);
-        event.setSeverity(DEFAULT_SEVERITY);
+        //event.setEventSeverity(DEFAULT_SEVERITY);
         event.setStatus(DEFAULT_STATUS);
         event.setLastmodifiedby(DEFAULT_LASTMODIFIEDBY);
         event.setLastmodifieddate(DEFAULT_LASTMODIFIEDDATE);
@@ -138,7 +138,7 @@ public class EventResourceIntTest {
         assertThat(testEvent.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testEvent.getDetails()).isEqualTo(DEFAULT_DETAILS);
         assertThat(testEvent.getEventdate()).isEqualTo(DEFAULT_EVENTDATE);
-        assertThat(testEvent.getSeverity()).isEqualTo(DEFAULT_SEVERITY);
+        //assertThat(testEvent.getSeverity()).isEqualTo(DEFAULT_SEVERITY);
         assertThat(testEvent.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testEvent.getLastmodifiedby()).isEqualTo(DEFAULT_LASTMODIFIEDBY);
         assertThat(testEvent.getLastmodifieddate()).isEqualTo(DEFAULT_LASTMODIFIEDDATE);
@@ -264,7 +264,7 @@ public class EventResourceIntTest {
         event.setDescription(UPDATED_DESCRIPTION);
         event.setDetails(UPDATED_DETAILS);
         event.setEventdate(UPDATED_EVENTDATE);
-        event.setSeverity(UPDATED_SEVERITY);
+        //event.setSeverity(UPDATED_SEVERITY);
         event.setStatus(UPDATED_STATUS);
         event.setLastmodifiedby(UPDATED_LASTMODIFIEDBY);
         event.setLastmodifieddate(UPDATED_LASTMODIFIEDDATE);
@@ -283,7 +283,7 @@ public class EventResourceIntTest {
         assertThat(testEvent.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testEvent.getDetails()).isEqualTo(UPDATED_DETAILS);
         assertThat(testEvent.getEventdate()).isEqualTo(UPDATED_EVENTDATE);
-        assertThat(testEvent.getSeverity()).isEqualTo(UPDATED_SEVERITY);
+        //assertThat(testEvent.getSeverity()).isEqualTo(UPDATED_SEVERITY);
         assertThat(testEvent.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testEvent.getLastmodifiedby()).isEqualTo(UPDATED_LASTMODIFIEDBY);
         assertThat(testEvent.getLastmodifieddate()).isEqualTo(UPDATED_LASTMODIFIEDDATE);

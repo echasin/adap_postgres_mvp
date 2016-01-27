@@ -1,8 +1,9 @@
 package com.innvo.domain.enumeration;
 
 /**
- * The Severity enumeration.
+ *
+ * @author Eric Chasin
  */
-public enum Severity {
+public enum EventSeverity {
     Low,Medium,High,Catastrophic
 }
