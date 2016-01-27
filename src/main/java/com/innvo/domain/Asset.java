@@ -121,6 +121,14 @@ public class Asset implements Serializable {
         this.name = name;
     }
 
+    public String getNameshort() {
+        return nameshort;
+    }
+
+    public void setNameshort(String nameshort) {
+        this.nameshort = nameshort;
+    }
+    
     public String getDescription() {
         return description;
     }
@@ -262,18 +270,6 @@ public class Asset implements Serializable {
                 + '}';
     }
 
-    /**
-     * @return the nameshort
-     */
-    public String getNameshort() {
-        return nameshort;
-    }
-
-    /**
-     * @param nameshort the nameshort to set
-     */
-    public void setNameshort(String nameshort) {
-        this.nameshort = nameshort;
-    }
+  
 
 }
