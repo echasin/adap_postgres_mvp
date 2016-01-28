@@ -37,113 +37,170 @@ angular.module('adapApp')
 
             function getPage() {
                 getAverageScore().$promise.then(function (result) {
-                    var dataSource = new $.ig.OlapFlatDataSource({
-                        dataSource: $scope.jsonData,
-                        metadata: {
-                            cube: {
-                                name: "Sales",
-                                caption: "Route Scores",
-                                measuresDimension: {
-                                    caption: "Measures",
-                                    measures: [
-                                        {
-                                            caption: "Score Value", name: "Value",
-                                            aggregator: $.ig.OlapUtilities.prototype.sumAggregator('Value')
-                                        }]
+                	 $('#dataSelector').igPivotDataSelector({
+                         dataSource: $scope.jsonData,
+                         height: "565px",
+                         width: "300px"
+                     });
+                	$(function () {
+                        var $pivotGrid = $("#pivotGrid"),
+                            $transposeCheckBox = $("#transpose"),
+                            $chart = $("#olapChart"),
+                            hasValue = function (value) {
+                                return value !== undefined && value !== null && value.count() > 0;
+                            },
+                            dataSource = new $.ig.OlapFlatDataSource({
+                                dataSource: $scope.jsonData,
+                                metadata: {
+                                    cube: {
+                                        name: "Sales",
+                                        caption: "Sales",
+                                        measuresDimension: {
+                                            caption: "Measures",
+                                            measures: [
+                                            { caption: "Score Value", name: "Value", aggregator: $.ig.OlapUtilities.prototype.sumAggregator('Value') }]
+                                       
+                                        },
+                                        dimensions: [
+                                            {
+                                                caption: "ScenarioName", name: "ScenarioName", hierarchies:  [{
+                                                    name: "ScenarioName", levels: [
+                                                                             {
+                                                                                 name: "All Scenario Names",
+                                                                                 memberProvider: function (item) { return "All Scenario Names"; }
+                                                                             },
+                                                                             {
+                                                                                 name: "ScenarioName",
+                                                                                 memberProvider: function (item) { return item.ScenarioName; }
+                                                                             }]
+                                                                       }]
+                                            }
+                                        ]
+                                    }
                                 },
-                                dimensions: [
-                                    {
-                                        caption: "Rules", name: "ScoreCategory", hierarchies: [{
-                                                caption: "Score Category", name: "ScoreCategory", levels: [
-                                                    {
-                                                        name: "AllCategories", caption: "All Categories",
-                                                        memberProvider: function (item) {
-                                                            return "All Categories";
-                                                        }
-                                                    },
-                                                    {
-                                                        name: "CategoryName", caption: "Category",
-                                                        memberProvider: function (item) {
-                                                            return item.ScoreCategoryName;
-                                                        }
-                                                    }]
-                                            }]
+                                rows: "[ScenarioName].[ScenarioName]",
+                                measures: "[Measures].[Value]"
+                            }),
+                            getCellData = function (rowIndex, columnIndex, columnCount, cells) {
+                                var cellOrdinal = (rowIndex * columnCount) + columnIndex;
+                                if (!hasValue(cells)) {
+                                    return 0;
+                                }
+                                for (var index = 0; index < cells.count() ; index++) {
+                                    var cell = cells.item(index);
+                                    if (cell.cellOrdinal() == cellOrdinal) {
+                                        return new Number(cell.value());
+                                    }
+                                }
+                                return 0;
+                            },
+                            updateChart = function (tableView, transpose) {
+                                var columnHeaders,
+                                    rowHeaders,
+                                    cells = tableView.resultCells(),
+                                    dataArray = [],
+                                    series = [],
+                                    rowHeaderIndex,
+                                    columnHeaderIndex,
+                                    ds,
+                                    headerCell,
+                                    columnCount,
+                                    rowCount,
+                                    data;
+
+                                if (transpose) {
+                                    columnHeaders = tableView.rowHeaders(),
+                                        rowHeaders = tableView.columnHeaders()
+                                }
+                                else {
+                                    columnHeaders = tableView.columnHeaders(),
+                                        rowHeaders = tableView.rowHeaders()
+                                }
+
+                                if (!hasValue(cells) && !hasValue(rowHeaders) && !hasValue(columnHeaders)) {
+                                    $chart.igDataChart("destroy");
+                                    return;
+                                }
+
+                                if (!hasValue(rowHeaders)) {
+                                    rowHeaders = [{ caption: function () { return ""; } }];
+                                }
+
+                                if (!hasValue(columnHeaders)) {
+                                    columnHeaders = [{ caption: function () { return ""; } }];
+                                }
+
+                                for (rowHeaderIndex = 0; rowHeaderIndex < rowHeaders.count() ; rowHeaderIndex++) {
+                                    headerCell = rowHeaders.item(rowHeaderIndex);
+                                    columnCount = columnHeaders.count();
+                                    rowCount = rowHeaders.count();
+                                    data = { caption: headerCell.caption() };
+                                    var value;
+                                    for (columnHeaderIndex = 0; columnHeaderIndex < columnCount; columnHeaderIndex++) {
+                                        if (transpose) {
+                                            value = getCellData(columnHeaderIndex, rowHeaderIndex, rowCount, cells, transpose);
+                                        }
+                                        else {
+                                            value = getCellData(rowHeaderIndex, columnHeaderIndex, columnCount, cells, transpose);
+                                        }
+                                        data["col" + columnHeaderIndex] = value;
+                                    }
+
+                                    dataArray[rowHeaderIndex] = data;
+                                };
+
+                                for (columnHeaderIndex = 0; columnHeaderIndex < columnHeaders.count() ; columnHeaderIndex++) {
+                                    series[columnHeaderIndex] = {
+                                        name: "series" + columnHeaderIndex,
+                                        title: columnHeaders.item(columnHeaderIndex).caption(),
+                                        type: "column",
+                                        xAxis: "xAxis",
+                                        yAxis: "yAxis",
+                                        valueMemberPath: "col" + columnHeaderIndex
+                                    };
+                                };
+
+                                ds = new $.ig.DataSource({ dataSource: dataArray });
+
+                                if ($chart.data("igDataChart")) {
+                                    $chart.igDataChart("destroy");
+                                }
+                                $chart.igDataChart({
+                                    width: "700px",
+                                    height: "500px",
+                                    dataSource: ds,
+                                    series: series,
+                                    legend: { element: "olapChartLegend" },
+                                    axes: [{
+                                        name: "xAxis",
+                                        type: "categoryX",
+                                        label: "caption"
                                     },
                                     {
-                                        caption: "Scenarios", name: "Scenario", hierarchies: [{
-                                                caption: "Scenario Category", name: "Scenario", levels: [
-                                                    {
-                                                        name: "AllScenarios", caption: "All Scenarios",
-                                                        memberProvider: function (item) {
-                                                            return "All Scenarios";
-                                                        }
-                                                    },
-                                                    {
-                                                        name: "ScenarioName", caption: "Scenario",
-                                                        memberProvider: function (item) {
-                                                            return item.ScenarioName;
-                                                        }
-                                                    }]
-                                            }]
-                                    }
-                                ]
-                            }
-                        },
-                        rows: "[Scenario].[Scenario]",
-                        columns: "[ScoreCategory].[ScoreCategory]",
-                        measures: "[Measures].[Value]"
-                    });
+                                        name: "yAxis",
+                                        type: "numericY"
+                                    }],
+                                    horizontalZoomable: true,
+                                    verticalZoomable: true,
+                                    windowResponse: "immediate"
+                                });
+                            };
 
-                    $('#dataSelector').igPivotDataSelector({
-                        dataSource: dataSource,
-                        height: "565px",
-                        width: "300px"
-                    });
-
-
-
-                    if ($scope.jsonData === null) {
-                        $("#message").html("<b>No Score details available</b>");
-                    } else {
-                        $("#pivotGrid").igPivotGrid({
+                        $pivotGrid.igPivotGrid({
                             dataSource: dataSource,
-                            height: "100%",
-                            width: "100%"
-                        });
-                    
-                    $("#chart").igDataChart({
-                        width: "100%",
-                        height: "300px",
-                        title: "Route Score Details",
-                        subtitle: "",
-                        dataSource: $scope.jsonData,
-                        axes: [
-                            {
-                                name: "NameAxis",
-                                type: "categoryX",
-                                title: "Scenario Name",
-                                label: "ScenarioName"
+                            pivotGridRendered: function () {
+                                updateChart($pivotGrid.data("igPivotGrid")._tableView, $transposeCheckBox.is(':checked'));
                             },
-                            {
-                                name: "PopulationAxis",
-                                type: "numericY",
-                                minimumValue: 0,
-                                title: "Value",
-                            }
-                        ],
-                        series: [
-                            {
-                                name: "value",
-                                type: "column",
-                                isHighlightingEnabled: true,
-                                isTransitionInEnabled: true,
-                                xAxis: "NameAxis",
-                                yAxis: "PopulationAxis",
-                                valueMemberPath: "Value"
-                            }
-                        ]
+                            hideFiltersDropArea: true,
+                            disableColumnsDropArea: true,
+                            disableRowsDropArea: true,
+                            disableMeasuresDropArea: true
+                        });
+                        $transposeCheckBox.click(function () {
+                            updateChart($pivotGrid.data("igPivotGrid")._tableView, $transposeCheckBox.is(':checked'));
+                        });
                     });
-                }
+
                 });
             }
             getPage();
