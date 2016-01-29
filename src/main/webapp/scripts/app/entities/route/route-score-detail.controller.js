@@ -167,7 +167,7 @@ angular.module('adapApp')
                                 }
                                 $chart.igDataChart({
                                     width: "700px",
-                                    height: "500px",
+                                    height: "250px",
                                     dataSource: ds,
                                     series: series,
                                     legend: { element: "olapChartLegend" },
