@@ -37,13 +37,15 @@ angular.module('adapApp')
 
             function getPage() {
                 getAverageScore().$promise.then(function (result) {
-                	 $('#dataSelector').igPivotDataSelector({
-                         dataSource: $scope.jsonData,
-                         height: "565px",
-                         width: "300px"
-                     });
-                	$(function () {
+
+        
+                 $(function () {
+                 
+                	 
+                	
+            
                         var $pivotGrid = $("#pivotGrid"),
+                            $dataSelector= $('#dataSelector'),
                             $transposeCheckBox = $("#transpose"),
                             $chart = $("#olapChart"),
                             hasValue = function (value) {
@@ -53,8 +55,8 @@ angular.module('adapApp')
                                 dataSource: $scope.jsonData,
                                 metadata: {
                                     cube: {
-                                        name: "Sales",
-                                        caption: "Sales",
+                                        name: "Routes",
+                                        caption: "Routes",
                                         measuresDimension: {
                                             caption: "Measures",
                                             measures: [
@@ -71,6 +73,19 @@ angular.module('adapApp')
                                                                              },
                                                                              {
                                                                                  name: "ScenarioName",
+                                                                                 memberProvider: function (item) { return item.ScenarioName; }
+                                                                             }]
+                                                                       }]
+                                            },
+                                            {
+                                                caption: "ScoreCategoryName", name: "ScoreCategoryName", hierarchies:  [{
+                                                    name: "ScoreCategoryName", levels: [
+                                                                             {
+                                                                                 name: "All ScoreCategoryName",
+                                                                                 memberProvider: function (item) { return "All ScoreCategoryName"; }
+                                                                             },
+                                                                             {
+                                                                                 name: "ScoreCategoryName",
                                                                                  memberProvider: function (item) { return item.ScenarioName; }
                                                                              }]
                                                                        }]
@@ -196,6 +211,13 @@ angular.module('adapApp')
                             disableRowsDropArea: true,
                             disableMeasuresDropArea: true
                         });
+                        
+                        $dataSelector.igPivotDataSelector({
+                            dataSource: dataSource,
+                            height: "565px",
+                            width: "300px"
+                        });
+                        
                         $transposeCheckBox.click(function () {
                             updateChart($pivotGrid.data("igPivotGrid")._tableView, $transposeCheckBox.is(':checked'));
                         });
