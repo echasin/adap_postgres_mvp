@@ -40,6 +40,7 @@
             <column name="objclassification_id" type="bigint"/>
             <column name="objcategory_id" type="bigint"/>
             <column name="objtype_id" type="bigint"/>
+            <column name="asset_id" type="bigint"/>
         </createTable>
         <dropDefaultValue tableName="event" columnName="eventdate" columnDataType="datetime"/>
 
@@ -69,6 +70,12 @@
                                  constraintName="fk_event_objtype_id"
                                  referencedColumnNames="id"
                                  referencedTableName="objtype"/>
+
+       <addForeignKeyConstraint baseColumnNames="asset_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_asset_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asset"/>
 
     </changeSet>
 </databaseChangeLog>

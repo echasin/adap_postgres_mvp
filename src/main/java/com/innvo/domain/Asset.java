@@ -94,6 +94,11 @@ public class Asset implements Serializable {
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Location> locations = new HashSet<>();
+    
+    @OneToMany(mappedBy = "asset", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "asset")
     @JsonIgnore
@@ -232,8 +237,18 @@ public class Asset implements Serializable {
     public void setEventmbrs(Set<Eventmbr> eventmbrs) {
         this.eventmbrs = eventmbrs;
     }
+    
+    
 
-    @Override
+    public Set<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
