@@ -159,7 +159,9 @@ angular.module('adapApp')
        	    useExternalPagination: true,
        	    useExternalSorting: false,
        	    columnDefs: [
-       	                 { field: 'id',  displayName: 'ID', width: 60, enableSorting: true },
+       	              { name: 'id',
+         	                   cellTemplate:' <a ui-sref="asset.detail({id:row.entity.id})">{{row.entity.id}}</a>'
+         	                 },
        	                 { field: 'name', displayName: 'Name', enableSorting: true },
                          { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
                          { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
