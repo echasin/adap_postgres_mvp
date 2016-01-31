@@ -6,6 +6,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -50,9 +53,8 @@ public class Event implements Serializable {
     @Column(name = "severity")
     private EventSeverity eventseverity;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     private Status status;
 
     @Column(name = "lastmodifiedby")
@@ -61,8 +63,7 @@ public class Event implements Serializable {
     @Column(name = "lastmodifieddate")
     private ZonedDateTime lastmodifieddate;
 
-    @NotNull
-    @Column(name = "domain", nullable = false)
+    @Column(name = "domain")
     private String domain;
 
     @ManyToOne
@@ -86,6 +87,11 @@ public class Event implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Eventmbr> eventmbrs = new HashSet<>();
 
+
+    @ManyToOne
+    @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
+    private Asset asset;
+    
     public Long getId() {
         return id;
     }
@@ -206,7 +212,16 @@ public class Event implements Serializable {
         this.eventmbrs = eventmbrs;
     }
 
-    @Override
+    
+    public Asset getAsset() {
+		return asset;
+	}
+
+	public void setAsset(Asset asset) {
+		this.asset = asset;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

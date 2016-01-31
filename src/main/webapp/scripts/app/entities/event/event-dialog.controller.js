@@ -6,15 +6,36 @@ angular.module('adapApp').controller('EventDialogController',
 
         $scope.event = entity;
         $scope.objrecordtypes = Objrecordtype.query();
-        $scope.objclassifications = Objclassification.query();
-        $scope.objcategorys = Objcategory.query();
-        $scope.objtypes = Objtype.query();
         $scope.eventmbrs = Eventmbr.query();
         $scope.load = function(id) {
             Event.get({id : id}, function(result) {
                 $scope.event = result;
             });
         };
+        
+        
+        $scope.getclassifications = function (id) {
+            Objclassification.getclassifications({id: id}, function (result) {
+               $scope.objclassifications = result;
+               $scope.objcategorys="";
+               $scope.objtypes="";
+           });
+        };
+        
+        
+        $scope.getcategories = function (id) {
+        	Objcategory.getcategories({id: id}, function (result) {
+               $scope.objcategorys = result;
+               $scope.objtypes="";
+           });
+        };
+        
+        $scope.gettypes = function (id) {
+        	Objtype.gettypes({id: id}, function (result) {
+               $scope.objtypes = result;
+           });
+        };
+        
 
         var onSaveSuccess = function (result) {
             $scope.$emit('adapApp:eventUpdate', result);
