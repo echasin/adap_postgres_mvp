@@ -45,6 +45,14 @@ angular.module('adapApp')
         $scope.index = function () {
         	Score.index();
         };
+        
+        $scope.fireTestCaseOne = function () {
+        	Score.fireTestCaseOne();
+        };
+        
+        $scope.fireTestCaseTwo = function () {
+        	Score.fireTestCaseTwo();
+        };
 
         $scope.clear = function () {
             $scope.score = {
@@ -80,14 +88,16 @@ angular.module('adapApp')
        	    useExternalSorting: false,
        	    columnDefs: [
        	                 { field: 'id',  displayName: 'ID', width: 60, enableSorting: true },
-       	                 { field: 'name', displayName: 'Name', enableSorting: true },
-                         { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
+       	                 { field: 'value', displayName: 'Value', enableSorting: true },
+       	                 { field: 'runid', displayName: 'Runid', enableSorting: true },
+       	                 { field: 'details', displayName: 'details', enableSorting: true },
+       	                 { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
                          { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
        	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="score.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
+                              	          ' <button type="submit" ui-sref="score.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
                                           ' <button type="submit" ui-sref="score.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
                                           ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }

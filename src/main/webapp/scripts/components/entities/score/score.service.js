@@ -9,6 +9,8 @@ angular.module('adapApp')
             'getAverageScore': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/averageScore/:id'},
             'getroutes': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/scores/:page/:size'},
             'index': {method: 'GET', url: 'api/indexscore'},
+            'fireTestCaseOne': {method: 'GET', url: 'api/fireTestCaseOne'},
+            'fireTestCaseTwo': {method: 'GET', url: 'api/fireTestCaseTwo'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

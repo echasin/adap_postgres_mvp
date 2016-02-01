@@ -2,17 +2,31 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Lists;
+import com.innvo.domain.Filter;
+import com.innvo.domain.Route;
 import com.innvo.domain.Score;
+import com.innvo.domain.Segment;
 import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
+import com.innvo.drools.RuleExecutor;
+import com.innvo.drools.Todo;
+import com.innvo.repository.FilterRepository;
 import com.innvo.repository.ScoreRepository;
+import com.innvo.repository.SegmentRepository;
 import com.innvo.repository.UserRepository;
+import com.innvo.repository.search.RouteSearchRepository;
 import com.innvo.repository.search.ScoreSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
+import io.gatling.core.json.JSON;
+import springfox.documentation.spring.web.json.Json;
+
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.WrapperQueryBuilder;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -57,12 +71,25 @@ public class ScoreResource {
 
     @Inject
     private ScoreSearchRepository scoreSearchRepository;
+    
+    @Inject
+    RouteSearchRepository routeSearchRepository;
+    
 
     @Inject
     UserRepository userRepository;
     
     @Inject
     ElasticsearchTemplate elasticsearchTemplate;
+    
+    @Inject
+    FilterRepository filterRepository;
+    
+    @Inject
+    SegmentRepository segmentRepository;
+    
+    long runId=0;
+    
     /**
      * POST  /scores -> Create a new score.
      */
@@ -275,5 +302,94 @@ public class ScoreResource {
             IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(score).build();
             elasticsearchTemplate.index(indexQuery);
         }
+    }
+    
+    /**
+     * GET   ->fireTestCaseOne.
+     * @throws JSONException 
+     */
+    @RequestMapping(value = "/fireTestCaseOne",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+	public void fireTestCaseOne(HttpServletRequest request,Principal principal) throws JSONException {
+    	Filter filter=filterRepository.findOne((long)524);
+    	String query=filter.getQueryelastic();
+    	System.out.println(query);
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+        .must(new WrapperQueryBuilder(query));
+        List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
+		Todo todo=new Todo();
+		runId++;
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+		
+		for(Route route:routes){
+			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
+			todo.setValue(segments.size());
+    		todo.setRoute(route);        
+            todo.setRunId(runId);
+		    todo.setStatus(Status.Active);
+		    JSONObject details = new JSONObject();
+		    details.put("ScenarioName", "Scenario_One");
+		    details.put("ScoreCategoryName", "Category_One");
+		    details.put("RuleName", "r_count_segments");
+		    details.put("Value", segments.size());
+		    todo.setDetails(details.toString());
+		    todo.setDomain(user.getDomain());
+		    todo.setLastmodifiedby(principal.getName());
+		    todo.setLastmodifieddate(lastmodifieddate);
+		    todo.setObjrecordtype(route.getObjrecordtype());
+		    todo.setObjclassification(route.getObjclassification());
+		    todo.setObjcategory(route.getObjcategory());   
+		    RuleExecutor ruleExecutor = new RuleExecutor();
+		    Score score= ruleExecutor.processRules(todo);
+		    scoreRepository.save(score);
+	 }
+    }
+    
+    
+    /**
+     * GET   ->fireTestCaseTwo.
+     * @throws JSONException 
+     */
+    @RequestMapping(value = "/fireTestCaseTwo",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+	public void fireTestCaseTwo(HttpServletRequest request,Principal principal) throws JSONException {
+    	Filter filter=filterRepository.findOne((long)525);
+    	String query=filter.getQueryelastic();
+    	System.out.println(query);
+    	BoolQueryBuilder bool = new BoolQueryBuilder()
+        .must(new WrapperQueryBuilder(query));
+        List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
+		Todo todo=new Todo();
+		runId++;
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        User user = userRepository.findByLogin(principal.getName());
+		
+		for(Route route:routes){
+			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
+			todo.setValue(segments.size());
+    		todo.setRoute(route);        
+            todo.setRunId(runId);
+		    todo.setStatus(Status.Active);
+		    JSONObject details = new JSONObject();
+		    details.put("ScenarioName", "Scenario_One");
+		    details.put("ScoreCategoryName", "Category_One");
+		    details.put("RuleName", "r_count_segments");
+		    details.put("Value", segments.size());
+		    todo.setDetails(details.toString());
+		    todo.setDomain(user.getDomain());
+		    todo.setLastmodifiedby(principal.getName());
+		    todo.setLastmodifieddate(lastmodifieddate);
+		    todo.setObjrecordtype(route.getObjrecordtype());
+		    todo.setObjclassification(route.getObjclassification());
+		    todo.setObjcategory(route.getObjcategory());   
+		    RuleExecutor ruleExecutor = new RuleExecutor();
+		    Score score= ruleExecutor.processRules(todo);
+		    scoreRepository.save(score);
+	 }
     }
 }
