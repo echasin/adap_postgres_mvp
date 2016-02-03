@@ -12,12 +12,15 @@ import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
 import org.drools.runtime.ObjectFilter;
 import org.drools.runtime.StatefulKnowledgeSession;
+import org.drools.runtime.rule.Activation;
+import org.drools.runtime.rule.AgendaFilter;
+
 import com.innvo.domain.Score;
 
 public class RuleExecutor {
 
 
-	public Score processRules(Todo todo)
+	public Score processRules(Todo todo,String name)
 	{
 		KnowledgeBase kbase = null;
 		Score score=null;
@@ -28,7 +31,7 @@ public class RuleExecutor {
 		}
 		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
 		ksession.insert(todo);
-		ksession.fireAllRules();
+		ksession.fireAllRules(getAgendaFilterForRuleToRun(name));
 		Collection<Object> result = findFacts(ksession, Score.class);
 		Object[] objects = result.toArray();
 		if(objects.length == 1)
@@ -38,9 +41,21 @@ public class RuleExecutor {
 		return score;
 	}
 
+    private AgendaFilter getAgendaFilterForRuleToRun(final String ruleName){ 
+        AgendaFilter filter = new AgendaFilter(){ 
+                public boolean accept(Activation activation){ 
+                        if (activation.getRule().getName().equals(ruleName)){ 
+                                return true; 
+                        } 
+                        return false; 
+                } 
+         }; 
+        return filter; 
+     } 
+    
 	private KnowledgeBase readKnowledgeBase() throws Exception {
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("rules/routeRuleSetOne.drl"), ResourceType.DRL);
+		kbuilder.add(ResourceFactory.newClassPathResource("rules/routeRules.drl"), ResourceType.DRL);
 		KnowledgeBuilderErrors errors = kbuilder.getErrors();
 		if (errors.size() > 0) {
 			for (KnowledgeBuilderError error : errors) {

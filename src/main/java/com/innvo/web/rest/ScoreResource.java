@@ -19,8 +19,7 @@ import com.innvo.repository.search.ScoreSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
-import io.gatling.core.json.JSON;
-import springfox.documentation.spring.web.json.Json;
+import io.gatling.core.scenario.Scenario;
 
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -308,12 +307,13 @@ public class ScoreResource {
      * GET   ->fireTestCaseOne.
      * @throws JSONException 
      */
-    @RequestMapping(value = "/fireTestCaseOne",
+    @RequestMapping(value = "/fireRules/{filterId}/{ruleName}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-	public void fireTestCaseOne(HttpServletRequest request,Principal principal) throws JSONException {
-    	Filter filter=filterRepository.findOne((long)524);
+	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("ruleName") String ruleName,
+			HttpServletRequest request,Principal principal) throws JSONException {
+    	Filter filter=filterRepository.findOne(filterId);
     	String query=filter.getQueryelastic();
     	System.out.println(query);
     	BoolQueryBuilder bool = new BoolQueryBuilder()
@@ -330,12 +330,6 @@ public class ScoreResource {
     		todo.setRoute(route);        
             todo.setRunId(runId);
 		    todo.setStatus(Status.Active);
-		    JSONObject details = new JSONObject();
-		    details.put("ScenarioName", "Scenario_One");
-		    details.put("ScoreCategoryName", "Category_One");
-		    details.put("RuleName", "r_count_segments");
-		    details.put("Value", segments.size());
-		    todo.setDetails(details.toString());
 		    todo.setDomain(user.getDomain());
 		    todo.setLastmodifiedby(principal.getName());
 		    todo.setLastmodifieddate(lastmodifieddate);
@@ -343,52 +337,7 @@ public class ScoreResource {
 		    todo.setObjclassification(route.getObjclassification());
 		    todo.setObjcategory(route.getObjcategory());   
 		    RuleExecutor ruleExecutor = new RuleExecutor();
-		    Score score= ruleExecutor.processRules(todo);
-		    scoreRepository.save(score);
-	 }
-    }
-    
-    
-    /**
-     * GET   ->fireTestCaseTwo.
-     * @throws JSONException 
-     */
-    @RequestMapping(value = "/fireTestCaseTwo",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-	public void fireTestCaseTwo(HttpServletRequest request,Principal principal) throws JSONException {
-    	Filter filter=filterRepository.findOne((long)525);
-    	String query=filter.getQueryelastic();
-    	System.out.println(query);
-    	BoolQueryBuilder bool = new BoolQueryBuilder()
-        .must(new WrapperQueryBuilder(query));
-        List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
-		Todo todo=new Todo();
-		runId++;
-        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
-        User user = userRepository.findByLogin(principal.getName());
-		
-		for(Route route:routes){
-			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
-			todo.setValue(segments.size());
-    		todo.setRoute(route);        
-            todo.setRunId(runId);
-		    todo.setStatus(Status.Active);
-		    JSONObject details = new JSONObject();
-		    details.put("ScenarioName", "Scenario_One");
-		    details.put("ScoreCategoryName", "Category_One");
-		    details.put("RuleName", "r_count_segments");
-		    details.put("Value", segments.size());
-		    todo.setDetails(details.toString());
-		    todo.setDomain(user.getDomain());
-		    todo.setLastmodifiedby(principal.getName());
-		    todo.setLastmodifieddate(lastmodifieddate);
-		    todo.setObjrecordtype(route.getObjrecordtype());
-		    todo.setObjclassification(route.getObjclassification());
-		    todo.setObjcategory(route.getObjcategory());   
-		    RuleExecutor ruleExecutor = new RuleExecutor();
-		    Score score= ruleExecutor.processRules(todo);
+		    Score score= ruleExecutor.processRules(todo,ruleName);
 		    scoreRepository.save(score);
 	 }
     }

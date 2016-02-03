@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adapApp')
-    .controller('ScoreController', function ($scope, $state, $resource, $modal, Score, ScoreService, ScoreSearch, ParseLinks) {
+    .controller('ScoreController', function ($scope, $state, $resource, $modal, Score, ScoreService, ScoreSearch, Filter,ParseLinks) {
       
         $scope.scores = [];
         $scope.page = 0;
@@ -46,13 +46,20 @@ angular.module('adapApp')
         	Score.index();
         };
         
-        $scope.fireTestCaseOne = function () {
-        	Score.fireTestCaseOne();
+        $scope.fireRules = function () {
+        	Score.fireRules({filterId: $scope.filterId,ruleName:$scope.ruleName}, function(result) {
+                 console.log(result);
+                });
         };
         
-        $scope.fireTestCaseTwo = function () {
-        	Score.fireTestCaseTwo();
-        };
+        $scope.loadFilters = function() {
+            Filter.filtersByRecordtype({name: "Route"}, function(data) {
+            	$scope.filters = data;
+              });
+            }
+            $scope.loadFilters();
+            
+        
 
         $scope.clear = function () {
             $scope.score = {
