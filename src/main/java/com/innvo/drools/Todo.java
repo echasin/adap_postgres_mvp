@@ -15,8 +15,6 @@ public class Todo {
 	
 	private long runId;
 	
-	private String Rulename;
-	
 	private String details;
 	
 	private Status  status;
@@ -34,6 +32,8 @@ public class Todo {
 	private Objcategory objcategory;
 		
 	private Route route;
+	
+	private String ruleName;
 
 	
 	public Todo() {
@@ -56,14 +56,6 @@ public class Todo {
 
 	public void setRunId(long runId) {
 		this.runId = runId;
-	}
-
-	public String getRulename() {
-		return Rulename;
-	}
-
-	public void setRulename(String rulename) {
-		Rulename = rulename;
 	}
 
 	public String getDetails() {
@@ -152,6 +144,20 @@ public class Todo {
 	public void setRoute(Route route) {
 		this.route = route;
 	}
+
+
+
+	public String getRuleName() {
+		return ruleName;
+	}
+
+
+
+	public void setRuleName(String ruleName) {
+		this.ruleName = ruleName;
+	}
+	
+	
 
 	
 }
