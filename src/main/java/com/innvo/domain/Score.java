@@ -42,6 +42,11 @@ public class Score implements Serializable {
     private String text;
 
     @Size(max = 100)
+    @Column(name = "rulenfileame", length = 100)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String rulefilename;
+    
+    @Size(max = 100)
     @Column(name = "rulename", length = 100)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String rulename;
@@ -298,5 +303,19 @@ public class Score implements Serializable {
      */
     public void setRoute(Route route) {
         this.route = route;
+    }
+
+    /**
+     * @return the rulefilename
+     */
+    public String getRulefilename() {
+        return rulefilename;
+    }
+
+    /**
+     * @param rulefilename the rulefilename to set
+     */
+    public void setRulefilename(String rulefilename) {
+        this.rulefilename = rulefilename;
     }
 }

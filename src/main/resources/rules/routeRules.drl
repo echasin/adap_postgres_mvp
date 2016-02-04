@@ -8,53 +8,25 @@ import org.json.JSONObject
 rule "Rule_one"
 dialect "mvel" 
     when
-        Todo : Todo( value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
-        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,route:route,ruleName:ruleName)
+        Todo : Todo( runId:runId, status :status, domain:domain, lastmodifiedby:lastmodifiedby, lastmodifieddate:lastmodifieddate,
+        route:route, ruleName:ruleName)
     then
         Score $score = new Score();
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
-		details.put("Value", value);
+		details.put("Value", 1000);
 		details.put("RuleName", ruleName);
         $score.setRunid(runId);
         $score.setDomain(domain);
-		$score.setStatus(status);
-		$score.setValue(value);
-		$score.setDetails(details);
-		$score.setRulename(ruleName);
-		$score.setLastmodifiedby(lastmodifiedby);
-		$score.setLastmodifieddate(lastmodifieddate)
-        $score.setObjrecordtype(objrecordtype);
-        $score.setObjclassification(objclassification);
-        $score.setObjcategory(objcategory);
+	$score.setStatus(status);
+		
+	$score.setDetails(details);
+	$score.setRulename(ruleName);
+	$score.setLastmodifiedby(lastmodifiedby);
+	$score.setLastmodifieddate(lastmodifieddate)
+      
         $score.setRoute(route)
         insert($score);
 end
 
-rule "Rule_two"
-dialect "mvel" 
-    when
-        Todo : Todo( value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
-        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,route:route,ruleName:ruleName)
-    then
-        Score $score = new Score();
-        JSONObject details = new JSONObject();
-		details.put("RegionName", "US");
-		details.put("Time", "2016");
-		details.put("Value", value);
-    	details.put("RuleName", ruleName);
-    	$score.setDetails(details);
-        $score.setRunid(runId);
-        $score.setDomain(domain);
-		$score.setStatus(status);
-		$score.setValue(value);
-		$score.setRulename(ruleName);
-		$score.setLastmodifiedby(lastmodifiedby);
-		$score.setLastmodifieddate(lastmodifieddate)
-        $score.setObjrecordtype(objrecordtype);
-        $score.setObjclassification(objclassification);
-        $score.setObjcategory(objcategory);
-        $score.setRoute(route)
-        insert($score);
-end
