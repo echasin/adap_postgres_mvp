@@ -11,11 +11,11 @@ import com.innvo.domain.enumeration.Status;
 
 public class Todo {
 	
-	//private double value;
+	private double value;
 	
 	private long runId;
 	
-	//private String details;
+	private String details;
 	
 	private Status  status;
 	
@@ -25,15 +25,17 @@ public class Todo {
 	
 	private String domain;
 	
-	//private Objrecordtype objrecordtype;
+	private Objrecordtype objrecordtype;
 	
-	//private Objclassification objclassification;
+	private Objclassification objclassification;
 	
-	//private Objcategory objcategory;
+	private Objcategory objcategory;
 		
 	private Route route;
 	
 	private String ruleName;
+	
+	private String rulefilename;
 
 	
 	public Todo() {
@@ -42,13 +44,13 @@ public class Todo {
 
 
 
-	//public double getValue() {
-	//	return value;
-	//}
+	public double getValue() {
+		return value;
+	}
 
-	//public void setValue(double value) {
-	//	this.value = value;
-	//}
+	public void setValue(double value) {
+		this.value = value;
+	}
 
 	public long getRunId() {
 		return runId;
@@ -58,13 +60,13 @@ public class Todo {
 		this.runId = runId;
 	}
 
-	//public String getDetails() {
-	//	return details;
-	//}
+	public String getDetails() {
+		return details;
+    }
 
-	//public void setDetails(String details) {
-	//	this.details = details;
-	//}
+	public void setDetails(String details) {
+		this.details = details;
+	}
 
 	public Status getStatus() {
 		return status;
@@ -97,44 +99,8 @@ public class Todo {
 	public void setDomain(String domain) {
 		this.domain = domain;
 	}
+
 	
-	
-	//public Objrecordtype getObjrecordtype() {
-	//	return objrecordtype;
-	//}
-
-
-
-	//public void setObjrecordtype(Objrecordtype objrecordtype) {
-	//	this.objrecordtype = objrecordtype;
-	//}
-
-
-
-	//public Objclassification getObjclassification() {
-	//	return objclassification;
-	//}
-
-
-
-	//public void setObjclassification(Objclassification objclassification) {
-	//	this.objclassification = objclassification;
-	//}
-
-
-
-	//public Objcategory getObjcategory() {
-	//	return objcategory;
-	//}
-
-
-
-	//public void setObjcategory(Objcategory objcategory) {
-	//	this.objcategory = objcategory;
-	//}
-
-
-
 	public Route getRoute() {
 		return route;
 	}
@@ -156,8 +122,55 @@ public class Todo {
 	public void setRuleName(String ruleName) {
 		this.ruleName = ruleName;
 	}
-	
-	
 
+
+
+	public Objrecordtype getObjrecordtype() {
+		return objrecordtype;
+	}
+
+
+
+	public void setObjrecordtype(Objrecordtype objrecordtype) {
+		this.objrecordtype = objrecordtype;
+	}
+
+
+
+	public Objclassification getObjclassification() {
+		return objclassification;
+	}
+
+
+
+	public void setObjclassification(Objclassification objclassification) {
+		this.objclassification = objclassification;
+	}
+
+
+
+	public Objcategory getObjcategory() {
+		return objcategory;
+	}
+
+
+
+	public void setObjcategory(Objcategory objcategory) {
+		this.objcategory = objcategory;
+	}
+
+
+
+	public String getRulefilename() {
+		return rulefilename;
+	}
+
+
+
+	public void setRulefilename(String rulefilename) {
+		this.rulefilename = rulefilename;
+	}
+	
+	
 	
 }

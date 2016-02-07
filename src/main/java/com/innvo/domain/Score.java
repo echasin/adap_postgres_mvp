@@ -42,7 +42,7 @@ public class Score implements Serializable {
     private String text;
 
     @Size(max = 100)
-    @Column(name = "rulenfileame", length = 100)
+    @Column(name = "rulefilename", length = 100)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String rulefilename;
     

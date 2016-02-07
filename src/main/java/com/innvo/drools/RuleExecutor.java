@@ -20,12 +20,12 @@ import com.innvo.domain.Score;
 public class RuleExecutor {
 
 
-	public Score processRules(Todo todo,String name)
+	public Score processRules(Todo todo,String name,String ruleFileName)
 	{
 		KnowledgeBase kbase = null;
 		Score score=null;
 		try {
-			kbase = readKnowledgeBase();
+			kbase = readKnowledgeBase(ruleFileName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,9 +53,9 @@ public class RuleExecutor {
         return filter; 
      } 
     
-	private KnowledgeBase readKnowledgeBase() throws Exception {
+	private KnowledgeBase readKnowledgeBase(String ruleFileName) throws Exception {
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("rules/routeRules.drl"), ResourceType.DRL);
+		kbuilder.add(ResourceFactory.newClassPathResource("rules/"+ruleFileName+".drl"), ResourceType.DRL);
 		KnowledgeBuilderErrors errors = kbuilder.getErrors();
 		if (errors.size() > 0) {
 			for (KnowledgeBuilderError error : errors) {

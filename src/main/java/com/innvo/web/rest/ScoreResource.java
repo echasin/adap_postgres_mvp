@@ -323,21 +323,24 @@ public class ScoreResource {
 		runId++;
         ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
-		
+	
 		for(Route route:routes){
 			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
-			//todo.setValue(segments.size());
+			todo.setValue(segments.size());
     		todo.setRoute(route);        
             todo.setRunId(runId);
 		    todo.setStatus(Status.Active);
 		    todo.setDomain(user.getDomain());
 		    todo.setLastmodifiedby(principal.getName());
 		    todo.setLastmodifieddate(lastmodifieddate);
-		    //todo.setObjrecordtype(route.getObjrecordtype());
-		    //todo.setObjclassification(route.getObjclassification());
-		    //todo.setObjcategory(route.getObjcategory());   
+		    todo.setObjrecordtype(route.getObjrecordtype());
+		    todo.setObjclassification(route.getObjclassification());
+		    todo.setObjcategory(route.getObjcategory()); 
+		    //set rulefilename attribute hard coded for now
+		    todo.setRulefilename("routeRules");
 		    RuleExecutor ruleExecutor = new RuleExecutor();
-		    Score score= ruleExecutor.processRules(todo,ruleName);
+		    Score score= ruleExecutor.processRules(todo,ruleName,"routeRules");
+		    System.out.println(score+"-------------------------------------------------------------");
 		    scoreRepository.save(score);
 	 }
     }
