@@ -20,7 +20,7 @@ import com.innvo.domain.Score;
 public class RuleExecutor {
 
 
-	public Score processRules(Todo todo,String name,String ruleFileName)
+	public Score processRules(Todo todo,String groupName,String ruleFileName)
 	{
 		KnowledgeBase kbase = null;
 		Score score=null;
@@ -31,7 +31,8 @@ public class RuleExecutor {
 		}
 		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
 		ksession.insert(todo);
-		ksession.fireAllRules(getAgendaFilterForRuleToRun(name));
+	    ksession.getAgenda().getAgendaGroup(groupName).setFocus();
+		ksession.fireAllRules();
 		Collection<Object> result = findFacts(ksession, Score.class);
 		Object[] objects = result.toArray();
 		if(objects.length == 1)

@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -338,10 +339,13 @@ public class ScoreResource {
 		    todo.setObjcategory(route.getObjcategory()); 
 		    //set rulefilename attribute hard coded for now
 		    todo.setRulefilename("routeRules");
-		    RuleExecutor ruleExecutor = new RuleExecutor();
-		    Score score= ruleExecutor.processRules(todo,ruleName,"routeRules");
-		    System.out.println(score+"-------------------------------------------------------------");
-		    scoreRepository.save(score);
-	 }
+		    try{
+		    	 RuleExecutor ruleExecutor = new RuleExecutor();
+			     Score score= ruleExecutor.processRules(todo,"group one","routeRules");				   
+		         scoreRepository.save(score);
+		}catch (InvalidDataAccessApiUsageException e) {
+			e.printStackTrace();
+		}
     }
+}
 }
