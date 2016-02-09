@@ -11,7 +11,7 @@ salience 100
 dialect "mvel" 
 
     when
-        $todo : Todo(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        $todo : Todo(route.getId() > 5200 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
         ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)
     then
         Score $score = new Score();

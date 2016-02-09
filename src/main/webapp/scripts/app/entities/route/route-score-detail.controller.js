@@ -86,7 +86,7 @@ angular.module('adapApp')
                                                                              },
                                                                              {
                                                                                  name: "ScoreCategoryName",
-                                                                                 memberProvider: function (item) { return item.ScenarioName; }
+                                                                                 memberProvider: function (item) { return item.ScoreCategoryName; }
                                                                              }]
                                                                        }]
                                             }
