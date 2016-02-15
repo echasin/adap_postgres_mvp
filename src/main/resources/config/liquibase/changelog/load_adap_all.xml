@@ -70,6 +70,10 @@
                      file="config/liquibase/scores_adap_0.csv"
                      separator=","
                      tableName="score"/>
-         
+        <loadData encoding="UTF-8"
+                     file="config/liquibase/scorefactor_adap_zipcode.csv"
+                     separator=","
+                     tableName="scorefactor"/>
+      
     </changeSet>
 </databaseChangeLog>
