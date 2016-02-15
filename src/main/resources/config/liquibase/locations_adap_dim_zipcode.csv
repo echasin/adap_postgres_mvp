@@ -1,0 +1,160 @@
+id,objrecordtype_id,objclassification_id,cityname,statecode,statename,latitudedd,longitudedd,zippostcode,status,lastmodifiedby,lastmodifieddate,domain
+10000,1000,1000,Trumbull,CT,Connecticut,41.3,-73.2,06611          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10001,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.1,06650          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10002,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06673          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10003,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06673          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10004,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06699          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10005,1000,1000,Easton,CT,Connecticut,41.3,-73.3,06612          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10006,1000,1000,Stratford,CT,Connecticut,41.2,-73.1,06614          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10007,1000,1000,Stratford,CT,Connecticut,41.2,-73.1,06615          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10008,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.1,06650          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10009,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06699          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10010,1000,1000,Sherman,CT,Connecticut,41.6,-73.5,6784           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10011,1000,1000,Brookfield,CT,Connecticut,41.5,-73.4,6804           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10012,1000,1000,Cos Cob,CT,Connecticut,41.1,-73.6,6807           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10013,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6810           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10014,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6811           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10015,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6816           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10016,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6816           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10017,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6817           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10018,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6817           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10019,1000,1000,Fairfield,CT,Connecticut,41.2,-73.3,6824           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10020,1000,1000,Fairfield,CT,Connecticut,41.2,-73.2,6825           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10021,1000,1000,Fairfield,CT,Connecticut,41.2,-73.3,6828           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10022,1000,1000,Fairfield,CT,Connecticut,41.2,-73.3,6828           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10023,1000,1000,Georgetown,CT,Connecticut,41.3,-73.4,6829           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10024,1000,1000,Greenwich,CT,Connecticut,41,-73.6,6836           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10025,1000,1000,Greens Farms,CT,Connecticut,41.1,-73.3,6838           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10026,1000,1000,New Canaan,CT,Connecticut,41.2,-73.5,6840           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10027,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6850           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10028,1000,1000,Bethel,CT,Connecticut,41.4,-73.4,6801           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10029,1000,1000,Brookfield,CT,Connecticut,41.5,-73.4,6804           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10030,1000,1000,Brookfield,CT,Connecticut,41.5,-73.4,6804           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10031,1000,1000,New Fairfield,CT,Connecticut,41.5,-73.5,6812           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10032,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6813           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10033,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6814           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10034,1000,1000,Danbury,CT,Connecticut,41.4,-73.5,6814           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10035,1000,1000,Darien,CT,Connecticut,41.1,-73.5,6820           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10036,1000,1000,Darien,CT,Connecticut,41.1,-73.5,6820           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10037,1000,1000,Darien,CT,Connecticut,41.1,-73.5,6820           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10038,1000,1000,Darien,CT,Connecticut,41.1,-73.5,6820           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10039,1000,1000,Greenwich,CT,Connecticut,41,-73.6,6830           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10040,1000,1000,Greenwich,CT,Connecticut,41,-73.6,6830           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10041,1000,1000,Greenwich,CT,Connecticut,41.1,-73.7,6831           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10042,1000,1000,Greenwich,CT,Connecticut,41.1,-73.7,6831           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10043,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6851           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10044,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6852           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10045,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6853           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10046,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6853           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10047,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6856           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10048,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6857           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10049,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6857           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10050,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6858           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10051,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6860           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10052,1000,1000,Old Greenwich,CT,Connecticut,41,-73.6,6870           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10053,1000,1000,Redding Center,CT,Connecticut,41.3,-73.4,6875           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10054,1000,1000,Redding Center,CT,Connecticut,41.3,-73.4,6875           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10055,1000,1000,Redding Ridge,CT,Connecticut,41.3,-73.4,6876           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10056,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6854           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10057,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6854           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10058,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6855           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10059,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6855           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10060,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6858           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10061,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6859           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10062,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6859           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10063,1000,1000,Norwalk,CT,Connecticut,41.1,-73.4,6860           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10064,1000,1000,Ridgefield,CT,Connecticut,41.3,-73.5,6877           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10065,1000,1000,Riverside,CT,Connecticut,41,-73.6,6878           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10066,1000,1000,Ridgefield,CT,Connecticut,41.3,-73.5,6879           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10067,1000,1000,Ridgefield,CT,Connecticut,41.3,-73.5,6879           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10068,1000,1000,Westport,CT,Connecticut,41.1,-73.4,6888           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10069,1000,1000,Westport,CT,Connecticut,41.1,-73.4,6888           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10070,1000,1000,Westport,CT,Connecticut,41.1,-73.4,6889           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10071,1000,1000,Westport,CT,Connecticut,41.1,-73.4,6889           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10072,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6901           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10073,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6902           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10074,1000,1000,Stamford,CT,Connecticut,41.1,-73.6,6903           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10075,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6904           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10076,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6907           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10077,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6907           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10078,1000,1000,Stamford,CT,Connecticut,41,-73.6,6910           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10079,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6911           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10080,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6914           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10081,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6920           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10082,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6920           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10083,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6921           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10084,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6925           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10085,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6926           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10086,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6926           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10087,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6927           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10088,1000,1000,Westport,CT,Connecticut,41.1,-73.3,6880           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10089,1000,1000,Westport,CT,Connecticut,41.1,-73.3,6880           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10090,1000,1000,Westport,CT,Connecticut,41.1,-73.4,6881           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10091,1000,1000,Weston,CT,Connecticut,41.2,-73.4,6883           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10092,1000,1000,Southport,CT,Connecticut,41.1,-73.3,6890           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10093,1000,1000,Redding,CT,Connecticut,41.3,-73.4,6896           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10094,1000,1000,Redding,CT,Connecticut,41.3,-73.4,6896           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10095,1000,1000,Wilton,CT,Connecticut,41.2,-73.4,6897           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10096,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6905           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10097,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6905           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10098,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6906           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10099,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6906           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10100,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6912           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10101,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6913           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10102,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6913           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10103,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6914           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10104,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6921           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10105,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6922           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10106,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,6922           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10107,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,06925          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10108,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,06927          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10109,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,06928          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10110,1000,1000,Stamford,CT,Connecticut,41.1,-73.5,06928          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10111,1000,1000,Blair,SC,South Carol,34.4,-81.3,29015          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10112,1000,1000,Jenkinsville,SC,South Carol,34.3,-81.3,29065          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10113,1000,1000,Jenkinsville,SC,South Carol,34.3,-81.3,29065          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10114,1000,1000,Ridgeway,SC,South Carol,34.3,-80.9,29130          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10115,1000,1000,Ridgeway,SC,South Carol,34.3,-80.9,29130          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10116,1000,1000,Ridgeway,SC,South Carol,34.3,-80.9,29130          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10117,1000,1000,Rion,SC,South Carol,34.3,-81.1,29132          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10118,1000,1000,Winnsboro,SC,South Carol,34.4,-81.1,29180          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10119,1000,1000,Winnsboro,SC,South Carol,34.4,-81.1,29180          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10120,1000,1000,Winnsboro,SC,South Carol,34.4,-81.1,29180          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10121,1000,1000,Winnsboro,SC,South Carol,34.4,-81.1,29180          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10122,1000,1000,Millersport,OH,Ohio       ,39.9,-82.5,43046          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10123,1000,1000,Amanda,OH,Ohio       ,39.6,-82.7,43102          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10124,1000,1000,Hideaway Hls,OH,Ohio       ,39.7,-82.4,43107          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10125,1000,1000,Bremen,OH,Ohio       ,39.7,-82.4,43107          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10126,1000,1000,Lancaster,OH,Ohio       ,39.7,-82.6,43130          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10127,1000,1000,Baltimore,OH,Ohio       ,39.9,-82.6,43105          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10128,1000,1000,Bremen,OH,Ohio       ,39.7,-82.4,43107          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10129,1000,1000,Carroll,OH,Ohio       ,39.8,-82.7,43112          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10130,1000,1000,Lithopolis,OH,Ohio       ,39.8,-82.8,43136          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10131,1000,1000,Pickerington,OH,Ohio       ,39.9,-82.7,43147          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10132,1000,1000,Pleasantville,OH,Ohio       ,39.8,-82.5,43148          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10133,1000,1000,Rushville,OH,Ohio       ,39.8,-82.4,43150          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10134,1000,1000,Stoutsville,OH,Ohio       ,39.6,-82.8,43154          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10135,1000,1000,Sugar Grove,OH,Ohio       ,39.6,-82.5,43155          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10136,1000,1000,Thurston,OH,Ohio       ,39.8,-82.5,43157          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10137,1000,1000,West Rushville,OH,Ohio       ,39.8,-82.4,43163          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10138,1000,1000,Hawleyville,CT,Connecticut,41.4,-73.4,6440           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10139,1000,1000,Botsford,CT,Connecticut,41.4,-73.3,6404           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10140,1000,1000,Newtown,CT,Connecticut,41.4,-73.3,6470           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10141,1000,1000,Monroe,CT,Connecticut,41.3,-73.2,6468           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10142,1000,1000,Monroe,CT,Connecticut,41.3,-73.2,6468           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10143,1000,1000,Monroe,CT,Connecticut,41.3,-73.2,6468           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10144,1000,1000,Shelton,CT,Connecticut,41.3,-73.1,6484           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10145,1000,1000,Stevenson,CT,Connecticut,41.4,-73.2,6491           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10146,1000,1000,Sandy Hook,CT,Connecticut,41.4,-73.2,6482           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10147,1000,1000,Shelton,CT,Connecticut,41.3,-73.1,6484           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10148,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,6602           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10149,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,6604           ,Active,echasin,2015-12-25 00:00:00,DEMO
+10150,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06605          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10151,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06606          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10152,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06601          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10153,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06607          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10154,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06608          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10155,1000,1000,Bridgeport,CT,Connecticut,41.2,-73.2,06610          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10156,1000,1000,West Rushville,OH,Ohio       ,39.8,-82.4,43163          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10157,1000,1000,West Rushville,OH,Ohio       ,39.8,-82.4,43163          ,Active,echasin,2015-12-25 00:00:00,DEMO
+10158,1000,1000,Boston,MA,Massachuset,42.3,-71,02128          ,Active,echasin,2015-12-25 00:00:00,DEMO

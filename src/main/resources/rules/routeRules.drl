@@ -8,7 +8,7 @@ import org.json.JSONObject
 rule "Rule_one"
 dialect "mvel" 
     when
-        $todo : Todo(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        $todo : Todo(route.getId() == 5200 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
         ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)
     then
         Score $score = new Score();
@@ -31,32 +31,5 @@ dialect "mvel"
         $score.setRoute(route)
         System.out.println("///*///////////////////////////////////////////////////////////////");
         System.out.println($score);
-        insert($score);
-end
-
-rule "Rule_two"
-dialect "mvel" 
-    when
-        Todo : Todo( value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
-        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,route:route,ruleName:ruleName)
-    then
-        Score $score = new Score();
-        JSONObject details = new JSONObject();
-		details.put("RegionName", "US");
-		details.put("Time", "2016");
-		details.put("Value", value);
-    	details.put("RuleName", ruleName);
-    	$score.setDetails(details);
-        $score.setRunid(runId);
-        $score.setDomain(domain);
-		$score.setStatus(status);
-		$score.setValue(value);
-		$score.setRulename(ruleName);
-		$score.setLastmodifiedby(lastmodifiedby);
-		$score.setLastmodifieddate(lastmodifieddate)
-        $score.setObjrecordtype(objrecordtype);
-        $score.setObjclassification(objclassification);
-        $score.setObjcategory(objcategory);
-        $score.setRoute(route)
         insert($score);
 end
