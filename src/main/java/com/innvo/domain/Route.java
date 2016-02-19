@@ -46,9 +46,9 @@ public class Route implements Serializable {
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String details;
 
-    @NotNull
+ 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private Status status;
 

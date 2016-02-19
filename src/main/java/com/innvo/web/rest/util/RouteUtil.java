@@ -1,5 +1,8 @@
 package com.innvo.web.rest.util;
 
+import java.util.List;
+
+import com.innvo.domain.Asset;
 import com.innvo.domain.Location;
 
 public class RouteUtil {
@@ -8,27 +11,32 @@ public class RouteUtil {
 	private String routName;
 	private String originName;
 	private String destinationName;
-	private Location originLocation;
-	private Location destinationLocation;
 	private String segmentName;
-	
+	private double averageScore; 
+	private List<Location> originLocations;
+	private List<Location> destinationLocations;
+	private List<String> originNames;
+	private List<String> destinationNames;
 	public RouteUtil() {
 		super();
 	}
 	
 	
-	
-	public RouteUtil(long routeId, String routName, String originName, String destinationName, Location originLocation,
-			Location destinationLocation, String segmentName) {
+
+
+	public RouteUtil(long routeId, String routName, String originName, String destinationName, String segmentName,
+			double averageScore, List<Location> originLocations, List<Location> destinationLocations) {
 		super();
 		this.routeId = routeId;
 		this.routName = routName;
 		this.originName = originName;
 		this.destinationName = destinationName;
-		this.originLocation = originLocation;
-		this.destinationLocation = destinationLocation;
 		this.segmentName = segmentName;
+		this.averageScore = averageScore;
+		this.originLocations = originLocations;
+		this.destinationLocations = destinationLocations;
 	}
+
 
 
 
@@ -74,30 +82,6 @@ public class RouteUtil {
 
 
 
-	public Location getOriginLocation() {
-		return originLocation;
-	}
-
-
-
-	public void setOriginLocation(Location originLocation) {
-		this.originLocation = originLocation;
-	}
-
-
-
-	public Location getDestinationLocation() {
-		return destinationLocation;
-	}
-
-
-
-	public void setDestinationLocation(Location destinationLocation) {
-		this.destinationLocation = destinationLocation;
-	}
-
-
-
 	public String getSegmentName() {
 		return segmentName;
 	}
@@ -107,13 +91,79 @@ public class RouteUtil {
 	public void setSegmentName(String segmentName) {
 		this.segmentName = segmentName;
 	}
+	
+	
+	public double getAverageScore() {
+		return averageScore;
+	}
+
+
+	public void setAverageScore(double averageScore) {
+		this.averageScore = averageScore;
+	}
+
+
+	public List<Location> getOriginLocations() {
+		return originLocations;
+	}
+
+
+	public void setOriginLocations(List<Location> originLocations) {
+		this.originLocations = originLocations;
+	}
+
+
+	public List<Location> getDestinationLocations() {
+		return destinationLocations;
+	}
+
+
+	public void setDestinationLocations(List<Location> destinationLocations) {
+		this.destinationLocations = destinationLocations;
+	}
+
+	
+
+
+	public List<String> getOriginNames() {
+		return originNames;
+	}
+
+
+
+
+	public void setOriginNames(List<String> originNames) {
+		this.originNames = originNames;
+	}
+
+
+
+
+	public List<String> getDestinationNames() {
+		return destinationNames;
+	}
+
+
+
+
+	public void setDestinationNames(List<String> destinationNames) {
+		this.destinationNames = destinationNames;
+	}
+
+
+
 
 	@Override
 	public String toString() {
 		return "RouteUtil [routeId=" + routeId + ", routName=" + routName + ", originName=" + originName
-				+ ", destinationName=" + destinationName + ", originLocation=" + originLocation
-				+ ", destinationLocation=" + destinationLocation + ", segmentName=" + segmentName + "]";
+				+ ", destinationName=" + destinationName + ", segmentName=" + segmentName + ", averageScore="
+				+ averageScore + ", originLocations=" + originLocations + ", destinationLocations="
+				+ destinationLocations + "]";
 	}
 
+
+	
+
+	
 	
 }

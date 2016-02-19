@@ -5,7 +5,7 @@ angular.module('adapApp')
         $scope.assets = [];
         $scope.searchdata = [];
         $scope.page = 0;
-        
+
         $scope.loadFilters = function() {
             Filter.filtersByRecordtype({name: "Asset"}, function(data) {
             	$scope.filters = data;
@@ -159,17 +159,20 @@ angular.module('adapApp')
        	    useExternalPagination: true,
        	    useExternalSorting: false,
        	    columnDefs: [
-       	                 { field: 'id',  displayName: 'ID', width: 60, enableSorting: true },
+       	              { name: 'id',
+         	                   cellTemplate:' <a ui-sref="asset.detail({id:row.entity.id})">{{row.entity.id}}</a>'
+         	                 },
        	                 { field: 'name', displayName: 'Name', enableSorting: true },
                          { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
                          { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
        	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
+       		            	width: 190,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
-                                          ' <button type="submit" ui-sref="asset.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
-                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
+                               	          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
+                                          ' <button type="submit" ui-sref="asset.detail({id:row.entity.id})" class="btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
+                                          ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn-xs btn-danger"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }
              ],
        	  onRegisterApi: function(gridApi) {

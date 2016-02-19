@@ -1,14 +1,24 @@
-id,route_id,value,text,runid,rundate,rulename,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
-0,null,null,null,null,null,null,1,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
-1,null,null,null,null,null,null,1,null,null,null,Active,system,2015-07-26 11:50:15,TEST
-5200,5200,5.5,null,1,2015-12-31 00:00:00,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
-5201,5200,3.5,null,1,2015-12-31 00:00:00,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
-5202,5200,8.5,null,1,2015-12-31 00:00:00,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
-5203,5200,2.0,null,1,2015-12-31 00:00:00,Rule Four,2100,3100,3104,null,Active,system,2015-07-26 11:50:15,DEMO
-5210,5200,5.5,null,2,2016-01-01 00:00:00,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
-5211,5200,-3.5,null,2,2016-01-01 00:00:00,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
-5212,5200,7.5,null,2,2016-01-01 00:00:00,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
-5213,5200,2.0,null,2,2016-01-01 00:00:00,Rule Four,2100,3100,3104,null,Active,system,2015-07-26 11:50:15,DEMO
-5220,5201,5.5,null,2,2016-01-01 00:00:00,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
-5221,5201,3.5,null,2,2016-01-01 00:00:00,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
-5222,5201,7.5,null,2,2016-01-01 00:00:00,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+id,route_id,value,text,runid,rundate,details,rulename,objrecordtype_id,objclassification_id,objcategory_id,objtype_id,status,lastmodifiedby,lastmodifieddate,domain
+5201,5200,3.5,null,1,2015-12-31 00:00:00,null,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
+1,null,null,null,null,null,null,null,1,null,null,null,Active,system,2015-07-26 11:50:15,TEST
+5203,5200,2,null,1,2015-12-31 00:00:00,null,Rule Four,2100,3100,3104,null,Active,system,2015-07-26 11:50:15,DEMO
+5212,5200,7.5,null,2,2016-01-01 00:00:00,null,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5202,5200,8.5,null,1,2015-12-31 00:00:00,null,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5200,5200,5.5,null,1,2015-12-31 00:00:00,null,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
+5213,5200,2,null,2,2016-01-01 00:00:00,null,Rule Four,2100,3100,3104,null,Active,system,2015-07-26 11:50:15,DEMO
+5211,5200,-3.5,null,2,2016-01-01 00:00:00,null,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
+5221,5201,3.5,null,2,2016-01-01 00:00:00,null,Rule Two,2100,3100,3102,null,Active,system,2015-07-26 11:50:15,DEMO
+5210,5200,5.5,null,2,2016-01-01 00:00:00,null,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
+5220,5201,5.5,null,2,2016-01-01 00:00:00,null,Rule One,2100,3100,3101,null,Active,system,2015-07-26 11:50:15,DEMO
+5223,5202,8,null,2,2016-01-01 00:00:00,null,Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5225,5206,8,null,2,2016-01-01 00:00:00,null,Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+5222,5201,7.5,null,2,2016-01-01 00:00:00,null,Rule Three,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+0,null,null,null,null,null,null,null,1,null,null,null,Active,system,2015-07-26 11:50:15,DEMO
+5224,5205,2,null,2,2016-01-01 00:00:00,null,Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52072,5207,2.96,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_Two"", ""ScoreCategoryName"": ""Category_Two"",  ""Value"": 2.96 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52075,5207,2.40,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_Two"", ""ScoreCategoryName"": ""Category_One"",  ""Value"": 2.40 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52076,5207,4.56,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_Three"", ""ScoreCategoryName"": ""Category_Two"",  ""Value"": 4.56 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52073,5207,6.8,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_Three"", ""ScoreCategoryName"": ""Category_Three"",  ""Value"": 6.8 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52071,5207,2.82,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_One"", ""ScoreCategoryName"": ""Category_One"",   ""Value"": 2.82 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52074,5207,2.93,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_One"", ""ScoreCategoryName"": ""Category_Four"",  ""Value"": 2.93 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO
+52077,5207,4.92,null,1,2016-01-01 00:00:00,"{ ""ScenarioName"": ""Scenario_One"",  ""ScoreCategoryName"": ""Category_Three"",  ""Value"": 4.92 }",Rule One,2100,3100,3103,null,Active,system,2015-07-26 11:50:15,DEMO

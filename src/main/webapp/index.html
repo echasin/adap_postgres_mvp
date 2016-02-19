@@ -16,7 +16,7 @@
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
         <link rel="stylesheet" href="assets/styles/main.css">
-
+        <link rel="stylesheet" href="assets/styles/adapcustom.css">
         <!-- Added echasin
        bower install datatables-buttons
        bower install angular-datatables
@@ -24,6 +24,7 @@
 
         <!-- DATATABLES:css -->  
         <!--<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css"/>
+    
         <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css"/>
         <link rel="stylesheet" href="bower_components/datatables-buttons/css/buttons.dataTables.scss">
         <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.responsive.css">
@@ -45,6 +46,10 @@
 
         <!-- Main Querybuilder:CSS files -->
         <link rel="stylesheet" href="bower_components/querybuilder/css/query-builder.default.css" />
+
+        <!-- Main infragistics:CSS files -->
+        <link href="http://cdn-na.infragistics.com/igniteui/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
+        <link href="http://cdn-na.infragistics.com/igniteui/latest/css/structure/infragistics.css" rel="stylesheet"></link>
 
         <!-- endbuild -->
     </head>
@@ -98,6 +103,7 @@
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+
         <script src="bower_components/modernizr/modernizr.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
 
@@ -162,14 +168,19 @@
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-        <script src="http://datamaps.github.io/scripts/0.4.2/datamaps.usa.min.js"></script>
-
-
-
-
-
+        <script src="bower_components/map/datamaps.usa.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="bower_components/map/maplabel.js"></script>
+        <script src="bower_components/map/maplabel-compiled.js"></script>
+        <script src="bower_components/map/latlon.js"></script>
+        <script src="bower_components/map/dms.js"></script>
+        <script src="bower_components/jquery/dist/jquery-ui.min.js"></script>
+        
+        <!-- Ignite UI Required Combined JavaScript Files -->
+        <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/infragistics.core.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/infragistics.lob.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/extensions/igniteui-angular.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2015.2/latest/js/infragistics.dv.js"></script>
 
         <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
         <script src="scripts/app/app.js"></script>
@@ -292,9 +303,9 @@
         <script src="scripts/components/entities/objtype/objtype.search.service.js"></script>
         <script src="scripts/app/entities/asset/asset.js"></script>
         <script src="scripts/app/entities/asset/asset.controller.js"></script>
-        <script src="scripts/app/entities/asset/asset-dialog.controller.js"></script>
         <script src="scripts/app/entities/asset/asset-delete-dialog.controller.js"></script>
         <script src="scripts/app/entities/asset/asset-detail.controller.js"></script>
+        <script src="scripts/app/entities/asset/location-asset-dialog.controller.js"></script>
         <script src="scripts/components/entities/asset/asset.service.js"></script>
         <script src="scripts/components/entities/asset/asset.search.service.js"></script>
         <script src="scripts/app/entities/score/score.js"></script>
@@ -333,6 +344,7 @@
         <script src="scripts/app/entities/route/route-dialog.controller.js"></script>
         <script src="scripts/app/entities/route/route-delete-dialog.controller.js"></script>
         <script src="scripts/app/entities/route/route-detail.controller.js"></script>
+        <script src="scripts/app/entities/route/route-score-detail.controller.js"></script>
         <script src="scripts/components/entities/route/route.service.js"></script>
         <script src="scripts/components/entities/route/route.search.service.js"></script>
 
@@ -359,6 +371,22 @@
         <script src="scripts/app/entities/vulnerability/vulnerability-detail.controller.js"></script>
         <script src="scripts/components/entities/vulnerability/vulnerability.service.js"></script>
         <script src="scripts/components/entities/vulnerability/vulnerability.search.service.js"></script>
+		
+		    <script src="scripts/app/entities/event/event.js"></script>
+    <script src="scripts/app/entities/event/event.controller.js"></script>
+    <script src="scripts/app/entities/event/event-dialog.controller.js"></script>
+    <script src="scripts/app/entities/event/event-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/event/event-detail.controller.js"></script>
+    <script src="scripts/components/entities/event/event.service.js"></script>
+    <script src="scripts/components/entities/event/event.search.service.js"></script>
+	
+    <script src="scripts/app/entities/eventmbr/eventmbr.js"></script>
+    <script src="scripts/app/entities/eventmbr/eventmbr.controller.js"></script>
+    <script src="scripts/app/entities/eventmbr/eventmbr-dialog.controller.js"></script>
+    <script src="scripts/app/entities/eventmbr/eventmbr-delete-dialog.controller.js"></script>
+    <script src="scripts/app/entities/eventmbr/eventmbr-detail.controller.js"></script>
+    <script src="scripts/components/entities/eventmbr/eventmbr.service.js"></script>
+    <script src="scripts/components/entities/eventmbr/eventmbr.search.service.js"></script>
         <!-- endbuild -->
 
 

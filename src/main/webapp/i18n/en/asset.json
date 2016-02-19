@@ -16,6 +16,7 @@
                 "title": "Asset"
             },
             "name": "Name",
+            "nameshort": "Short Name",
             "description": "Description",
             "details": "Details",
             "status": "Status",

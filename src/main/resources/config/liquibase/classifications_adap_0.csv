@@ -1,5 +1,5 @@
 id,name,objrecordtype_id,status,lastmodifiedby,lastmodifieddate,domain
-0,All,1,Active,system,2015-07-26 11:50:15,DEMO
+0,All,0,Active,system,2015-07-26 11:50:15,DEMO
 1,TEST,1,Active,system,2015-07-26 11:50:15,TEST
 101,Airport,10,Active,system,2015-07-26 11:50:15,DEMO
 102,Subway/Rail Station,10,Active,system,2015-07-26 11:50:15,DEMO

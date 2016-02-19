@@ -37,7 +37,7 @@ public class Asset implements Serializable {
     @Column(name = "name", length = 100, nullable = false)
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String name;
-    
+
     //@NotNull
     @Size(max = 20)
     @Column(name = "nameshort", length = 20, nullable = true)
@@ -67,7 +67,6 @@ public class Asset implements Serializable {
     //@JsonDeserialize(using = CustomDateTimeDeserializer.class)
     //@Column(name = "lastmodifieddate")
     //private DateTime lastmodifieddate;
-    
     @Column(name = "lastmodifieddate", nullable = false)
     private ZonedDateTime lastmodifieddate;
 
@@ -91,15 +90,25 @@ public class Asset implements Serializable {
     @Field(type = FieldType.Object, index = FieldIndex.not_analyzed)
     private Objtype objtype;
 
-    @OneToMany(mappedBy = "asset")
+    @OneToMany(mappedBy = "asset", cascade = CascadeType.ALL)
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Location> locations = new HashSet<>();
+    
+    @OneToMany(mappedBy = "asset", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "asset")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Score> scores = new HashSet<>();
+
+    @OneToMany(mappedBy = "id")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Eventmbr> eventmbrs = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -117,6 +126,14 @@ public class Asset implements Serializable {
         this.name = name;
     }
 
+    public String getNameshort() {
+        return nameshort;
+    }
+
+    public void setNameshort(String nameshort) {
+        this.nameshort = nameshort;
+    }
+    
     public String getDescription() {
         return description;
     }
@@ -149,16 +166,14 @@ public class Asset implements Serializable {
         this.lastmodifiedby = lastmodifiedby;
     }
 
-       
-       public ZonedDateTime getLastmodifieddate() {
+    public ZonedDateTime getLastmodifieddate() {
         return lastmodifieddate;
     }
 
     public void setLastmodifieddate(ZonedDateTime lastmodifieddate) {
         this.lastmodifieddate = lastmodifieddate;
     }
-  
-    
+
     public String getDomain() {
         return domain;
     }
@@ -215,7 +230,25 @@ public class Asset implements Serializable {
         this.scores = scores;
     }
 
-    @Override
+    public Set<Eventmbr> getEventmbrs() {
+        return eventmbrs;
+    }
+
+    public void setEventmbrs(Set<Eventmbr> eventmbrs) {
+        this.eventmbrs = eventmbrs;
+    }
+    
+    
+
+    public Set<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -252,19 +285,6 @@ public class Asset implements Serializable {
                 + '}';
     }
 
-    /**
-     * @return the nameshort
-     */
-    public String getNameshort() {
-        return nameshort;
-    }
+  
 
-    /**
-     * @param nameshort the nameshort to set
-     */
-    public void setNameshort(String nameshort) {
-        this.nameshort = nameshort;
-    }
-
-   
 }

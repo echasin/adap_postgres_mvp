@@ -1,0 +1,101 @@
+
+<div class="col-sm-10">
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.html">ADAP</a>
+        </li>
+        <li class="active">
+            <strong>Route {{route.name}}</strong>
+        </li>
+    </ol>
+</div>
+<div class="col-sm-2">
+    <button class="btn-sm btn-info" onclick="window.history.back()" >
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>       
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-3">
+            <div id="dataSelector"></div>
+        </div>
+        <div class="col-lg-9">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <h4>Presenting Olap data with igDataChart</h4> 
+                            <div class="ibox-content">              
+                                <div id="olapChart" class="ig-chart-root"></div>
+                                <div id="olapChartLegend" class="ig-chart-legend"></div>     
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <!-- <div id="pivotGrid"></div> -->
+                                    <div id="pivotGrid" class="pivot-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ibox-content">
+                            <div class="ibox">
+                                <div class="ibox-content">
+                                    <h5 class="m-b-md">Server status Q42</h5>
+                                    <h2 class="text-danger">
+                                        <i class="fa fa-play fa-rotate-90"></i> Down
+                                    </h2>
+                                    <small>Server down since 4 days</small>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ibox-content">
+                                <h5>Usage</h5>
+                                <h2>14%</h2>
+                                <div class="progress progress-mini">
+                                    <div class="progress-bar progress-bar-danger" style="width: 38%;"></div>
+                                </div>
+                                <div class="m-t-sm small">Server down since 4:32 pm.</div>
+                            </div>
+                            <br>
+                            <div class="ibox-content">
+                                <h5>Alerts</h5>
+                                <table class="table table-stripped small m-t-md">
+                                    <tbody>
+                                        <tr>
+                                            <td class="no-borders">
+                                                <i class="fa fa-circle text-navy"></i>
+                                            </td>
+                                            <td class="no-borders">
+                                                Example element 1
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-circle text-navy"></i>
+                                            </td>
+                                            <td>
+                                                Example element 2
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-circle text-navy"></i>
+                                            </td>
+                                            <td>
+                                                Example element 3
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

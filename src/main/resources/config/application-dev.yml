@@ -27,7 +27,7 @@ spring:
         username: root
         password: root
     jpa:
-        database-platform: com.innvo.domain.util.FixedPostgreSQL82Dialect
+        database-platform: com.innvo.json.JsonPostgreSQLDialect
         database: POSTGRESQL
         show_sql: true
         properties:

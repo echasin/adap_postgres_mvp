@@ -49,6 +49,30 @@ angular.module('adapApp')
                     }]
                 }
             })
+               .state('route.score', {
+                parent: 'entity',
+                url: '/routescore/{id}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'adapApp.route.detail.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/route/RouteScoreDetails.html',
+                        controller: 'RouteScoreDetailsController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('route');
+                        $translatePartialLoader.addPart('status');
+                        return $translate.refresh();
+                    }],
+                    entity: ['$stateParams', 'Route', function($stateParams, Route) {
+                        return Route.get({id : $stateParams.id});
+                    }]
+                }
+            })
             .state('route.new', {
                 parent: 'route',
                 url: '/new',

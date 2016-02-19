@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adapApp')
-    .controller('ScoreController', function ($scope, $state, $resource, $modal, Score, ScoreService, ScoreSearch, ParseLinks) {
+    .controller('ScoreController', function ($scope, $state, $resource, $modal, Score, ScoreService, ScoreSearch, Filter,ParseLinks) {
       
         $scope.scores = [];
         $scope.page = 0;
@@ -45,6 +45,21 @@ angular.module('adapApp')
         $scope.index = function () {
         	Score.index();
         };
+        
+        $scope.fireRules = function () {
+        	Score.fireRules({filterId: $scope.filterId,ruleName:$scope.ruleName}, function(result) {
+                 console.log(result);
+                });
+        };
+        
+        $scope.loadFilters = function() {
+            Filter.filtersByRecordtype({name: "Route"}, function(data) {
+            	$scope.filters = data;
+              });
+            }
+            $scope.loadFilters();
+            
+        
 
         $scope.clear = function () {
             $scope.score = {
@@ -80,14 +95,16 @@ angular.module('adapApp')
        	    useExternalSorting: false,
        	    columnDefs: [
        	                 { field: 'id',  displayName: 'ID', width: 60, enableSorting: true },
-       	                 { field: 'name', displayName: 'Name', enableSorting: true },
-                         { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
-                         { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
+       	                 { field: 'value', displayName: 'Value', enableSorting: true },
+       	                 { field: 'runid', displayName: 'Runid', enableSorting: true },
+       	                 { field: 'details', displayName: 'details', enableSorting: true },
+       	                 { field: 'rulename', displayName: 'rulename', enableSorting: true },
+                         { field: 'rulefilename', displayName: 'rulefilename', enableSorting: true },
        	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,
                                 cellTemplate:
-                               	          ' <button type="submit" ui-sref="score.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
+                              	          ' <button type="submit" ui-sref="score.detail({id:row.entity.id})" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span></button>'+
                                           ' <button type="submit" ui-sref="score.edit({id:row.entity.id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span></button>'+
                                           ' <button type="submit" ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span></button>'
        	                 }

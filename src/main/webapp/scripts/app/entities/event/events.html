@@ -1,0 +1,92 @@
+<div>
+    <h2 translate="adapApp.event.home.title">Events</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="event.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="adapApp.event.home.createLabel">Create a new Event</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Event</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="adapApp.event.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="adapApp.event.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="details"><span translate="adapApp.event.details">Details</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="eventdate"><span translate="adapApp.event.eventdate">Eventdate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="severity"><span translate="adapApp.event.severity">Severity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="adapApp.event.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifiedby"><span translate="adapApp.event.lastmodifiedby">Lastmodifiedby</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastmodifieddate"><span translate="adapApp.event.lastmodifieddate">Lastmodifieddate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span translate="adapApp.event.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objrecordtype.name"><span translate="adapApp.event.objrecordtype">objrecordtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objclassification.name"><span translate="adapApp.event.objclassification">objclassification</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objcategory.name"><span translate="adapApp.event.objcategory">objcategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="objtype.name"><span translate="adapApp.event.objtype">objtype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="event in events track by event.id">
+                    <td><a ui-sref="event.detail({id:event.id})">{{event.id}}</a></td>
+                    <td>{{event.name}}</td>
+                    <td>{{event.description}}</td>
+                    <td>{{event.details}}</td>
+                    <td>{{event.eventdate | date:'medium'}}</td>
+                    <td translate="{{'adapApp.Severity.' + event.severity}}">{{event.severity}}</td>
+                    <td translate="{{'adapApp.Status.' + event.status}}">{{event.status}}</td>
+                    <td>{{event.lastmodifiedby}}</td>
+                    <td>{{event.lastmodifieddate | date:'medium'}}</td>
+                    <td>{{event.domain}}</td>
+                    <td>
+                        <a ui-sref="objrecordtype.detail({id:event.objrecordtype.id})">{{event.objrecordtype.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objclassification.detail({id:event.objclassification.id})">{{event.objclassification.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objcategory.detail({id:event.objcategory.id})">{{event.objcategory.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="objtype.detail({id:event.objtype.id})">{{event.objtype.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="event.detail({id:event.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="event.edit({id:event.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="event.delete({id:event.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
