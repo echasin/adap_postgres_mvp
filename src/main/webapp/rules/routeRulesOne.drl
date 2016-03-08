@@ -1,9 +1,12 @@
 package com.drools.poc
  
-import com.innvo.drools.Todo
+import com.innvo.drools.ScoreRouteRulefile;
 import com.innvo.domain.Score
 import com.innvo.domain.enumeration.Status
 import org.json.JSONObject
+import com.innvo.drools.RouteService
+import java.util.List
+import com.innvo.domain.Route
  
 rule "Rule_one"
 agenda-group "group one"
@@ -11,10 +14,12 @@ salience 100
 dialect "mvel" 
 
     when
-        $todo : Todo(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
-        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)
+        $scoreRouteRulefile : ScoreRouteRulefile(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)    
     then
+    
         Score $score = new Score();
+        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
@@ -24,7 +29,6 @@ dialect "mvel"
         $score.setDomain(domain);
 		$score.setStatus(status);
 		$score.setValue(52);
-		$score.setDetails(details);
 		$score.setRulename(ruleName);
 		$score.setLastmodifiedby(lastmodifiedby);
 		$score.setLastmodifieddate(lastmodifieddate)
@@ -42,7 +46,10 @@ agenda-group "group two"
 salience 200
 dialect "mvel" 
     when
-        Todo : Todo();
+        $scoreRouteRulefile : ScoreRouteRulefile(value > 0);
     then
-        drools.halt()
+       System.out.println("my name is ali /////////////////////////////////");
+        Score $score = new Score();
+        $score.setRulename("ggggggggggg");
+        modify($score);
 end

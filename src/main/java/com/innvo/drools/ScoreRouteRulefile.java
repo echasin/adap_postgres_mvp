@@ -9,7 +9,7 @@ import com.innvo.domain.Route;
 import com.innvo.domain.enumeration.Status;
 
 
-public class Todo {
+public class ScoreRouteRulefile {
 	
 	private double value;
 	
@@ -38,7 +38,7 @@ public class Todo {
 	private String rulefilename;
 
 	
-	public Todo() {
+	public ScoreRouteRulefile() {
 		super();
 	}
 
