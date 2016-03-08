@@ -6,10 +6,9 @@
                     </select>
 </div>
 <div>
-            <label for="field_rules">Rules</label>
-            <select class="form-control" name="rules" ng-model="ruleName" id="field_rules" required>
-                <option value="Rule_one">Rule_one</option>
-                <option value="Rule_two">Rule_two</option>
+            <label for="field_rules">Rule File</label>
+            <select class="form-control" name="rules" ng-model="fileName" id="field_rules"  ng-options="item for item in  rulesName" required>
+                <option></option>
             </select>
 </div>
 <button id="fireRule" ng-click="fireRules()">Fire Rule</button>

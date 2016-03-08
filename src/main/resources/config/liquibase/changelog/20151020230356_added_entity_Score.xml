@@ -26,6 +26,7 @@
             <column name="text" type="varchar(50)"/>
             <column name="runid" type="bigint" />
             <column name="rundate" type="timestamp"/>
+            <column name="rulefilename" type="varchar(100)"/>
             <column name="rulename" type="varchar(100)"/>
             <column name="ruleversion" type="varchar(25)"/>
             <column name="details" type="json"/>

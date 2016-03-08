@@ -9,7 +9,7 @@ import com.innvo.domain.Segment;
 import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
 import com.innvo.drools.RuleExecutor;
-import com.innvo.drools.Todo;
+import com.innvo.drools.ScoreRouteRulefile;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.ScoreRepository;
 import com.innvo.repository.SegmentRepository;
@@ -19,7 +19,11 @@ import com.innvo.repository.search.ScoreSearchRepository;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
-import io.gatling.core.scenario.Scenario;
+import org.apache.commons.io.FilenameUtils;
+import org.drools.io.ResourceFactory;
+import org.drools.reteoo.compiled.NetworkHandlerAdaptor;
+
+//import io.gatling.core.scenario.Scenario;
 
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -28,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -44,6 +49,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.Principal;
@@ -302,43 +310,79 @@ public class ScoreResource {
             elasticsearchTemplate.index(indexQuery);
         }
     }
+ 
+    
+    /**
+     * GET   ->get rules.
+     * @throws IOException 
+     */
+    @RequestMapping(value = "/getRules",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+	public List<String> getRules(HttpServletRequest request,Principal principal) throws JSONException, IOException {
+    	List<String> rulesName=new ArrayList<String>();
+    	
+        String path = request.getSession().getServletContext().getRealPath("/rules");
+        File directory = new File(path);       
+        File[] fList = directory.listFiles();
+        for (File file : fList){
+            if (file.isFile()){
+            	String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
+                System.out.println(fileNameWithOutExt);
+                rulesName.add(fileNameWithOutExt);
+            }
+        }
+        return rulesName;
+    }
+    
     
     /**
      * GET   ->fireTestCaseOne.
      * @throws JSONException 
      */
-    @RequestMapping(value = "/fireRules/{filterId}/{ruleName}",
+    @RequestMapping(value = "/fireRules/{filterId}/{fileName}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("ruleName") String ruleName,
+	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("fileName") String fileName,
 			HttpServletRequest request,Principal principal) throws JSONException {
+    	
     	Filter filter=filterRepository.findOne(filterId);
     	String query=filter.getQueryelastic();
     	System.out.println(query);
     	BoolQueryBuilder bool = new BoolQueryBuilder()
         .must(new WrapperQueryBuilder(query));
         List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
-		Todo todo=new Todo();
+		ScoreRouteRulefile scoreRouteRulefile=new ScoreRouteRulefile();
 		runId++;
         ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
-		
+	
 		for(Route route:routes){
 			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
-			todo.setValue(segments.size());
-    		todo.setRoute(route);        
-            todo.setRunId(runId);
-		    todo.setStatus(Status.Active);
-		    todo.setDomain(user.getDomain());
-		    todo.setLastmodifiedby(principal.getName());
-		    todo.setLastmodifieddate(lastmodifieddate);
-		    todo.setObjrecordtype(route.getObjrecordtype());
-		    todo.setObjclassification(route.getObjclassification());
-		    todo.setObjcategory(route.getObjcategory());   
-		    RuleExecutor ruleExecutor = new RuleExecutor();
-		    Score score= ruleExecutor.processRules(todo,ruleName);
-		    scoreRepository.save(score);
-	 }
+			scoreRouteRulefile.setValue(segments.size());
+			scoreRouteRulefile.setRoute(route);        
+			scoreRouteRulefile.setRunId(runId);
+			scoreRouteRulefile.setStatus(Status.Active);
+			scoreRouteRulefile.setDomain(user.getDomain());
+			scoreRouteRulefile.setLastmodifiedby(principal.getName());
+		    scoreRouteRulefile.setLastmodifieddate(lastmodifieddate);
+		    scoreRouteRulefile.setObjrecordtype(route.getObjrecordtype());
+		    scoreRouteRulefile.setObjclassification(route.getObjclassification());
+		    scoreRouteRulefile.setObjcategory(route.getObjcategory()); 
+		    scoreRouteRulefile.setRulefilename(fileName);
+		    try{
+		    	 RuleExecutor ruleExecutor = new RuleExecutor();
+			     Score score= ruleExecutor.processRules(scoreRouteRulefile,"group one",fileName);				   
+			     scoreRepository.save(score);
+			     System.out.println(score);
+			     System.out.println(score.getRulefilename());
+			     System.out.println(score.getRulename());
+			     System.out.println(score.getObjtype());
+		}catch (InvalidDataAccessApiUsageException e) {
+			///e.printStackTrace();
+		}
     }
+}
 }

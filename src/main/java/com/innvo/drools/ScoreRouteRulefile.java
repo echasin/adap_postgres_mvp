@@ -9,7 +9,7 @@ import com.innvo.domain.Route;
 import com.innvo.domain.enumeration.Status;
 
 
-public class Todo {
+public class ScoreRouteRulefile {
 	
 	private double value;
 	
@@ -34,9 +34,11 @@ public class Todo {
 	private Route route;
 	
 	private String ruleName;
+	
+	private String rulefilename;
 
 	
-	public Todo() {
+	public ScoreRouteRulefile() {
 		super();
 	}
 
@@ -60,7 +62,7 @@ public class Todo {
 
 	public String getDetails() {
 		return details;
-	}
+    }
 
 	public void setDetails(String details) {
 		this.details = details;
@@ -97,8 +99,32 @@ public class Todo {
 	public void setDomain(String domain) {
 		this.domain = domain;
 	}
+
 	
-	
+	public Route getRoute() {
+		return route;
+	}
+
+
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+
+
+	public String getRuleName() {
+		return ruleName;
+	}
+
+
+
+	public void setRuleName(String ruleName) {
+		this.ruleName = ruleName;
+	}
+
+
+
 	public Objrecordtype getObjrecordtype() {
 		return objrecordtype;
 	}
@@ -135,29 +161,16 @@ public class Todo {
 
 
 
-	public Route getRoute() {
-		return route;
+	public String getRulefilename() {
+		return rulefilename;
 	}
 
 
 
-	public void setRoute(Route route) {
-		this.route = route;
-	}
-
-
-
-	public String getRuleName() {
-		return ruleName;
-	}
-
-
-
-	public void setRuleName(String ruleName) {
-		this.ruleName = ruleName;
+	public void setRulefilename(String rulefilename) {
+		this.rulefilename = rulefilename;
 	}
 	
 	
-
 	
 }

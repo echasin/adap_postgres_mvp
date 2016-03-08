@@ -5,7 +5,7 @@ import com.innvo.domain.Score
 import com.innvo.domain.enumeration.Status
 import org.json.JSONObject
  
-rule "Rule_one"
+rule "Rule_one_routeRuleTwo"
 dialect "mvel" 
     when
         Todo : Todo( value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
@@ -32,7 +32,7 @@ dialect "mvel"
         insert($score);
 end
 
-rule "Rule_two"
+rule "Rule_one_routeRuleTwo"
 dialect "mvel" 
     when
         Todo : Todo( value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
@@ -40,15 +40,15 @@ dialect "mvel"
     then
         Score $score = new Score();
         JSONObject details = new JSONObject();
-		details.put("RegionName", "US");
-		details.put("Time", "2016");
+		details.put("ScenarioName", "Scenario_Two");
+		details.put("ScoreCategoryName", "Category_Two 2");
 		details.put("Value", value);
-    	details.put("RuleName", ruleName);
-    	$score.setDetails(details);
+		details.put("RuleName", ruleName);
         $score.setRunid(runId);
         $score.setDomain(domain);
 		$score.setStatus(status);
 		$score.setValue(value);
+		$score.setDetails(details);
 		$score.setRulename(ruleName);
 		$score.setLastmodifiedby(lastmodifiedby);
 		$score.setLastmodifieddate(lastmodifieddate)

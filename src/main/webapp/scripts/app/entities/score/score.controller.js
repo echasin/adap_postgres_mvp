@@ -17,6 +17,7 @@ angular.module('adapApp')
         };
       //  $scope.loadAll();
 
+        $scope.rulesName=Score.getRules();
 
         $scope.search = function () {
         	console.log($scope.searchQuery)
@@ -47,7 +48,7 @@ angular.module('adapApp')
         };
         
         $scope.fireRules = function () {
-        	Score.fireRules({filterId: $scope.filterId,ruleName:$scope.ruleName}, function(result) {
+        	Score.fireRules({filterId: $scope.filterId,fileName:$scope.fileName}, function(result) {
                  console.log(result);
                 });
         };
@@ -98,8 +99,8 @@ angular.module('adapApp')
        	                 { field: 'value', displayName: 'Value', enableSorting: true },
        	                 { field: 'runid', displayName: 'Runid', enableSorting: true },
        	                 { field: 'details', displayName: 'details', enableSorting: true },
-       	                 { field: 'objclassification.name', displayName: 'Class', enableSorting: true },
-                         { field: 'objcategory.name', displayName: 'Category', enableSorting: true },
+       	                 { field: 'rulename', displayName: 'rulename', enableSorting: true },
+                         { field: 'rulefilename', displayName: 'rulefilename', enableSorting: true },
        	                 { field: 'domain',displayName: 'Domain', enableSorting: true },
        	                 { name: 'Action',
        		            	field: 'action',enableFiltering: false,enableSorting: false,

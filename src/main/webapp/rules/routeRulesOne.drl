@@ -1,0 +1,55 @@
+package com.drools.poc
+ 
+import com.innvo.drools.ScoreRouteRulefile;
+import com.innvo.domain.Score
+import com.innvo.domain.enumeration.Status
+import org.json.JSONObject
+import com.innvo.drools.RouteService
+import java.util.List
+import com.innvo.domain.Route
+ 
+rule "Rule_one"
+agenda-group "group one"
+salience 100
+dialect "mvel" 
+
+    when
+        $scoreRouteRulefile : ScoreRouteRulefile(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)    
+    then
+    
+        Score $score = new Score();
+        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+        JSONObject details = new JSONObject();
+		details.put("ScenarioName", "Scenario_One");
+		details.put("ScoreCategoryName", "Category_One 1");
+		details.put("Value", 52);
+		details.put("RuleName", ruleName);
+        $score.setRunid(runId);
+        $score.setDomain(domain);
+		$score.setStatus(status);
+		$score.setValue(52);
+		$score.setRulename(ruleName);
+		$score.setLastmodifiedby(lastmodifiedby);
+		$score.setLastmodifieddate(lastmodifieddate)
+        $score.setObjrecordtype(objrecordtype);
+        $score.setObjclassification(objclassification);
+        $score.setObjcategory(objcategory);
+        $score.setRoute(route)
+        System.out.println($score);
+        insert($score);
+        kcontext.getKnowledgeRuntime().getAgenda().getAgendaGroup("group two").setFocus();
+end
+
+rule "Rule_two"
+agenda-group "group two"
+salience 200
+dialect "mvel" 
+    when
+        $scoreRouteRulefile : ScoreRouteRulefile(value > 0);
+    then
+       System.out.println("my name is ali /////////////////////////////////");
+        Score $score = new Score();
+        $score.setRulename("ggggggggggg");
+        modify($score);
+end
