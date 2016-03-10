@@ -17,6 +17,7 @@ angular.module('adapApp')
         };
       //  $scope.loadAll();
 
+        $scope.rulesName=Score.getRules();
 
         $scope.search = function () {
         	console.log($scope.searchQuery)
@@ -47,7 +48,7 @@ angular.module('adapApp')
         };
         
         $scope.fireRules = function () {
-        	Score.fireRules({filterId: $scope.filterId,ruleName:$scope.ruleName}, function(result) {
+        	Score.fireRules({filterId: $scope.filterId,fileName:$scope.fileName}, function(result) {
                  console.log(result);
                 });
         };

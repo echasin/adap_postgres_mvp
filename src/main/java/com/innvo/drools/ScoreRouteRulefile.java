@@ -1,15 +1,18 @@
 package com.innvo.drools;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
+import com.innvo.domain.Location;
 import com.innvo.domain.Objcategory;
 import com.innvo.domain.Objclassification;
 import com.innvo.domain.Objrecordtype;
 import com.innvo.domain.Route;
+import com.innvo.domain.Scorefactor;
 import com.innvo.domain.enumeration.Status;
 
 
-public class Todo {
+public class ScoreRouteRulefile {
 	
 	private double value;
 	
@@ -36,9 +39,12 @@ public class Todo {
 	private String ruleName;
 	
 	private String rulefilename;
-
 	
-	public Todo() {
+	private Location location;
+	
+	private Scorefactor scorefactor;
+	
+	public ScoreRouteRulefile() {
 		super();
 	}
 
@@ -170,7 +176,29 @@ public class Todo {
 	public void setRulefilename(String rulefilename) {
 		this.rulefilename = rulefilename;
 	}
-	
-	
+
+
+
+	public Location getLocation() {
+		return location;
+	}
+
+
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+
+
+	public Scorefactor getScorefactor() {
+		return scorefactor;
+	}
+
+
+
+	public void setScorefactor(Scorefactor scorefactor) {
+		this.scorefactor = scorefactor;
+}
 	
 }

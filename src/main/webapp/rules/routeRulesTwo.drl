@@ -4,9 +4,9 @@ import com.innvo.drools.ScoreRouteRulefile;
 import com.innvo.domain.Score
 import com.innvo.domain.enumeration.Status
 import org.json.JSONObject
+import com.innvo.drools.RouteService
 import java.util.List
 import com.innvo.domain.Route
-import com.innvo.domain.Scorefactor
  
 rule "Rule_one"
 agenda-group "group one"
@@ -14,12 +14,12 @@ salience 100
 dialect "mvel" 
 
     when
-
-        $scoreRouteRulefile1 : ScoreRouteRulefile( scorefactor.getMatchvalue() contains location.getZippostcode(),route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        $scoreRouteRulefile : ScoreRouteRulefile(route.getId() == 5202 ,route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
         ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)    
     then
     
         Score $score = new Score();
+        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
@@ -48,6 +48,6 @@ dialect "mvel"
     when
         $scoreRouteRulefile : ScoreRouteRulefile(value > 0);
     then
-       System.out.println("my name is ali");
+       System.out.println("my name is ali /////////////////////////////////");
 
 end
