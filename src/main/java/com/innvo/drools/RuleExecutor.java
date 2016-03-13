@@ -20,7 +20,7 @@ import com.innvo.domain.Score;
 public class RuleExecutor {
 
 
-	public Score processRules(ScoreRouteRulefile scoreRouteRulefile,ScorefactorUtil scorefactorUtil, String groupName,String ruleFileName)
+	public Score processRules(ScoreRouteRulefile scoreRouteRulefile, String groupName,String ruleFileName)
 	{
 		KnowledgeBase kbase = null;
 		Score score=null;
@@ -31,7 +31,6 @@ public class RuleExecutor {
 		}
 		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
 		ksession.insert(scoreRouteRulefile);
-		ksession.insert(scorefactorUtil);
 	    ksession.getAgenda().getAgendaGroup(groupName).setFocus();
 		ksession.fireAllRules();
 		Collection<Object> result = findFacts(ksession, Score.class);

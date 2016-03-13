@@ -12,7 +12,6 @@ import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
 import com.innvo.drools.RuleExecutor;
 import com.innvo.drools.ScoreRouteRulefile;
-import com.innvo.drools.ScorefactorUtil;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.LocationRepository;
 import com.innvo.repository.ScoreRepository;
@@ -331,8 +330,8 @@ public class ScoreResource {
 	public List<String> getRules(HttpServletRequest request,Principal principal) throws JSONException, IOException {
     	List<String> rulesName=new ArrayList<String>();
     	
-        String path = request.getSession().getServletContext().getRealPath("/rules");
-        File directory = new File(path);       
+    	ClassLoader classLoader = getClass().getClassLoader();
+    	File directory= new File(classLoader.getResource("rules").getPath());
         File[] fList = directory.listFiles();
         for (File file : fList){
             if (file.isFile()){
@@ -341,6 +340,7 @@ public class ScoreResource {
                 rulesName.add(fileNameWithOutExt);
             }
         }
+        
         return rulesName;
     }
     
@@ -363,7 +363,6 @@ public class ScoreResource {
         .must(new WrapperQueryBuilder(query));
         List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
 		ScoreRouteRulefile scoreRouteRulefile=new ScoreRouteRulefile();
-		ScorefactorUtil scorefactorUtil=new ScorefactorUtil();
 		runId++;
         ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
@@ -373,7 +372,6 @@ public class ScoreResource {
         Segment firstSegment=null;
         
 		for(Route route:routes){
-			for(Scorefactor scorefactor:scorefactors){
 			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
 			              minSegmentNumber=segmentRepository.getMinSegmentnumberByRouteId(route.getId());
         	              firstSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
@@ -390,15 +388,14 @@ public class ScoreResource {
 		    scoreRouteRulefile.setObjcategory(route.getObjcategory()); 
 		    scoreRouteRulefile.setRulefilename(fileName);
 		    scoreRouteRulefile.setLocation(location);
-		    scoreRouteRulefile.setScorefactor(scorefactor);
+		    scoreRouteRulefile.setScorefactors(scorefactors);
 		    try{
 		    	 RuleExecutor ruleExecutor = new RuleExecutor();
-			     Score score= ruleExecutor.processRules(scoreRouteRulefile,scorefactorUtil,"group one",fileName);				   
+			     Score score= ruleExecutor.processRules(scoreRouteRulefile,"group one",fileName);				   
 			     scoreRepository.save(score);
 		}catch (InvalidDataAccessApiUsageException e) {
 			///e.printStackTrace();
-		}
+		}    
     }
  }
-}
 }

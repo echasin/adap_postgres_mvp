@@ -42,7 +42,7 @@ public class ScoreRouteRulefile {
 	
 	private Location location;
 	
-	private Scorefactor scorefactor;
+	private List<Scorefactor> scorefactors;
 	
 	public ScoreRouteRulefile() {
 		super();
@@ -191,14 +191,14 @@ public class ScoreRouteRulefile {
 
 
 
-	public Scorefactor getScorefactor() {
-		return scorefactor;
+	public List<Scorefactor> getScorefactors() {
+		return scorefactors;
 	}
 
 
 
-	public void setScorefactor(Scorefactor scorefactor) {
-		this.scorefactor = scorefactor;
-}
+	public void setScorefactors(List<Scorefactor> scorefactors) {
+		this.scorefactors = scorefactors;
+	}
 	
 }

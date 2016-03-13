@@ -14,21 +14,25 @@ salience 100
 dialect "mvel" 
 
     when
+    
+       $scoreRouteRulefile : ScoreRouteRulefile($scorefactors : scorefactors)
+       $value :Scorefactor() from $scorefactors
 
-        $scoreRouteRulefile1 : ScoreRouteRulefile( scorefactor.getMatchvalue() contains location.getZippostcode(),route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+       $scoreRouteRulefile1 : ScoreRouteRulefile($value.getMatchvalue()==location.getZippostcode(), route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
         ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName)    
     then
-    
+
         Score $score = new Score();
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
-		details.put("Value", 52);
+		details.put("Value", $value.getMatchvalue());
 		details.put("RuleName", "Rule_one");
+        $score.setDetails(details.toString());
         $score.setRunid(runId);
         $score.setDomain(domain);
 		$score.setStatus(status);
-		$score.setValue(52);
+		$score.setValue(Double.parseDouble($value.getMatchvalue()));
 		$score.setRulename("Rule_one");
 		$score.setLastmodifiedby(lastmodifiedby);
 		$score.setLastmodifieddate(lastmodifieddate)
@@ -46,8 +50,8 @@ agenda-group "group two"
 salience 200
 dialect "mvel" 
     when
-        $scoreRouteRulefile : ScoreRouteRulefile(value > 0);
+        $scoreRouteRulefile : ScoreRouteRulefile();
     then
-       System.out.println("my name is ali");
+       System.out.println("---------------------------------------");
 
 end
