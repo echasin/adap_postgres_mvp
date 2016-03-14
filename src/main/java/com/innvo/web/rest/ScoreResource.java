@@ -26,7 +26,6 @@ import com.innvo.web.rest.util.PaginationUtil;
 import org.apache.commons.io.FilenameUtils;
 
 //import io.gatling.core.scenario.Scenario;
-
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.WrapperQueryBuilder;
@@ -80,39 +79,38 @@ public class ScoreResource {
 
     @Inject
     private ScoreSearchRepository scoreSearchRepository;
-    
+
     @Inject
     RouteSearchRepository routeSearchRepository;
-    
 
     @Inject
     UserRepository userRepository;
-    
+
     @Inject
     ElasticsearchTemplate elasticsearchTemplate;
-    
+
     @Inject
     FilterRepository filterRepository;
-    
+
     @Inject
     SegmentRepository segmentRepository;
-    
+
     @Inject
     LocationRepository locationRepository;
-    
+
     @Inject
     ScorefactorRepository scorefactorRepository;
-    
-    long runId=0;
-    
+
+    long runId = 0;
+
     /**
-     * POST  /scores -> Create a new score.
+     * POST /scores -> Create a new score.
      */
     @RequestMapping(value = "/scores",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Score> createScore(@Valid @RequestBody Score score,Principal principal) throws URISyntaxException {
+    public ResponseEntity<Score> createScore(@Valid @RequestBody Score score, Principal principal) throws URISyntaxException {
         log.debug("REST request to save Score : {}", score);
         if (score.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new score cannot already have an ID").body(null);
@@ -126,21 +124,21 @@ public class ScoreResource {
         Score result = scoreRepository.save(score);
         scoreSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/scores/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("score", result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert("score", result.getId().toString()))
+                .body(result);
     }
 
     /**
-     * PUT  /scores -> Updates an existing score.
+     * PUT /scores -> Updates an existing score.
      */
     @RequestMapping(value = "/scores",
-        method = RequestMethod.PUT,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Score> updateScore(@Valid @RequestBody Score score,Principal principal) throws URISyntaxException {
+    public ResponseEntity<Score> updateScore(@Valid @RequestBody Score score, Principal principal) throws URISyntaxException {
         log.debug("REST request to update Score : {}", score);
         if (score.getId() == null) {
-            return createScore(score,principal);
+            return createScore(score, principal);
         }
         ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
@@ -151,19 +149,19 @@ public class ScoreResource {
         Score result = scoreRepository.save(score);
         scoreSearchRepository.save(score);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("score", score.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert("score", score.getId().toString()))
+                .body(result);
     }
 
     /**
-     * GET  /scores -> get all the scores.
+     * GET /scores -> get all the scores.
      */
     @RequestMapping(value = "/scores",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Score>> getAllScores(Pageable pageable)
-        throws URISyntaxException {
+            throws URISyntaxException {
         Page<Score> page = scoreRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/scores");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
@@ -201,78 +199,77 @@ public class ScoreResource {
         long length = scoreRepository.countByDomain(user.getDomain());
         return length;
     }
-    
+
     /**
-     * GET  /scores/:id -> get the "id" score.
+     * GET /scores/:id -> get the "id" score.
      */
     @RequestMapping(value = "/scores/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Score> getScore(@PathVariable Long id) {
         log.debug("REST request to get Score : {}", id);
         return Optional.ofNullable(scoreRepository.findOne(id))
-            .map(score -> new ResponseEntity<>(
-                score,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(score -> new ResponseEntity<>(
+                                score,
+                                HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
-     /**
-     * GET  /scores/asset/:id -> get the "id" asset.
+
+    /**
+     * GET /scores/asset/:id -> get the "id" asset.
      */
     @RequestMapping(value = "/scores/asset/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Set<Score>> getScoreByAsset(@PathVariable Long id) {
         log.debug("REST request to get Score : {}", id);
         return Optional.ofNullable(scoreRepository.findByAssetId(id))
-            .map(score -> new ResponseEntity<>(
-                score,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-    
-    /**
-     * GET  /scores/averageScore/:id -> get averageScore by id.
-     */
-    @RequestMapping(value = "/averageScore/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Score>> getAverageScore(@PathVariable Long id) {
-    	 double sum=0;
-         double averageScore;
-         List<Score> scores=new ArrayList<Score>();
-         long runid;
-         ZonedDateTime lastmodifieddate=scoreRepository.findMaxLastmodifieddateByRouteId(id);
-         if(lastmodifieddate==null){
-        	 averageScore=Double.NaN;
-         }
-        	 else {
-        	 runid=scoreRepository.findMaxRunid(lastmodifieddate,id);
-             scores=scoreRepository.findByRunidAndRouteId(runid, id);
-             System.out.println(id);
-             System.out.println(scores);
-             for(Score score:scores){
-            	 sum=sum+score.getValue();
-             }
-             averageScore=sum/scores.size();
-         }
-         return Optional.ofNullable(scores)
-                 .map(score -> new ResponseEntity<>(
-                     score,
-                     HttpStatus.OK))
-                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(score -> new ResponseEntity<>(
+                                score,
+                                HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**
-     * DELETE  /scores/:id -> delete the "id" score.
+     * GET /scores/averageScore/:id -> get averageScore by id.
+     */
+    @RequestMapping(value = "/averageScore/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Score>> getAverageScore(@PathVariable Long id) {
+        double sum = 0;
+        double averageScore;
+        List<Score> scores = new ArrayList<Score>();
+        long runid;
+        ZonedDateTime lastmodifieddate = scoreRepository.findMaxLastmodifieddateByRouteId(id);
+        if (lastmodifieddate == null) {
+            averageScore = Double.NaN;
+        } else {
+            runid = scoreRepository.findMaxRunid(lastmodifieddate, id);
+            scores = scoreRepository.findByRunidAndRouteId(runid, id);
+            System.out.println(id);
+            System.out.println(scores);
+            for (Score score : scores) {
+                sum = sum + score.getValue();
+            }
+            averageScore = sum / scores.size();
+        }
+        return Optional.ofNullable(scores)
+                .map(score -> new ResponseEntity<>(
+                                score,
+                                HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * DELETE /scores/:id -> delete the "id" score.
      */
     @RequestMapping(value = "/scores/{id}",
-        method = RequestMethod.DELETE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteScore(@PathVariable Long id) {
         log.debug("REST request to delete Score : {}", id);
@@ -282,25 +279,25 @@ public class ScoreResource {
     }
 
     /**
-     * SEARCH  /_search/scores/:query -> search for the score corresponding
-     * to the query.
+     * SEARCH /_search/scores/:query -> search for the score corresponding to
+     * the query.
      */
     @RequestMapping(value = "/_search/scores/{query}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Score> searchScores(@PathVariable String query,Principal principal) {
-    	User user = userRepository.findByLogin(principal.getName());
-    	QueryBuilder filterByDomain = termQuery("domain", user.getDomain()); 
-    	QueryBuilder queryBuilder = queryStringQuery(query); 
-    	BoolQueryBuilder bool = new BoolQueryBuilder()
-    			.must(queryBuilder)
+    public List<Score> searchScores(@PathVariable String query, Principal principal) {
+        User user = userRepository.findByLogin(principal.getName());
+        QueryBuilder filterByDomain = termQuery("domain", user.getDomain());
+        QueryBuilder queryBuilder = queryStringQuery(query);
+        BoolQueryBuilder bool = new BoolQueryBuilder()
+                .must(queryBuilder)
                 .must(filterByDomain);
 
-      	List<Score> result = Lists.newArrayList(scoreSearchRepository.search(bool));
+        List<Score> result = Lists.newArrayList(scoreSearchRepository.search(bool));
         return result;
     }
-    
+
     /**
      * GET -> index score.
      */
@@ -312,90 +309,91 @@ public class ScoreResource {
         List<Score> scores = scoreRepository.findAll();
         log.debug("In IndexResource.java");
 
-        for (Score score:scores) {
+        for (Score score : scores) {
             String id = score.getId().toString();
             IndexQuery indexQuery = new IndexQueryBuilder().withId(id).withObject(score).build();
             elasticsearchTemplate.index(indexQuery);
         }
     }
-    
+
     /**
-     * GET   ->get rules.
-     * @throws IOException 
+     * GET ->get rules.
+     *
+     * @throws IOException
      */
     @RequestMapping(value = "/getRules",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-	public List<String> getRules(HttpServletRequest request,Principal principal) throws JSONException, IOException {
-    	List<String> rulesName=new ArrayList<String>();
-    	
-    	ClassLoader classLoader = getClass().getClassLoader();
-    	File directory= new File(classLoader.getResource("rules").getPath());
+    public List<String> getRules(HttpServletRequest request, Principal principal) throws JSONException, IOException {
+        List<String> rulesName = new ArrayList<String>();
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        File directory = new File(classLoader.getResource("rules").getPath());
         File[] fList = directory.listFiles();
-        for (File file : fList){
-            if (file.isFile()){
-            	String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
+        for (File file : fList) {
+            if (file.isFile()) {
+                String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
                 System.out.println(fileNameWithOutExt);
                 rulesName.add(fileNameWithOutExt);
             }
         }
-        
+
         return rulesName;
     }
-    
-    
+
     /**
-     * GET   ->fireTestCaseOne.
-     * @throws JSONException 
+     * GET ->fireTestCaseOne.
+     *
+     * @throws JSONException
      */
     @RequestMapping(value = "/fireRules/{filterId}/{fileName}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("fileName") String fileName,
-			HttpServletRequest request,Principal principal) throws JSONException {
-    	
-    	Filter filter=filterRepository.findOne(filterId);
-    	String query=filter.getQueryelastic();
-    	System.out.println(query);
-    	BoolQueryBuilder bool = new BoolQueryBuilder()
-        .must(new WrapperQueryBuilder(query));
-        List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
-		ScoreRouteRulefile scoreRouteRulefile=new ScoreRouteRulefile();
-		runId++;
+    public void fireTestCaseOne(@PathVariable("filterId") long filterId, @PathVariable("fileName") String fileName,
+            HttpServletRequest request, Principal principal) throws JSONException {
+
+        Filter filter = filterRepository.findOne(filterId);
+        String query = filter.getQueryelastic();
+        System.out.println(query);
+        BoolQueryBuilder bool = new BoolQueryBuilder()
+                .must(new WrapperQueryBuilder(query));
+        List<Route> routes = Lists.newArrayList(routeSearchRepository.search(bool));
+        ScoreRouteRulefile scoreRouteRulefile = new ScoreRouteRulefile();
+        runId++;
         ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
         User user = userRepository.findByLogin(principal.getName());
-	
-        List<Scorefactor> scorefactors=scorefactorRepository.findAll();
+
+        List<Scorefactor> scorefactors = scorefactorRepository.findAll();
         long minSegmentNumber;
-        Segment firstSegment=null;
-        
-		for(Route route:routes){
-			List<Segment> segments=segmentRepository.findByRouteId(route.getId());
-			              minSegmentNumber=segmentRepository.getMinSegmentnumberByRouteId(route.getId());
-        	              firstSegment=segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
-        	Location location=locationRepository.findByAssetId(firstSegment.getAssetorigin().getId());
+        Segment firstSegment = null;
+
+        for (Route route : routes) {
+            List<Segment> segments = segmentRepository.findByRouteId(route.getId());
+            minSegmentNumber = segmentRepository.getMinSegmentnumberByRouteId(route.getId());
+            firstSegment = segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
+            Location location = locationRepository.findByAssetId(firstSegment.getAssetorigin().getId());
             scoreRouteRulefile.setValue(segments.size());
-			scoreRouteRulefile.setRoute(route);        
-			scoreRouteRulefile.setRunId(runId);
-			scoreRouteRulefile.setStatus(Status.Active);
-			scoreRouteRulefile.setDomain(user.getDomain());
-			scoreRouteRulefile.setLastmodifiedby(principal.getName());
-		    scoreRouteRulefile.setLastmodifieddate(lastmodifieddate);
-		    scoreRouteRulefile.setObjrecordtype(route.getObjrecordtype());
-		    scoreRouteRulefile.setObjclassification(route.getObjclassification());
-		    scoreRouteRulefile.setObjcategory(route.getObjcategory()); 
-		    scoreRouteRulefile.setRulefilename(fileName);
-		    scoreRouteRulefile.setLocation(location);
-		    scoreRouteRulefile.setScorefactors(scorefactors);
-		    try{
-		    	 RuleExecutor ruleExecutor = new RuleExecutor();
-			     Score score= ruleExecutor.processRules(scoreRouteRulefile,"group one",fileName);				   
-			     scoreRepository.save(score);
-		}catch (InvalidDataAccessApiUsageException e) {
-			///e.printStackTrace();
-		}    
+            scoreRouteRulefile.setRoute(route);
+            scoreRouteRulefile.setRunId(runId);
+            scoreRouteRulefile.setStatus(Status.Active);
+            scoreRouteRulefile.setDomain(user.getDomain());
+            scoreRouteRulefile.setLastmodifiedby(principal.getName());
+            scoreRouteRulefile.setLastmodifieddate(lastmodifieddate);
+            scoreRouteRulefile.setObjrecordtype(route.getObjrecordtype());
+            scoreRouteRulefile.setObjclassification(route.getObjclassification());
+            scoreRouteRulefile.setObjcategory(route.getObjcategory());
+            scoreRouteRulefile.setRulefilename(fileName);
+            scoreRouteRulefile.setLocation(location);
+            scoreRouteRulefile.setScorefactors(scorefactors);
+            try {
+                RuleExecutor ruleExecutor = new RuleExecutor();
+                Score score = ruleExecutor.processRules(scoreRouteRulefile, "group one", fileName);
+                scoreRepository.save(score);
+            } catch (InvalidDataAccessApiUsageException e) {
+                ///e.printStackTrace();
+            }
+        }
     }
- }
 }
