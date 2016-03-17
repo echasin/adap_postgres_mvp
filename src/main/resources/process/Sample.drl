@@ -1,6 +1,5 @@
 package com.innvo.drools;
  
-import com.javacodegeeks.drools.Message;
 import com.innvo.drools.ScoreRouteRulefile;
 import com.innvo.domain.Score;
 import com.innvo.domain.enumeration.Status;

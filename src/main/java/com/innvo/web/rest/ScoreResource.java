@@ -12,6 +12,7 @@ import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
 import com.innvo.drools.RuleExecutor;
 import com.innvo.drools.ScoreRouteRulefile;
+import com.innvo.drools.ScoreService;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.LocationRepository;
 import com.innvo.repository.ScoreRepository;
@@ -24,7 +25,15 @@ import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
 import org.apache.commons.io.FilenameUtils;
-
+import org.drools.KnowledgeBase;
+import org.drools.KnowledgeBaseFactory;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderError;
+import org.drools.builder.KnowledgeBuilderErrors;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
+import org.drools.io.ResourceFactory;
+import org.drools.runtime.StatefulKnowledgeSession;
 //import io.gatling.core.scenario.Scenario;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -59,6 +68,7 @@ import java.security.Principal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -101,6 +111,8 @@ public class ScoreResource {
     @Inject
     ScorefactorRepository scorefactorRepository;
 
+    @Inject
+    ScoreService scoreService;
     long runId = 0;
 
     /**
@@ -353,47 +365,8 @@ public class ScoreResource {
     @Timed
     public void fireTestCaseOne(@PathVariable("filterId") long filterId, @PathVariable("fileName") String fileName,
             HttpServletRequest request, Principal principal) throws JSONException {
-
-        Filter filter = filterRepository.findOne(filterId);
-        String query = filter.getQueryelastic();
-        System.out.println(query);
-        BoolQueryBuilder bool = new BoolQueryBuilder()
-                .must(new WrapperQueryBuilder(query));
-        List<Route> routes = Lists.newArrayList(routeSearchRepository.search(bool));
-        ScoreRouteRulefile scoreRouteRulefile = new ScoreRouteRulefile();
-        runId++;
-        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
-        User user = userRepository.findByLogin(principal.getName());
-
-        List<Scorefactor> scorefactors = scorefactorRepository.findAll();
-        long minSegmentNumber;
-        Segment firstSegment = null;
-
-        for (Route route : routes) {
-            List<Segment> segments = segmentRepository.findByRouteId(route.getId());
-            minSegmentNumber = segmentRepository.getMinSegmentnumberByRouteId(route.getId());
-            firstSegment = segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
-            Location location = locationRepository.findByAssetId(firstSegment.getAssetorigin().getId());
-            scoreRouteRulefile.setValue(segments.size());
-            scoreRouteRulefile.setRoute(route);
-            scoreRouteRulefile.setRunId(runId);
-            scoreRouteRulefile.setStatus(Status.Active);
-            scoreRouteRulefile.setDomain(user.getDomain());
-            scoreRouteRulefile.setLastmodifiedby(principal.getName());
-            scoreRouteRulefile.setLastmodifieddate(lastmodifieddate);
-            scoreRouteRulefile.setObjrecordtype(route.getObjrecordtype());
-            scoreRouteRulefile.setObjclassification(route.getObjclassification());
-            scoreRouteRulefile.setObjcategory(route.getObjcategory());
-            scoreRouteRulefile.setRulefilename(fileName);
-            scoreRouteRulefile.setLocation(location);
-            scoreRouteRulefile.setScorefactors(scorefactors);
-            try {
-                RuleExecutor ruleExecutor = new RuleExecutor();
-                Score score = ruleExecutor.processRules(scoreRouteRulefile, "group one", fileName);
-                scoreRepository.save(score);
-            } catch (InvalidDataAccessApiUsageException e) {
-                ///e.printStackTrace();
-            }
-        }
+    	
+    	scoreService.insertScoreFact(filterId, principal);
+       
     }
 }
