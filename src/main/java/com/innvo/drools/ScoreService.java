@@ -74,10 +74,10 @@ public class ScoreService{
 	    KieContainer kContainer = ks.getKieClasspathContainer();
     	KieSession kSession = kContainer.newKieSession("ksession-process");
 	    
-	public void  insertScoreFact(long filterId,Principal principal){
-		   
-
-
+	public  List<ScoreRouteRulefile> retrieveData(long filterId,Principal principal){
+		
+		      List<ScoreRouteRulefile> scoreRouteRulefiles=new ArrayList<ScoreRouteRulefile>();
+		
 		    	Filter filter = filterRepository.findOne(filterId);                                                                               
 		    	User user = userRepository.findByLogin(principal.getName());                                         
 
@@ -86,16 +86,12 @@ public class ScoreService{
 		        BoolQueryBuilder bool = new BoolQueryBuilder()
 		                .must(new WrapperQueryBuilder(query));
 		        List<Route> routes = Lists.newArrayList(routeSearchRepository.search(bool));
-		        ScoreRouteRulefile scoreRouteRulefile = new ScoreRouteRulefile();
+		      
 		        runId++;
 		        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
-
-
 		        List<Scorefactor> scorefactors = scorefactorRepository.findAll();
 		        long minSegmentNumber;
 		        Segment firstSegment = null;
-		        
-		       
 		        
 		        for (Route route : routes) {
 		        	
@@ -103,6 +99,7 @@ public class ScoreService{
 		            minSegmentNumber = segmentRepository.getMinSegmentnumberByRouteId(route.getId());
 		            firstSegment = segmentRepository.findByRouteIdAndSegmentnumber(route.getId(), minSegmentNumber);
 		            Location location = locationRepository.findByAssetId(firstSegment.getAssetorigin().getId());
+		            ScoreRouteRulefile scoreRouteRulefile = new ScoreRouteRulefile();
 		            scoreRouteRulefile.setValue(segments.size());
 		            scoreRouteRulefile.setRoute(route);
 		            scoreRouteRulefile.setRunId(runId);
@@ -116,37 +113,48 @@ public class ScoreService{
 		            scoreRouteRulefile.setRulefilename("assddddd");
 		            scoreRouteRulefile.setLocation(location);
 		            scoreRouteRulefile.setScorefactors(scorefactors);
-		            kSession.insert(scoreRouteRulefile);
+		            scoreRouteRulefiles.add(scoreRouteRulefile);
 		            
-		        }
-	             kSession.startProcess("com.innvo.drools", null);    
-		         kSession.fireAllRules(); 
-		         List<Score> scores=findScoreFact(kSession);
-		         for(Score score:scores){
-		           scoreRepository.save(score);
-		         }         
-  
+		        }	
+		        return scoreRouteRulefiles;
+		        
 	}
+	
+
+	public void process(long filterId,Principal principal){
+		List<ScoreRouteRulefile> list=retrieveData(filterId, principal);
+		for(ScoreRouteRulefile rulefile:list){
+			kSession.insert(rulefile);
+	        kSession.startProcess("com.innvo.drools", null);
+	        kSession.fireAllRules();	
+		}
+		
+		insertScore();
+	}	 
 
 	
-	private List<Score> findScoreFact(KieSession kieSession) {
-	    
+	public Score insertScore() {   
 	    ObjectFilter scoreFilter = new ObjectFilter() {
 	        @Override
 	        public boolean accept(Object object) {
 	            if (Score.class.equals(object.getClass())) return true;
-	            if (Score.class.equals(object.getClass().getSuperclass())) return true;
 	            return false;
 	        }
 	    };
 	    List<Score> facts = new ArrayList<Score>();
-	    for (FactHandle handle : kieSession.getFactHandles(scoreFilter)) {
-	        facts.add((Score) kieSession.getObject(handle));
+	    for (FactHandle handle : kSession.getFactHandles(scoreFilter)) {
+	        facts.add((Score) kSession.getObject(handle));
+	        scoreRepository.save((Score) kSession.getObject(handle));
 	    }
 	    if (facts.size() == 0) {
 	        return null;
 	    }
-	     return facts;
+	    System.out.println("----------222222222222222222222222222222222222222");
+	    System.out.println(facts);
+	    System.out.println(facts.size());
+	    System.out.println("----------222222222222222222222222222222222222222");
+	    scoreRepository.save(facts.get(0));
+	    return facts.get(0);
 	}
-	 
+	
 }

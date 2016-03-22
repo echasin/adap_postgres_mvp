@@ -16,7 +16,7 @@ ruleflow-group "Group1"
        $scoreRouteRulefile : ScoreRouteRulefile($scorefactors : scorefactors);
        $value :Scorefactor() from $scorefactors;
 
-       $scoreRouteRulefile1 : ScoreRouteRulefile($value.getMatchvalue()==location.getZippostcode(), route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+       $scoreRouteRulefile1 : ScoreRouteRulefile(location.getZippostcode() == $value.getMatchvalue(),route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
         ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName);
     then
 
@@ -24,13 +24,13 @@ ruleflow-group "Group1"
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
-		details.put("Value", $value.getMatchvalue());
+		details.put("Value", "44");
 		details.put("RuleName", "Rule_one");
         $score.setDetails(details.toString());
         $score.setRunid(runId);
         $score.setDomain(domain);
 		$score.setStatus(status);
-		$score.setValue(Double.parseDouble($value.getMatchvalue()));
+		$score.setValue(Double.parseDouble("11"));
 		$score.setRulename("Rule_one");
 		$score.setLastmodifiedby(lastmodifiedby);
 		$score.setLastmodifieddate(lastmodifieddate);
@@ -38,7 +38,6 @@ ruleflow-group "Group1"
         $score.setObjclassification(objclassification);
         $score.setObjcategory(objcategory);
         $score.setRoute(route);
-        System.out.println($score);
         insert($score);
 end
 

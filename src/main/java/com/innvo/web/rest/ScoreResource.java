@@ -2,16 +2,9 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Lists;
-import com.innvo.domain.Filter;
-import com.innvo.domain.Location;
-import com.innvo.domain.Route;
 import com.innvo.domain.Score;
-import com.innvo.domain.Scorefactor;
-import com.innvo.domain.Segment;
 import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
-import com.innvo.drools.RuleExecutor;
-import com.innvo.drools.ScoreRouteRulefile;
 import com.innvo.drools.ScoreService;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.LocationRepository;
@@ -25,24 +18,11 @@ import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
 import org.apache.commons.io.FilenameUtils;
-import org.drools.KnowledgeBase;
-import org.drools.KnowledgeBaseFactory;
-import org.drools.builder.KnowledgeBuilder;
-import org.drools.builder.KnowledgeBuilderError;
-import org.drools.builder.KnowledgeBuilderErrors;
-import org.drools.builder.KnowledgeBuilderFactory;
-import org.drools.builder.ResourceType;
-import org.drools.io.ResourceFactory;
-import org.drools.runtime.StatefulKnowledgeSession;
-//import io.gatling.core.scenario.Scenario;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.WrapperQueryBuilder;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -68,7 +48,6 @@ import java.security.Principal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -341,7 +320,7 @@ public class ScoreResource {
         List<String> rulesName = new ArrayList<String>();
 
         ClassLoader classLoader = getClass().getClassLoader();
-        File directory = new File(classLoader.getResource("rules").getPath());
+        File directory = new File(classLoader.getResource("process").getPath());
         File[] fList = directory.listFiles();
         for (File file : fList) {
             if (file.isFile()) {
@@ -366,7 +345,8 @@ public class ScoreResource {
     public void fireTestCaseOne(@PathVariable("filterId") long filterId, @PathVariable("fileName") String fileName,
             HttpServletRequest request, Principal principal) throws JSONException {
     	
-    	scoreService.insertScoreFact(filterId, principal);
-       
+    	scoreService.process(filterId, principal);
+
+
     }
 }
