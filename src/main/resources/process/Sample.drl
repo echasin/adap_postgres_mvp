@@ -1,0 +1,51 @@
+package com.innvo.drools;
+ 
+import com.innvo.drools.ScoreRouteRulefile;
+import com.innvo.domain.Score;
+import com.innvo.domain.enumeration.Status;
+import org.json.JSONObject;
+import java.util.List;
+import com.innvo.domain.Route;
+import com.innvo.domain.Scorefactor;
+  
+rule "One"
+ruleflow-group "Group1"
+
+    when
+    
+       $scoreRouteRulefile : ScoreRouteRulefile($scorefactors : scorefactors);
+       $value :Scorefactor() from $scorefactors;
+
+       $scoreRouteRulefile1 : ScoreRouteRulefile(location.getZippostcode() == $value.getMatchvalue(),route:route,value: value,runId:runId,status :status, domain:domain,lastmodifiedby:lastmodifiedby,lastmodifieddate:lastmodifieddate
+        ,objrecordtype:objrecordtype,objclassification:objclassification,objcategory:objcategory,ruleName:ruleName);
+    then
+
+        Score $score = new Score();
+        JSONObject details = new JSONObject();
+		details.put("ScenarioName", "Scenario_One");
+		details.put("ScoreCategoryName", "Category_One 1");
+		details.put("Value", "44");
+		details.put("RuleName", "Rule_one");
+        $score.setDetails(details.toString());
+        $score.setRunid(runId);
+        $score.setDomain(domain);
+		$score.setStatus(status);
+		$score.setValue(Double.parseDouble("11"));
+		$score.setRulename("Rule_one");
+		$score.setLastmodifiedby(lastmodifiedby);
+		$score.setLastmodifieddate(lastmodifieddate);
+        $score.setObjrecordtype(objrecordtype);
+        $score.setObjclassification(objclassification);
+        $score.setObjcategory(objcategory);
+        $score.setRoute(route);
+        insert($score);
+end
+
+rule "Two"
+ruleflow-group "Group1"
+    when
+        $scoreRouteRulefile : ScoreRouteRulefile()
+    then
+       System.out.println("---------------------------------------");
+
+end
