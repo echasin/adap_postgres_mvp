@@ -1,18 +1,29 @@
 <div>
-<div>
-<div>
+    <div>
+        <div>
             <label for="field_filter">Filter</label>
-           <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filterId" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
-                    </select>
-</div>
-<div>
+            <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filterId" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+            </select>
+        </div>
+        <div>
             <label for="field_rules">Rule File</label>
             <select class="form-control" name="rules" ng-model="fileName" id="field_rules"  ng-options="item for item in  rulesName" required>
                 <option></option>
             </select>
-</div>
-<button id="fireRule" ng-click="fireRules()">Fire Rule</button>
-</div>
+        </div>
+
+        <button id="fireRule" ng-click="fireRules()">Fire Rule</button>
+    </div>
+    <div>
+        <div>
+            <label for="field_workflow">Workflow File</label>
+            <select class="form-control" name="workflows" ng-model="fileName" id="field_worflows"  ng-options="item for item in  workflowNames" required>
+                <option></option>
+            </select>
+            <button id="fireWorkflow ng-click="fireWorkflow()">Fire Workflow</button>
+        </div>
+    </div>
+
     <h2 translate="adapApp.score.home.title">Scores</h2>
     <jh-alert></jh-alert>
     <div class="container">
@@ -34,7 +45,7 @@
         </div>
     </div>
 
-  <div  class="panel-body">
+    <div  class="panel-body">
         <div ui-grid="gridOptions" ui-grid-pagination class="grid"></div>
     </div>
 </div>
