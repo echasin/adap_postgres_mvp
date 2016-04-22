@@ -10,6 +10,7 @@ import com.innvo.domain.User;
 import com.innvo.domain.enumeration.Status;
 import com.innvo.drools.RuleExecutor;
 import com.innvo.drools.ScoreRouteRulefile;
+import com.innvo.drools.WorkFlowStart;
 import com.innvo.repository.FilterRepository;
 import com.innvo.repository.ScoreRepository;
 import com.innvo.repository.SegmentRepository;
@@ -20,16 +21,10 @@ import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 
 import org.apache.commons.io.FilenameUtils;
-import org.drools.io.ResourceFactory;
-import org.drools.reteoo.compiled.NetworkHandlerAdaptor;
-
-//import io.gatling.core.scenario.Scenario;
-
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.WrapperQueryBuilder;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -348,9 +343,12 @@ public class ScoreResource {
 	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("fileName") String fileName,
 			HttpServletRequest request,Principal principal) throws JSONException {
     	
+    	log.info("Pass Filter ID In Process : " + filterId);
+    	WorkFlowStart  workFlowStart=new WorkFlowStart();
+    	workFlowStart.startWorkFlow(filterId);
+    	
     	Filter filter=filterRepository.findOne(filterId);
     	String query=filter.getQueryelastic();
-    	System.out.println(query);
     	BoolQueryBuilder bool = new BoolQueryBuilder()
         .must(new WrapperQueryBuilder(query));
         List<Route> routes= Lists.newArrayList(routeSearchRepository.search(bool));
