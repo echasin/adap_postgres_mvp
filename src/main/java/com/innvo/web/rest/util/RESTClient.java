@@ -248,13 +248,4 @@ public class RESTClient {
 		this.failOnUnknowProperties = failOnUnknowProperties;
 	}
 
-	
-	
-	public static void main(String[] args) throws RESTClientException, JSONException {
-
-		RESTClient client = new RESTClient();
-		String token = client.getToken();
-		System.out.println(client.getJson("http://localhost:8099/api/executeRoutFilter/524", token));
-
-	}
 }
