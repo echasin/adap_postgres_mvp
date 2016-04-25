@@ -18,7 +18,8 @@ angular.module('adapApp')
       //  $scope.loadAll();
 
         $scope.rulesName=Score.getRules();
-
+        $scope.workFlowsName=Score.getWorkFlows();
+       
         $scope.search = function () {
         	console.log($scope.searchQuery)
         	if($scope.searchQuery == "" || $scope.searchQuery == null){
@@ -49,6 +50,12 @@ angular.module('adapApp')
         
         $scope.fireRules = function () {
         	Score.fireRules({filterId: $scope.filterId,fileName:$scope.fileName}, function(result) {
+                 console.log(result);
+                });
+        };
+
+        $scope.fireWorkflows = function () {
+        	Score.fireWorkflows({filterId: $scope.filterId,fileName:$scope.fileName}, function(result) {
                  console.log(result);
                 });
         };

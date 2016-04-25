@@ -331,7 +331,34 @@ public class ScoreResource {
         return rulesName;
     }
     
-    
+    /**
+     * GET   ->get process.
+     * @throws IOException 
+     */
+    @RequestMapping(value = "/getWorkFlows",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+	public List<String> getWorkFlows(HttpServletRequest request,Principal principal) throws JSONException, IOException {
+    	List<String> workFlowsName=new ArrayList<String>();
+        String path = request.getSession().getServletContext().getRealPath("/process");
+        File directory = new File(path);       
+        File[] fList = directory.listFiles();
+        for (File file : fList){
+        	
+            if (file.isFile()){
+            	
+            	if(!file.getName().contains(".drl")){
+            	String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
+                log.info("WorkFlow/Process ID : "+fileNameWithOutExt);
+                workFlowsName.add(fileNameWithOutExt);
+            	}
+            }
+           
+        }
+        
+        return workFlowsName;
+    }
     /**
      * GET   ->fireTestCaseOne.
      * @throws JSONException 
@@ -342,10 +369,6 @@ public class ScoreResource {
     @Timed
 	public void fireTestCaseOne(@PathVariable("filterId") long filterId,@PathVariable("fileName") String fileName,
 			HttpServletRequest request,Principal principal) throws JSONException {
-    	
-    	log.info("Pass Filter ID In Process : " + filterId);
-    	WorkFlowStart  workFlowStart=new WorkFlowStart();
-    	workFlowStart.startWorkFlow(filterId);
     	
     	Filter filter=filterRepository.findOne(filterId);
     	String query=filter.getQueryelastic();
@@ -383,4 +406,19 @@ public class ScoreResource {
 		}
     }
 }
+    /**
+     * GET   ->Start the workflow in turn fire the rules.
+     * @throws JSONException 
+     */
+    @RequestMapping(value = "/workFlow/{filterId}/{fileName}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+	public void startWorkFlow(@PathVariable("filterId") long filterId,@PathVariable("fileName") String fileName,
+			HttpServletRequest request,Principal principal) throws JSONException {
+    	
+    	log.info("Pass Filter ID and Process ID in Process to get started : " + filterId +"\t "+fileName);
+    	WorkFlowStart  workFlowStart=new WorkFlowStart();
+    	workFlowStart.startWorkFlow(filterId,fileName);
+    }
 }

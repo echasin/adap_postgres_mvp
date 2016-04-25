@@ -17,14 +17,14 @@
     <div>
         <div>
             <label for="field_workflow">Workflow File</label>
-            <select class="form-control" name="workflows" ng-model="fileName" id="field_worflows"  ng-options="item for item in  workflowNames" required>
-                <option></option>
-            </select>
-            <button id="fireWorkflow ng-click="fireWorkflow()">Fire Workflow</button>
-        </div>
-    </div>
-
-    <h2 translate="adapApp.score.home.title">Scores</h2>
+            <select class="form-control" name="workflows" ng-model="fileName" id="field_worflows"  ng-options="item for item in  workFlowsName" required>
+               <option value="">Select Workflow</option>
+     		</select>
+     	</div>
+            <button id="fireWorkflow" ng-click="fireWorkflows()">Fire Workflow</button>
+   </div>
+   
+<h2 translate="adapApp.score.home.title">Scores</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">

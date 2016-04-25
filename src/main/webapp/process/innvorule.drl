@@ -1,0 +1,43 @@
+package com.innvo.process
+import com.innvo.domain.Route;
+import com.innvo.domain.Score;
+import org.json.JSONObject;
+import com.innvo.drools.WorkFlowExecutor;
+import com.innvo.web.rest.util.RouteUtil;
+import com.innvo.domain.enumeration.Status;
+
+rule "One"
+ruleflow-group "Group1"
+
+dialect "java"
+    
+    when
+       routeutil : RouteUtil(routeId==5202)
+    then
+        System.out.println( "RouteID : "+routeutil.getRouteId()+"\t RouteName :"+routeutil.getRoutName());
+       	Score $score = new Score();
+        JSONObject details = new JSONObject();
+		details.put("ScenarioName", "Scenario_One");
+		details.put("ScoreCategoryName", "Category_One 1");
+		details.put("Value", 52);
+		details.put("RuleName", "innvorulefile");
+        $score.setRunid(24l);
+        $score.setDomain("My Domain");
+		$score.setStatus(Status.Active);
+		$score.setValue(52.0);
+		$score.setRulename("My Rule");
+		$score.setLastmodifiedby("Demo");
+		//$score.setLastmodifieddate('2016-02-02 00:00:00');
+       //$score.setObjrecordtype(objrecordtype);
+        //$score.setObjclassification(objclassification);
+        //$score.setObjcategory(objcategory);
+        //$score.setRoute(route);
+        System.out.println($score);
+   		
+   		WorkFlowExecutor workFlowExecutor=new WorkFlowExecutor();
+        workFlowExecutor.saveScore($score);
+         
+        
+       
+end
+

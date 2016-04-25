@@ -10,13 +10,10 @@ import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.logger.KieRuntimeLogger;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import com.innvo.domain.Route;
-import com.innvo.domain.Score;
-import com.innvo.web.rest.util.RouteUtil;
 
 public class WorkFlowStart {
 	
-	public void startWorkFlow (long filterid)
+	public void startWorkFlow (long filterid,String fileName)
 	{
 		String filterId=String.valueOf(filterid);
 		try {
@@ -30,16 +27,8 @@ public class WorkFlowStart {
 			KieRuntimeLogger logger = ks.getLoggers().newFileLogger(kSession, "./workflowlog");
 			
 			Map<String,Object> params = new HashMap<String,Object>();
-			Route route=new Route();
-			RouteUtil routeutil=new RouteUtil();
-			Score score=new Score();
-			WorkFlowExecutor workFlowExecutor=new WorkFlowExecutor();
-            params.put("filterId",filterId);
-            params.put("route", route);
-            params.put("score", score);
-            params.put("workFlowExecutor", workFlowExecutor);
-            params.put("routeutil", routeutil);
-            kSession.startProcess("innvoprocess",params);
+			params.put("filterId",filterId);
+            kSession.startProcess(fileName,params);
 			kSession.fireAllRules();
 			kSession.dispose();
 			} catch (Throwable t) {
