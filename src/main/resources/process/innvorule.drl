@@ -2,7 +2,7 @@ package com.innvo.process
 import com.innvo.domain.Route;
 import com.innvo.domain.Score;
 import org.json.JSONObject;
-import com.innvo.drools.WorkFlowExecutor;
+import com.innvo.drools.ScoreExecutor;
 import com.innvo.web.rest.util.RouteUtil;
 import com.innvo.domain.enumeration.Status;
 
@@ -34,8 +34,8 @@ dialect "java"
         //$score.setRoute(route);
         System.out.println($score);
    		
-   		WorkFlowExecutor workFlowExecutor=new WorkFlowExecutor();
-        workFlowExecutor.saveScore($score);
+   		ScoreExecutor scoreExecutor=new ScoreExecutor();
+        scoreExecutor.saveScore($score);
          
         
        
