@@ -56,6 +56,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.security.Principal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -310,23 +312,33 @@ public class ScoreResource {
 	@Timed
 	public List<String> getWorkFlows(HttpServletRequest request, Principal principal)
 			throws JSONException, IOException {
-		List<String> workFlowsName = new ArrayList<String>();
-		String path = request.getSession().getServletContext().getRealPath("/process");
-		File directory = new File(path);
-		File[] fList = directory.listFiles();
-		for (File file : fList) {
+	List<String> workFlowsName = new ArrayList<String>();
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
 
-			if (file.isFile()) {
+		URL[] urls = ((URLClassLoader) cl).getURLs();
 
-				if (!file.getName().contains(".drl")) {
-					String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
-					log.info("WorkFlow/Process ID : " + fileNameWithOutExt);
-					workFlowsName.add(fileNameWithOutExt);
+		for (URL url : urls) {
+
+			if (url.toString().contains("/classes")) {
+				workFlowsName = new ArrayList<String>();
+
+				String path = url.getFile() + "process";
+				File directory = new File(path);
+				File[] fList = directory.listFiles();
+				for (File file : fList) {
+
+					if (file.isFile()) {
+
+						if (!file.getName().contains(".drl")) {
+							String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
+							log.info("WorkFlow/Process ID : " + fileNameWithOutExt);
+							workFlowsName.add(fileNameWithOutExt);
+						}
+					}
+
 				}
 			}
-
 		}
-
 		return workFlowsName;
 	}
 
@@ -403,7 +415,7 @@ public class ScoreResource {
 			KieRuntimeLogger logger = ks.getLoggers().newFileLogger(kSession, "./workflowlog");
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("filterId", filterid);
-			kSession.startProcess("innvoprocess", params);
+			kSession.startProcess(fileName, params);
 			kSession.fireAllRules();
 			kSession.dispose();
 		} catch (WorkflowRuntimeException wfre) {
