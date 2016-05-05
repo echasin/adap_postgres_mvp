@@ -5,12 +5,14 @@ angular.module('adapApp')
         return $resource('api/scores/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'getRules': {method: 'GET',isArray: true, url: 'api/getRules'},
+            'getWorkFlows': {method: 'GET',isArray: true, url: 'api/getWorkFlows'},
             'executefilter': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/executefilter/:id'},
             'editfilter': {method: 'GET', params: {id:'@id'}, url: 'api/editfilter/:id'},
             'getAverageScore': {method: 'GET',isArray: true, params: {id:'@id'}, url: 'api/averageScore/:id'},
             'getroutes': {method: 'GET', isArray: true, params: {page: '@page',size: '@size'}, url: 'api/scores/:page/:size'},
             'index': {method: 'GET', url: 'api/indexscore'},
             'fireRules': {method: 'GET',params: {filterId: '@filterId',fileName: '@fileName'}, url: 'api/fireRules/:filterId/:fileName'},
+            'fireWorkflows': {method: 'GET',params: {filterId: '@filterId',fileName: '@fileName'}, url: 'api/workFlow/:filterId/:fileName'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

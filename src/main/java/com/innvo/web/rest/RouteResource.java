@@ -401,7 +401,7 @@ public class RouteResource {
     	List<RouteUtil> list=new ArrayList<RouteUtil>();
     	Filter filter=filterRepository.findOne(id);
     	String query=filter.getQueryelastic();
-    	System.out.println(query);
+    	log.info("Elastic query :" +query);
     	//QueryBuilder filterByDomain = termQuery("domain","DEMO"); 
     	BoolQueryBuilder bool = new BoolQueryBuilder()
         .must(new WrapperQueryBuilder(query));
