@@ -2,19 +2,22 @@ package com.innvo.process
 import com.innvo.domain.Route;
 import com.innvo.domain.Score;
 import org.json.JSONObject;
-import com.innvo.drools.ScoreExecutor;
+import com.innvo.drools.SaveScoreExecutor;
 import com.innvo.web.rest.util.RouteUtil;
 import com.innvo.domain.enumeration.Status;
-
+ 
 rule "One"
 ruleflow-group "Group1"
 
 dialect "java"
     
     when
-       routeutil : RouteUtil(routeId==5202)
+        
+       p : RouteUtil(getRouteId()==5202)
+    
     then
-        System.out.println( "RouteID : "+routeutil.getRouteId()+"\t RouteName :"+routeutil.getRoutName());
+    	System.out.println( "Enter the Rule One");
+    	System.out.println( "RouteID : "+p.getRouteId()+"\t RouteName :"+p.getRoutName());
        	Score $score = new Score();
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
@@ -27,17 +30,11 @@ dialect "java"
 		$score.setValue(52.0);
 		$score.setRulename("My Rule");
 		$score.setLastmodifiedby("Demo");
-		//$score.setLastmodifieddate('2016-02-02 00:00:00');
-       //$score.setObjrecordtype(objrecordtype);
-        //$score.setObjclassification(objclassification);
-        //$score.setObjcategory(objcategory);
-        //$score.setRoute(route);
         System.out.println($score);
    		
-   		ScoreExecutor scoreExecutor=new ScoreExecutor();
-        scoreExecutor.saveScore($score);
-         
-        
+   		SaveScoreExecutor saveScoreExecutor=new SaveScoreExecutor();
+        saveScoreExecutor.saveScore($score);
+              
        
 end
 

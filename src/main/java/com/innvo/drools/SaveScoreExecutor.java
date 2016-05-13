@@ -14,10 +14,10 @@ import com.innvo.domain.Score;
 import com.innvo.web.rest.util.RESTClient;
 import com.innvo.web.rest.util.RESTClientException;
 
-public class ScoreExecutor {
+public class SaveScoreExecutor {
 	JSONObject jsonObject;
 
-	private final Logger log = LoggerFactory.getLogger(ScoreExecutor.class);
+	private final Logger log = LoggerFactory.getLogger(SaveScoreExecutor.class);
 
 	RESTClient restClient = null;
 
@@ -29,7 +29,7 @@ public class ScoreExecutor {
 			restClient = new RESTClient();
 			String token = restClient.getToken();
 			String response = restClient.getInstance().request(RESTClient.RestHttpMethod.POST,
-					"http://127.0.0.1:8099/api/scores", null, json, token);
+					"http://localhost:8099/api/scores", null, json, token);
 			log.info("Rest response After  Save Score" + ": " + response);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block

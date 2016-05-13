@@ -1,31 +1,55 @@
-package com.innvo.drools;
+package com.innvo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.innvo.web.rest.util.RESTClient;
-import com.innvo.web.rest.util.RouteUtil;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.kie.api.runtime.process.WorkItem;
+import org.kie.api.runtime.process.WorkItemHandler;
+import org.kie.api.runtime.process.WorkItemManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class WorkFlowRouteExecutor {
+import com.innvo.web.rest.util.RESTClient;
+import com.innvo.web.rest.util.RouteUtil;
 
-	JSONObject jsonObject;
+/**
+ * This is a sample file to launch a process.
+ */
+public class FindRouteHandler implements WorkItemHandler {
+	private final Logger log = LoggerFactory.getLogger(FindRouteHandler.class);
 
-	private final Logger log = LoggerFactory.getLogger(WorkFlowRouteExecutor.class);
+	public void abortWorkItem(WorkItem workItem, WorkItemManager manager) {
+		manager.abortWorkItem(workItem.getId());
+	}
 
-	RESTClient restClient = null;
+	public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
+
+		log.info("Filter ID :" + workItem.getParameter("filterid"));
+		String filterId = String.valueOf(workItem.getParameter("filterid"));
+		RouteUtil routeutil = new RouteUtil();
+		routeutil = restCall(filterId);
+		String routeId = String.valueOf(routeutil.getRouteId());
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("routeutil", routeutil);
+		params.put("routeId", routeId);
+		manager.completeWorkItem(workItem.getId(), params);
+	}
 
 	public RouteUtil restCall(String filterid) {
+		RESTClient restClient = null;
 		RouteUtil routeUtil = new RouteUtil();
 		if (filterid != null) {
 
 			try {
 				restClient = new RESTClient();
 				String token = restClient.getToken();
-				String response = restClient.getJson("http://127.0.0.1:8099/api/executeRoutFilter/" + filterid, token);
-				log.debug("Rest response for route id" + filterid + ": " + response);
+				String response = restClient.getJson("http://localhost:8099/api/executeRoutFilter/" + filterid,
+						token);
+				log.debug("Rest response for route id in FindRouteHandler" + filterid + ": " + response);
 
 				JSONArray array = new JSONArray(response);
 
@@ -64,4 +88,5 @@ public class WorkFlowRouteExecutor {
 		return routeUtil;
 
 	}
+
 }

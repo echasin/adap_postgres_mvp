@@ -2,6 +2,7 @@ package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Lists;
+import com.innvo.FindRouteHandler;
 import com.innvo.domain.Filter;
 import com.innvo.domain.Route;
 import com.innvo.domain.Score;
@@ -56,8 +57,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.security.Principal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -313,33 +312,23 @@ public class ScoreResource {
 	public List<String> getWorkFlows(HttpServletRequest request, Principal principal)
 			throws JSONException, IOException {
 	List<String> workFlowsName = new ArrayList<String>();
-		ClassLoader cl = ClassLoader.getSystemClassLoader();
-
-		URL[] urls = ((URLClassLoader) cl).getURLs();
-
-		for (URL url : urls) {
-
-			if (url.toString().contains("/classes")) {
-				workFlowsName = new ArrayList<String>();
-
-				String path = url.getFile() + "process";
-				File directory = new File(path);
-				File[] fList = directory.listFiles();
-				for (File file : fList) {
-
-					if (file.isFile()) {
-
-						if (!file.getName().contains(".drl")) {
-							String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
-							log.info("WorkFlow/Process ID : " + fileNameWithOutExt);
-							workFlowsName.add(fileNameWithOutExt);
-						}
-					}
-
-				}
-			}
-		}
-		return workFlowsName;
+	 String path = request.getSession().getServletContext().getRealPath("/WEB-INF/classes/process");
+     File directory = new File(path);       
+     File[] fList = directory.listFiles();
+     for (File file : fList){
+     	
+         if (file.isFile()){
+         	
+          if(!file.getName().contains(".drl")){
+         	String fileNameWithOutExt = FilenameUtils.removeExtension(file.getName());
+             log.info("WorkFlow/Process ID : "+fileNameWithOutExt);
+             workFlowsName.add(fileNameWithOutExt);
+         	}
+         }
+        
+     }
+     
+     return workFlowsName;
 	}
 
 	/**
@@ -398,23 +387,22 @@ public class ScoreResource {
 	@Timed
 	public String startWorkFlow(@PathVariable("filterId") long filterId, @PathVariable("fileName") String fileName,
 			HttpServletRequest request, Principal principal) throws JSONException {
-
+		String result = null;
 		log.info("Pass Filter ID and Process ID in Process to get started : " + filterId + "\t " + fileName);
-
-		String result = "{\"Route Found\":\"SUCCESS\"}";
+		result = "{\"Route Found\":\"SUCCESS\"}";
 		log.info("Pass Filter ID and Process ID in Process to get started : " + filterId + "\t " + fileName);
-		String filterid = String.valueOf(filterId);
 		try {
 			// load up the knowledge base
 			KieServices ks = KieServices.Factory.get();
 			KieContainer kContainer = ks.getKieClasspathContainer();
 			KieSession kSession = kContainer.newKieSession("ksession-process");
+			kSession.getWorkItemManager().registerWorkItemHandler("FindRouteHandler", new FindRouteHandler());
 			kSession.addEventListener(new DebugProcessEventListener());
 			kSession.addEventListener(new DebugAgendaEventListener());
 			kSession.addEventListener(new DebugRuleRuntimeEventListener());
 			KieRuntimeLogger logger = ks.getLoggers().newFileLogger(kSession, "./workflowlog");
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("filterId", filterid);
+			params.put("filterid", filterId);
 			kSession.startProcess(fileName, params);
 			kSession.fireAllRules();
 			kSession.dispose();
