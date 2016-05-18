@@ -1,6 +1,8 @@
 package com.innvo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlReader;
 import com.google.common.collect.Lists;
 import com.innvo.FindRouteHandler;
 import com.innvo.domain.Filter;
@@ -54,6 +56,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -382,15 +386,26 @@ public class ScoreResource {
 	 * 
 	 * @return
 	 * @throws JSONException
+	 * @throws FileNotFoundException 
+	 * @throws YamlException 
 	 */
 	@RequestMapping(value = "/workFlow/{filterId}/{fileName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public String startWorkFlow(@PathVariable("filterId") long filterId, @PathVariable("fileName") String fileName,
-			HttpServletRequest request, Principal principal) throws JSONException {
+			HttpServletRequest request, Principal principal)
+			throws JSONException, FileNotFoundException, YamlException {
 		String result = null;
 		log.info("Pass Filter ID and Process ID in Process to get started : " + filterId + "\t " + fileName);
 		result = "{\"Route Found\":\"SUCCESS\"}";
 		log.info("Pass Filter ID and Process ID in Process to get started : " + filterId + "\t " + fileName);
+		String path = request.getSession().getServletContext()
+				.getRealPath("/WEB-INF/classes/config/application-dev.yml");
+		YamlReader reader = new YamlReader(new FileReader(path));
+		Object fileContent = reader.read();
+		log.info("Yml file content :" + fileContent);
+		Map map = (Map) fileContent;
+		log.info("AppUrl in score resource :" + map.get("appurl"));
+		String hostName = map.get("appurl").toString();
 		try {
 			// load up the knowledge base
 			KieServices ks = KieServices.Factory.get();
@@ -403,6 +418,7 @@ public class ScoreResource {
 			KieRuntimeLogger logger = ks.getLoggers().newFileLogger(kSession, "./workflowlog");
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("filterid", filterId);
+			params.put("appurl", hostName);
 			kSession.startProcess(fileName, params);
 			kSession.fireAllRules();
 			kSession.dispose();

@@ -13,8 +13,10 @@ import org.kie.api.runtime.process.WorkItemManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.esotericsoftware.yamlbeans.YamlReader;
 import com.innvo.web.rest.util.RESTClient;
 import com.innvo.web.rest.util.RouteUtil;
+
 
 /**
  * This is a sample file to launch a process.
@@ -30,25 +32,27 @@ public class FindRouteHandler implements WorkItemHandler {
 
 		log.info("Filter ID :" + workItem.getParameter("filterid"));
 		String filterId = String.valueOf(workItem.getParameter("filterid"));
+		String hostName = (String) workItem.getParameter("appurl");
+		log.info("appUrl :" + hostName);
 		RouteUtil routeutil = new RouteUtil();
-		routeutil = restCall(filterId);
+		routeutil = restCall(filterId, hostName);
 		String routeId = String.valueOf(routeutil.getRouteId());
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("routeutil", routeutil);
 		params.put("routeId", routeId);
+		params.put("appurl", hostName);
 		manager.completeWorkItem(workItem.getId(), params);
 	}
 
-	public RouteUtil restCall(String filterid) {
+	public RouteUtil restCall(String filterid, String hostName) {
 		RESTClient restClient = null;
 		RouteUtil routeUtil = new RouteUtil();
 		if (filterid != null) {
 
 			try {
 				restClient = new RESTClient();
-				String token = restClient.getToken();
-				String response = restClient.getJson("http://localhost:8099/api/executeRoutFilter/" + filterid,
-						token);
+				String token = restClient.getToken(hostName);
+				String response = restClient.getJson("http://" + hostName + "/api/executeRoutFilter/" + filterid, token);
 				log.debug("Rest response for route id in FindRouteHandler" + filterid + ": " + response);
 
 				JSONArray array = new JSONArray(response);

@@ -118,7 +118,7 @@ public class RESTClient {
 	 * @throws RESTClientException
 	 * @throws JSONException
 	 */
-	public String getToken() throws RESTClientException, JSONException {
+	public String getToken(String hostName) throws RESTClientException, JSONException {
 
 		CredentialsProvider provider = new BasicCredentialsProvider();
 		UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("adapapp", "mySecretOAuthSecret");
@@ -134,7 +134,7 @@ public class RESTClient {
 		formparams.add(new BasicNameValuePair("client_secret", "mySecretOAuthSecret"));
 
 		UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
-		HttpPost httpPost = new HttpPost("http://localhost:8099/oauth/token");
+		HttpPost httpPost = new HttpPost("http://" + hostName + "/oauth/token");
 		httpPost.setEntity(entity);
 		httpPost.setHeader("Accept", "application/json");
 

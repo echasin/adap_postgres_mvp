@@ -13,28 +13,27 @@ dialect "java"
     
     when
         
-       p : RouteUtil(getRouteId()==5202)
+        p : RouteUtil()
+        appurl:String()
+        eval(appurl!=null && p.getRouteId()==5202)
     
     then
-    	System.out.println( "Enter the Rule One");
-    	System.out.println( "RouteID : "+p.getRouteId()+"\t RouteName :"+p.getRoutName());
-       	Score $score = new Score();
+       	Score score = new Score();
         JSONObject details = new JSONObject();
 		details.put("ScenarioName", "Scenario_One");
 		details.put("ScoreCategoryName", "Category_One 1");
 		details.put("Value", 52);
 		details.put("RuleName", "innvorulefile");
-        $score.setRunid(24l);
-        $score.setDomain("My Domain");
-		$score.setStatus(Status.Active);
-		$score.setValue(52.0);
-		$score.setRulename("My Rule");
-		$score.setLastmodifiedby("Demo");
-        System.out.println($score);
-   		
+        score.setRunid(24l);
+        score.setDomain("My Domain");
+		score.setStatus(Status.Active);
+		score.setValue(52.0);
+		score.setRulename("My Rule");
+		score.setLastmodifiedby("Demo");
+        System.out.println(score);
    		SaveScoreExecutor saveScoreExecutor=new SaveScoreExecutor();
-        saveScoreExecutor.saveScore($score);
-              
+        saveScoreExecutor.saveScore(score,appurl);
        
 end
+
 

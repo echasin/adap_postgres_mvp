@@ -21,15 +21,15 @@ public class SaveScoreExecutor {
 
 	RESTClient restClient = null;
 
-	public void saveScore(Score score) throws RESTClientException, IOException, JSONException {
+	public void saveScore(Score score,String hostName) throws RESTClientException, IOException, JSONException {
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		try {
 			String json = ow.writeValueAsString(score);//
 			log.info("JSON DATA :" + json);
 			restClient = new RESTClient();
-			String token = restClient.getToken();
+			String token = restClient.getToken(hostName);
 			String response = restClient.getInstance().request(RESTClient.RestHttpMethod.POST,
-					"http://localhost:8099/api/scores", null, json, token);
+					"http://"+hostName+"/api/scores", null, json, token);
 			log.info("Rest response After  Save Score" + ": " + response);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
