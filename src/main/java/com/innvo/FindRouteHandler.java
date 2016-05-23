@@ -32,15 +32,15 @@ public class FindRouteHandler implements WorkItemHandler {
 
 		log.info("Filter ID :" + workItem.getParameter("filterid"));
 		String filterId = String.valueOf(workItem.getParameter("filterid"));
-		String hostName = (String) workItem.getParameter("appurl");
-		log.info("appUrl :" + hostName);
+		String hostName = (String) workItem.getParameter("hostname");
+		log.info("hostname :" + hostName);
 		RouteUtil routeutil = new RouteUtil();
 		routeutil = restCall(filterId, hostName);
 		String routeId = String.valueOf(routeutil.getRouteId());
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("routeutil", routeutil);
 		params.put("routeId", routeId);
-		params.put("appurl", hostName);
+		params.put("hostname", hostName);
 		manager.completeWorkItem(workItem.getId(), params);
 	}
 

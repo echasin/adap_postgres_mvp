@@ -404,8 +404,8 @@ public class ScoreResource {
 		Object fileContent = reader.read();
 		log.info("Yml file content :" + fileContent);
 		Map map = (Map) fileContent;
-		log.info("AppUrl in score resource :" + map.get("appurl"));
-		String hostName = map.get("appurl").toString();
+		log.info("Hostname in score resource :" + map.get("hostname"));
+		String hostName = map.get("hostname").toString();
 		try {
 			// load up the knowledge base
 			KieServices ks = KieServices.Factory.get();
@@ -418,7 +418,7 @@ public class ScoreResource {
 			KieRuntimeLogger logger = ks.getLoggers().newFileLogger(kSession, "./workflowlog");
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("filterid", filterId);
-			params.put("appurl", hostName);
+			params.put("hostname", hostName);
 			kSession.startProcess(fileName, params);
 			kSession.fireAllRules();
 			kSession.dispose();

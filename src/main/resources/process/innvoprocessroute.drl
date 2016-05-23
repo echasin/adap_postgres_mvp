@@ -14,8 +14,8 @@ dialect "java"
     when
         
         p : RouteUtil()
-        appurl:String()
-        eval(appurl!=null && p.getRouteId()==5202)
+        hostname:String()
+        eval(hostname!=null && p.getRouteId()==5202)
     
     then
        	Score score = new Score();
@@ -32,7 +32,7 @@ dialect "java"
 		score.setLastmodifiedby("Demo");
         System.out.println(score);
    		SaveScoreExecutor saveScoreExecutor=new SaveScoreExecutor();
-        saveScoreExecutor.saveScore(score,appurl);
+        saveScoreExecutor.saveScore(score,hostname);
        
 end
 
