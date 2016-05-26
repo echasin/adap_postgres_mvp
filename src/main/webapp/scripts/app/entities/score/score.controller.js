@@ -100,6 +100,35 @@ angular
 											console.log(result);
 										});
 					};
+					
+					$scope.fireRouteWorkflows = function() {
+						Score
+								.fireRouteWorkflows(
+										{
+											routeId : $scope.routeId,
+											fileName : $scope.fileName
+										},
+										function(routeResult) {
+											$scope.routeworkflow = routeResult;
+											for ( var keyName in $scope.routeworkflow) {
+												var routeKey = keyName;
+												var routeValue = $scope.routeworkflow[keyName];
+												if (routeKey == 'Route Found Value') {
+													$scope.routeKeyRoute = routeKey;
+													$scope.routeValueRoute = " Look for updated score below";
+													getcount();
+													getData();
+												} else if (routeKey == 'No Route Found Value') {
+													$scope.routeKeyRoute = routeKey;
+													$scope.routeValueRoute = " for this selection";
+													getcount();
+													getData();
+												}
+
+											}
+											console.log(routeResult);
+										});
+					};
 
 					$scope.loadFilters = function() {
 						Filter.filtersByRecordtype({

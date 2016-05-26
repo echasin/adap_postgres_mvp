@@ -5,6 +5,7 @@ import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.google.common.collect.Lists;
 import com.innvo.FindRouteHandler;
+import com.innvo.GetRouteByRouteIDHandler;
 import com.innvo.domain.Filter;
 import com.innvo.domain.Route;
 import com.innvo.domain.Score;
@@ -442,5 +443,69 @@ public class ScoreResource {
 			result = "{\"No Route Found\":\"" + msg + "\"}";
 		}
 		return result;
+	}
+	
+	
+	/**
+	 * GET ->Start the routeworkflow in turn fire the rules.
+	 * 
+	 * @return
+	 * @throws JSONException
+	 * @throws FileNotFoundException 
+	 * @throws YamlException 
+	 */
+	@RequestMapping(value = "/workFlowRoute/{routeId}/{fileName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public String startWorkFlowRoute(@PathVariable("routeId") long routeId, @PathVariable("fileName") String fileName,
+			HttpServletRequest request, Principal principal)
+			throws JSONException, FileNotFoundException, YamlException {
+		String routeResult = null;
+		log.info("Pass Route ID and Process ID in Process to get started : " + routeId + "\t " + fileName);
+		routeResult = "{\"Route Found Value\":\"SUCCESS\"}";
+		log.info("Pass Route ID and Process ID in Process to get started : " + routeId + "\t " + fileName);
+		String path = request.getSession().getServletContext()
+				.getRealPath("/WEB-INF/classes/config/application-dev.yml");
+		YamlReader reader = new YamlReader(new FileReader(path));
+		Object fileContent = reader.read();
+		log.info("Yml file content :" + fileContent);
+		Map map = (Map) fileContent;
+		log.info("Hostname in score resource :" + map.get("hostname"));
+		String hostName = map.get("hostname").toString();
+		try {
+			// load up the knowledge base
+			KieServices ks = KieServices.Factory.get();
+			KieContainer kContainer = ks.getKieClasspathContainer();
+			KieSession kSession = kContainer.newKieSession("ksession-process");
+			kSession.getWorkItemManager().registerWorkItemHandler("GetRouteByRouteIDHandler", new GetRouteByRouteIDHandler());
+			kSession.addEventListener(new DebugProcessEventListener());
+			kSession.addEventListener(new DebugAgendaEventListener());
+			kSession.addEventListener(new DebugRuleRuntimeEventListener());
+			ks.getLoggers().newFileLogger(kSession, "./workflowlog");
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("routeId", routeId);
+			params.put("hostname", hostName);
+			kSession.startProcess(fileName, params);
+			kSession.fireAllRules();
+			kSession.dispose();
+		} catch (WorkflowRuntimeException wfre) {
+
+			String msg = "An exception happened in "
+
+					+ "process instance [" + wfre.getProcessInstanceId()
+
+					+ "] of process [" + wfre.getProcessId()
+
+					+ "] in node [id: " + wfre.getNodeId()
+
+					+ ", name: " + wfre.getNodeName()
+
+					+ "] and variable " + "Route ID" + " had the value [" + wfre.getVariables().get("RouteId")
+
+					+ "]";
+
+			log.warn("workflow runtime exception caught when passing route id as " + msg);
+			routeResult = "{\"No Route Found Value\":\"" + msg + "\"}";
+		}
+		return routeResult;
 	}
 }

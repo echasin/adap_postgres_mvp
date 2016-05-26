@@ -2,10 +2,15 @@
     <div>
         <div>
             <label for="field_filter">Filter</label>
-            <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filterId" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)">
+            <select class="form-control input-sm" placeholder="Select a Filter" ng-model="filterId" ng-options="filter.id as filter.name for filter in filters"  ng-change="executefilter(filter.id)" style="width:50%;">
             </select>
-        </div>
-        <div>
+			<div style="width: 47%; float: right; margin-top: -54px;">
+				<label for="field_filter">Route ID</label> <input type="text"
+					class="form-control" id="routeId" ng-model="routeId">
+			</div>
+		</div>
+    
+        <div style="width: 50%;">
             <label for="field_rules">Rule File</label>
             <select class="form-control" name="rules" ng-model="fileName" id="field_rules"  ng-options="item for item in  rulesName" required>
                 <option></option>
@@ -21,7 +26,10 @@
                <option value="">Select Workflow</option>
      		</select>
      	</div>
-            <button id="fireWorkflow" ng-click="fireWorkflows()">Fire Workflow</button> <p style="color:red;">{{keyRoute}} :{{valueRoute}}</p>
+     	<div>
+            <button id="fireWorkflow" ng-click="fireWorkflows()">Fire Workflow</button> <p style="color:red;width: 26%;margin: 0;">{{keyRoute}} {{valueRoute}}</p>
+            <button style="float:right;margin-right:60%;margin-top:-24px;" id="fireRouteWorkflow" ng-click="fireRouteWorkflows()">Fire Route Workflow</button> <p style="color:red;">{{routeKeyRoute}}  {{routeValueRoute}}</p>
+        </div>
    </div>
    
 <h2 translate="adapApp.score.home.title">Scores</h2>

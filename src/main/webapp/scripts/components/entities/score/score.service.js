@@ -13,6 +13,7 @@ angular.module('adapApp')
             'index': {method: 'GET', url: 'api/indexscore'},
             'fireRules': {method: 'GET',params: {filterId: '@filterId',fileName: '@fileName'}, url: 'api/fireRules/:filterId/:fileName'},
             'fireWorkflows': {method: 'GET',params: {filterId: '@filterId',fileName: '@fileName'}, url: 'api/workFlow/:filterId/:fileName'},
+            'fireRouteWorkflows': {method: 'GET',params: {routeId: '@routeId',fileName: '@fileName'}, url: 'api/workFlowRoute/:routeId/:fileName'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
