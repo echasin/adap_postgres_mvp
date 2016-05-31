@@ -6,6 +6,7 @@ import com.esotericsoftware.yamlbeans.YamlReader;
 import com.google.common.collect.Lists;
 import com.innvo.FindRouteHandler;
 import com.innvo.GetRouteByRouteIDHandler;
+import com.innvo.SaveScoreHandler;
 import com.innvo.domain.Filter;
 import com.innvo.domain.Route;
 import com.innvo.domain.Score;
@@ -477,6 +478,7 @@ public class ScoreResource {
 			KieContainer kContainer = ks.getKieClasspathContainer();
 			KieSession kSession = kContainer.newKieSession("ksession-process");
 			kSession.getWorkItemManager().registerWorkItemHandler("GetRouteByRouteIDHandler", new GetRouteByRouteIDHandler());
+			kSession.getWorkItemManager().registerWorkItemHandler("SaveScoreHandler", new SaveScoreHandler());
 			kSession.addEventListener(new DebugProcessEventListener());
 			kSession.addEventListener(new DebugAgendaEventListener());
 			kSession.addEventListener(new DebugRuleRuntimeEventListener());

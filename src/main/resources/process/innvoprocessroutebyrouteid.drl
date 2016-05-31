@@ -36,7 +36,6 @@ dialect "java"
 		score.setRulename("My Rule");
 		score.setLastmodifiedby("Demo");
         System.out.println(score);        
-        SaveScoreExecutor saveScoreExecutor=new SaveScoreExecutor();
-        saveScoreExecutor.saveScore(score,hostname);
+        SaveScoreHandler scoreVal = new SaveScoreHandler(score);
 end
 

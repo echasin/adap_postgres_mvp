@@ -24,4 +24,15 @@ import org.drools.process.core.datatype.impl.type.StringDataType;
      "icon" : "icons/world.png",
     "displayName" : "GetRouteByRouteID"
   ]
+  [
+    "name" : "SaveScoreHandler",
+     "parameters" : [
+         "param1" : new StringDataType(),
+         "param2" : new StringDataType(),
+         "param3" : new StringDataType(),
+      ],
+     
+     "icon" : "icons/world.png",
+    "displayName" : "SaveScore"
+  ]
 ]

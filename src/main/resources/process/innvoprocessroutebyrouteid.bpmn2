@@ -57,7 +57,7 @@
         </tns:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
       <bpmn2:ioSpecification id="InputOutputSpecification_2">
         <bpmn2:dataInput id="DataInput_7" itemSubjectRef="ItemDefinition_1973" name="route"/>
         <bpmn2:dataInput id="DataInput_8" itemSubjectRef="ItemDefinition_47" name="filterid"/>
@@ -161,7 +161,7 @@ return false;
           <tns:metaValue><![CDATA[End Event 3]]></tns:metaValue>
         </tns:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_13</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:task id="Task_3" tns:taskName="GetRouteByRouteIDHandler" tns:displayName="GetRouteByRouteID" tns:icon="icons/world.png" name="GetRouteByRouteID">
       <bpmn2:extensionElements>
@@ -243,7 +243,59 @@ return false;
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_10" tns:priority="1" sourceRef="StartEvent_1" targetRef="Task_3"/>
     <bpmn2:sequenceFlow id="SequenceFlow_11" tns:priority="1" sourceRef="Task_3" targetRef="InclusiveGateway_1"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_1" tns:priority="1" sourceRef="BusinessRuleTask_1" targetRef="EndEvent_3"/>
+    <bpmn2:task id="Task_4" tns:taskName="SaveScoreHandler" tns:displayName="SaveScore" tns:icon="icons/world.png" name="SaveScore">
+      <bpmn2:extensionElements>
+        <tns:metaData name="elementname">
+          <tns:metaValue><![CDATA[SaveScore]]></tns:metaValue>
+        </tns:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_12</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_13</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_5">
+        <bpmn2:dataInput id="DataInput_1" itemSubjectRef="ItemDefinition_47" name="hostname"/>
+        <bpmn2:dataInput id="DataInput_2" itemSubjectRef="ItemDefinition_1973" name="route"/>
+        <bpmn2:dataInput id="DataInput_4" itemSubjectRef="ItemDefinition_3434" name="score"/>
+        <bpmn2:dataOutput id="DataOutput_1" itemSubjectRef="ItemDefinition_47" name="hostname"/>
+        <bpmn2:dataOutput id="DataOutput_2" itemSubjectRef="ItemDefinition_1973" name="route"/>
+        <bpmn2:dataOutput id="DataOutput_7" itemSubjectRef="ItemDefinition_3434" name="score"/>
+        <bpmn2:inputSet id="_InputSet_6">
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_4</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_5" name="Output Set 5">
+          <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_7</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>hostname</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:sourceRef>route</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_2</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_7">
+        <bpmn2:sourceRef>score</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_4</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>hostname</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>route</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_7">
+        <bpmn2:sourceRef>DataOutput_7</bpmn2:sourceRef>
+        <bpmn2:targetRef>score</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="SequenceFlow_12" tns:priority="1" sourceRef="BusinessRuleTask_1" targetRef="Task_4"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_13" tns:priority="1" sourceRef="Task_4" targetRef="EndEvent_3"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="innvoprocessroutebyrouteid">
@@ -289,6 +341,12 @@ return false;
           <dc:Bounds height="15.0" width="110.0" x="145.0" y="52.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_4" bpmnElement="Task_4">
+        <dc:Bounds height="50.0" width="110.0" x="585.0" y="45.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8">
+          <dc:Bounds height="15.0" width="59.0" x="610.0" y="62.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_InclusiveGateway_1" targetElement="BPMNShape_BusinessRuleTask_1">
         <di:waypoint xsi:type="dc:Point" x="340.0" y="135.0"/>
         <di:waypoint xsi:type="dc:Point" x="340.0" y="70.0"/>
@@ -324,12 +382,18 @@ return false;
         <di:waypoint xsi:type="dc:Point" x="315.0" y="160.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_12"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_BusinessRuleTask_1" targetElement="BPMNShape_EndEvent_3">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_12" bpmnElement="SequenceFlow_12" sourceElement="BPMNShape_BusinessRuleTask_1" targetElement="BPMNShape_Task_4">
         <di:waypoint xsi:type="dc:Point" x="545.0" y="70.0"/>
-        <di:waypoint xsi:type="dc:Point" x="652.0" y="70.0"/>
-        <di:waypoint xsi:type="dc:Point" x="652.0" y="63.0"/>
+        <di:waypoint xsi:type="dc:Point" x="565.0" y="70.0"/>
+        <di:waypoint xsi:type="dc:Point" x="585.0" y="70.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_14"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_13" bpmnElement="SequenceFlow_13" sourceElement="BPMNShape_Task_4" targetElement="BPMNShape_EndEvent_3">
+        <di:waypoint xsi:type="dc:Point" x="695.0" y="70.0"/>
+        <di:waypoint xsi:type="dc:Point" x="727.0" y="70.0"/>
+        <di:waypoint xsi:type="dc:Point" x="727.0" y="63.0"/>
         <di:waypoint xsi:type="dc:Point" x="760.0" y="63.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_15"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
