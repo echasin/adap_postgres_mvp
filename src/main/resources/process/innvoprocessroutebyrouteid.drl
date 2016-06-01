@@ -8,7 +8,7 @@ import com.innvo.domain.enumeration.Status;
 global org.kie.api.runtime.KieSession kSession;
 import java.util.HashMap;
 import java.util.Map;
-import com.innvo.SaveScoreHandler;
+import com.innvo.handlers.SaveScoreHandler;
  
 rule "Two"
 ruleflow-group "Group2"
