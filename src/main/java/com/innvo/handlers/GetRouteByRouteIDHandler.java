@@ -1,11 +1,8 @@
-package com.innvo;
+package com.innvo.handlers;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.process.WorkItemHandler;
@@ -15,8 +12,6 @@ import org.slf4j.LoggerFactory;
 
 import com.innvo.domain.Route;
 import com.innvo.web.rest.util.RESTClient;
-import com.innvo.web.rest.util.RouteUtil;
-
 
 /**
  * This is a sample file to launch a process.
@@ -54,11 +49,6 @@ public class GetRouteByRouteIDHandler implements WorkItemHandler {
 				String token = restClient.getToken(hostName);
 				String response = restClient.getJson("http://" + hostName + "/api/routes/" + routeIdVal, token);
 				log.debug("Rest response for route id in GetRouteByRouteIDHandler :" + routeIdVal + ": " + response);
-
-				//JSONArray array = new JSONArray(response);
-
-				//for (int n = 0; n < array.length(); n++) {
-					//JSONObject object = array.getJSONObject(n);
 				JSONObject object = new JSONObject(response);
 				routeVal.setId(object.getLong("id"));
 				routeVal.setDescription(object.getString("description"));

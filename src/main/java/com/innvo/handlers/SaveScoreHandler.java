@@ -1,4 +1,4 @@
-package com.innvo;
+package com.innvo.handlers;
 
 import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.process.WorkItemHandler;
